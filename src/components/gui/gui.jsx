@@ -36,10 +36,16 @@ import {resolveStageSize} from '../../lib/screen-utils';
 
 import styles from './gui.css';
 import addExtensionIcon from './icon--extensions.svg';
-import codeIcon from './icon--code.svg';
-import costumesIcon from './icon--costumes.svg';
-import soundsIcon from './icon--sounds.svg';
+import codeIcon from './ico_ Code-White.png';
+//import codeIcon from './icon--code.svg';
 
+import costumesIcon from './ico_ Costumes-White.png';
+//import costumesIcon from './icon--costumes.svg';
+//ico_ Sound-White.png
+import soundsIcon from './ico_ Sound-White.png';
+
+//import soundsIcon from './icon--sounds.svg';
+//ico_ Costumes-White.png
 const messages = defineMessages({
     addExtension: {
         id: 'gui.gui.addExtension',

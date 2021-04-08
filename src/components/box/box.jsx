@@ -66,7 +66,9 @@ const Box = props => {
                 height: height
             },
             process.env.DEBUG ? {
-                backgroundColor: getRandomColor(),
+               // backgroundColor: "#2d365d",
+
+               backgroundColor: getRandomColor(),
                 outline: `1px solid black`
             } : {},
             style
