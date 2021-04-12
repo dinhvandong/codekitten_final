@@ -3,10 +3,12 @@ import React from 'react';
 
 import styles from './watermark.css';
 
+import logo from './logo-teky.png';
+
 const Watermark = props => (
     <img
         className={styles.spriteImage}
-        src={props.costumeURL}
+        src={logo}
     />
 );
 

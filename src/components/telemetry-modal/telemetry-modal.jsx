@@ -12,7 +12,7 @@ const messages = defineMessages({
     label: {
         id: 'gui.telemetryOptIn.label',
         defaultMessage: 'Report statistics to improve Scratch',
-        description: 'Scratch 3.0 telemetry modal label - for accessibility'
+        description: 'Code Kiteen 1.0 telemetry modal label - for accessibility'
     },
     bodyText1: {
         defaultMessage: 'The Scratch Team is always looking to better understand how Scratch is used around the ' +

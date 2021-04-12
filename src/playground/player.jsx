@@ -11,6 +11,8 @@ import HashParserHOC from '../lib/hash-parser-hoc.jsx';
 import AppStateHOC from '../lib/app-state-hoc.jsx';
 
 import {setPlayer} from '../reducers/mode';
+import {setMyProject} from '../reducers/mode';
+
 
 if (process.env.NODE_ENV === 'production' && typeof window === 'object') {
     // Warn before navigating away
@@ -18,6 +20,7 @@ if (process.env.NODE_ENV === 'production' && typeof window === 'object') {
 }
 
 import styles from './player.css';
+import { showMyProject } from '../index.js';
 
 const Player = ({isPlayerOnly, onSeeInside, projectId}) => (
     <Box className={classNames(isPlayerOnly ? styles.stageOnly : styles.editor)}>
@@ -38,11 +41,13 @@ Player.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    isPlayerOnly: state.scratchGui.mode.isPlayerOnly
+    isPlayerOnly: state.scratchGui.mode.isPlayerOnly,
+    showMyProject: state.scratchGui.mode.showMyProject
 });
 
 const mapDispatchToProps = dispatch => ({
     onSeeInside: () => dispatch(setPlayer(false))
+    
 });
 
 const ConnectedPlayer = connect(

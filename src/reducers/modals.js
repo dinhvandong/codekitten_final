@@ -95,6 +95,13 @@ const openMyProject = function(){
 
     return openModal(MODAL_MY_PROJECT);
 }
+
+const closeMyProject = function(){
+
+    return openModal(MODAL_MY_PROJECT);
+}
+
+
 const closeBackdropLibrary = function () {
     return closeModal(MODAL_BACKDROP_LIBRARY);
 };

@@ -68,16 +68,7 @@ const Backpack = ({
                     id="gui.backpack.header"
                 />
             ) : (
-                <ComingSoonTooltip
-                    place="top"
-                    tooltipId="backpack-tooltip"
-                >
-                    <FormattedMessage
-                        defaultMessage="Backpack"
-                        description="Button to open the backpack"
-                        id="gui.backpack.header"
-                    />
-                </ComingSoonTooltip>
+                <div></div>
             )}
         </div>
         {expanded ? (

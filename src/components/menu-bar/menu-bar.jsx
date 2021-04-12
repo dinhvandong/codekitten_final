@@ -31,6 +31,8 @@ import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
 
 import {openTipsLibrary} from '../../reducers/modals';
 import {setPlayer} from '../../reducers/mode';
+import {setMyProject} from '../../reducers/mode';
+
 import {
     autoUpdateProject,
     getIsUpdating,
@@ -81,6 +83,7 @@ import tekyLogo from './logo-teky.png';
 
 
 import sharedMessages from '../../lib/shared-messages';
+import Prompt from '../../containers/prompt.jsx';
 
 const ariaMessages = defineMessages({
     language: {
@@ -212,7 +215,10 @@ class MenuBar extends React.Component {
         this.props.onClickSaveAsCopy();
         this.props.onRequestCloseFile();
     }
-    handleClickSeeCommunity (waitForUpdate) {
+    handleClickSeeCommunity () {
+
+        this.props.openMyProject();
+        console.log("Open Project");
 
 
         // if (this.props.shouldSaveBeforeTransition()) {
@@ -252,6 +258,9 @@ class MenuBar extends React.Component {
         return () => {
             this.props.onRequestCloseFile();
             downloadProjectCallback();
+
+            this.handleClickSeeCommunity();
+
             if (this.props.onProjectTelemetryEvent) {
                 const metadata = collectMetadata(this.props.vm, this.props.projectTitle, this.props.locale);
                 this.props.onProjectTelemetryEvent('projectDidSave', metadata);
@@ -410,16 +419,8 @@ class MenuBar extends React.Component {
                             className={classNames(styles.menuBarItem, styles.hoverable, styles.languageMenu)}
                         >
                             <div>
-                                <img
-                                    className={styles.languageIcon}
-                                    src={languageIcon}
-                                />
-                                <img
-                                    className={styles.languageCaret}
-                                    src={dropdownCaret}
-                                />
+                               
                             </div>
-                            <LanguageSelector label={this.props.intl.formatMessage(ariaMessages.language)} />
                         </div>)}
                         {(this.props.canManageFiles) && (
                             <div
@@ -595,23 +596,23 @@ class MenuBar extends React.Component {
                     <div className={classNames(styles.menuBarItem, styles.communityButtonWrapper)}>
                         {this.props.enableCommunity ? (
                             (this.props.isShowingProject || this.props.isUpdating) && (
-                                <ProjectWatcher onDoneUpdating={this.props.onSeeCommunity}>
+                                <ProjectWatcher>
                                     {
-                                        waitForUpdate => (
-                                            <CommunityButton
+                                        <CommunityButton
                                                 className={styles.menuBarButton}
                                                 /* eslint-disable react/jsx-no-bind */
                                                 onClick={() => {
-                                                    this.handleClickSeeCommunity(waitForUpdate);
+                                                    this.handleClickSeeCommunity();
                                                 }}
                                                 /* eslint-enable react/jsx-no-bind */
                                             />
-                                        )
                                     }
                                 </ProjectWatcher>
                             )
                         ) : (this.props.showComingSoon ? (
-                            <CommunityButton className={styles.menuBarButton} />
+                            <CommunityButton className={styles.menuBarButton}  onClick={() => {
+                                this.handleClickSeeCommunity();
+                            }}/>
 
                         ) : [])}
                     </div>
@@ -629,20 +630,7 @@ class MenuBar extends React.Component {
                         this.props.username ? (
                             // ************ user is logged in ************
                             <React.Fragment>
-                                <a href="/mystuff/">
-                                    <div
-                                        className={classNames(
-                                            styles.menuBarItem,
-                                            styles.hoverable,
-                                            styles.mystuffButton
-                                        )}
-                                    >
-                                        <img
-                                            className={styles.mystuffIcon}
-                                            src={mystuffIcon}
-                                        />
-                                    </div>
-                                </a>
+                               
                                 <AccountNav
                                     className={classNames(
                                         styles.menuBarItem,
@@ -710,10 +698,7 @@ class MenuBar extends React.Component {
                                                 styles.mystuffButton
                                             )}
                                         >
-                                            <img
-                                                className={styles.mystuffIcon}
-                                                src={mystuffIcon}
-                                            />
+                                           
                                         </div>
                                         <div
                                             className={classNames(
@@ -811,6 +796,7 @@ MenuBar.propTypes = {
     sessionExists: PropTypes.bool,
     shouldSaveBeforeTransition: PropTypes.func,
     showComingSoon: PropTypes.bool,
+    setMyProject: PropTypes.func,
     userOwnsProject: PropTypes.bool,
     username: PropTypes.string,
     vm: PropTypes.instanceOf(VM).isRequired
@@ -863,7 +849,9 @@ const mapDispatchToProps = dispatch => ({
     onClickRemix: () => dispatch(remixProject()),
     onClickSave: () => dispatch(manualUpdateProject()),
     onClickSaveAsCopy: () => dispatch(saveProjectAsCopy()),
-    onSeeCommunity: () => dispatch(setPlayer(true))
+    onSeeCommunity: () => dispatch(setPlayer(true)),
+    openMyProject:()=> dispatch(setMyProject(true))
+    
 });
 
 export default compose(

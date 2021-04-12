@@ -3,6 +3,7 @@ import {FormattedMessage} from 'react-intl';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '../button/button.jsx';
+import mystuffIcon from './icon--mystuff.png';
 
 import communityIcon from './icon--see-community.svg';
 import styles from './community-button.css';
@@ -17,7 +18,7 @@ const CommunityButton = ({
             styles.communityButton
         )}
         iconClassName={styles.communityButtonIcon}
-        iconSrc={communityIcon}
+        iconSrc={mystuffIcon}
         onClick={onClick}
     >
         <FormattedMessage

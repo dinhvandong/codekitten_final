@@ -7,10 +7,10 @@
 }
 
 .backpack-header {
-    margin-top: 0.5rem;
+    margin-top: 0.0rem;
     border: 1px solid $ui-black-transparent;
     background: $ui-white;
-    padding: 0.25rem;
+    padding: 0.0rem;
     text-align: center;
     font-size: 0.85rem;
     color: $text-primary;
