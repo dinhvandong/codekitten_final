@@ -38,7 +38,6 @@ import TelemetryModal from "../telemetry-modal/telemetry-modal.jsx";
 import layout, { STAGE_SIZE_MODES } from "../../lib/layout-constants";
 import { resolveStageSize } from "../../lib/screen-utils";
 import styles from "./gui.css";
-import saveproject from "./saveproject.css";
 import addExtensionIcon from "./icon--extensions.svg";
 import codeIcon from "./ico_ Code-White.png";
 import iconCat from "./ic_cat.svg";
@@ -65,111 +64,15 @@ import { ButtonToolbar } from "react-bootstrap";
 import { Popup } from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
-import {setMyProject} from '../../reducers/mode';
+import ShowMyProject from '../myproject/myproject2';
+import StoreMyProject from '../storemyproject/storemyproject';
+import ConfigServer from "../../config_server.js";
+import { render } from "react-dom";
 
-import ShowMyProject from '../myproject/myproject';
 
 
 
 
-function SaveProject() {
-    return (
-        <Modal
-            id="modal"
-            name="modal"
-            backgroundColor="#2d365d"
-            visible={true}
-            effect="fadeInUp"
-            onClickAway={() => this.closeModal()}
-        >
-            <view
-                id="viewid"
-                style={{
-                    borderTopLeftRadius: 10,
-                    borderTopRightRadius: 10,
-                    overflow: "hidden",
-                }}
-            >
-                <div
-                    id="main"
-                    style={{
-                        borderTopLeftRadius: 10,
-                        borderTopRightRadius: 10,
-                        display: flex,
-                        justifyContent: "center",
-                        backgroundColor: "#2d365d",
-                    }}
-                >
-                    <div
-                        style={{
-                            borderTopLeftRadius: 10,
-                            borderTopRightRadius: 10,
-                            backgroundColor: "#2d365d",
-                            display: "flex",
-                            justifyContent: "center",
-                            alignContent: "center",
-                            height: 50,
-                        }}
-                    >
-                        <img
-                            style={{
-                                width: 35,
-                                height: 35,
-                                alignSelf: "center",
-                            }}
-                            src={iconCat}
-                        />
-
-                        <text
-                            style={{
-                                textAlign: "center",
-                                fontWeight: "bold",
-                                alignSelf: "center",
-                                color: "white",
-                                height: "100%",
-                                width: "100%",
-                                marginTop: 25,
-                            }}
-                        >
-                            Code Kitten Project
-                        </text>
-                    </div>
-                    <form className={saveproject.formcontainer}>
-                        <h2 style={{ color: "#2d365d" }}></h2>
-                        <label className={saveproject.label} for="name">
-                            <b>Tên dự án</b>
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Tên dự án"
-                            name="projectname"
-                            required
-                        />
-
-                        <label className={saveproject.label} for="name">
-                            <b>Mô tả</b>
-                        </label>
-                        <textarea
-                            type="text"
-                            name="review"
-                            placeholder="Mô tả thông tin về dự án"
-                        ></textarea>
-                        <button type="submit" className={saveproject.btn}>
-                            Lưu dự án
-                        </button>
-                        <button
-                            type="button"
-                            className={saveproject.cancel}
-                            onclick="closeForm()"
-                        >
-                            Huỷ
-                        </button>
-                    </form>
-                </div>
-            </view>
-        </Modal>
-    );
-}
 
 //import soundsIcon from './icon--sounds.svg';
 //ico_ Costumes-White.png
@@ -184,7 +87,11 @@ const messages = defineMessages({
 // Cache this value to only retrieve it once the first time.
 // Assume that it doesn't change for a session.
 let isRendererSupported = null;
+var ip = require("ip");
+console.dir ( ip.address() );
 
+const host = ip.address();
+const baseUrl =  host + ":8080";
 const GUIComponent = (props) => {
     const {
         accountNavOpen,
@@ -239,6 +146,9 @@ const GUIComponent = (props) => {
         onRequestCloseCostumeLibrary,
         onRequestCloseTelemetryModal,
         onSeeCommunity,
+        //handleClickSaveMyProject,
+        //onShowMyProject,
+        //onStoreMyProject,
         onShare,
         onShowPrivacyPolicy,
         onStartSelectingFileUpload,
@@ -247,6 +157,7 @@ const GUIComponent = (props) => {
         onTelemetryModalOptOut,
         showComingSoon,
         showMyProject,
+        storeMyProject,
         soundsTabVisible,
         stageSizeMode,
         targetIsStage,
@@ -277,6 +188,9 @@ const GUIComponent = (props) => {
     if (isRendererSupported === null) {
         isRendererSupported = Renderer.isSupported();
     }
+   
+
+    
 
     return (
         <MediaQuery minWidth={layout.fullSizeMinWidth}>
@@ -373,7 +287,6 @@ const GUIComponent = (props) => {
                                     logo={logo}
                                     renderLogin={renderLogin}
                                     showComingSoon={showComingSoon}
-                                    showMyProject={showMyProject}
                                     onClickAbout={onClickAbout}
                                     onClickAccountNav={onClickAccountNav}
                                     onClickLogo={onClickLogo}
@@ -384,6 +297,7 @@ const GUIComponent = (props) => {
                                         onProjectTelemetryEvent
                                     }
                                     onSeeCommunity={onSeeCommunity}
+                                    //onStoreMyProject = {onStoreMyProject}
                                     onShare={onShare}
                                     onStartSelectingFileUpload={
                                         onStartSelectingFileUpload
@@ -480,9 +394,9 @@ const GUIComponent = (props) => {
                                                             styles.blocksWrapper
                                                         }
                                                     >
-                                                        <Blocks
-                                                            canUseCloud={
-                                                                canUseCloud
+                                                        
+                                                    <Blocks canUseCloud={
+                                                                 canUseCloud
                                                             }
                                                             grow={1}
                                                             isVisible={
@@ -586,9 +500,17 @@ const GUIComponent = (props) => {
                                 </Box>
                                 <DragLayer />
                             </Box>
-                            {showMyProject ? <ShowMyProject 
-                                showMyProject={showMyProject}
-                                /> : <div></div>}
+                            <div>
+                            {
+                                storeMyProject ? <StoreMyProject />
+                                :<div></div> 
+                            }  
+                            </div>
+                            <di>
+                                {showMyProject ? <ShowMyProject 
+                                    showMyProject={showMyProject}/>
+                                    : <div></div>}
+                            </di>
                         </div>
                     );
                 }
@@ -643,6 +565,10 @@ GUIComponent.propTypes = {
     onRequestCloseCostumeLibrary: PropTypes.func,
     onRequestCloseTelemetryModal: PropTypes.func,
     onSeeCommunity: PropTypes.func,
+    handleClickSaveMyProject: PropTypes.func,
+    onShowMyProject: PropTypes.func,
+    onStoreMyProject: PropTypes.func,
+    soundsTabVisible: PropTypes.bool,
     onShare: PropTypes.func,
     onShowPrivacyPolicy: PropTypes.func,
     onStartSelectingFileUpload: PropTypes.func,
@@ -653,8 +579,7 @@ GUIComponent.propTypes = {
     onToggleLoginOpen: PropTypes.func,
     renderLogin: PropTypes.func,
     showComingSoon: PropTypes.bool,
-    showMyProject: PropTypes.bool,
-    soundsTabVisible: PropTypes.bool,
+   
     stageSizeMode: PropTypes.oneOf(Object.keys(STAGE_SIZE_MODES)),
     targetIsStage: PropTypes.bool,
     telemetryModalVisible: PropTypes.bool,
@@ -680,6 +605,7 @@ GUIComponent.defaultProps = {
     loading: false,
     showComingSoon: false,
     showMyProject: false,
+    storeMyProject: false,
     stageSizeMode: STAGE_SIZE_MODES.large,
 };
 

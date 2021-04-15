@@ -17,7 +17,6 @@ export default (filename, blob) => {
         downloadLink.type = blob.type;
         downloadLink.click();
 
-
         const formData = new FormData();
         console.log("DownloadFile::::XXX:");
     
@@ -27,7 +26,6 @@ export default (filename, blob) => {
             const base64data = reader.result;
             formData.append("file", new File([blob], filename));
             console.log('form data', formData);
-            // console.log('form base64data', base64data);
             const  link_download = ConfigServer.host +'/api/upload';
             fetch(link_download, {
                 method: "POST",

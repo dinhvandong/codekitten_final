@@ -55,9 +55,16 @@ class Storage extends ScratchStorage {
         this.assetHost = assetHost;
     }
     getAssetGetConfig (asset) {
+        var ip = require("ip");;
+        console.log ("Dia chi IP:", ip.address() );
+
+       // const host = ip.address()+":8080";
+        // const baseUrl =  host + ":8080";
+         //ConfigServer.host = host;
       //  return `${this.assetHost}/internalapi/asset/${asset.assetId}.${asset.dataFormat}/get/`;
        var link_download = ConfigServer.host + "/api/asset/find/" + asset.assetId;
-      return link_download;
+      
+       return link_download;
     }
     getAssetCreateConfig (asset) {
         return {

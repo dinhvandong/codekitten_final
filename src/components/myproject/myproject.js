@@ -4,6 +4,8 @@ import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+import TableFooter from '@material-ui/core/TableFooter';
+
 import Button from "@material-ui/core/Button";
 import CreateIcon from "@material-ui/icons/Create";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -12,6 +14,7 @@ import { flex } from "to-style/src/prefixProperties";
 import { ButtonToolbar } from "react-bootstrap";
 import { Popup } from "reactjs-popup";
 import bindAll from 'lodash.bindall';
+import myproject from './myproject.css';
 
 import "reactjs-popup/dist/index.css";
 import React from "react";
@@ -24,6 +27,8 @@ import {compose} from 'redux';
 import PropTypes from 'prop-types';
 import {defineMessages, FormattedMessage, injectIntl, intlShape} from 'react-intl';
 import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
+import { TablePagination } from "@material-ui/core";
+import { autoUpdateProject } from "../../reducers/project-state";
 
  class ShowMyProject extends React.Component {
     constructor(props) {
@@ -77,6 +82,51 @@ import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
                 salary:
                     "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
             },
+            {
+                id: 6,
+                firstName: "Dong",
+                lastName: "Ding",
+                username: "Dinh Dong",
+                age: 20,
+                salary:
+                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
+            },
+            {
+                id: 7,
+                firstName: "Dong",
+                lastName: "Ding",
+                username: "Dinh Dong",
+                age: 20,
+                salary:
+                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
+            },
+            {
+                id: 8,
+                firstName: "Dong",
+                lastName: "Ding",
+                username: "Dinh Dong",
+                age: 20,
+                salary:
+                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
+            },
+            {
+                id: 9,
+                firstName: "Dong",
+                lastName: "Ding",
+                username: "Dinh Dong",
+                age: 20,
+                salary:
+                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
+            },
+            {
+                id: 10,
+                firstName: "Dong",
+                lastName: "Ding",
+                username: "Dinh Dong",
+                age: 20,
+                salary:
+                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
+            },
         ];
        // bindAll(this, ["closePopup"]);
     }
@@ -87,7 +137,7 @@ import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
     }
     render() {
         return (
-            <Modal
+            <Modal 
                 id="modal"
                 name="modal"
                 visible={true}
@@ -99,6 +149,8 @@ import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
                     style={{
                         borderTopLeftRadius: 10,
                         borderTopRightRadius: 10,
+                        borderBottomLeftRadius:10,
+                        borderBottomRightRadius:10,
                         overflow: "hidden",
                     }}
                 >
@@ -107,6 +159,8 @@ import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
                         style={{
                             borderTopLeftRadius: 10,
                             borderTopRightRadius: 10,
+                            borderBottomLeftRadius:10,
+                            borderBottomRightRadius:10,
                             display: flex,
                             justifyContent: "center",
                         }}
@@ -163,7 +217,7 @@ import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
                             style={{
                                 backgroundColor: "#FFF",
                                 width: "100%",
-                                height: "80%",
+                                height: "400px",
                                 alignSelf: "center",
                                 margin: 0,
                             }}
@@ -247,8 +301,8 @@ import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
                                             <div>
                                                 <img
                                                     style={{
-                                                        width: 50,
-                                                        height: 50,
+                                                        width: 100,
+                                                        height: 100,
                                                         borderRadius: 5,
                                                     }}
                                                     src={row.salary}
@@ -264,8 +318,8 @@ import MenuBarHOC from '../../containers/menu-bar-hoc.jsx';
                                     </TableRow>
                                 ))}
                             </TableBody>
-                        </Table>
-                    </div>
+                        </Table>                    
+                        </div>
                 </view>
             </Modal>
         );

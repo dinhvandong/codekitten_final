@@ -13,6 +13,7 @@ const MODAL_SOUND_RECORDER = 'soundRecorder';
 const MODAL_CONNECTION = 'connectionModal';
 const MODAL_TIPS_LIBRARY = 'tipsLibrary';
 const MODAL_MY_PROJECT = 'myProjects';
+const MODAL_SAVE_MY_PROJECT = "savemyprojects";
 
 
 const initialState = {
@@ -94,6 +95,11 @@ const openTipsLibrary = function () {
 const openMyProject = function(){
 
     return openModal(MODAL_MY_PROJECT);
+}
+
+const onStoreMyProject = function(){
+
+    return openModal(MODAL_SAVE_MY_PROJECT);
 }
 
 const closeMyProject = function(){

@@ -17,6 +17,9 @@ const CommunityButton = ({
             className,
             styles.communityButton
         )}
+
+        //  className={styles.menuBarButton}
+
         iconClassName={styles.communityButtonIcon}
         iconSrc={mystuffIcon}
         onClick={onClick}

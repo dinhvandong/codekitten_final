@@ -11,7 +11,6 @@ import HashParserHOC from '../lib/hash-parser-hoc.jsx';
 import AppStateHOC from '../lib/app-state-hoc.jsx';
 
 import {setPlayer} from '../reducers/mode';
-import {setMyProject} from '../reducers/mode';
 
 
 if (process.env.NODE_ENV === 'production' && typeof window === 'object') {
