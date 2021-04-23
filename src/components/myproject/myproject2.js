@@ -42,91 +42,12 @@ class ShowMyProject extends React.Component {
         bindAll(this, [
             "closePopup",
             "handleChangePage",
-            "handleChangeRowsPerPage",
+            "handleChangeRowsPerPage","convertStringtoDate","formatDate","convertUTCDateToLocalDate"
         ]);
         this.state = { user: [], page: 0, rowsPerPage: 5, emptyRows: 0 };
 
         this.state.user = [
-            {
-                id: 1,
-                projectName: "Dong",
-                description: "Ding",
-                createdTime: "Dinh Dong",
-                image:
-                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
-            },
-            {
-                id: 1,
-                projectName: "Dong",
-                description: "Ding",
-                createdTime: "Dinh Dong",
-                image:
-                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
-            },
-            {
-                id: 1,
-                projectName: "Dong",
-                description: "Ding",
-                createdTime: "Dinh Dong",
-                image:
-                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
-            },
-            {
-                id: 1,
-                projectName: "Dong",
-                description: "Ding",
-                createdTime: "Dinh Dong",
-                image:
-                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
-            },
-            {
-                id: 1,
-                projectName: "Dong",
-                description: "Ding",
-                createdTime: "Dinh Dong",
-                image:
-                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
-            },
-            {
-                id: 1,
-                projectName: "Dong",
-                description: "Ding",
-                createdTime: "Dinh Dong",
-                image:
-                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
-            },
-            {
-                id: 1,
-                projectName: "Dong",
-                description: "Ding",
-                createdTime: "Dinh Dong",
-                image:
-                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
-            },
-            {
-                id: 1,
-                projectName: "Dong",
-                description: "Ding",
-                createdTime: "Dinh Dong",
-                image:
-                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
-            },
-            {
-                id: 1,
-                projectName: "Dong",
-                description: "Ding",
-                createdTime: "Dinh Dong",
-                image:
-                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
-            },
-            {
-                id: 1,
-                projectName: "Dong",
-                description: "Ding",
-                createdTime: "Dinh Dong",
-                image:
-                    "https://www.tynker.com/projects/screenshot/562e5c26e0edb8284e8b4848/example-for-project.png",
-            },
+           
         ];
         this.state.page = 0;
         this.state.rowsPerPage = 5;
@@ -167,6 +88,44 @@ class ShowMyProject extends React.Component {
         console.log("Close Popup");
         this.props.closeMyProject(false);
     }
+    convertStringtoDate(dateString)
+    {
+        return new Date(dateString);
+    }
+
+     formatDate(date) {
+        var d = new Date(date),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+    
+        if (month.length < 2) 
+            month = '0' + month;
+        if (day.length < 2) 
+            day = '0' + day;
+    
+        return [year, month, day].join('-');
+    }
+
+    componentDidMount() {
+        const apiUrl = 'http://localhost:8080/api/project/getAll';
+        fetch(apiUrl)
+          .then((response) => response.json())
+          .then((data) => {
+            this.setState({user: data});
+          });
+      }
+
+    convertUTCDateToLocalDate(date) {
+        var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
+    
+        var offset = date.getTimezoneOffset() / 60;
+        var hours = date.getHours();
+    
+        newDate.setHours(hours - offset);
+    
+        return newDate;   
+    }
     render() {
         const { user } = this.state;
         const { page } = this.state;
@@ -175,6 +134,9 @@ class ShowMyProject extends React.Component {
         const emptyRows =
             rowsPerPage -
             Math.min(rowsPerPage, user.length - page * rowsPerPage);
+
+
+        
 
         // this.setState= {page : newPage};
 
@@ -199,6 +161,7 @@ class ShowMyProject extends React.Component {
                     <div
                         id="main"
                         style={{
+                            width:800,
                             borderTopLeftRadius: 10,
                             borderTopRightRadius: 10,
                             borderBottomLeftRadius: 10,
@@ -262,8 +225,8 @@ class ShowMyProject extends React.Component {
                                 <Table
                                     style={{
                                         backgroundColor: "#FFF",
-                                        width: "100%",
-                                        height: "100%",
+                                        width: "800px",
+                                        //height: "800px",
                                         alignSelf: "center",
                                         margin: 0,
                                     }}
@@ -278,7 +241,7 @@ class ShowMyProject extends React.Component {
                                                     fontWeight: "bold",
                                                 }}
                                             >
-                                                Id
+                                                STT
                                             </TableCell>
                                             <TableCell
                                                 style={{
@@ -315,15 +278,7 @@ class ShowMyProject extends React.Component {
                                             >
                                                 Hình ảnh
                                             </TableCell>
-                                            <TableCell
-                                                style={{
-                                                    color: "#2d365d",
-                                                    fontWeight: "bold",
-                                                }}
-                                                align="right"
-                                            >
-                                                Salary
-                                            </TableCell>
+                                            
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -334,22 +289,22 @@ class ShowMyProject extends React.Component {
                                                       rowsPerPage
                                               )
                                             : user
-                                        ).map((row) => (
-                                            <TableRow key={row.id}>
+                                        ).map((row, index) => (
+                                            <TableRow key={row._id}>
                                                 <TableCell
                                                     component="th"
                                                     scope="row"
                                                 >
-                                                    {row.id}
+                                                    {index + 1 + (page * rowsPerPage)}
+                                                </TableCell>
+                                                <TableCell style={{maxWidth: "200px", textAlign:"left"}} align="right">
+                                                    {row.name}
+                                                </TableCell>
+                                                <TableCell align="right" style={{maxWidth: "200px", textAlign:"left"}} >
+                                                    {row.desc}{" "}
                                                 </TableCell>
                                                 <TableCell align="right">
-                                                    {row.projectName}
-                                                </TableCell>
-                                                <TableCell align="right">
-                                                    {row.description}{" "}
-                                                </TableCell>
-                                                <TableCell align="right">
-                                                    {row.createdTime}{" "}
+                                                    {new Date(new Date(row.createdTime).toUTCString()).toLocaleString()}{" "}
                                                 </TableCell>
 
                                                 <TableCell align="right">
@@ -361,7 +316,7 @@ class ShowMyProject extends React.Component {
                                                                 height: 75,
                                                                 borderRadius: 5,
                                                             }}
-                                                            src={row.image}
+                                                            src={row.icon}
                                                         />
                                                     </div>{" "}
                                                 </TableCell>

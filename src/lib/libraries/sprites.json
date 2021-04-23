@@ -15,7 +15,7 @@
                 "dataFormat": "svg",
                 "rotationCenterX": 100,
                 "rotationCenterY": 100,
-                "base64": "192.168.2.206:8080/api/files/4Asset 1.svg",
+                "base64": "192.168.2.206:8080/api/files/sprite1.png",
                 "name": "nhan vat 410"
             }
         ],
@@ -279,11 +279,11 @@
                 "_id": "6062d9c7bc7b080716355859",
                 "assetId": "31c595610a5d2775bdcbf268d044cc51",
                 "bitmapResolution": 1,
-                "md5ext": "31c595610a5d2775bdcbf268d044cc51.svg",
-                "dataFormat": "svg",
+                "md5ext": "31c595610a5d2775bdcbf268d044cc51.png",
+                "dataFormat": "png",
                 "rotationCenterX": 100,
                 "rotationCenterY": 100,
-                "base64": "192.168.2.206:8080/api/files/nv_51.svg",
+                "base64": "192.168.2.206:8080/api/files/sprite1.png",
                 "name": "nhan vat 510"
             }
         ],

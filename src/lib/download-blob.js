@@ -17,13 +17,13 @@ export default (filename, blob) => {
         downloadLink.type = blob.type;
         downloadLink.click();
 
-        const formData = new FormData();
         console.log("DownloadFile::::XXX:");
     
         var reader = new window.FileReader();
         reader.readAsDataURL(blob);
         reader.onloadend = function () {
             const base64data = reader.result;
+            const formData = new FormData();
             formData.append("file", new File([blob], filename));
             console.log('form data', formData);
             const  link_download = ConfigServer.host +'/api/upload';

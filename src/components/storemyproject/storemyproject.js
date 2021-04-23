@@ -39,6 +39,8 @@ import { autoUpdateProject } from "../../reducers/project-state";
 import TablePaginationActions from "@material-ui/core/TablePagination/TablePaginationActions";
 import saveproject from "./saveproject.css";
 
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { setStoreMyProject } from "../../reducers/mode";
 
 class StoreMyProject extends React.Component {
@@ -53,30 +55,11 @@ class StoreMyProject extends React.Component {
         "myChangeHandlerName",
         "myChangeHandlerDesc","storeMyProject"
     ]);
-
     this.myChangeHandlerName.bind(this);
     this.myChangeHandlerDesc.bind(this);
-
     }
 
-    //  handleChangePage (event, newPage)
-    //  {
-    //   //setPage(newPage);
-    //   console.log("handleChangePage", newPage);
-    //   this.state.page = newPage;
-    //   this.setState= {page : newPage};
-    // };
-
-    //  handleChangeRowsPerPage (event){
-    //   //setRowsPerPage(parseInt(event.target.value, 10));
-    //   //setPage(0);
-    //   console.log("handleChangeRowsPerPage", parseInt(event.target.value, 10));
-
-    //   this.state.rowsPerPage = parseInt(event.target.value, 10);
-    //   this.state.page = 0;
-    // };
-    
-      myChangeHandlerName (event)
+    myChangeHandlerName (event)
       {
         this.setState({projectName: event.target.value});
         console.log("projectName",event.target.value);
@@ -87,66 +70,33 @@ class StoreMyProject extends React.Component {
         this.setState({projectDesc: event.target.value});
         console.log("projectDesc",event.target.value);
       }
-
-    // updateInputValueProjectDesc(evt){
-    //     //console.log("input field updated with "+evt.target.value);
-    //     this.setState({projectDesc: evt.target.value});   
-    //     console.log("projectDesc",evt.target.value) ;
-    //   }
     storeMyProject (name, desc) {
        this.props.saveProjectSb3().then(content => {
-       console.log("Content:", content);
-            // if (this.props.onSaveFinished) {
-            //     this.props.onSaveFinished();
-            // }
-           // downloadBlob(this.props.projectFilename, content);
-
-           const fileName =  `${name.substring(0, 100)}.sb3`;
-
-            downloadProject(fileName, content,name, desc ); 
-
-            //export default (filename, blob, projectName, projectDesc) => {
-
+        const fileName =  `${name.substring(0, 100)}.sb3`;
+        downloadProject(fileName, content,name, desc ); 
        }); 
     }
 
     saveproject(e) 
     {
         e.preventDefault();
-
         this.storeMyProject(this.state.projectName, this.state.projectDesc);
-        //const formData = new FormData();
-        //formData.append("file", new File([blob], filename));
-        //formData.append("name", this.state.projectName);
-        //formData.append("projectDesc", this.state.projectDesc);
-        //console.log("form data", formData);
-        //const link_download = ConfigServer.host + "/api/project/create";
-        // fetch(link_download, {
-        //     method: "POST",
-        //     body: formData,
-        // })
-        //     .then((response) => response.json())
-        //     .then((result) => {
-        //         console.log("Success:", result);
-        //     })
-        //     .catch((error) => {
-        //         console.error("Error:", error);
-        //     });
-    }
+        alert("Dự án lưu thành công !");
+    }       
 
-    closePopup() {
+    closePopup() 
+    {
         console.log("Close Popup");
         this.props.closeMyProject(false);
     }
-    render() {
-        // this.setState= {page : newPage};
+    render() 
+    {
         return (
             <Modal
                 id="modal"
                 name="modal"
                 visible={true}
                 effect="fadeInUp"
-                // onClickAway={() => this.closeModal()}
             >
                 <view
                     id="viewid"
@@ -236,9 +186,7 @@ class StoreMyProject extends React.Component {
                                 //type="submit"
                                 className={saveproject.btn}
                                 //onClick={this.saveproject}
-
-                                onClick={(e) => {this.saveproject(e)}}
-                            >
+                                onClick={(e) => {this.saveproject(e)}}>
                                 Lưu dự án
                             </button>
                             <button
@@ -251,7 +199,12 @@ class StoreMyProject extends React.Component {
                         </form>
                     </div>
                 </view>
-            </Modal>
+            
+                <div>
+
+
+                </div>
+                </Modal>
         );
     }
 }

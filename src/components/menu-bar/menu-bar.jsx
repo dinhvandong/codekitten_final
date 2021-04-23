@@ -513,9 +513,12 @@ class MenuBar extends React.Component {
                                                     .onStartSelectingFileUpload
                                             }
                                         >
-                                            {this.props.intl.formatMessage(
-                                                sharedMessages.loadFromComputerTitle
-                                            )}
+                                            {
+
+                                                "Nạp từ máy tính"
+                                                // this.props.intl.formatMessage(
+                                                // sharedMessages.loadFromComputerTitle)
+                                        }
                                         </MenuItem>
                                         <SB3Downloader>
                                             {(
@@ -529,11 +532,10 @@ class MenuBar extends React.Component {
                                                     //     downloadProjectCallback
                                                     // )}
                                                 >
-                                                    <FormattedMessage
-                                                        defaultMessage="Save to your computer"
-                                                        description="Menu bar item for downloading a project to your computer" // eslint-disable-line max-len
-                                                        id="gui.menuBar.downloadToComputer"
-                                                    />
+                                                   {
+
+                                                    "Lưu dự án"
+                                                   }
                                                 </MenuItem>
                                             )}
                                         </SB3Downloader>

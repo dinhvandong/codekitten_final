@@ -8,12 +8,10 @@ export default (filename, blob, projectName, projectDesc) => {
      formData.append("file", file);
      formData.append("name", projectName);
      formData.append("projectDesc",projectDesc);
-
      return fetch(link_download, {
          method: "POST",
          body: formData,
      });
-
     const downloadLink = document.createElement("a");
     document.body.appendChild(downloadLink);
 
