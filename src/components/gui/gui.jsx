@@ -345,8 +345,7 @@ const GUIComponent = (props) => {
                                                         }
                                                         onClick={
                                                             onActivateCostumesTab
-                                                        }
-                                                    >
+                                                        }>
                                                         <img
                                                             draggable={false}
                                                             src={costumesIcon}

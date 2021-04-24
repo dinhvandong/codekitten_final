@@ -14,23 +14,36 @@ var postcssImport = require('postcss-import');
 
 const STATIC_PATH = process.env.STATIC_PATH || '/static';
 
+//let routes = require('./src/routes.json');
+
+// routes = routes.filter(route => !process.env.VIEW || process.env.VIEW === route.view);
+
+// const pageRoutes = routes.filter(function (route) {
+//     return !route.redirect;
+// });
+
+
 const base = {
     mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
     devtool: 'cheap-module-source-map',
-    devServer: {
+    devServer: 
+    {
         contentBase: path.resolve(__dirname, 'build'),
         host: '0.0.0.0',
         port: process.env.PORT || 8601
     },
-    output: {
+    output: 
+    {
         library: 'GUI',
         filename: '[name].js',
         chunkFilename: 'chunks/[name].js'
     },
-    resolve: {
+    resolve: 
+    {
         symlinks: false
     },
-    module: {
+    module: 
+    {
         rules: [{
             test: /\.jsx?$/,
             loader: 'babel-loader',
@@ -40,7 +53,8 @@ const base = {
                 /node_modules[\\/]pify/,
                 /node_modules[\\/]@vernier[\\/]godirect/
             ],
-            options: {
+            options: 
+            {
                 // Explicitly disable babelrc so we don't catch various config
                 // in much lower dependencies.
                 babelrc: false,
@@ -94,7 +108,15 @@ const base = {
 if (!process.env.CI) {
     base.plugins.push(new webpack.ProgressPlugin());
 }
+// Prepare all entry points
+// let entry = {};
 
+// pageRoutes.forEach(function (route) {
+//     entry[route.name] = [
+//         './src/init.js',
+//         `./src/views/${route.view}.jsx`
+//     ];
+// });
 module.exports = [
     // to run editor examples
     defaultsDeep({}, base, {
@@ -105,16 +127,19 @@ module.exports = [
             'compatibilitytesting': './src/playground/compatibility-testing.jsx',
             'player': './src/playground/player.jsx'
         },
-        output: {
+        output: 
+        {
             path: path.resolve(__dirname, 'build'),
             filename: '[name].js'
         },
-        module: {
+        module: 
+        {
             rules: base.module.rules.concat([
                 {
                     test: /\.(svg|png|wav|gif|jpg)$/,
                     loader: 'file-loader',
-                    options: {
+                    options: 
+                    {
                         outputPath: 'static/assets/'
                     }
                 }

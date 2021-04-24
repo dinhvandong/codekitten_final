@@ -340,8 +340,7 @@ class MenuBar extends React.Component {
                 className={classNames(styles.menuBarItem, styles.hoverable, {
                     [styles.active]: this.props.aboutMenuOpen,
                 })}
-                onMouseUp={this.props.onRequestOpenAbout}
-            >
+                onMouseUp={this.props.onRequestOpenAbout}>
                 <img className={styles.aboutIcon} src={aboutIcon} />
                 <MenuBarMenu
                     className={classNames(styles.menuBarMenu)}
@@ -469,7 +468,7 @@ class MenuBar extends React.Component {
                                             isRtl={this.props.isRtl}
                                             onClick={this.handleClickNew}
                                         >
-                                            {newProjectMessage}
+                                            {"Tạo mới"}
                                         </MenuItem>
                                     </MenuSection>
                                     {(this.props.canSave ||

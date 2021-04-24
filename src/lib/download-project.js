@@ -1,5 +1,4 @@
 import ConfigServer from "../config_server";
-
 export default (filename, blob, projectName, projectDesc) => {
     const formData = new FormData();
     // const  link_download = ConfigServer.host +'/api/upload';
@@ -14,14 +13,12 @@ export default (filename, blob, projectName, projectDesc) => {
      });
     const downloadLink = document.createElement("a");
     document.body.appendChild(downloadLink);
-
     console.log("download1");
     // Use special ms version if available to get it working on Edge.
     // if (navigator.msSaveOrOpenBlob) {
     //     navigator.msSaveOrOpenBlob(blob, filename);
     //     return;
     // }
-
     if ("download" in HTMLAnchorElement.prototype) {
         const url = window.URL.createObjectURL(blob);
         downloadLink.href = url;
@@ -55,9 +52,6 @@ export default (filename, blob, projectName, projectDesc) => {
             //     .catch((error) => {
             //         console.error("Error:", error);
             //     });
-
-          
-
             window.setTimeout(() => {
                 document.body.removeChild(downloadLink);
                 window.URL.revokeObjectURL(url);
