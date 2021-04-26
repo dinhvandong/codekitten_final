@@ -1,16 +1,1 @@
-[
-    {
-        "tags": ["fantasy", "underwater"],
-        "_id": "60869f2e86db20531c5a63bc",
-        "name": "Đại dương 1",
-        "base64": "http://128.199.145.159:8080/api/files/find/2d73c922da1908e5cd76884be8d86091.jpg",
-        "assetId": "c235e28a220e5c04fd411b427df951a6",
-        "bitmapResolution": 1,
-        "md5ext": "c235e28a220e5c04fd411b427df951a6.jpg",
-        "dataFormat": "jpg",
-        "rotationCenterX": 240,
-        "rotationCenterY": 180,
-        "type": "backdrop",
-        "__v": 0
-    }
-]
+[]

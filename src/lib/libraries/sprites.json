@@ -1,27 +1,27 @@
 [
     {
-        "tags": ["animals", "people", "dance"],
-        "_id": "60869f4986db20531c5a63bd",
+        "tags": ["animals", "people", "fantasy", "dance"],
+        "_id": "6086a48786db20531c5a63c4",
         "name": "Robot 1",
         "blocks": {},
         "isStage": false,
         "variables": {},
         "costumes": [
             {
-                "_id": "60869f4986db20531c5a63be",
-                "assetId": "b0bcab9861ef381d5cfa34378ceae768",
+                "_id": "6086a48786db20531c5a63c5",
+                "assetId": "ab8c8d89fa6b7c8cad7be133fabed0b3",
                 "name": "Technology 1",
                 "bitmapResolution": 1,
-                "md5ext": "b0bcab9861ef381d5cfa34378ceae768.svg",
+                "md5ext": "ab8c8d89fa6b7c8cad7be133fabed0b3.svg",
                 "dataFormat": "svg",
                 "rotationCenterX": 100,
                 "rotationCenterY": 100,
-                "base64": "http://128.199.145.159:8080/api/files/find/b0bcab9861ef381d5cfa34378ceae768.svg"
+                "base64": "http://128.199.145.159:8080/api/files/find/ab8c8d89fa6b7c8cad7be133fabed0b3.svg"
             }
         ],
         "sounds": [
             {
-                "_id": "60869f4986db20531c5a63bf",
+                "_id": "6086a48786db20531c5a63c6",
                 "assetId": "Meow Meow",
                 "name": "Meow Meow",
                 "dataFormat": "wav",
@@ -29,7 +29,7 @@
                 "rate": 100,
                 "sampleCount": 111,
                 "md5ext": "",
-                "base64": "http://128.199.145.159:8080/api/files/find/18fc23e0e069b77a8618a3b017f826fd.mp3"
+                "base64": "http://128.199.145.159:8080/api/files/find/eaffd70c2b458ab46e03dde0f34bf8c4.mp3"
             }
         ],
         "__v": 0
