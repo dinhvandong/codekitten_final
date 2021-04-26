@@ -29,9 +29,7 @@ const getCostumeUrl = (function () {
         {
             cachedUrl = asset.encodeDataURI();
         }
-        var link_download = 
-        ConfigServer.host 
-         + "/api/files/findmd5/" + asset.assetId;
+        var link_download =  ConfigServer.host + "/api/files/findmd5/" + asset.assetId;
         return link_download;
     };
 }());
