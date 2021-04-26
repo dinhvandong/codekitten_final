@@ -31,7 +31,7 @@ const getCostumeUrl = (function () {
         }
         var link_download = 
         ConfigServer.host 
-         + "/api/asset/find/" + asset.assetId;
+         + "/api/files/findmd5/" + asset.assetId;
         return link_download;
     };
 }());

@@ -62,7 +62,7 @@ class Storage extends ScratchStorage {
         // const baseUrl =  host + ":8080";
          //ConfigServer.host = host;
       //  return `${this.assetHost}/internalapi/asset/${asset.assetId}.${asset.dataFormat}/get/`;
-       var link_download = ConfigServer.host + "/api/asset/find/" + asset.assetId;
+       var link_download = ConfigServer.host + "/api/files/findmd5/" + asset.assetId;
       
        return link_download;
     }
