@@ -1,8 +1,10 @@
 var request = require("request")
 const fs = require("fs") 
-var url_costumes = "http://128.199.145.159:8080/api/asset/getByType/sprite";
-var url_sprites = "http://128.199.145.159:8080/api/sprite/getAll";
-var url_backdrops = "http://128.199.145.159:8080/api/asset/getByType/backdrop";
+
+const root = "http://localhost:8080";
+var url_costumes = root + "/api/asset/getByType/sprite";
+var url_sprites =  root + "/api/sprite/getAll";
+var url_backdrops = root + "/api/asset/getByType/backdrop";
 
 request({
 

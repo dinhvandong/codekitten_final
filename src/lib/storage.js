@@ -37,15 +37,22 @@ class Storage extends ScratchStorage {
         this.projectHost = projectHost;
     }
     getProjectGetConfig (projectAsset) {
+
+        console.log("getProjectGetConfig");
+
         return `${this.projectHost}/${projectAsset.assetId}`;
     }
     getProjectCreateConfig () {
+        console.log("getProjectCreateConfig");
+
         return {
             url: `${this.projectHost}/`,
             withCredentials: true
         };
     }
     getProjectUpdateConfig (projectAsset) {
+
+        console.log("getProjectUpdateConfig");
         return {
             url: `${this.projectHost}/${projectAsset.assetId}`,
             withCredentials: true
@@ -62,8 +69,9 @@ class Storage extends ScratchStorage {
         // const baseUrl =  host + ":8080";
          //ConfigServer.host = host;
       //  return `${this.assetHost}/internalapi/asset/${asset.assetId}.${asset.dataFormat}/get/`;
-       var link_download = ConfigServer.host + "/api/files/findmd5/" + asset.assetId;
+       var link_download = ConfigServer.host + "/api/asset/find/" + asset.assetId;
       
+       console.log("LINNNNNN:",link_download);
        return link_download;
     }
     getAssetCreateConfig (asset) {

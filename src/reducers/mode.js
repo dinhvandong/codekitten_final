@@ -46,7 +46,6 @@ const reducer = function (state, action) {
 
 
 const setFullScreen = function (isFullScreen) {
-
     //ConfigServer.host = getIP();
     return {
         type: SET_FULL_SCREEN,

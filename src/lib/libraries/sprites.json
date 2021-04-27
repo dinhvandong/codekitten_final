@@ -1,37 +1,94 @@
 [
     {
-        "tags": ["animals", "people", "fantasy", "dance"],
-        "_id": "6086a48786db20531c5a63c4",
-        "name": "Robot 1",
+        "tags": ["animals", "fantasy", "dance", "people"],
+        "_id": "60876fb2824ac91dd3cd41d7",
+        "name": "Cá độc 1",
         "blocks": {},
         "isStage": false,
         "variables": {},
         "costumes": [
             {
-                "_id": "6086a48786db20531c5a63c5",
-                "assetId": "ab8c8d89fa6b7c8cad7be133fabed0b3",
-                "name": "Technology 1",
+                "_id": "60876fb2824ac91dd3cd41d8",
+                "assetId": "36dccaa9447d897726d729cc75fe3b97",
+                "name": "Cá độc 1",
                 "bitmapResolution": 1,
-                "md5ext": "ab8c8d89fa6b7c8cad7be133fabed0b3.svg",
+                "md5ext": "36dccaa9447d897726d729cc75fe3b97.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://localhost:8080/api/files/find/36dccaa9447d897726d729cc75fe3b97.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["animals", "people", "fantasy"],
+        "_id": "608779107e3c572548476f14",
+        "name": "Cá nóc",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "608779107e3c572548476f15",
+                "assetId": "99747f1f11da75e36bc5660cf549a07c",
+                "name": "Cá nóc",
+                "bitmapResolution": 1,
+                "md5ext": "99747f1f11da75e36bc5660cf549a07c.svg",
                 "dataFormat": "svg",
                 "rotationCenterX": 100,
                 "rotationCenterY": 100,
-                "base64": "http://128.199.145.159:8080/api/files/find/ab8c8d89fa6b7c8cad7be133fabed0b3.svg"
+                "base64": "http://localhost:8080/api/files/find/99747f1f11da75e36bc5660cf549a07c.svg"
             }
         ],
-        "sounds": [
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["animals", "people", "fantasy"],
+        "_id": "60877e287e3c572548476f19",
+        "name": "Mực ống",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
             {
-                "_id": "6086a48786db20531c5a63c6",
-                "assetId": "Meow Meow",
-                "name": "Meow Meow",
-                "dataFormat": "wav",
-                "format": "",
-                "rate": 100,
-                "sampleCount": 111,
-                "md5ext": "",
-                "base64": "http://128.199.145.159:8080/api/files/find/eaffd70c2b458ab46e03dde0f34bf8c4.mp3"
+                "_id": "60877e287e3c572548476f1a",
+                "assetId": "4226eac528c932aa7004eb89b4d63f3b",
+                "name": "Mực ống",
+                "bitmapResolution": 1,
+                "md5ext": "4226eac528c932aa7004eb89b4d63f3b.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://localhost:8080/api/files/find/4226eac528c932aa7004eb89b4d63f3b.svg"
             }
         ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["animals", "people", "fantasy"],
+        "_id": "60877f582994f226f8ed3b1d",
+        "name": "Bạc tuộc đỏ",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "60877f582994f226f8ed3b1e",
+                "assetId": "6b3b0a8e6ca88a038414da5c131fb283",
+                "name": "Bạc tuộc đỏ",
+                "bitmapResolution": 1,
+                "md5ext": "6b3b0a8e6ca88a038414da5c131fb283.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://localhost:8080/api/files/find/6b3b0a8e6ca88a038414da5c131fb283.svg"
+            }
+        ],
+        "sounds": [],
         "__v": 0
     }
 ]

@@ -35,6 +35,7 @@ class LibraryItem extends React.PureComponent {
     }
     handleClick (e) {
         if (!this.props.disabled) {
+            console.log("IDXXX:",this.props.id );
             this.props.onSelect(this.props.id);
         }
         e.preventDefault();
@@ -110,8 +111,9 @@ class LibraryItem extends React.PureComponent {
         //     `https://cdn.assets.scratch.mit.edu/internalapi/asset/${iconMd5}/get/` :
         //     this.props.iconRawURL;
         const iconMd5 = this.curIconMd5().split(".");
-        const iconURL = ConfigServer.host + "/api/files/findmd5/" + iconMd5[0];
+        const iconURL = ConfigServer.host + "/api/asset/find/" + iconMd5[0];
 
+        console.log("iconURL",iconMd5);
         return (
             <LibraryItemComponent
                 bluetoothRequired={this.props.bluetoothRequired}
@@ -124,7 +126,7 @@ class LibraryItem extends React.PureComponent {
                 iconURL={iconURL}
                 icons={this.props.icons}
                 id={this.props.id}
-                insetIconURL={this.props.insetIconURL}
+                insetIconURL= {this.props.insetIconURL}
                 internetConnectionRequired={this.props.internetConnectionRequired}
                 isPlaying={this.props.isPlaying}
                 name={this.props.name}
