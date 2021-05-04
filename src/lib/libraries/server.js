@@ -1,7 +1,7 @@
 var request = require("request")
 const fs = require("fs") 
 
-const root = "http://128.199.145.15:8080";
+const root = "http://localhost:8080";
 var url_costumes = root + "/api/asset/getByType/sprite";
  var url_sprites =  root + "/api/sprite/getAll";
 var url_backdrops = root + "/api/asset/getByType/backdrop";
