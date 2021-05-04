@@ -14,6 +14,8 @@ var postcssImport = require('postcss-import');
 
 const STATIC_PATH = process.env.STATIC_PATH || '/static';
 
+console.log("STATIC_PATH",STATIC_PATH);
+
 //let routes = require('./src/routes.json');
 
 // routes = routes.filter(route => !process.env.VIEW || process.env.VIEW === route.view);

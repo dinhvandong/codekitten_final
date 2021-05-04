@@ -43,13 +43,14 @@ class ShowMyProject extends React.Component {
         bindAll(this, [
             "closePopup",
             "handleChangePage",
-            "handleChangeRowsPerPage","convertStringtoDate","formatDate","convertUTCDateToLocalDate"
+            "handleChangeRowsPerPage",
+            "convertStringtoDate",
+            "formatDate",
+            "convertUTCDateToLocalDate",
         ]);
         this.state = { user: [], page: 0, rowsPerPage: 5, emptyRows: 0 };
 
-        this.state.user = [
-           
-        ];
+        this.state.user = [];
         this.state.page = 0;
         this.state.rowsPerPage = 5;
         this.state.emptyRows =
@@ -89,43 +90,85 @@ class ShowMyProject extends React.Component {
         console.log("Close Popup");
         this.props.closeMyProject(false);
     }
-    convertStringtoDate(dateString)
-    {
+    convertStringtoDate(dateString) {
         return new Date(dateString);
     }
 
-     formatDate(date) {
+    formatDate(date) {
         var d = new Date(date),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
+            month = "" + (d.getMonth() + 1),
+            day = "" + d.getDate(),
             year = d.getFullYear();
-    
-        if (month.length < 2) 
-            month = '0' + month;
-        if (day.length < 2) 
-            day = '0' + day;
-    
-        return [year, month, day].join('-');
+
+        if (month.length < 2) month = "0" + month;
+        if (day.length < 2) day = "0" + day;
+
+        return [year, month, day].join("-");
     }
 
     componentDidMount() {
-        const apiUrl = ConfigServer.host + '/api/project/getAll';
+        const apiUrl = ConfigServer.host + "/api/project/getAll";
         fetch(apiUrl)
-          .then((response) => response.json())
-          .then((data) => {
-            this.setState({user: data});
-          });
-      }
+            .then((response) => response.json())
+            .then((data) => {
+                this.setState({ user: data });
+            });
+    }
+
+    toArrayBuffer(buffer) {
+        var ab = new ArrayBuffer(buffer.length);
+        var view = new Uint8Array(ab);
+        for (var i = 0; i < buffer.length; ++i) {
+            view[i] = buffer[i];
+        }
+        return ab;
+    }
+
+    onload() {
+        console.log("Click CLick");
+        this.props.onLoadingStarted();
+        const filename = "./Scratch.sb3";
+        fs.readFile(filename, function (err, buffer) {
+            if (err) throw errr;
+            const bufferArray = toArrayBuffer(buffer);
+            this.props.onLoadingStarted();
+            const filename = this.fileToUpload && this.fileToUpload.name;
+            let loadingSuccess = false;
+            this.props.vm
+                .loadProject(bufferArray)
+                .then(() => {
+                    if (filename) {
+                        const uploadedProjectTitle = this.getProjectTitleFromFilename(
+                            filename
+                        );
+                        this.props.onSetProjectTitle(uploadedProjectTitle);
+                    }
+                    loadingSuccess = true;
+                })
+                .catch((error) => {
+                    log.warn(error);
+                    alert(this.props.intl.formatMessage(messages.loadError)); // eslint-disable-line no-alert
+                })
+                .then(() => {
+                    this.props.onLoadingFinished(
+                        this.props.loadingState,
+                        loadingSuccess
+                    );
+                });
+        });
+    }
 
     convertUTCDateToLocalDate(date) {
-        var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
-    
+        var newDate = new Date(
+            date.getTime() + date.getTimezoneOffset() * 60 * 1000
+        );
+
         var offset = date.getTimezoneOffset() / 60;
         var hours = date.getHours();
-    
+
         newDate.setHours(hours - offset);
-    
-        return newDate;   
+
+        return newDate;
     }
     render() {
         const { user } = this.state;
@@ -135,9 +178,6 @@ class ShowMyProject extends React.Component {
         const emptyRows =
             rowsPerPage -
             Math.min(rowsPerPage, user.length - page * rowsPerPage);
-
-
-        
 
         // this.setState= {page : newPage};
 
@@ -162,7 +202,7 @@ class ShowMyProject extends React.Component {
                     <div
                         id="main"
                         style={{
-                            width:800,
+                            width: 800,
                             borderTopLeftRadius: 10,
                             borderTopRightRadius: 10,
                             borderBottomLeftRadius: 10,
@@ -235,7 +275,7 @@ class ShowMyProject extends React.Component {
                                     <TableHead
                                         style={{ backgroundColor: "#FFF" }}
                                     >
-                                        <TableRow>
+                                        <TableRow onClick={this.onload}>
                                             <TableCell
                                                 style={{
                                                     color: "#2d365d",
@@ -279,7 +319,6 @@ class ShowMyProject extends React.Component {
                                             >
                                                 Hình ảnh
                                             </TableCell>
-                                            
                                         </TableRow>
                                     </TableHead>
                                     <TableBody>
@@ -296,16 +335,34 @@ class ShowMyProject extends React.Component {
                                                     component="th"
                                                     scope="row"
                                                 >
-                                                    {index + 1 + (page * rowsPerPage)}
+                                                    {index +
+                                                        1 +
+                                                        page * rowsPerPage}
                                                 </TableCell>
-                                                <TableCell style={{maxWidth: "200px", textAlign:"left"}} align="right">
+                                                <TableCell
+                                                    style={{
+                                                        maxWidth: "200px",
+                                                        textAlign: "left",
+                                                    }}
+                                                    align="right"
+                                                >
                                                     {row.name}
                                                 </TableCell>
-                                                <TableCell align="right" style={{maxWidth: "200px", textAlign:"left"}} >
+                                                <TableCell
+                                                    align="right"
+                                                    style={{
+                                                        maxWidth: "200px",
+                                                        textAlign: "left",
+                                                    }}
+                                                >
                                                     {row.desc}{" "}
                                                 </TableCell>
                                                 <TableCell align="right">
-                                                    {new Date(new Date(row.createdTime).toUTCString()).toLocaleString()}{" "}
+                                                    {new Date(
+                                                        new Date(
+                                                            row.createdTime
+                                                        ).toUTCString()
+                                                    ).toLocaleString()}{" "}
                                                 </TableCell>
 
                                                 <TableCell align="right">
