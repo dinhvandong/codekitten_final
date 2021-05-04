@@ -231,29 +231,6 @@
     },
     {
         "tags": ["fantasy"],
-        "_id": "6090fc078cb0fa7d47fa4e4f",
-        "name": "Plannet 7",
-        "blocks": null,
-        "isStage": false,
-        "variables": null,
-        "costumes": [
-            {
-                "_id": "6090fc078cb0fa7d47fa4e50",
-                "assetId": "25607c3ff66060c1adf131566b8d0613",
-                "name": "Plannet 7",
-                "bitmapResolution": 1,
-                "md5ext": "25607c3ff66060c1adf131566b8d0613.svg",
-                "dataFormat": "svg",
-                "rotationCenterX": 100,
-                "rotationCenterY": 100,
-                "base64": "http://128.199.145.159:8080/api/files/find/25607c3ff66060c1adf131566b8d0613.svg"
-            }
-        ],
-        "sounds": [],
-        "__v": 0
-    },
-    {
-        "tags": ["fantasy"],
         "_id": "6090fc388cb0fa7d47fa4e52",
         "name": "Plannet 7",
         "blocks": null,
