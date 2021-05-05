@@ -2781,5 +2781,143 @@
         ],
         "sounds": [],
         "__v": 0
+    },
+    {
+        "tags": [],
+        "_id": "6092170c8be4ad2f6174d37d",
+        "name": "Sứa màu tím ",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "6092170c8be4ad2f6174d37e",
+                "assetId": "bf5ce754956bbcbbc6f09f71c7b87bb2",
+                "name": "Sứa màu tím",
+                "bitmapResolution": 1,
+                "md5ext": "bf5ce754956bbcbbc6f09f71c7b87bb2.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/bf5ce754956bbcbbc6f09f71c7b87bb2.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": [],
+        "_id": "609217198be4ad2f6174d380",
+        "name": "Sứa màu xanh ",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609217198be4ad2f6174d381",
+                "assetId": "f74c1534b13532fa7b6f44fb4af1f99f",
+                "name": "Sứa màu xanh ",
+                "bitmapResolution": 1,
+                "md5ext": "f74c1534b13532fa7b6f44fb4af1f99f.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/f74c1534b13532fa7b6f44fb4af1f99f.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": [],
+        "_id": "609217218be4ad2f6174d383",
+        "name": "Sứa màu xanh 2",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609217218be4ad2f6174d384",
+                "assetId": "26c4ca42d10836740a2128347b5d367f",
+                "name": "Sứa màu xanh 2",
+                "bitmapResolution": 1,
+                "md5ext": "26c4ca42d10836740a2128347b5d367f.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/26c4ca42d10836740a2128347b5d367f.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": [],
+        "_id": "6092172c8be4ad2f6174d386",
+        "name": "Rắn đuôi chuông ",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "6092172c8be4ad2f6174d387",
+                "assetId": "0ef6d24b43d4245527b91dd171f21985",
+                "name": "Rắn đuôi chuông ",
+                "bitmapResolution": 1,
+                "md5ext": "0ef6d24b43d4245527b91dd171f21985.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/0ef6d24b43d4245527b91dd171f21985.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": [],
+        "_id": "6092173c8be4ad2f6174d389",
+        "name": "Rùa biển ",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "6092173c8be4ad2f6174d38a",
+                "assetId": "856cf9dfe9874bf3ad440ff4960423ed",
+                "name": "Rùa biển",
+                "bitmapResolution": 1,
+                "md5ext": "856cf9dfe9874bf3ad440ff4960423ed.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/856cf9dfe9874bf3ad440ff4960423ed.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": [],
+        "_id": "609217468be4ad2f6174d38c",
+        "name": "Cá vàng ",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609217468be4ad2f6174d38d",
+                "assetId": "dc46dbc9c97bd5fd09b7b25a534980ec",
+                "name": "Cá vàng",
+                "bitmapResolution": 1,
+                "md5ext": "dc46dbc9c97bd5fd09b7b25a534980ec.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/dc46dbc9c97bd5fd09b7b25a534980ec.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
     }
 ]
