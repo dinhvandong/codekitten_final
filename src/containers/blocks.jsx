@@ -169,17 +169,20 @@ class Blocks extends React.Component {
         }
         // @todo hack to resize blockly manually in case resize happened while hidden
         // @todo hack to reload the workspace due to gui bug #413
-        if (this.props.isVisible) { // Scripts tab
+        if (this.props.isVisible) 
+        { // Scripts tab
             this.workspace.setVisible(true);
-            if (prevProps.locale !== this.props.locale || this.props.locale !== this.props.vm.getLocale()) {
+            if (prevProps.locale !== this.props.locale 
+                || this.props.locale !== this.props.vm.getLocale()) 
+            {
                 // call setLocale if the locale has changed, or changed while the blocks were hidden.
                 // vm.getLocale() will be out of sync if locale was changed while not visible
                 this.setLocale();
-            } else {
+            } else 
+            {
                 this.props.vm.refreshWorkspace();
                 this.requestToolboxUpdate();
             }
-
             window.dispatchEvent(new Event('resize'));
         } else {
             this.workspace.setVisible(false);
