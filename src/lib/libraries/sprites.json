@@ -1,57 +1,11 @@
 [
     {
         "tags": ["animals"],
-        "_id": "6090f73d8cb0fa7d47fa4e2d",
-        "name": "Cá độc ",
-        "blocks": null,
-        "isStage": false,
-        "variables": null,
-        "costumes": [
-            {
-                "_id": "6090f73d8cb0fa7d47fa4e2e",
-                "assetId": "363e1bfe85cbf3cdbfd4e38ef8f30ed0",
-                "name": "Cá độc 1",
-                "bitmapResolution": 1,
-                "md5ext": "363e1bfe85cbf3cdbfd4e38ef8f30ed0.png",
-                "dataFormat": "png",
-                "rotationCenterX": 100,
-                "rotationCenterY": 100,
-                "base64": "http://128.199.145.159:8080/api/files/find/363e1bfe85cbf3cdbfd4e38ef8f30ed0.png"
-            }
-        ],
-        "sounds": [],
-        "__v": 0
-    },
-    {
-        "tags": ["animals"],
-        "_id": "6090f74e8cb0fa7d47fa4e30",
-        "name": "Cá heo ",
-        "blocks": null,
-        "isStage": false,
-        "variables": null,
-        "costumes": [
-            {
-                "_id": "6090f74e8cb0fa7d47fa4e31",
-                "assetId": "c5bfbd7921f775c632f0e363cbfa3360",
-                "name": "Cá heo ",
-                "bitmapResolution": 1,
-                "md5ext": "c5bfbd7921f775c632f0e363cbfa3360.png",
-                "dataFormat": "png",
-                "rotationCenterX": 100,
-                "rotationCenterY": 100,
-                "base64": "http://128.199.145.159:8080/api/files/find/c5bfbd7921f775c632f0e363cbfa3360.png"
-            }
-        ],
-        "sounds": [],
-        "__v": 0
-    },
-    {
-        "tags": ["animals"],
         "_id": "6090f75c8cb0fa7d47fa4e33",
         "name": "Cá piranha ",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090f75c8cb0fa7d47fa4e34",
@@ -69,35 +23,12 @@
         "__v": 0
     },
     {
-        "tags": [],
-        "_id": "6090f7748cb0fa7d47fa4e36",
-        "name": "cá màu sắc 1",
-        "blocks": null,
-        "isStage": false,
-        "variables": null,
-        "costumes": [
-            {
-                "_id": "6090f7748cb0fa7d47fa4e37",
-                "assetId": "44eb82a1fd1d63391fd6af1d6c4e8f89",
-                "name": "Cá màu sắc 1",
-                "bitmapResolution": 1,
-                "md5ext": "44eb82a1fd1d63391fd6af1d6c4e8f89.png",
-                "dataFormat": "png",
-                "rotationCenterX": 100,
-                "rotationCenterY": 100,
-                "base64": "http://128.199.145.159:8080/api/files/find/44eb82a1fd1d63391fd6af1d6c4e8f89.png"
-            }
-        ],
-        "sounds": [],
-        "__v": 0
-    },
-    {
         "tags": ["fantasy"],
         "_id": "6090f79b8cb0fa7d47fa4e39",
         "name": "Plannet 1",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090f79b8cb0fa7d47fa4e3a",
@@ -118,9 +49,9 @@
         "tags": ["fantasy"],
         "_id": "6090f8138cb0fa7d47fa4e3c",
         "name": "Plannet 2",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090f8138cb0fa7d47fa4e3d",
@@ -141,9 +72,9 @@
         "tags": [],
         "_id": "6090fb748cb0fa7d47fa4e3f",
         "name": "Plannet 3",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fb748cb0fa7d47fa4e40",
@@ -164,9 +95,9 @@
         "tags": ["fantasy"],
         "_id": "6090fbd38cb0fa7d47fa4e45",
         "name": "Plannet 4",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fbd38cb0fa7d47fa4e46",
@@ -187,9 +118,9 @@
         "tags": ["fantasy"],
         "_id": "6090fbdf8cb0fa7d47fa4e48",
         "name": "Plannet 5",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fbdf8cb0fa7d47fa4e49",
@@ -210,9 +141,9 @@
         "tags": ["fantasy"],
         "_id": "6090fbf48cb0fa7d47fa4e4c",
         "name": "Plannet 6",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fbf48cb0fa7d47fa4e4d",
@@ -233,9 +164,9 @@
         "tags": ["fantasy"],
         "_id": "6090fc388cb0fa7d47fa4e52",
         "name": "Plannet 7",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fc388cb0fa7d47fa4e53",
@@ -256,9 +187,9 @@
         "tags": ["fantasy"],
         "_id": "6090fc458cb0fa7d47fa4e55",
         "name": "Plannet 8",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fc458cb0fa7d47fa4e56",
@@ -279,9 +210,9 @@
         "tags": ["fantasy"],
         "_id": "6090fc528cb0fa7d47fa4e58",
         "name": "Plannet 9",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fc528cb0fa7d47fa4e59",
@@ -302,9 +233,9 @@
         "tags": ["fantasy"],
         "_id": "6090fc5e8cb0fa7d47fa4e5c",
         "name": "Plannet 10",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fc5e8cb0fa7d47fa4e5d",
@@ -325,9 +256,9 @@
         "tags": ["fantasy"],
         "_id": "6090fc808cb0fa7d47fa4e62",
         "name": "Spaceship 1",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fc808cb0fa7d47fa4e63",
@@ -348,9 +279,9 @@
         "tags": ["fantasy"],
         "_id": "6090fc8b8cb0fa7d47fa4e65",
         "name": "Spaceship 2",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fc8b8cb0fa7d47fa4e66",
@@ -371,9 +302,9 @@
         "tags": ["fantasy"],
         "_id": "6090fca08cb0fa7d47fa4e68",
         "name": "Spaceship 3",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fca08cb0fa7d47fa4e69",
@@ -394,9 +325,9 @@
         "tags": ["fantasy"],
         "_id": "6090fcab8cb0fa7d47fa4e6b",
         "name": "Spaceship 4",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fcab8cb0fa7d47fa4e6c",
@@ -417,9 +348,9 @@
         "tags": ["fantasy"],
         "_id": "6090fcb58cb0fa7d47fa4e6e",
         "name": "Spaceship 5",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fcb58cb0fa7d47fa4e6f",
@@ -440,9 +371,9 @@
         "tags": ["fantasy"],
         "_id": "6090fcc38cb0fa7d47fa4e72",
         "name": "Spaceship 6",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fcc38cb0fa7d47fa4e73",
@@ -463,9 +394,9 @@
         "tags": ["fantasy"],
         "_id": "6090fcd18cb0fa7d47fa4e75",
         "name": "Spaceship 7",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fcd18cb0fa7d47fa4e76",
@@ -486,9 +417,9 @@
         "tags": ["fantasy"],
         "_id": "6090fce08cb0fa7d47fa4e78",
         "name": "Spaceship 8",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fce08cb0fa7d47fa4e79",
@@ -509,9 +440,9 @@
         "tags": ["fantasy"],
         "_id": "6090fcfd8cb0fa7d47fa4e7b",
         "name": "Spaceship 9",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fcfd8cb0fa7d47fa4e7c",
@@ -532,9 +463,9 @@
         "tags": ["fantasy"],
         "_id": "6090fd228cb0fa7d47fa4e7e",
         "name": "Spaceship 10",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fd228cb0fa7d47fa4e7f",
@@ -555,9 +486,9 @@
         "tags": ["fantasy"],
         "_id": "6090fd648cb0fa7d47fa4e83",
         "name": "Spaceship 11",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fd648cb0fa7d47fa4e84",
@@ -578,9 +509,9 @@
         "tags": ["fantasy"],
         "_id": "6090fd748cb0fa7d47fa4e86",
         "name": "Spaceship 12",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fd748cb0fa7d47fa4e87",
@@ -601,9 +532,9 @@
         "tags": ["fantasy"],
         "_id": "6090fd828cb0fa7d47fa4e89",
         "name": "Spaceship 13",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fd828cb0fa7d47fa4e8a",
@@ -624,9 +555,9 @@
         "tags": ["fantasy"],
         "_id": "6090fd938cb0fa7d47fa4e8d",
         "name": "Spaceship 14",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fd938cb0fa7d47fa4e8e",
@@ -647,9 +578,9 @@
         "tags": ["fantasy"],
         "_id": "6090fda88cb0fa7d47fa4e91",
         "name": "Spaceship 15",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fda88cb0fa7d47fa4e92",
@@ -670,9 +601,9 @@
         "tags": ["fantasy"],
         "_id": "6090fdb88cb0fa7d47fa4e94",
         "name": "Spaceship 16",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fdb88cb0fa7d47fa4e95",
@@ -693,9 +624,9 @@
         "tags": ["fantasy"],
         "_id": "6090fdcc8cb0fa7d47fa4e97",
         "name": "Spaceship 17",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fdcc8cb0fa7d47fa4e98",
@@ -716,9 +647,9 @@
         "tags": ["fantasy"],
         "_id": "6090fde18cb0fa7d47fa4e9a",
         "name": "Spaceship 18",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fde18cb0fa7d47fa4e9b",
@@ -739,9 +670,9 @@
         "tags": ["fantasy"],
         "_id": "6090fdef8cb0fa7d47fa4e9d",
         "name": "Spaceship 19",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fdef8cb0fa7d47fa4e9e",
@@ -762,9 +693,9 @@
         "tags": ["fantasy"],
         "_id": "6090fdff8cb0fa7d47fa4ea0",
         "name": "Spaceship 20",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fdff8cb0fa7d47fa4ea1",
@@ -785,9 +716,9 @@
         "tags": ["fantasy"],
         "_id": "6090fe0a8cb0fa7d47fa4ea3",
         "name": "Spaceship 21",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fe0a8cb0fa7d47fa4ea4",
@@ -808,9 +739,9 @@
         "tags": ["fantasy"],
         "_id": "6090fe148cb0fa7d47fa4ea6",
         "name": "Spaceship 22",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fe148cb0fa7d47fa4ea7",
@@ -831,9 +762,9 @@
         "tags": ["fantasy"],
         "_id": "6090fe258cb0fa7d47fa4ea9",
         "name": "Spaceship 23",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fe258cb0fa7d47fa4eaa",
@@ -854,9 +785,9 @@
         "tags": ["fantasy"],
         "_id": "6090fe308cb0fa7d47fa4ead",
         "name": "Spaceship 24",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fe308cb0fa7d47fa4eae",
@@ -877,9 +808,9 @@
         "tags": ["fantasy"],
         "_id": "6090fe3c8cb0fa7d47fa4eb0",
         "name": "Spaceship 25",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fe3c8cb0fa7d47fa4eb1",
@@ -900,9 +831,9 @@
         "tags": ["fantasy"],
         "_id": "6090fe468cb0fa7d47fa4eb3",
         "name": "Spaceship 26",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fe468cb0fa7d47fa4eb4",
@@ -923,9 +854,9 @@
         "tags": ["fantasy"],
         "_id": "6090fe4f8cb0fa7d47fa4eb6",
         "name": "Spaceship 27",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fe4f8cb0fa7d47fa4eb7",
@@ -946,9 +877,9 @@
         "tags": ["fantasy"],
         "_id": "6090fe598cb0fa7d47fa4eb9",
         "name": "Spaceship 28",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fe598cb0fa7d47fa4eba",
@@ -969,9 +900,9 @@
         "tags": ["fantasy"],
         "_id": "6090fe688cb0fa7d47fa4ebc",
         "name": "Spaceship 29",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fe688cb0fa7d47fa4ebd",
@@ -992,9 +923,9 @@
         "tags": ["fantasy"],
         "_id": "6090fe738cb0fa7d47fa4ebf",
         "name": "Spaceship 30",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fe738cb0fa7d47fa4ec0",
@@ -1015,9 +946,9 @@
         "tags": ["fantasy"],
         "_id": "6090fe7e8cb0fa7d47fa4ec3",
         "name": "Spaceship 31",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6090fe7e8cb0fa7d47fa4ec4",
@@ -1038,9 +969,9 @@
         "tags": ["fantasy"],
         "_id": "609100878cb0fa7d47fa4ec9",
         "name": "Technology 1",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609100878cb0fa7d47fa4eca",
@@ -1061,9 +992,9 @@
         "tags": ["fantasy"],
         "_id": "6091009a8cb0fa7d47fa4ecc",
         "name": "Technology 2",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091009a8cb0fa7d47fa4ecd",
@@ -1084,9 +1015,9 @@
         "tags": ["fantasy"],
         "_id": "609100ae8cb0fa7d47fa4ed0",
         "name": "Technology 3",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609100ae8cb0fa7d47fa4ed1",
@@ -1105,34 +1036,11 @@
     },
     {
         "tags": ["fantasy"],
-        "_id": "609100b68cb0fa7d47fa4ed3",
-        "name": "Technology 4",
-        "blocks": null,
-        "isStage": false,
-        "variables": null,
-        "costumes": [
-            {
-                "_id": "609100b68cb0fa7d47fa4ed4",
-                "assetId": "4e60e4cce3d0955b780975d362b046b1",
-                "name": "Technology 5",
-                "bitmapResolution": 1,
-                "md5ext": "4e60e4cce3d0955b780975d362b046b1.png",
-                "dataFormat": "png",
-                "rotationCenterX": 100,
-                "rotationCenterY": 100,
-                "base64": "http://128.199.145.159:8080/api/files/find/4e60e4cce3d0955b780975d362b046b1.png"
-            }
-        ],
-        "sounds": [],
-        "__v": 0
-    },
-    {
-        "tags": ["fantasy"],
         "_id": "609100ff8cb0fa7d47fa4ed7",
         "name": "Technology 5",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609100ff8cb0fa7d47fa4ed8",
@@ -1153,9 +1061,9 @@
         "tags": ["fantasy"],
         "_id": "609101558cb0fa7d47fa4eda",
         "name": "Technology 6",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609101558cb0fa7d47fa4edb",
@@ -1176,9 +1084,9 @@
         "tags": ["fantasy"],
         "_id": "6091015f8cb0fa7d47fa4edd",
         "name": "Technology 7",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091015f8cb0fa7d47fa4ede",
@@ -1199,9 +1107,9 @@
         "tags": ["fantasy"],
         "_id": "6091016e8cb0fa7d47fa4ee0",
         "name": "Technology 8",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091016e8cb0fa7d47fa4ee1",
@@ -1222,9 +1130,9 @@
         "tags": ["fantasy"],
         "_id": "6091017b8cb0fa7d47fa4ee3",
         "name": "Technology 9",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091017b8cb0fa7d47fa4ee4",
@@ -1245,9 +1153,9 @@
         "tags": ["fantasy"],
         "_id": "609101868cb0fa7d47fa4ee6",
         "name": "Technology 10",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609101868cb0fa7d47fa4ee7",
@@ -1268,9 +1176,9 @@
         "tags": ["fantasy"],
         "_id": "609101918cb0fa7d47fa4ee9",
         "name": "Technology 11",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609101918cb0fa7d47fa4eea",
@@ -1291,9 +1199,9 @@
         "tags": ["fantasy"],
         "_id": "6091019e8cb0fa7d47fa4eec",
         "name": "Technology 12",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091019e8cb0fa7d47fa4eed",
@@ -1314,9 +1222,9 @@
         "tags": ["fantasy"],
         "_id": "609101a98cb0fa7d47fa4eef",
         "name": "Technology 13",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609101a98cb0fa7d47fa4ef0",
@@ -1337,9 +1245,9 @@
         "tags": ["fantasy"],
         "_id": "609101c28cb0fa7d47fa4ef2",
         "name": "Technology 14",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609101c28cb0fa7d47fa4ef3",
@@ -1360,9 +1268,9 @@
         "tags": ["fantasy"],
         "_id": "609101cc8cb0fa7d47fa4ef5",
         "name": "Technology 15",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609101cc8cb0fa7d47fa4ef6",
@@ -1383,9 +1291,9 @@
         "tags": ["fantasy"],
         "_id": "609101d68cb0fa7d47fa4ef8",
         "name": "Technology 16",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609101d68cb0fa7d47fa4ef9",
@@ -1406,9 +1314,9 @@
         "tags": ["fantasy"],
         "_id": "609101e28cb0fa7d47fa4efb",
         "name": "Technology 17",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609101e28cb0fa7d47fa4efc",
@@ -1429,9 +1337,9 @@
         "tags": ["fantasy"],
         "_id": "609101ed8cb0fa7d47fa4efe",
         "name": "Technology 18",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609101ed8cb0fa7d47fa4eff",
@@ -1452,9 +1360,9 @@
         "tags": ["fantasy"],
         "_id": "609101fc8cb0fa7d47fa4f01",
         "name": "Technology 19",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609101fc8cb0fa7d47fa4f02",
@@ -1475,9 +1383,9 @@
         "tags": ["fantasy"],
         "_id": "609102138cb0fa7d47fa4f04",
         "name": "Technology 20",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102138cb0fa7d47fa4f05",
@@ -1498,9 +1406,9 @@
         "tags": ["fantasy"],
         "_id": "609102258cb0fa7d47fa4f07",
         "name": "Technology 21",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102258cb0fa7d47fa4f08",
@@ -1521,9 +1429,9 @@
         "tags": ["fantasy"],
         "_id": "609102308cb0fa7d47fa4f0a",
         "name": "Technology 22",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102308cb0fa7d47fa4f0b",
@@ -1544,9 +1452,9 @@
         "tags": ["fantasy"],
         "_id": "609102338cb0fa7d47fa4f0d",
         "name": "Bún chả 1",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102338cb0fa7d47fa4f0e",
@@ -1567,9 +1475,9 @@
         "tags": ["fantasy"],
         "_id": "6091023f8cb0fa7d47fa4f10",
         "name": "Bún chả 2",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091023f8cb0fa7d47fa4f11",
@@ -1590,9 +1498,9 @@
         "tags": ["fantasy"],
         "_id": "609102438cb0fa7d47fa4f13",
         "name": "Technology 23",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102438cb0fa7d47fa4f14",
@@ -1613,9 +1521,9 @@
         "tags": ["fantasy"],
         "_id": "6091024d8cb0fa7d47fa4f16",
         "name": "Bún chả 3",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091024d8cb0fa7d47fa4f17",
@@ -1636,9 +1544,9 @@
         "tags": ["fantasy"],
         "_id": "6091024f8cb0fa7d47fa4f19",
         "name": "Technology 24",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091024f8cb0fa7d47fa4f1a",
@@ -1659,9 +1567,9 @@
         "tags": ["fantasy"],
         "_id": "6091025e8cb0fa7d47fa4f1c",
         "name": "Technology 25",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091025e8cb0fa7d47fa4f1d",
@@ -1682,9 +1590,9 @@
         "tags": ["fantasy"],
         "_id": "6091027a8cb0fa7d47fa4f1f",
         "name": "Technology 27",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091027a8cb0fa7d47fa4f20",
@@ -1705,9 +1613,9 @@
         "tags": [],
         "_id": "609102818cb0fa7d47fa4f22",
         "name": "Phở bò",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102818cb0fa7d47fa4f23",
@@ -1728,9 +1636,9 @@
         "tags": ["fantasy"],
         "_id": "6091028a8cb0fa7d47fa4f25",
         "name": "Technology 28",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091028a8cb0fa7d47fa4f26",
@@ -1751,9 +1659,9 @@
         "tags": ["fantasy"],
         "_id": "609102968cb0fa7d47fa4f28",
         "name": "Technology 29",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102968cb0fa7d47fa4f29",
@@ -1774,9 +1682,9 @@
         "tags": [],
         "_id": "6091029c8cb0fa7d47fa4f2b",
         "name": "Nem chua rán",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091029c8cb0fa7d47fa4f2c",
@@ -1797,9 +1705,9 @@
         "tags": ["fantasy"],
         "_id": "609102a48cb0fa7d47fa4f2e",
         "name": "Technology 30",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102a48cb0fa7d47fa4f2f",
@@ -1820,9 +1728,9 @@
         "tags": ["fantasy"],
         "_id": "609102b58cb0fa7d47fa4f31",
         "name": "Technology 31",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102b58cb0fa7d47fa4f32",
@@ -1843,9 +1751,9 @@
         "tags": [],
         "_id": "609102b58cb0fa7d47fa4f34",
         "name": "Nước mắm chấm",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102b58cb0fa7d47fa4f35",
@@ -1866,9 +1774,9 @@
         "tags": ["fantasy"],
         "_id": "609102c08cb0fa7d47fa4f37",
         "name": "Technology 32",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102c08cb0fa7d47fa4f38",
@@ -1889,9 +1797,9 @@
         "tags": ["fantasy"],
         "_id": "609102ca8cb0fa7d47fa4f3a",
         "name": "Technology 33",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102ca8cb0fa7d47fa4f3b",
@@ -1912,9 +1820,9 @@
         "tags": [],
         "_id": "609102cc8cb0fa7d47fa4f3d",
         "name": "Ốc luộc",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102cc8cb0fa7d47fa4f3e",
@@ -1935,9 +1843,9 @@
         "tags": ["fantasy"],
         "_id": "609102da8cb0fa7d47fa4f40",
         "name": "Technology 34",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102da8cb0fa7d47fa4f41",
@@ -1958,9 +1866,9 @@
         "tags": ["fantasy"],
         "_id": "609102e68cb0fa7d47fa4f43",
         "name": "Technology 35",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102e68cb0fa7d47fa4f44",
@@ -1981,9 +1889,9 @@
         "tags": ["fantasy"],
         "_id": "609102f78cb0fa7d47fa4f46",
         "name": "Technology 36",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609102f78cb0fa7d47fa4f47",
@@ -2004,9 +1912,9 @@
         "tags": ["fantasy"],
         "_id": "609103018cb0fa7d47fa4f49",
         "name": "Technology 37",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609103018cb0fa7d47fa4f4a",
@@ -2027,9 +1935,9 @@
         "tags": ["fantasy"],
         "_id": "6091030b8cb0fa7d47fa4f4c",
         "name": "Technology 38",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091030b8cb0fa7d47fa4f4d",
@@ -2050,9 +1958,9 @@
         "tags": ["fantasy"],
         "_id": "6091030e8cb0fa7d47fa4f4f",
         "name": "chả cá",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091030e8cb0fa7d47fa4f50",
@@ -2073,9 +1981,9 @@
         "tags": ["fantasy"],
         "_id": "609103178cb0fa7d47fa4f52",
         "name": "Technology 39",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609103178cb0fa7d47fa4f53",
@@ -2096,9 +2004,9 @@
         "tags": ["fantasy"],
         "_id": "6091031e8cb0fa7d47fa4f55",
         "name": "cháo trai",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091031e8cb0fa7d47fa4f56",
@@ -2119,9 +2027,9 @@
         "tags": ["fantasy"],
         "_id": "609103228cb0fa7d47fa4f58",
         "name": "Technology 40",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609103228cb0fa7d47fa4f59",
@@ -2142,9 +2050,9 @@
         "tags": ["fantasy"],
         "_id": "6091032f8cb0fa7d47fa4f5b",
         "name": "bánh mì",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091032f8cb0fa7d47fa4f5c",
@@ -2165,9 +2073,9 @@
         "tags": ["fantasy"],
         "_id": "609103318cb0fa7d47fa4f5e",
         "name": "Technology 41",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609103318cb0fa7d47fa4f5f",
@@ -2188,9 +2096,9 @@
         "tags": ["fantasy"],
         "_id": "6091034f8cb0fa7d47fa4f61",
         "name": "Thịt xiên nướng",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091034f8cb0fa7d47fa4f62",
@@ -2211,9 +2119,9 @@
         "tags": ["fantasy"],
         "_id": "6091035d8cb0fa7d47fa4f64",
         "name": "Xôi",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091035d8cb0fa7d47fa4f65",
@@ -2234,9 +2142,9 @@
         "tags": ["fantasy"],
         "_id": "6091036f8cb0fa7d47fa4f67",
         "name": "Bánh đậu xanh",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091036f8cb0fa7d47fa4f68",
@@ -2257,9 +2165,9 @@
         "tags": ["fantasy"],
         "_id": "609103828cb0fa7d47fa4f6a",
         "name": "Bún đậu mắm tôm",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609103828cb0fa7d47fa4f6b",
@@ -2280,9 +2188,9 @@
         "tags": ["fantasy"],
         "_id": "609103978cb0fa7d47fa4f6d",
         "name": "Bánh mì sốt vang",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609103978cb0fa7d47fa4f6e",
@@ -2303,9 +2211,9 @@
         "tags": ["fantasy"],
         "_id": "609103a98cb0fa7d47fa4f70",
         "name": "Nem Phùng",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609103a98cb0fa7d47fa4f71",
@@ -2326,9 +2234,9 @@
         "tags": ["fantasy"],
         "_id": "609103c08cb0fa7d47fa4f73",
         "name": "Nem chua Thanh Hóa",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609103c08cb0fa7d47fa4f74",
@@ -2346,35 +2254,12 @@
         "__v": 0
     },
     {
-        "tags": ["fantasy"],
-        "_id": "6091040b8cb0fa7d47fa4f76",
-        "name": "Bánh tráng trộn",
-        "blocks": null,
-        "isStage": false,
-        "variables": null,
-        "costumes": [
-            {
-                "_id": "6091040b8cb0fa7d47fa4f77",
-                "assetId": "38d78a0304877bc1fa2c2fff91f5a447",
-                "name": "Bánh tráng trộn",
-                "bitmapResolution": 1,
-                "md5ext": "38d78a0304877bc1fa2c2fff91f5a447.png",
-                "dataFormat": "png",
-                "rotationCenterX": 100,
-                "rotationCenterY": 100,
-                "base64": "http://128.199.145.159:8080/api/files/find/38d78a0304877bc1fa2c2fff91f5a447.png"
-            }
-        ],
-        "sounds": [],
-        "__v": 0
-    },
-    {
         "tags": ["animals", "people"],
         "_id": "609104368cb0fa7d47fa4f79",
         "name": "Thạch sanh ",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609104368cb0fa7d47fa4f7a",
@@ -2395,9 +2280,9 @@
         "tags": ["fantasy"],
         "_id": "609104448cb0fa7d47fa4f7c",
         "name": "Ô Mai",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "609104448cb0fa7d47fa4f7d",
@@ -2418,9 +2303,9 @@
         "tags": ["fantasy"],
         "_id": "6091045f8cb0fa7d47fa4f7f",
         "name": "Mỳ tôm",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091045f8cb0fa7d47fa4f80",
@@ -2441,9 +2326,9 @@
         "tags": ["fantasy"],
         "_id": "6091046f8cb0fa7d47fa4f82",
         "name": "Nem cuốn",
-        "blocks": null,
+        "blocks": {},
         "isStage": false,
-        "variables": null,
+        "variables": {},
         "costumes": [
             {
                 "_id": "6091046f8cb0fa7d47fa4f83",
@@ -2455,6 +2340,443 @@
                 "rotationCenterX": 100,
                 "rotationCenterY": 100,
                 "base64": "http://128.199.145.159:8080/api/files/find/dc7ec4e09ceb137d3efef46a816e317d.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609212848be4ad2f6174d344",
+        "name": "Lạc long quân 1",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609212848be4ad2f6174d345",
+                "assetId": "c64534bbcd3a6ff0dcda3c8f50632026",
+                "name": "Lạc long quân 1 ",
+                "bitmapResolution": 1,
+                "md5ext": "c64534bbcd3a6ff0dcda3c8f50632026.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/c64534bbcd3a6ff0dcda3c8f50632026.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "6092128c8be4ad2f6174d347",
+        "name": "Lạc long quân 2",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "6092128c8be4ad2f6174d348",
+                "assetId": "d4cb147a7b59439a756c795cd2b2fe43",
+                "name": "Lạc long quân 2",
+                "bitmapResolution": 1,
+                "md5ext": "d4cb147a7b59439a756c795cd2b2fe43.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/d4cb147a7b59439a756c795cd2b2fe43.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609212b78be4ad2f6174d34a",
+        "name": " Hai bà trưng 1",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609212b78be4ad2f6174d34b",
+                "assetId": "10a5c4a469cd96cd94052ec2a6875637",
+                "name": "Hai bà trưng 1",
+                "bitmapResolution": 1,
+                "md5ext": "10a5c4a469cd96cd94052ec2a6875637.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/10a5c4a469cd96cd94052ec2a6875637.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609212bd8be4ad2f6174d34d",
+        "name": " Hai bà trưng 2",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609212bd8be4ad2f6174d34e",
+                "assetId": "f88d76a17027430040d3e0c05f3a705b",
+                "name": "Hai bà trưng 2",
+                "bitmapResolution": 1,
+                "md5ext": "f88d76a17027430040d3e0c05f3a705b.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/f88d76a17027430040d3e0c05f3a705b.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609212ce8be4ad2f6174d350",
+        "name": "Dân binh thời lý 1",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609212ce8be4ad2f6174d351",
+                "assetId": "c8313ba705bcc86bbc083ae26eecb214",
+                "name": "Dân binh thời lý 1",
+                "bitmapResolution": 1,
+                "md5ext": "c8313ba705bcc86bbc083ae26eecb214.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/c8313ba705bcc86bbc083ae26eecb214.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609212d58be4ad2f6174d353",
+        "name": "Dân binh thời lý 2",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609212d58be4ad2f6174d354",
+                "assetId": "97beb99566b5f619a82b813836738f9f",
+                "name": "Dân binh thời lý 2",
+                "bitmapResolution": 1,
+                "md5ext": "97beb99566b5f619a82b813836738f9f.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/97beb99566b5f619a82b813836738f9f.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609212e58be4ad2f6174d356",
+        "name": " Trạng tí ",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609212e58be4ad2f6174d357",
+                "assetId": "3789e7b36ea769d3b5bc9b71fbab175c",
+                "name": "Trạng tí",
+                "bitmapResolution": 1,
+                "md5ext": "3789e7b36ea769d3b5bc9b71fbab175c.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/3789e7b36ea769d3b5bc9b71fbab175c.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609212eb8be4ad2f6174d359",
+        "name": " Trạng tí  2",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609212eb8be4ad2f6174d35a",
+                "assetId": "4e6469e2ab7da5506a5afe989d761ac6",
+                "name": "Trạng tí 2",
+                "bitmapResolution": 1,
+                "md5ext": "4e6469e2ab7da5506a5afe989d761ac6.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/4e6469e2ab7da5506a5afe989d761ac6.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609212f88be4ad2f6174d35c",
+        "name": "Thánh gióng 1",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609212f88be4ad2f6174d35d",
+                "assetId": "628ae3880d31257e6896f43a8b01ada9",
+                "name": "Thánh gióng 1",
+                "bitmapResolution": 1,
+                "md5ext": "628ae3880d31257e6896f43a8b01ada9.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/628ae3880d31257e6896f43a8b01ada9.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609213008be4ad2f6174d35f",
+        "name": "Thánh gióng 2",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609213008be4ad2f6174d360",
+                "assetId": "17a4446c8acd961438544ab285103247",
+                "name": "Thánh gióng 2",
+                "bitmapResolution": 1,
+                "md5ext": "17a4446c8acd961438544ab285103247.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/17a4446c8acd961438544ab285103247.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609213128be4ad2f6174d362",
+        "name": "Thằng bờm 1",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609213128be4ad2f6174d363",
+                "assetId": "ec71b3305ab3f194e7855e465133b436",
+                "name": "Thằng bờm 1",
+                "bitmapResolution": 1,
+                "md5ext": "ec71b3305ab3f194e7855e465133b436.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/ec71b3305ab3f194e7855e465133b436.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609213198be4ad2f6174d365",
+        "name": "Thằng bờm 2",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609213198be4ad2f6174d366",
+                "assetId": "82abe1a49c75d92e0a347870c5538075",
+                "name": "Thằng bờm 2",
+                "bitmapResolution": 1,
+                "md5ext": "82abe1a49c75d92e0a347870c5538075.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/82abe1a49c75d92e0a347870c5538075.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "6092132e8be4ad2f6174d368",
+        "name": "Thạch sanh 2",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "6092132e8be4ad2f6174d369",
+                "assetId": "af6bcf6ceef9a40d171cd8ca12476672",
+                "name": "Thạch sanh 2",
+                "bitmapResolution": 1,
+                "md5ext": "af6bcf6ceef9a40d171cd8ca12476672.svg",
+                "dataFormat": "svg",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/af6bcf6ceef9a40d171cd8ca12476672.svg"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609213438be4ad2f6174d36b",
+        "name": "Quan thời lê 1",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609213438be4ad2f6174d36c",
+                "assetId": "4ae7d8fc984905a0312627e8172baedc",
+                "name": "Quan thời lê 1",
+                "bitmapResolution": 1,
+                "md5ext": "4ae7d8fc984905a0312627e8172baedc.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/4ae7d8fc984905a0312627e8172baedc.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609213688be4ad2f6174d36e",
+        "name": "Quan thời lê 2",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609213688be4ad2f6174d36f",
+                "assetId": "742f67c8058c9f62736595057e5a8968",
+                "name": "Quan thời lê 2",
+                "bitmapResolution": 1,
+                "md5ext": "742f67c8058c9f62736595057e5a8968.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/742f67c8058c9f62736595057e5a8968.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "6092137b8be4ad2f6174d371",
+        "name": " Quan triều nguyễn ",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "6092137b8be4ad2f6174d372",
+                "assetId": "c6b59312a7c3d3ad0ec0421186904848",
+                "name": "Quan triều nguyễn ",
+                "bitmapResolution": 1,
+                "md5ext": "c6b59312a7c3d3ad0ec0421186904848.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/c6b59312a7c3d3ad0ec0421186904848.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609213908be4ad2f6174d374",
+        "name": " Nữ quan thời lê 1",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609213908be4ad2f6174d375",
+                "assetId": "87baf586b361bc31bdb180750d0ff362",
+                "name": "Nữ quan thời lê 1",
+                "bitmapResolution": 1,
+                "md5ext": "87baf586b361bc31bdb180750d0ff362.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/87baf586b361bc31bdb180750d0ff362.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609213a08be4ad2f6174d377",
+        "name": "Cá heo ",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609213a08be4ad2f6174d378",
+                "assetId": "7fb6a24e04e7f40961ca959b2d154d4b",
+                "name": "Cá heo",
+                "bitmapResolution": 1,
+                "md5ext": "7fb6a24e04e7f40961ca959b2d154d4b.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/7fb6a24e04e7f40961ca959b2d154d4b.png"
+            }
+        ],
+        "sounds": [],
+        "__v": 0
+    },
+    {
+        "tags": ["people"],
+        "_id": "609213aa8be4ad2f6174d37a",
+        "name": "Cá nóc ",
+        "blocks": {},
+        "isStage": false,
+        "variables": {},
+        "costumes": [
+            {
+                "_id": "609213aa8be4ad2f6174d37b",
+                "assetId": "5658de690c4d6ad98aa9aded9dea683d",
+                "name": "Cá nóc ",
+                "bitmapResolution": 1,
+                "md5ext": "5658de690c4d6ad98aa9aded9dea683d.png",
+                "dataFormat": "png",
+                "rotationCenterX": 100,
+                "rotationCenterY": 100,
+                "base64": "http://128.199.145.159:8080/api/files/find/5658de690c4d6ad98aa9aded9dea683d.png"
             }
         ],
         "sounds": [],
