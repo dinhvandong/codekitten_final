@@ -16,7 +16,6 @@
     opacity: 0.75;
     background-color: $drop-highlight;
     transition: all 0.25s ease;
-
 }
 
 .blocks :global(.injectionDiv){
@@ -28,7 +27,6 @@
     border: 1px solid $ui-black-transparent;
     border-top-right-radius: $space;
     border-bottom-right-radius: $space;
-
 }
 
 [dir="rtl"] .blocks :global(.injectionDiv) {
@@ -42,13 +40,15 @@
 
 .blocks :global(.blocklyMainBackground) {
     stroke: none;
+    margin-left: 00px;
 }
 
 .blocks :global(.blocklyToolboxDiv) {
     border-right: 1px solid $ui-black-transparent;
     border-bottom: 1px solid $ui-black-transparent;
-    box-sizing: content-box;
+    /* box-sizing: content-box; */
     height: calc(100% - 3.25rem) !important;
+    width: 120px; /*Do rong cua category*/
 
 
     /*
@@ -63,17 +63,25 @@
 
 [dir="rtl"] .blocks :global(.blocklyToolboxDiv) {
     border-right: none;
-    border-left: 1px solid $ui-black-transparent;
+    border-left: 0px solid $ui-black-transparent;
 
 }
 
 .blocks :global(.blocklyToolboxDiv::-webkit-scrollbar) {
     display: none;
+    width: 0px;
+
+     /* margin-left: 100px; */
+
+
 }
 
 .blocks :global(.blocklyFlyout) {
     border-right: 1px solid $ui-black-transparent;
-    box-sizing: content-box;
+    /* box-sizing: content-box; */
+    margin-left: 70px; /*Khoang cach vien cua block */
+
+
 }
 
 [dir="rtl"] .blocks :global(.blocklyFlyout) {
@@ -98,10 +106,15 @@
 */
 .blocks :global(.scratchCategoryMenuItemLabel) {
     font-size: 0.65rem;
+    margin-left: 5px;
+    /* margin-top: 2px; */
+    font-size: 12px;
 
 }
 
 .blocks :global(.blocklyMinimalBody) {
     min-width: auto;
     min-height: auto;
+
+    
 }

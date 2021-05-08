@@ -13,7 +13,7 @@ const motion = function (isInitialSetup, isStage, targetId) {
         'Stage selected: no motion blocks'
     );
     return `
-    <category name="%{BKY_CATEGORY_MOTION}" id="motion" colour="#4C97FF"  secondaryColour="#3373CC" iconURI= ${motionIcon}
+    <category name="%{BKY_CATEGORY_MOTION}" id="motion" colour="#4C97FF"  secondaryColour="#3373CC" iconURI= "https://raw.githubusercontent.com/dinhvandong/codekitten_final/main/src/lib/icon_motion.png"
    >
     
         ${isStage ? `
@@ -161,7 +161,9 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
     const hello = ScratchBlocks.ScratchMsgs.translate('LOOKS_HELLO', 'Hello!');
     const hmm = ScratchBlocks.ScratchMsgs.translate('LOOKS_HMM', 'Hmm...');
     return `
-    <category name="%{BKY_CATEGORY_LOOKS}" id="looks" colour="#9966FF" secondaryColour="#774DCB">
+    <category name="%{BKY_CATEGORY_LOOKS}" id="looks" colour="#9966FF" 
+    secondaryColour="#774DCB" 
+    iconURI= "https://github.com/dinhvandong/codekitten_final/raw/main/src/lib/icon_looks.png">
         ${isStage ? '' : `
         <block type="looks_sayforsecs">
             <value name="MESSAGE">
@@ -296,7 +298,9 @@ const looks = function (isInitialSetup, isStage, targetId, costumeName, backdrop
 
 const sound = function (isInitialSetup, isStage, targetId, soundName) {
     return `
-    <category name="%{BKY_CATEGORY_SOUND}" id="sound" colour="#D65CD6" secondaryColour="#BD42BD">
+    <category name="%{BKY_CATEGORY_SOUND}" id="sound" colour="#D65CD6" secondaryColour="#BD42BD"
+    iconURI= "https://github.com/dinhvandong/codekitten_final/raw/main/src/lib/icon_sound.png"
+    >
         <block id="${targetId}_sound_playuntildone" type="sound_playuntildone">
             <value name="SOUND_MENU">
                 <shadow type="sound_sounds_menu">
@@ -351,7 +355,11 @@ const sound = function (isInitialSetup, isStage, targetId, soundName) {
 
 const events = function (isInitialSetup, isStage) {
     return `
-    <category name="%{BKY_CATEGORY_EVENTS}" id="events" colour="#FFD500" secondaryColour="#CC9900">
+    <category name="%{BKY_CATEGORY_EVENTS}" id="events" colour="#FFD500" 
+    secondaryColour="#CC9900"
+    iconURI= "https://github.com/dinhvandong/codekitten_final/raw/main/src/lib/icon_event.png"
+
+    >
         <block type="event_whenflagclicked"/>
         <block type="event_whenkeypressed">
         </block>
@@ -390,7 +398,11 @@ const events = function (isInitialSetup, isStage) {
 
 const control = function (isInitialSetup, isStage) {
     return `
-    <category name="%{BKY_CATEGORY_CONTROL}" id="control" colour="#FFAB19" secondaryColour="#CF8B17">
+    <category name="%{BKY_CATEGORY_CONTROL}" id="control" colour="#FFAB19" 
+    secondaryColour="#CF8B17"
+    iconURI= "https://github.com/dinhvandong/codekitten_final/raw/main/src/lib/icon_control.png"
+
+    >
         <block type="control_wait">
             <value name="DURATION">
                 <shadow type="math_positive_number">
@@ -438,7 +450,11 @@ const control = function (isInitialSetup, isStage) {
 const sensing = function (isInitialSetup, isStage) {
     const name = ScratchBlocks.ScratchMsgs.translate('SENSING_ASK_TEXT', 'What\'s your name?');
     return `
-    <category name="%{BKY_CATEGORY_SENSING}" id="sensing" colour="#4CBFE6" secondaryColour="#2E8EB8">
+    <category name="%{BKY_CATEGORY_SENSING}" id="sensing" colour="#4CBFE6" 
+    secondaryColour="#2E8EB8"
+    iconURI= "https://github.com/dinhvandong/codekitten_final/raw/main/src/lib/icon_sensing.png"
+
+    >
         ${isStage ? '' : `
             <block type="sensing_touchingobject">
                 <value name="TOUCHINGOBJECTMENU">
@@ -515,7 +531,11 @@ const operators = function (isInitialSetup) {
     const banana = ScratchBlocks.ScratchMsgs.translate('OPERATORS_JOIN_BANANA', 'banana');
     const letter = ScratchBlocks.ScratchMsgs.translate('OPERATORS_LETTEROF_APPLE', 'a');
     return `
-    <category name="%{BKY_CATEGORY_OPERATORS}" id="operators" colour="#40BF4A" secondaryColour="#389438">
+    <category name="%{BKY_CATEGORY_OPERATORS}" id="operators" colour="#40BF4A"
+     secondaryColour="#389438"
+     iconURI= "https://github.com/dinhvandong/codekitten_final/raw/main/src/lib/icon_operators.png"
+
+     >
         <block type="operator_add">
             <value name="NUM1">
                 <shadow type="math_number">
@@ -704,6 +724,9 @@ const variables = function () {
         id="variables"
         colour="#FF8C1A"
         secondaryColour="#DB6E00"
+
+        iconURI= "https://github.com/dinhvandong/codekitten_final/raw/main/src/lib/icon_variables.png"
+
         custom="VARIABLE">
     </category>
     `;
@@ -716,6 +739,7 @@ const myBlocks = function () {
         id="myBlocks"
         colour="#FF6680"
         secondaryColour="#FF4D6A"
+        iconURI= "https://github.com/dinhvandong/codekitten_final/raw/main/src/lib/icon_procedures.png"
         custom="PROCEDURE">
     </category>
     `;

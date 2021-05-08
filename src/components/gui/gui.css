@@ -237,7 +237,9 @@
 }
 
 .extension-button-container {
-    width: 3.75rem;
+    width: 119px;
+    /*dongdv edit*/
+    /* 3.75rem; */
     height: 3.25rem;
     position: absolute;
     bottom: 0;
