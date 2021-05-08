@@ -86,6 +86,8 @@ class Blocks extends React.Component {
         this.toolboxUpdateQueue = [];
     }
     componentDidMount () {
+        console.log('detach vm', this.attachVM);
+        console.log('detach vm', this.detachVM);
         this.ScratchBlocks.FieldColourSlider.activateEyedropper_ = this.props.onActivateColorPicker;
         this.ScratchBlocks.Procedures.externalProcedureDefCallback = this.props.onActivateCustomProcedures;
         this.ScratchBlocks.ScratchMsgs.setLocale(this.props.locale);
@@ -95,6 +97,8 @@ class Blocks extends React.Component {
             this.props.options,
             {rtl: this.props.isRtl, toolbox: this.props.toolboxXML}
         );
+        console.log('this.blocks',this.props.toolboxXML);
+        console.log('this.workspaceConfig',workspaceConfig);
         this.workspace = this.ScratchBlocks.inject(this.blocks, workspaceConfig);
 
         // Register buttons under new callback keys for creating variables,
@@ -214,7 +218,7 @@ class Blocks extends React.Component {
 
     updateToolbox () {
         this.toolboxUpdateTimeout = false;
-
+        console.log('this.workspace.toolbox_.getSelectedCategoryId',this.workspace.toolbox_.getSelectedCategoryId());
         const categoryId = this.workspace.toolbox_.getSelectedCategoryId();
         const offset = this.workspace.toolbox_.getCategoryScrollOffset();
         this.workspace.updateToolbox(this.props.toolboxXML);
@@ -344,6 +348,7 @@ class Blocks extends React.Component {
             const targetCostumes = target.getCostumes();
             const targetSounds = target.getSounds();
             const dynamicBlocksXML = this.props.vm.runtime.getBlocksXML(target);
+            console.log('dynamicBlocksXML'.dynamicBlocksXML)
             return makeToolboxXML(false, target.isStage, target.id, dynamicBlocksXML,
                 targetCostumes[targetCostumes.length - 1].name,
                 stageCostumes[stageCostumes.length - 1].name,
@@ -634,9 +639,9 @@ Blocks.defaultOptions = {
         colour: '#ddd'
     },
     colours: {
-        workspace: '#2d365d',
-        flyout: '#2d365d',
-        toolbox: '#2d365d',
+        workspace: '#FFF',
+        flyout: '#FFF',
+        toolbox: '#FFF',
         toolboxSelected: '#E9EEF2',
         scrollbar: '#CECDCE',
         scrollbarHover: '#CECDCE',

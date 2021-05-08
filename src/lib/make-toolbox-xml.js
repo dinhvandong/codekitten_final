@@ -1,4 +1,6 @@
 import ScratchBlocks from 'scratch-blocks';
+import motionIcon from './icon_motion.png';
+
 
 const categorySeparator = '<sep gap="36"/>';
 
@@ -11,7 +13,9 @@ const motion = function (isInitialSetup, isStage, targetId) {
         'Stage selected: no motion blocks'
     );
     return `
-    <category name="%{BKY_CATEGORY_MOTION}" id="motion" colour="#4C97FF"  secondaryColour="#3373CC" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Approve_icon.svg/1024px-Approve_icon.svg.png">
+    <category name="%{BKY_CATEGORY_MOTION}" id="motion" colour="#4C97FF"  secondaryColour="#3373CC" iconURI= ${motionIcon}
+   >
+    
         ${isStage ? `
         <label text="${stageSelected}"></label>
         ` : `
@@ -135,6 +139,8 @@ const motion = function (isInitialSetup, isStage, targetId) {
         <block id="${targetId}_yposition" type="motion_yposition"/>
         <block id="${targetId}_direction" type="motion_direction"/>`}
         ${categorySeparator}
+
+        
     </category>
     `;
 };

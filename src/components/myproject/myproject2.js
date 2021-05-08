@@ -215,7 +215,7 @@ class ShowMyProject extends React.Component {
                             style={{
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
-                                backgroundColor: "#2d365d",
+                                backgroundColor: "#1CC3A5",
                                 display: "flex",
                                 justifyContent: "center",
                                 alignContent: "center",
@@ -278,7 +278,7 @@ class ShowMyProject extends React.Component {
                                         <TableRow onClick={this.onload}>
                                             <TableCell
                                                 style={{
-                                                    color: "#2d365d",
+                                                    color: "#1CC3A5",
                                                     fontWeight: "bold",
                                                 }}
                                             >
@@ -286,7 +286,7 @@ class ShowMyProject extends React.Component {
                                             </TableCell>
                                             <TableCell
                                                 style={{
-                                                    color: "#2d365d",
+                                                    color: "#1CC3A5",
                                                     fontWeight: "bold",
                                                 }}
                                             >
@@ -294,7 +294,7 @@ class ShowMyProject extends React.Component {
                                             </TableCell>
                                             <TableCell
                                                 style={{
-                                                    color: "#2d365d",
+                                                    color: "#1CC3A5",
                                                     fontWeight: "bold",
                                                 }}
                                                 align="right"
@@ -303,7 +303,7 @@ class ShowMyProject extends React.Component {
                                             </TableCell>
                                             <TableCell
                                                 style={{
-                                                    color: "#2d365d",
+                                                    color: "#1CC3A5",
                                                     fontWeight: "bold",
                                                 }}
                                                 align="right"
@@ -312,7 +312,7 @@ class ShowMyProject extends React.Component {
                                             </TableCell>
                                             <TableCell
                                                 style={{
-                                                    color: "#2d365d",
+                                                    color: "#1CC3A5",
                                                     fontWeight: "bold",
                                                 }}
                                                 align="right"

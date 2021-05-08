@@ -2,13 +2,14 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import React from 'react';
 import {defineMessages, intlShape, injectIntl, FormattedMessage} from 'react-intl';
-
+//import backdropIcon from "./ic_backdrop.png";
 import Box from '../box/box.jsx';
 import ActionMenu from '../action-menu/action-menu.jsx';
 import styles from './stage-selector.css';
 import {isRtl} from 'scratch-l10n';
 
-import backdropIcon from '../action-menu/icon--backdrop.svg';
+import backdropIcon from '../action-menu/ic_backdrop.png';
+//icon--backdrop.svg';
 import fileUploadIcon from '../action-menu/icon--file-upload.svg';
 import paintIcon from '../action-menu/icon--paint.svg';
 import surpriseIcon from '../action-menu/icon--surprise.svg';

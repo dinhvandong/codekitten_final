@@ -9,7 +9,8 @@ import {defineMessages, injectIntl, intlShape} from 'react-intl';
 import styles from './record-modal.css';
 import backIcon from './icon--back.svg';
 import stopIcon from './icon--stop-playback.svg';
-import playIcon from './icon--play.svg';
+//import playIcon from './icon--play.svg';
+import playIcon from './icon--play.png';
 
 const messages = defineMessages({
     stopMsg: {

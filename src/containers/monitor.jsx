@@ -187,6 +187,9 @@ class Monitor extends React.Component {
         const monitorProps = monitorAdapter(this.props);
         const showSliderOption = availableModes(this.props.opcode).indexOf('slider') !== -1;
         const isList = this.props.mode === 'list';
+        console.log('monitorProps',monitorProps); 
+        console.log('this.setElement',this.setElement); 
+        console.log('this.props',this.props); 
         return (
             <React.Fragment>
                 {this.state.sliderPrompt && <SliderPrompt

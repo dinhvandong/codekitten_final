@@ -7,7 +7,7 @@
     position: relative;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     margin-right: calc($space / 2);
-    background-color: $ui-secondary;
+    background-color: #C0EFE6;
     border-top-right-radius: $space;
     border-top-left-radius: $space;
     border-color: $ui-black-transparent;
@@ -53,6 +53,8 @@
     */
     height: calc(100% - $sprite-info-height);
     overflow-y: auto;
+    background-color: #C0EFE6;
+
 }
 
 .scroll-wrapper-dragging {

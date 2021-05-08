@@ -78,7 +78,7 @@
 
 /* Set a style for the submit/login button */
 .formcontainer .btn {
-  background-color: #2d365d;
+  background-color: #1CC3A5;
   color: white;
   font-weight: bold;
   padding: 16px 20px;
@@ -89,7 +89,7 @@
   opacity: 0.8;
 }
 .label{
-    color: #2d365d;
+    color: #1CC3A5;
 }
 
 /* Add a red background color to the cancel button */

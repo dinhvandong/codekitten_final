@@ -12,8 +12,9 @@ import AudioSelector from '../../containers/audio-selector.jsx';
 import IconButton from '../icon-button/icon-button.jsx';
 
 import styles from './sound-editor.css';
+import playIcon from './icon--play.png';
 
-import playIcon from './icon--play.svg';
+//import playIcon from './icon--play.svg';
 import stopIcon from './icon--stop.svg';
 import redoIcon from './icon--redo.svg';
 import undoIcon from './icon--undo.svg';

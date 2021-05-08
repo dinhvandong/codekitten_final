@@ -11,7 +11,7 @@ $header-height: calc($stage-menu-height - 2px);
     position: relative; /* For the add backdrop button */
     flex-grow: 1;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background-color: $ui-primary;
+    background-color: #FFF;
     color: $text-primary;
     border-top-left-radius: $space;
     border-top-right-radius: $space;
@@ -40,7 +40,8 @@ $header-height: calc($stage-menu-height - 2px);
     align-items: center;
     justify-content: center;
     height: $header-height;
-    background-color: white;
+    background-color: #1CC3A5;
+    /*white;*/
     color: $text-primary;
     border-top-left-radius: $space;
     border-top-right-radius: $space;
@@ -51,9 +52,8 @@ $header-height: calc($stage-menu-height - 2px);
 
 .header-title {
     font-size: 0.625rem;
-    font-weight: bold;
-    color: $text-primary;
-
+    font-weight: initial;
+    color: #FFF;
     /* @todo: make this a mixin for all UI text labels */
     user-select: none;
     transition: color 0.25s ease;

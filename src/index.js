@@ -16,8 +16,8 @@ const guiReducers = {
 };
 
 export {
-    //GUI as default,
-    Login as default,
+    GUI as default,
+    //Login as default,
     AppStateHOC,
     setAppElement,
     guiReducers,

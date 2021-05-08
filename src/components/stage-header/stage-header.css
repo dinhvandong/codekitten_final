@@ -8,7 +8,8 @@
 
 .stage-header-wrapper-overlay {
     position: fixed;
-    background-color: $ui-primary;
+    background-color: #fff;
+    /* $ui-primary; */
     top: 0;
     left: 0;
     right: 0;

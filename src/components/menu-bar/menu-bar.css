@@ -28,7 +28,7 @@
     font-size: $menu-bar-standard-font-size;
     font-weight: bold;
     background-color: $ui-primary;
-    color: $ui-white;
+    color: #000000;
 }
 
 .main-menu {
@@ -68,7 +68,9 @@
     display: flex;
     padding: 0 0.25rem;
     text-decoration: none;
-    color: $ui-white;
+    font: 1em sans-serif;
+    color:#000000; /*SET MAU TEXT MENU */
+     /* $ui-white; */
     user-select: none;
     align-self: center;
     position: relative;

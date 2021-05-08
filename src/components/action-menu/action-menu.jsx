@@ -3,11 +3,8 @@ import React from 'react';
 import classNames from 'classnames';
 import bindAll from 'lodash.bindall';
 import ReactTooltip from 'react-tooltip';
-
 import styles from './action-menu.css';
-
 const CLOSE_DELAY = 300; // ms
-
 class ActionMenu extends React.Component {
     constructor (props) {
         super(props);
@@ -18,8 +15,7 @@ class ActionMenu extends React.Component {
             'handleTouchStart',
             'handleTouchOutside',
             'setButtonRef',
-            'setContainerRef'
-        ]);
+            'setContainerRef']);
         this.state = {
             isOpen: false,
             forceHide: false

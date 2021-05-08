@@ -21,7 +21,8 @@
     position: absolute;
     top: 5%;
     background: $ui-white;
-    border: 1px solid $ui-tertiary;
+    border: 1px solid #FFF;
+     /* $ui-tertiary; */
     width: .75rem;
     z-index: 10;
     opacity: 0.9;
@@ -89,6 +90,7 @@
 
 .card {
     border: 1px solid $ui-tertiary;
+    /* $ui-tertiary; */
     border-radius: 0.75rem;
     display: flex;
     flex-direction: column;

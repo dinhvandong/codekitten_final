@@ -80,7 +80,8 @@
 
 .backpack-item > div {
     /* Need to set the background to get blend-mode below to work */
-    background: $ui-primary;
+    background: #FFF
+    /* $ui-primary; */
 }
 
 .backpack-item img {

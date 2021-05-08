@@ -73,8 +73,10 @@ import collectMetadata from "../../lib/collect-metadata";
 
 import styles from "./menu-bar.css";
 
-import helpIcon from "../../lib/assets/icon--tutorials.svg";
+import helpIcon from "../../lib/assets/icon--tutorials.png";
 import mystuffIcon from "./icon--mystuff.png";
+
+import folderIcon from "./folder.png";
 import profileIcon from "./mystuff.svg";
 //import profileIcon from './icon--profile.png';
 
@@ -86,6 +88,8 @@ import aboutIcon from "./icon--about.svg";
 import scratchLogo from "./scratch-logo.svg";
 
 import tekyLogo from "./logo-teky.png";
+
+import iconTools from "./tools.png";
 
 import sharedMessages from "../../lib/shared-messages";
 import Prompt from "../../containers/prompt.jsx";
@@ -435,7 +439,9 @@ class MenuBar extends React.Component {
                                     styles.languageMenu
                                 )}
                             >
-                                <div></div>
+                                <div>
+                                
+                                </div>
                             </div>
                         )}
                         {this.props.canManageFiles && (
@@ -450,6 +456,8 @@ class MenuBar extends React.Component {
                                 )}
                                 onMouseUp={this.props.onClickFile}
                             >
+                            <img style={{marginRight:10, width:20, opacity:"90%" ,  height:15}}  src ={folderIcon}/>
+
                                 <FormattedMessage
                                     defaultMessage="File"
                                     description="Text for file dropdown menu"
@@ -553,6 +561,8 @@ class MenuBar extends React.Component {
                             onMouseUp={this.props.onClickEdit}
                         >
                             <div className={classNames(styles.editMenu)}>
+
+                            <img style={{marginRight:10, width:15, height:15}} src= {iconTools}/>
                                 <FormattedMessage
                                     defaultMessage="Edit"
                                     description="Text for edit dropdown menu"
@@ -623,30 +633,35 @@ class MenuBar extends React.Component {
                         <FormattedMessage {...ariaMessages.tutorials} />
                     </div>
                     <Divider className={classNames(styles.divider)} />
-                    {this.props.canEditTitle ? (
-                        <div
-                            className={classNames(
-                                styles.menuBarItem,
-                                styles.growable
-                            )}
-                        >
-                            <ProjectTitleInput
-                                className={classNames(
-                                    styles.titleFieldGrowable
-                                )}
-                            />
-                        </div>
+                    {
+                        this.props.canEditTitle ? (
+                            null
+                        // <div
+                        //     className={classNames(
+                        //         styles.menuBarItem,
+                        //         styles.growable
+                        //     )}
+                        // >
+                        //     <ProjectTitleInput
+                        //         className={classNames(
+                        //             styles.titleFieldGrowable
+                        //         )}
+                        //     />
+                        // </div>
                     ) : this.props.authorUsername &&
                       this.props.authorUsername !== this.props.username ? (
-                        <AuthorInfo
-                            className={styles.authorInfo}
-                            imageUrl={this.props.authorThumbnailUrl}
-                            projectTitle={"Code Kitten"}
-                            //{this.props.projectTitle}
-                            userId={this.props.authorId}
-                            username={this.props.authorUsername}
-                        />
-                    ) : null}
+                          null
+                        // <AuthorInfo
+                        //     className={styles.authorInfo}
+                        //     imageUrl={this.props.authorThumbnailUrl}
+                        //     projectTitle={"Code Kitten"}
+                        //     //{this.props.projectTitle}
+                        //     userId={this.props.authorId}
+                        //     username={this.props.authorUsername}
+                        // />
+                    ) : null
+                
+                }
 
                     <div
                         className={classNames(

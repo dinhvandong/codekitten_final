@@ -6,7 +6,7 @@ import {defineMessages, injectIntl, intlShape} from 'react-intl';
 
 import styles from './play-button.css';
 
-import playIcon from './icon--play.svg';
+import playIcon from './icon--play.png';
 import stopIcon from './icon--stop.svg';
 
 const messages = defineMessages({

@@ -123,7 +123,7 @@ class StoreMyProject extends React.Component {
                             style={{
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
-                                backgroundColor: "#2d365d",
+                                backgroundColor: "#1CC3A5",
                                 display: "flex",
                                 justifyContent: "center",
                                 alignContent: "center",
@@ -164,7 +164,7 @@ class StoreMyProject extends React.Component {
                         </div>
 
                         <form className={saveproject.formcontainer}>
-                            <h2 style={{ color: "#2d365d" }}></h2>
+                            <h2 style={{ color: "#1CC3A5" }}></h2>
                             <label className={saveproject.label} for="name">
                                 <b>Tên dự án</b>
                             </label>

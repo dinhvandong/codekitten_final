@@ -4,7 +4,9 @@
 
 .monitor-container {
     position: absolute;
-    background: $ui-primary;
+    background: #F9F154;
+    opacity: 10%;
+    /* $ui-primary; */
     z-index: $z-index-monitor;
     border: 1px solid $ui-black-transparent;
     border-radius: calc($space / 2);

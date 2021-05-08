@@ -329,7 +329,8 @@ const GUIComponent = (props) => {
                                                             tabClassNames.tab
                                                         }
                                                     >
-                                                        <img
+                                                        <img 
+                                                        style={{width:15, height:15, marginRight:5}}
                                                             draggable={false}
                                                             src={codeIcon}
                                                         />
@@ -347,6 +348,7 @@ const GUIComponent = (props) => {
                                                             onActivateCostumesTab
                                                         }>
                                                         <img
+                                                        style={{width:15, height:15, marginRight:5}}
                                                             draggable={false}
                                                             src={costumesIcon}
                                                         />
@@ -373,6 +375,7 @@ const GUIComponent = (props) => {
                                                         }
                                                     >
                                                         <img
+                                                        style={{width:15, height:15, marginRight:5}}
                                                             draggable={false}
                                                             src={soundsIcon}
                                                         />

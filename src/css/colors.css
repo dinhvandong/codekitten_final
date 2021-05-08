@@ -1,9 +1,12 @@
-$ui-primary: #2d365d ;
+$ui-primary: #F9F154 ;
 /*hsla(215, 100%, 95%, 1); /* #E5F0FF */
-$ui-secondary:  #2d365d ;
+$ui-secondary:  #FFF ;
 /*hsla(215, 75%, 95%, 1); /* #E9F1FC */
-$ui-tertiary: #2d365d ;
+$ui-tertiary: #C0EFE6 ;
 /*hsla(215, 50%, 90%, 1); /* #D9E3F2 */
+
+
+$colorgreen: #1CC3A5;
 
 $ui-modal-overlay: hsla(215, 100%, 65%, 0.9); /* 90% transparent version of motion-primary */
 

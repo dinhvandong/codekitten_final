@@ -19,7 +19,8 @@ $more-button-size: 2.25rem;
     justify-content: center;
     cursor: pointer;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background: $motion-primary;
+    background: $colorgreen;
+    /* $motion-primary; */
     outline: none;
     border: none;
     transition: background-color 0.2s;
@@ -30,7 +31,8 @@ button::-moz-focus-inner {
 }
 
 .button:hover {
-    background: $extensions-primary;
+    background: $colorgreen;
+    /*$extensions-primary;*/
 }
 
 .button:active {
@@ -38,7 +40,9 @@ button::-moz-focus-inner {
 }
 
 .button.coming-soon:hover {
-    background: $data-primary;
+    background: $colorgreen;
+
+    /*$data-primary;*/
 }
 
 .main-button {
@@ -72,7 +76,9 @@ button::-moz-focus-inner {
     */
     overflow-y: hidden;
 
-    background: $motion-tertiary;
+    background: $colorgreen;
+
+    /*$motion-tertiary;*/
     border-top-left-radius: $more-button-size;
     border-top-right-radius: $more-button-size;
     width: $more-button-size;
@@ -115,7 +121,9 @@ button::-moz-focus-inner {
 .more-button {
     width: $more-button-size;
     height: $more-button-size;
-    background: $motion-tertiary;
+    background: $colorgreen;
+
+    /* background: $motion-tertiary; */
 }
 
 .more-icon {
@@ -141,15 +149,21 @@ button::-moz-focus-inner {
 }
 
 .tooltip:after {
-    background-color: $extensions-primary;
+    background: $colorgreen;
+
+    /* background-color: $extensions-primary; */
 }
 
 .coming-soon-tooltip {
-    background-color: $data-primary !important;
+    background: $colorgreen;
+
+    /* background-color: $data-primary !important; */
 }
 
 .coming-soon-tooltip:after {
-    background-color: $data-primary !important;
+    background: $colorgreen;
+
+    /* background-color: $data-primary !important; */
 }
 
 .tooltip {
