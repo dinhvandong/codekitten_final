@@ -13,7 +13,7 @@ const motion = function (isInitialSetup, isStage, targetId) {
         'Stage selected: no motion blocks'
     );
     return `
-    <category name="%{BKY_CATEGORY_MOTION}" id="motion" colour="#4C97FF"  secondaryColour="#3373CC" iconURI= "https://raw.githubusercontent.com/dinhvandong/codekitten_final/main/src/lib/icon_motion.png"
+    <category name="%{BKY_CATEGORY_MOTION}" id="motion" colour="#F46867"  secondaryColour="#f49167" iconURI= "https://raw.githubusercontent.com/dinhvandong/codekitten_final/main/src/lib/icon_motion.png"
    >
     
         ${isStage ? `
