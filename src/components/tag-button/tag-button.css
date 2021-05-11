@@ -15,5 +15,6 @@
 }
 
 .active {
-    background: $data-primary;
+    background: #1CC3A5
+    /* $data-primary; */
 }

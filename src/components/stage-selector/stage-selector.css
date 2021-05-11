@@ -31,7 +31,7 @@ $header-height: calc($stage-menu-height - 2px);
 }
 
 .stage-selector:hover {
-    border-color: $motion-primary;
+    border-color: $colorgreen;
 }
 
 .header {
@@ -60,7 +60,7 @@ $header-height: calc($stage-menu-height - 2px);
 }
 
 .stage-selector.is-selected .header {
-    background-color: $motion-primary;
+    background-color: $colorgreen;
 }
 
 .stage-selector.is-selected .header-title {

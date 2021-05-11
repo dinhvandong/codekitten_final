@@ -40,7 +40,7 @@
 
 .blocks :global(.blocklyMainBackground) {
     stroke: none;
-    margin-left: 00px;
+    margin-left: px;
 }
 
 .blocks :global(.blocklyToolboxDiv) {

@@ -38,7 +38,7 @@ import TelemetryModal from "../telemetry-modal/telemetry-modal.jsx";
 import layout, { STAGE_SIZE_MODES } from "../../lib/layout-constants";
 import { resolveStageSize } from "../../lib/screen-utils";
 import styles from "./gui.css";
-import addExtensionIcon from "./icon--extensions.svg";
+import addExtensionIcon from "./ic_extension.png";
 import codeIcon from "./ico_ Code-White.png";
 import iconCat from "./ic_cat.svg";
 import iconExit from "./ic_exit.png";
