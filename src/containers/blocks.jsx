@@ -634,12 +634,14 @@ Blocks.defaultOptions = {
         startScale: BLOCKS_DEFAULT_SCALE
     },
     grid: {
-        spacing: 40,
+        spacing: 0.1,
         length: 2,
-        colour: '#ddd'
+        colour: '#ffecd4',
+        opacity:0.1,
+        backgroundColor:'#FFF'
     },
     colours: {
-        workspace: '#FFF',
+        // workspace: '#FFF',
         flyout: '#FFF',
         toolbox: '#FFF',
         toolboxSelected: '#E9EEF2',
