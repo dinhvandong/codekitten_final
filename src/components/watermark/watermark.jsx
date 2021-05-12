@@ -8,7 +8,7 @@ import logo from './logo-teky.png';
 const Watermark = props => (
     <img
         className={styles.spriteImage}
-        src={logo}
+        src={null}
     />
 );
 

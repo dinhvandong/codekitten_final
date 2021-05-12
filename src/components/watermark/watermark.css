@@ -2,7 +2,7 @@
 .sprite-image {
     margin: auto;
     user-select: none;
-    max-width: 48px;
-    max-height: 48px;
-    opacity: 0.35;
+    max-width: 60px;
+    max-height: 60px;
+    opacity: 0.5;
 }
