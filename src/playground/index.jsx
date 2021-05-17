@@ -23,7 +23,14 @@ if (supportedBrowser())
 {
     // require needed here to avoid importing unsupported browser-crashing code
     // at the top level
-    require('./render-gui.jsx').default(appTarget);
+    //require('./render-gui.jsx').default(appTarget);
+    //require('../components/login/login.jsx').default(appTarget);
+    //register-codekitten.jsx
+    // require('../components/login/register-password.jsx').default(appTarget);
+
+    require('../../src/app.jsx').default(appTarget);
+
+
 } else 
 {
     BrowserModalComponent.setAppElement(appTarget);
