@@ -1,0 +1,9 @@
+[
+    {
+        "name":"login",
+        "pattern":"/login/?$",
+        "routeAlias":"/login/?$",
+        "view":"login/login",
+        "title":"Login"
+    }
+]

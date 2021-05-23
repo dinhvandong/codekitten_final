@@ -2,6 +2,15 @@ const defaultsDeep = require('lodash.defaultsdeep');
 var path = require('path');
 var webpack = require('webpack');
 
+var routes = require('./src/routes.json');
+
+// if (process.env.NODE_ENV !== 'production') {
+//     routes = routes.concat(require('./src/routes-dev.json')); // eslint-disable-line global-require
+// }
+routes = routes.filter(route => !process.env.VIEW || process.env.VIEW === route.view);
+const pageRoutes = routes.filter(function (route) {
+    return !route.redirect;
+});
 // Plugins
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -110,19 +119,22 @@ const base = {
 if (!process.env.CI) {
     base.plugins.push(new webpack.ProgressPlugin());
 }
-// Prepare all entry points
-// let entry = {};
 
-// pageRoutes.forEach(function (route) {
-//     entry[route.name] = [
-//         './src/init.js',
-//         `./src/views/${route.view}.jsx`
-//     ];
-// });
+// Prepare all entry points
+let entry = {};
+
+pageRoutes.forEach(function (route) {
+    entry[route.name] = [
+        //'./src/init.js',
+        `./src/views/${route.view}.jsx`
+    ];
+});
+
 module.exports = [
     // to run editor examples
     defaultsDeep({}, base, {
-        entry: {
+        entry: 
+        {
             'lib.min': ['react', 'react-dom'],
             'gui': './src/playground/index.jsx',
             'blocksonly': './src/playground/blocks-only.jsx',

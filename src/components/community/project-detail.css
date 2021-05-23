@@ -1,0 +1,14 @@
+.border_project_detail {
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 450px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    background-size: cover;
+    background-image: url("./img-info-subject.png")
+}

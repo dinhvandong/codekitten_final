@@ -9,6 +9,8 @@ import ForgotPassword from "./components/login/forgot-password.jsx";
 
 import LoginCodeKitten from "./components/login/login.jsx";
 
+
+import Community from '../src/components/community/community.jsx';
 import {
     BrowserRouter as Router,
     Switch,
@@ -39,11 +41,11 @@ function App() {
                         exact
                         path="/"
                         render={() =>{
-                            return <Redirect to="/register_codekitten" />;
+                            return <Redirect to="/login" />;
                         }}
                     />
-                    <Route exact path="/login" component={LoginCodeKitten} />
-                    <Route path="/forgot">
+                    <Route exact path="/login" component={Community} />
+                    <Route path="/forgot_password">
                         <ForgotPassword />
                     </Route>
                     <Route path="/register_password">
@@ -52,8 +54,6 @@ function App() {
                     <Route path="/register_codekitten">
                     <RegisterCodeKitten />
                     </Route>
-
-
                     <Route path="/register_otp">
                     <RegisterOTP />
                 </Route>

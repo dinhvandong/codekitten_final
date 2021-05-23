@@ -15,6 +15,10 @@ const MODAL_TIPS_LIBRARY = 'tipsLibrary';
 const MODAL_MY_PROJECT = 'myProjects';
 const MODAL_SAVE_MY_PROJECT = "savemyprojects";
 
+const MODAL_RESGITER = "register";
+const MODAL_LOGIN = "login";
+
+
 
 const initialState = {
     [MODAL_BACKDROP_LIBRARY]: false,
@@ -95,6 +99,17 @@ const openTipsLibrary = function () {
 const openMyProject = function(){
 
     return openModal(MODAL_MY_PROJECT);
+}
+
+const onClickShowLogin = function()
+{
+
+    return openModal(MODAL_LOGIN)
+}
+const onClickShowRegister = function() {
+    return openModal(MODAL_RESGITER)
+
+
 }
 
 const onStoreMyProject = function(){

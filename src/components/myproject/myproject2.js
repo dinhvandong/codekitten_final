@@ -62,22 +62,6 @@ class ShowMyProject extends React.Component {
             );
     }
 
-    //  handleChangePage (event, newPage)
-    //  {
-    //   //setPage(newPage);
-    //   console.log("handleChangePage", newPage);
-    //   this.state.page = newPage;
-    //   this.setState= {page : newPage};
-    // };
-
-    //  handleChangeRowsPerPage (event){
-    //   //setRowsPerPage(parseInt(event.target.value, 10));
-    //   //setPage(0);
-    //   console.log("handleChangeRowsPerPage", parseInt(event.target.value, 10));
-
-    //   this.state.rowsPerPage = parseInt(event.target.value, 10);
-    //   this.state.page = 0;
-    // };
 
     handleChangePage(event, page) {
         this.setState({ page });
@@ -416,7 +400,6 @@ class ShowMyProject extends React.Component {
                                 onChangeRowsPerPage={
                                     this.handleChangeRowsPerPage
                                 }
-
                                 //  onChangePage={handleChangePage}
                                 //  onChangeRowsPerPage={handleChangeRowsPerPage}
                             />

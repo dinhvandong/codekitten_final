@@ -29,9 +29,6 @@
 }
 
 .input_phone {
-
-
-
     background-color: rgba(0, 0, 0, 0);
     border: none;
     outline: none;
@@ -43,8 +40,10 @@
     height: 40px;
     transition: height 1s;
     -webkit-transition: height 1s;
+}
+.input::placeholder {
 
-
+    color: #000;
 }
 
 .icon_key_login {
@@ -128,8 +127,22 @@ input::placeholder {
     -webkit-transition: height 1s;
 }
 
+.login_form_input_name {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    outline: none;
+    font-size: 14;
+    align-self: center;
+    margin-right: 0px;
+    width: 100%;
+    font-weight: lighter;
+    height: 50px;
+    transition: height 1s;
+    -webkit-transition: height 1s;
+}
+
 .icon_invisible {
-    background-image: url("./images/icon/invisible.svg");
+     background-image: url("./images/icon/invisible.svg");
     background-repeat: no-repeat;
     background-position: "center center";
     width: 35px;
@@ -277,6 +290,9 @@ c_login__form__form_group_is_password {
     display: 'flex';
     align-items: 'center';
     height: 13px;
+    align-self: 'center';
+    
+
     display: inline-block
 }
 
@@ -285,6 +301,10 @@ c_login__form__form_group_is_password {
     margin-top: "150px";
 }
 
+.btn_primary:hover {
+
+    background-color: #0069d9;
+}
 .btn_primary {
     display: flex;
     border: 1px solid #e8edfc;
@@ -292,7 +312,8 @@ c_login__form__form_group_is_password {
     float: left;
     flex-direction: row;
     text-align: left;
-    align-items: 'center';
+    align-items: center;
+
     color: #fff;
     background-color: #5DC2A7;
     border-color: #5DC2A7;

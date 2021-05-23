@@ -1,0 +1,38 @@
+.customButton {
+    width: 150px;
+    height: 35px;
+    letter-spacing: 0.5px;
+    background-color: #94dcb6;
+    color: rgb(0, 0, 0);
+    /* background-image: url('../tab-active.png'); */
+    font-size: 14px;
+    border: 1.5px solid #94dcb6;
+    font-weight: bold;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    cursor: pointer;
+    }
+
+    .customButton_active {
+
+    background-color: "#FFF";
+    border: 1.5px solid rgb(255, 255, 255);
+    font-weight: bold;
+    /* background-image: url('../tab-active.png'); */
+
+  
+    width: 150px;
+    height: 35px;
+    letter-spacing: 0.5px;
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;    cursor: pointer;
+
+
+    }
+.active{
+    background-color: "#FFF";
+    border: 1.5px solid rgb(25, 26, 24);
+    }

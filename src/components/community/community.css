@@ -1,0 +1,156 @@
+.input_search {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    outline: none;
+    font-size: 14;
+    align-self: center;
+    margin-right: 10px;
+    width: 100%;
+    font-weight: bold;
+    height: 40px;
+    transition: height 1s;
+    -webkit-transition: height 1s;
+}
+.input_search::placeholder {
+
+    color: black;
+}
+
+.ico_search_codekitten {
+    background-image: url("./icon/search-codekitten.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 16px;
+    height: 16px;
+    align-self: center;
+    margin-right: 20px;
+    background-size: cover;
+    display: inline-block
+}
+
+.group:before, .group:after {
+    content: "";
+    display: table;
+}
+
+.group:after {
+    clear: both;
+}
+
+.group {
+    zoom: 1;
+}
+
+.tabs {
+    list-style: none;
+    margin: 60px auto 0;
+    width: 660px;
+}
+
+.tabs li {
+    /* Makes a horizontal row */
+    float: left;
+    /* So the psueudo elements can be
+           abs. positioned inside */
+    position: relative;
+}
+
+.tabs a {
+    /* Make them block level
+         and only as wide as they need */
+    float: left;
+    padding: 10px 30px;
+    text-decoration: none;
+     border: 1px solid #C0EFE6;
+
+    /* Default colors */
+    color: black;
+    /* background-image: url("./tab-active.png"); */
+    color: #FFF;
+
+    /* Only round the top corners */
+    -webkit-border-top-left-radius: 15px;
+    -webkit-border-top-right-radius: 15px;
+    -moz-border-radius-topleft: 15px;
+    -moz-border-radius-topright: 15px;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+
+.c_mycourses__technology {
+    margin-top: 10px
+}
+
+.c_mycourses__technology .c_title-mycouses .c_cousetitle_left {
+    margin-top: 13px;
+    margin-left: 20px;
+    display: inline-block
+}
+
+.c_mycourses__technology .c_title_mycouses .c_cousetitle_left span {
+    display: block;
+    font-weight: 700;
+    font-size: 12px
+}
+
+._mycourses__technology .c_title_mycouses .c_cousetitle_left span:nth-child(1) {
+    font-size: 18px
+}
+
+.c_mycourses__technology .c_title_mycouses .c_cousetitle_left span:nth-child(2) {
+    font-weight: 500
+}
+
+
+/* Only the first, last, and active
+       tabs need pseudo elements at all */
+
+
+
+
+/* Squares */
+
+
+
+.tabs li:before {
+    left: -10px;
+}
+
+.tabs li:after {
+    right: -10px;
+}
+
+
+/* Circles */
+
+.tabs li a:after, .tabs li a:before {
+    width: 20px;
+    height: 20px;
+    /* Circles are circular */
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background: #222;
+    /* Circles over squares */
+    z-index: 2;
+}
+
+.tabs .active a:after, .tabs .active a:before {
+    background: #ddc385;
+}
+
+/* First and last tabs have different
+       outside color needs */
+
+.tabs li:first-child.active a:before, .tabs li:last-child.active a:after {
+    background: #222;
+}
+
+.tabs li a:before {
+    left: -20px;
+}
+
+.tabs li a:after {
+    right: -20px;
+}

@@ -1,7 +1,8 @@
 import classNames from "classnames";
 import omit from "lodash.omit";
 import PropTypes from "prop-types";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { SCREENS } from "./constant.js";
 import {
     defineMessages,
     FormattedMessage,
@@ -64,16 +65,18 @@ import { ButtonToolbar } from "react-bootstrap";
 import { Popup } from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 
-import ShowMyProject from '../myproject/myproject2';
-import StoreMyProject from '../storemyproject/storemyproject';
+import ShowMyProject from "../myproject/myproject2";
+import StoreMyProject from "../storemyproject/storemyproject";
 import ConfigServer from "../../config_server.js";
 import { render } from "react-dom";
+//import LoginCodeKitten from "../login/login.jsx";
+import PopUpRegister from "../login/popup-register.jsx";
 
-
-
-
-
-
+import PopUpLogin from "../login/popup-login.jsx";
+import LoginCodeKitten from "../login/login.jsx";
+import PopUpRegisterOTP from "../login/popup-register-otp.jsx";
+import PopupForgotPassword from "../login/popup-forgot-password.jsx";
+import PopUpRegisterPassword from '../login/popup-register-password.jsx';
 //import soundsIcon from './icon--sounds.svg';
 //ico_ Costumes-White.png
 const messages = defineMessages({
@@ -88,10 +91,10 @@ const messages = defineMessages({
 // Assume that it doesn't change for a session.
 let isRendererSupported = null;
 var ip = require("ip");
-console.dir ( ip.address() );
+console.dir(ip.address());
 
 const host = ip.address();
-const baseUrl =  host + ":8080";
+const baseUrl = host + ":8080";
 const GUIComponent = (props) => {
     const {
         accountNavOpen,
@@ -158,6 +161,11 @@ const GUIComponent = (props) => {
         showComingSoon,
         showMyProject,
         storeMyProject,
+        //showRegister,
+        // showLogin,
+        // showRegisterPassword,
+        // showForgotPassword,
+        // showRegisterOtp,
         soundsTabVisible,
         stageSizeMode,
         targetIsStage,
@@ -184,14 +192,87 @@ const GUIComponent = (props) => {
             styles.isSelected
         ),
     };
-
+    localStorage.setItem("isLogin",false);
     if (isRendererSupported === null) {
         isRendererSupported = Renderer.isSupported();
     }
-   
+    const [showRgOtp, setShowRgOtp] = useState(false);
+    const [showLogin, setShowLogin] = useState(false);
+    const [showRegister, setShowRegister] = useState(false);
+    const [showRegisterPassword, setShowRegisterPassword] = useState(false);
+    const [showForgotPassword, setShowForgotPassword] = useState(false);
 
-    
+    const screen_Login = "Login";
+    const screen_Register = "Register";
+    const screen_RegisterPassword = "RegisterPassword";
+    const screen_ForgotPassword = "ForgotPassword";
+    const screen_OTP = "OTP";
+    const closeAll = () => {
+        setShowLogin(false);
+        setShowRgOtp(false);
+        setShowRegister(false);
+        setShowRegisterPassword(false);
+        setShowForgotPassword(false);
+    };
+    const setShow = (screen) => {
+        switch (screen) {
+            case SCREENS.screen_Login: {
+                setShowLogin(true);
+                setShowRgOtp(false);
+                setShowRegister(false);
+                setShowRegisterPassword(false);
+                setShowForgotPassword(false);
+                break;
+            }
 
+            case "Register": {
+                setShowLogin(false);
+                setShowRgOtp(false);
+                setShowRegister(true);
+                setShowRegisterPassword(false);
+                setShowForgotPassword(false);
+
+                break;
+            }
+
+            case "RegisterPassword": {
+                setShowLogin(false);
+                setShowRgOtp(false);
+                setShowRegister(false);
+                setShowRegisterPassword(true);
+                setShowForgotPassword(false);
+
+                break;
+            }
+
+            case "ForgotPassword": {
+                setShowLogin(false);
+                setShowRgOtp(false);
+                setShowRegister(false);
+                setShowRegisterPassword(false);
+                setShowForgotPassword(true);
+
+                break;
+            }
+            case "OTP": {
+                setShowLogin(false);
+                setShowRgOtp(true);
+                setShowRegister(false);
+                setShowRegisterPassword(false);
+                setShowForgotPassword(false);
+                break;
+            }
+
+            case "ALL":{
+                setShowLogin(false);
+                setShowRgOtp(false);
+                setShowRegister(false);
+                setShowRegisterPassword(false);
+                setShowForgotPassword(false);
+            }
+        }
+    };
+  
     return (
         <MediaQuery minWidth={layout.fullSizeMinWidth}>
             {(isFullSize) => {
@@ -303,6 +384,12 @@ const GUIComponent = (props) => {
                                         onStartSelectingFileUpload
                                     }
                                     onToggleLoginOpen={onToggleLoginOpen}
+                                    onShowLogin={() => {
+                                        setShow(screen_Login);
+                                    }}
+                                    onShowRegister={() => {
+                                        setShow(screen_Register);
+                                    }}
                                 />
                                 <Box className={styles.bodyWrapper}>
                                     <Box className={styles.flexWrapper}>
@@ -329,8 +416,12 @@ const GUIComponent = (props) => {
                                                             tabClassNames.tab
                                                         }
                                                     >
-                                                        <img 
-                                                        style={{width:15, height:15, marginRight:5}}
+                                                        <img
+                                                            style={{
+                                                                width: 15,
+                                                                height: 15,
+                                                                marginRight: 5,
+                                                            }}
                                                             draggable={false}
                                                             src={codeIcon}
                                                         />
@@ -346,9 +437,14 @@ const GUIComponent = (props) => {
                                                         }
                                                         onClick={
                                                             onActivateCostumesTab
-                                                        }>
+                                                        }
+                                                    >
                                                         <img
-                                                        style={{width:15, height:15, marginRight:5}}
+                                                            style={{
+                                                                width: 15,
+                                                                height: 15,
+                                                                marginRight: 5,
+                                                            }}
                                                             draggable={false}
                                                             src={costumesIcon}
                                                         />
@@ -375,7 +471,11 @@ const GUIComponent = (props) => {
                                                         }
                                                     >
                                                         <img
-                                                        style={{width:15, height:15, marginRight:5}}
+                                                            style={{
+                                                                width: 15,
+                                                                height: 15,
+                                                                marginRight: 5,
+                                                            }}
                                                             draggable={false}
                                                             src={soundsIcon}
                                                         />
@@ -396,9 +496,9 @@ const GUIComponent = (props) => {
                                                             styles.blocksWrapper
                                                         }
                                                     >
-                                                        
-                                                    <Blocks canUseCloud={
-                                                                 canUseCloud
+                                                        <Blocks
+                                                            canUseCloud={
+                                                                canUseCloud
                                                             }
                                                             grow={1}
                                                             isVisible={
@@ -503,16 +603,74 @@ const GUIComponent = (props) => {
                                 <DragLayer />
                             </Box>
                             <div>
-                            {
-                                storeMyProject ? <StoreMyProject />
-                                :<div></div> 
-                            }  
+                                {storeMyProject ? (
+                                    <StoreMyProject />
+                                ) : (
+                                    <div></div>
+                                )}
                             </div>
-                            <di>
-                                {showMyProject ? <ShowMyProject 
-                                    showMyProject={showMyProject}/>
-                                    : <div></div>}
-                            </di>
+                            <div>
+                                {showMyProject ? (
+                                    <ShowMyProject
+                                        showMyProject={showMyProject}
+                                    />
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
+
+                            <div>
+                                {showLogin ? (
+                                    <PopUpLogin setShow={setShow} closePopup={closeAll} />
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
+                            <div>
+                                {showRegister ? (
+                                    <PopUpRegister
+                                        setShow={setShow}
+                                        closePopup={closeAll}
+                                        showRegister={showRegister}
+                                    />
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
+
+                            <div>
+                                {showRgOtp ? (
+                                    <PopUpRegisterOTP
+                                    closePopup={closeAll}
+                                    setShow={setShow}
+
+                                    />
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
+
+                            <div>
+                                {showForgotPassword ? (
+                                    <PopupForgotPassword
+                                    closePopup={closeAll}
+                                    setShow={setShow}
+                                    />
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
+
+                            <div>
+                                {showRegisterPassword ? (
+                                    <PopUpRegisterPassword 
+                                    closePopup={closeAll}
+                                    setShow={setShow}
+                                    />
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
                         </div>
                     );
                 }
@@ -569,6 +727,8 @@ GUIComponent.propTypes = {
     onSeeCommunity: PropTypes.func,
     handleClickSaveMyProject: PropTypes.func,
     onShowMyProject: PropTypes.func,
+    onShowLogin: PropTypes.func,
+    onShowRegister: PropTypes.func,
     onStoreMyProject: PropTypes.func,
     soundsTabVisible: PropTypes.bool,
     onShare: PropTypes.func,
@@ -581,7 +741,7 @@ GUIComponent.propTypes = {
     onToggleLoginOpen: PropTypes.func,
     renderLogin: PropTypes.func,
     showComingSoon: PropTypes.bool,
-   
+
     stageSizeMode: PropTypes.oneOf(Object.keys(STAGE_SIZE_MODES)),
     targetIsStage: PropTypes.bool,
     telemetryModalVisible: PropTypes.bool,
@@ -608,6 +768,9 @@ GUIComponent.defaultProps = {
     showComingSoon: false,
     showMyProject: false,
     storeMyProject: false,
+    // showLogin:false,
+    // showRegisterOtp:true,
+    // showRegister:false,
     stageSizeMode: STAGE_SIZE_MODES.large,
 };
 

@@ -1,0 +1,103 @@
+
+.c_project_courses__outer {
+    width: calc(100%);
+    position: relative;
+    z-index: 1;
+    transition: all .2s ease;
+    width: 200px;
+    height: 260px;
+
+}
+
+.icon_next_mysubject {
+    background-image: url("./icon/next-mysubject.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 22px;
+    height: 22px;
+    background-size: cover;
+    display: inline-block
+}
+
+.c_is_project {
+    position: relative;
+    z-index: 1;
+    padding-top: 80%;
+    overflow: hidden;
+    border-radius: 10px;
+    width: 100%;
+    margin-bottom: 15px
+}
+
+.c_is_project_img {
+   
+
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    border-radius: 10px;
+}
+
+.c_project_courses_before{
+    position: absolute;
+    z-index: -1;
+    background-image: url("./background-subject.png");
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    content: "";
+    width: 100%;
+    padding-top: 0;
+    height: 230px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: bottom center;
+    transition: all .2s ease;
+    filter: drop-shadow(10px 30px 30px rgba(177, 188, 199, 0.15))
+}
+.c_titlebox_project  {
+    display: flex;
+    align-items: center;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+    position: relative;
+    z-index: 1;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+.c_titlebox_project__left  {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    width: 125px;
+
+}
+.c_titlebox_project__right  {
+    margin-left: auto;
+    display: flex;
+    font-size: 12px
+}
+
+.c_project_courses__outer_c_setting_hover {
+    position: relative;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: auto;
+    transition: all .2s ease;
+    background-image: url("./background-subject.png");
+
+
+}

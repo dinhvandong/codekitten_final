@@ -38,6 +38,8 @@ import { openTipsLibrary } from "../../reducers/modals";
 import { setPlayer } from "../../reducers/mode";
 import { setMyProject } from "../../reducers/mode";
 import { setStoreMyProject } from "../../reducers/mode";
+import {setShowLogin}  from "../../reducers/mode";
+import {setShowRegister}  from "../../reducers/mode";
 
 import {
     autoUpdateProject,
@@ -93,6 +95,7 @@ import iconTools from "./tools.png";
 
 import sharedMessages from "../../lib/shared-messages";
 import Prompt from "../../containers/prompt.jsx";
+import { AsyncStorage } from 'AsyncStorage';
 
 const ariaMessages = defineMessages({
     language: {
@@ -180,6 +183,8 @@ class MenuBar extends React.Component {
             "handleClickSeeCommunity",
             "handleClickSaveMyProject",
             "handleClickShare",
+            "handleClickLogin",
+            "handleClickRegister",
             "handleKeyPress",
             "handleLanguageMouseUp",
             "handleRestoreOption",
@@ -234,6 +239,22 @@ class MenuBar extends React.Component {
         //  }
         //openSaveMyProject();
         this.props.onStoreMyProject();
+    }
+
+    handleClickLogin()
+    {
+        console.log("this.props.openLogin","this.props.openLogin")
+        this.props.onShowLogin();
+        //this.props.onStoreMyProject();
+    }
+
+    handleClickRegister()
+    {
+       // AsyncStorage.setItem('TASKS', 'I like to save it.');
+       const username = localStorage.getItem("username");
+       console.log("username", username)
+         
+        this.props.onShowRegister();
     }
     handleClickSeeCommunity() {
         this.props.openMyProject();
@@ -791,11 +812,35 @@ class MenuBar extends React.Component {
                                             styles.accountNavMenu
                                         )}
                                     >
-                                        <img
+                                      
+
+                                        {
+                                            localStorage.getItem("isLogin")? <div style={{display:'flex', flexDirection:'row', alignContent:'center'}}>
+
+                                            
+                                            <div onClick={() => {
+                                                this.handleClickLogin();
+                                                // this.handleClickSaveMyProject();
+                                            }} style={{marginRight:'20px'}}><span>{"Đăng nhập"}</span></div>
+    
+                                            <div onClick={() => {
+                                                this.handleClickRegister();
+                                                // this.handleClickSaveMyProject();
+                                            }}><span>{"Đăng ký"}</span></div>
+                                            </div> :<div style={{display:'flex', flexDirection:'row', alignContent:'center'}}>
+
+                                            <img
                                             className={styles.profileIcon}
                                             src={profileIcon}
                                         />
-                                        <span>{"Code Kitten - Cat"}</span>
+                                            
+                                            <div style={{alignSelf:'center'}} onClick={() => {
+                                                this.handleClickRegister();
+                                                // this.handleClickSaveMyProject();
+                                            }}><span>{"Đinh Văn Đông"}</span></div>
+                                            
+                                            </div>
+                                        }
                                     </div>
                                 </React.Fragment>
                             ) : (
@@ -873,6 +918,8 @@ MenuBar.propTypes = {
     onRequestCloseLogin: PropTypes.func,
     onSeeCommunity: PropTypes.func,
     onShowMyProject: PropTypes.func,
+    onShowLogin: PropTypes.func,
+    onShowRegister: PropTypes.func,
     onStoreMyProject: PropTypes.func,
     onShare: PropTypes.func,
     onStartSelectingFileUpload: PropTypes.func,
@@ -940,7 +987,11 @@ const mapDispatchToProps = (dispatch) => ({
     onClickSaveAsCopy: () => dispatch(saveProjectAsCopy()),
     onSeeCommunity: () => dispatch(setPlayer(true)),
     openMyProject: () => dispatch(setMyProject(true)),
+    //openLogin: ()=> dispatch(setShowLogin(true)),
+    //openRegister:()=> dispatch(setShowRegister(true)),
     onStoreMyProject: () => dispatch(setStoreMyProject(true)),
+  //  onShowLogin:()=> dispatch(setShowLogin(true)),
+//onShowRegister:()=> dispatch(setShowRegister(true))
     //openSaveMyProject:()=> dispatch(setStoreMyProject(true))
     // storeMyProject :()=> dispatch(setStoreMyProject(true))
 });
