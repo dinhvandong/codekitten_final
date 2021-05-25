@@ -135,6 +135,10 @@ import AlertLogin from '../gui/alert-login.jsx';
                         borderBottomLeftRadius: 10,
                         borderBottomRightRadius: 10,
                         backgroundColor:'transparent',
+                        padding:'20px',
+                        margin:'20px',
+
+
                         overflow: "hidden",
                     }}
                 >
@@ -144,7 +148,6 @@ import AlertLogin from '../gui/alert-login.jsx';
                             width: '100%',
                             marginTop:'20px',
                             marginBottom:'20px',
-                            padding:'20px',
                             height:'100%',
                             borderTopLeftRadius: 10,
                             borderTopRightRadius: 10,
