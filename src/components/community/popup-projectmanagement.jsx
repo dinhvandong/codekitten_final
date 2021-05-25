@@ -134,6 +134,7 @@ import AlertLogin from '../gui/alert-login.jsx';
                         borderTopRightRadius: 10,
                         borderBottomLeftRadius: 10,
                         borderBottomRightRadius: 10,
+                        backgroundColor:'transparent',
                         overflow: "hidden",
                     }}
                 >
