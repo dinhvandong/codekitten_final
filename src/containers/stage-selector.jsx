@@ -197,6 +197,8 @@ const mapStateToProps = (state, {asset, id}) => ({
 const mapDispatchToProps = dispatch => ({
     onNewBackdropClick: e => {
         e.stopPropagation();
+        console.log("onNewBackdropClick....");
+        localStorage.setItem("sprite", false);
         dispatch(openBackdropLibrary());
     },
     onActivateTab: tabIndex => {

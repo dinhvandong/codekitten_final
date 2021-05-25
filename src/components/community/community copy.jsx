@@ -8,12 +8,12 @@ import ProjectItem from "./project-item.jsx";
 import ProjectList from "./project-list.jsx";
 import ProjectDetail from "./project-detail.jsx";
 
- export default class  Community extends React.Component {
+export default class  Community extends React.Component {
 
     constructor(props)
     {
         super(props);
-        this.state = {isDetail: false};
+        this.state = {isDetail: true};
         this.onClose = this.onClose.bind(this);
         this.printButtonLabel = this.printButtonLabel.bind(this);
         this.onShowDetail = this.onShowDetail.bind(this);
@@ -45,8 +45,6 @@ import ProjectDetail from "./project-detail.jsx";
                     flexDirection: "column",
                     justifyContent: "flex-start",
                     display: "flex",
-                    borderRadius:'20px',
-                     
     
                     alignContent: "flex-start",
                     alignItems: "flex-start",
@@ -54,6 +52,7 @@ import ProjectDetail from "./project-detail.jsx";
                     backgroundColor: "#454545",
                 }}
             >
+                <CommunityHeader />
                 <div
                     style={{
                         width: "100%",
@@ -113,7 +112,7 @@ import ProjectDetail from "./project-detail.jsx";
                             flex: 1,
                             width: "150px",
                             height: "50px",
-                            marginRight: "50px",
+                            marginRight: "20px",
                             background: "#1CC3A5",
                             alignSelf: "center",
                             borderColor: "#1CC3A5",
@@ -163,23 +162,17 @@ import ProjectDetail from "./project-detail.jsx";
                         </div>
                     </div>
     
-                    <ProjectList  onShowDetail={this.onShowDetail} />
+                    <ProjectList onShowDetail={this.onShowDetail} />
                     <div         
                         style={{ marginTop: "30px", zIndex:5, height:'100%', width: "100%"}}
                     >
                         {     
-                            this.state.isDetail?  <ProjectDetail  onClosePopup={this.onClose} />
+                            this.state.isDetail?  <ProjectDetail onClosePopup={this.onClose} />
                             :<div></div>
                         }
                     </div>
                 </div>
             </div>
-       
-       
-       
-            );
+        );
     }
 }
-
-
- 

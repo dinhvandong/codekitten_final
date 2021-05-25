@@ -4,6 +4,9 @@ export const SCREENS = {
      screen_RegisterPassword : "RegisterPassword",
      screen_ForgotPassword : "ForgotPassword",
      screen_OTP : "OTP",
-     screen_ALL: "ALL"
+     screen_ALL: "ALL",
+     screen_PM:"ProjectManagement",
+     screen_Logout: "Logout"
+
 
 }

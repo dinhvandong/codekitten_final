@@ -16,12 +16,14 @@ export default class ProjectList extends React.Component {
         setSpacing(Number(event.target.value));
     }
     onShowDetail() {
-        //console.log("showDetail",showDetail);
-        this.props.onShowDetail;
+        console.log("showDetailCCCC");
+        this.props.onShowDetail();
     }
 
     render() {
         return (
+
+
             <Grid container style={{ zIndex: 1, flexGrow: 1 }} spacing={2}>
                 <Grid item xs={12}>
                     <Grid
@@ -29,9 +31,9 @@ export default class ProjectList extends React.Component {
                         justify="center"
                         spacing={this.state.spacing}
                     >
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 11].map((value) => (
+                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 11,12,13,14,15].map((value) => (
                             <Grid key={value} item>
-                                <div onClick={this.props.onShowDetail}>
+                                <div onClick={this.onShowDetail}>
                                     <ProjectItem />
                                 </div>
                             </Grid>

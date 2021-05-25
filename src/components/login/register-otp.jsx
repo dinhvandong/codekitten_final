@@ -115,6 +115,10 @@ export default class RegisterOTP extends React.Component {
                 console.log("response:", data);
                 const value = data.message;
                 console.log("value:", value);
+
+                console.log("data", data.data);
+
+                const token = data.data;
                 if(value.status_code==200)
                 {
                     const requestJson = JSON.stringify({
@@ -124,7 +128,7 @@ export default class RegisterOTP extends React.Component {
                     });
 
                     localStorage.setItem("otp", otp );
-
+                    localStorage.setItem("signup_token",token.signup_token)
                     this.props.setShow(SCREENS.screen_RegisterPassword);
                     console.log("requestJson",requestJson);
                 }

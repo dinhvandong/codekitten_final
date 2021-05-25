@@ -4,17 +4,31 @@ import iconCodeKitten from "./images/teky/codekitten.png";
 import iconCodeKittenRight from "./images/teky/codekitten-primary-right.png";
 import styles from "./login.css";
 import iconFlag from "./upload/vietnam.png";
+import { SCREENS } from "../gui/constant";
 
 export default class ForgotPassword extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
+        this.state = {phonenumber:""};
+        this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
+    }
+
+    onChangePhoneNumber(e){
+
+        this.setState({phonenumber: e.target.value});
+    }
+
+    onMoveAuthenOTP()
+    {
+
+        this.props.setShow(SCREENS.screen_OTP);
     }
     handleClick(e) {
         e.preventDefault();
         console.log("The link was clicked.");
         const data = {
-            mobile_number: "+84965741051",
+            mobile_number: "+84"+ this.state.phonenumber,
         };
         var url = APICodeKitten.mobile_otp_registration;
         return fetch(url, {
@@ -29,6 +43,17 @@ export default class ForgotPassword extends React.Component {
             .then(
                 (result) => {
                     console.log("Result", result);
+
+                    const value = result.message;
+
+                    if(value.status_code==200)
+                    {
+
+                        
+
+
+
+                    }
                 },
                 (error) => {}
             );

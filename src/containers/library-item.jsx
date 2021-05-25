@@ -5,7 +5,6 @@ import {injectIntl} from 'react-intl';
 
 import LibraryItemComponent from '../components/library-item/library-item.jsx';
 import ConfigServer from '../config_server.js';
-
 class LibraryItem extends React.PureComponent {
     constructor (props) {
         super(props);
@@ -24,8 +23,10 @@ class LibraryItem extends React.PureComponent {
         ]);
         this.state = {
             iconIndex: 0,
-            isRotatingIcon: false
+            isRotatingIcon: false,
+            sprite: false
         };
+
     }
     componentWillUnmount () {
         clearInterval(this.intervalId);
@@ -105,15 +106,24 @@ class LibraryItem extends React.PureComponent {
         }
         return iconMd5Prop;
     }
-    render () {
-        // const iconMd5 = this.curIconMd5();
-        // const iconURL = iconMd5 ?
-        //     `https://cdn.assets.scratch.mit.edu/internalapi/asset/${iconMd5}/get/` :
-        //     this.props.iconRawURL;
-        const iconMd5 = this.curIconMd5().split(".");
-        const iconURL = ConfigServer.host + "/api/asset/find/" + iconMd5[0];
+    componentDidUpdate()
+    {
+        this.setState({sprite: localStorage.getItem("sprite")});
 
-        console.log("iconURL",iconMd5);
+    }
+    render () {
+        console.log("iconRawURL",this.state.sprite);
+        const iconMd5 = this.curIconMd5().split(".");
+        var iconURL = "";
+        if(localStorage.getItem("sprite")== "true")
+        {
+            iconURL = 'http://staging.teky.asia/v1/code_kittens_api/assets/' + iconMd5[0] ;
+        }else
+        {
+            iconURL = 'http://staging.teky.asia/v1/code_kittens_api/assets/' + iconMd5[0] + '?type=background' ;
+        }
+        //ConfigServer.host + "/api/asset/find/" + iconMd5[0];
+        console.log("iconURL",iconURL);
         return (
             <LibraryItemComponent
                 bluetoothRequired={this.props.bluetoothRequired}

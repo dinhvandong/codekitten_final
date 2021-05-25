@@ -69,10 +69,27 @@ class Storage extends ScratchStorage {
         // const baseUrl =  host + ":8080";
          //ConfigServer.host = host;
       //  return `${this.assetHost}/internalapi/asset/${asset.assetId}.${asset.dataFormat}/get/`;
-       var link_download = ConfigServer.host + "/api/asset/find/" + asset.assetId;
+      // var link_download = ConfigServer.host + "/api/asset/find/" + asset.assetId;
       
-       console.log("LINNNNNN:",link_download);
-       return link_download;
+
+      const host = "http://staging.teky.asia/v1/code_kittens_api/assets/";
+
+      const isSprite = localStorage.getItem("sprite");
+      console.log("isSprite",isSprite);
+      var iconURL = "";
+      if(isSprite){
+
+          iconURL = host + asset.assetId
+
+      }else
+      {
+
+          iconURL = host + asset.assetId + "?type=background";
+
+      }
+       console.log("LINNNNNN:",iconURL);
+       return iconURL;
+       //link_download;
     }
     getAssetCreateConfig (asset) {
         return {

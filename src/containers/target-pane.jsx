@@ -100,6 +100,10 @@ class TargetPane extends React.Component {
         });
     }
     handleSelectSprite (id) {
+        console.log("handleNewSprite")
+
+        localStorage.setItem("sprite", true);
+
         this.props.vm.setEditingTarget(id);
         if (this.props.stage && id !== this.props.stage.id) {
             this.props.onHighlightTarget(id);
@@ -131,6 +135,9 @@ class TargetPane extends React.Component {
         this.props.onActivateTab(BLOCKS_TAB_INDEX);
     }
     handleNewSprite (spriteJSONString) {
+
+        console.log("handleNewSprite")
+        localStorage.setItem("sprite", true);
         return this.props.vm.addSprite(spriteJSONString)
             .then(this.handleActivateBlocksTab);
     }
@@ -298,7 +305,11 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onNewSpriteClick: e => {
+  
         e.preventDefault();
+        console.log("ClickSprite....");
+        localStorage.setItem("sprite", true);
+        
         dispatch(openSpriteLibrary());
     },
     onRequestCloseSpriteLibrary: () => {

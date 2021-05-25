@@ -97,7 +97,6 @@ import sharedMessages from "../../lib/shared-messages";
 import Prompt from "../../containers/prompt.jsx";
 import { AsyncStorage } from 'AsyncStorage';
 
-import  MenuLogin from './menu-login.jsx';
 const ariaMessages = defineMessages({
     language: {
         id: "gui.menuBar.LanguageSelector",
@@ -191,8 +190,7 @@ class MenuBar extends React.Component {
             "handleRestoreOption",
             "getSaveToComputerHandler",
             "restoreOptionMessage",
-            "handleClickProjectManagement",
-            "handleClickLogout"
+            "handleClickProjectManagement"
         ]);
     }
     componentDidMount() {
@@ -250,18 +248,11 @@ class MenuBar extends React.Component {
         this.props.onShowLogin();
         //this.props.onStoreMyProject();
     }
-    handleClickLogout()
-    {
-
-        this.props.onShowLogout();
-    }
 
     handleClickProjectManagement()
     {
         this.props.onShowPM();
     }
-
-
 
     handleClickRegister()
     {
@@ -813,7 +804,56 @@ class MenuBar extends React.Component {
                     ) : (
                         // ******** no login session is available, so don't show login stuff
                         <React.Fragment>
-                           <MenuLogin onShowLogout = {this.handleClickLogout} onShowLogin={this.handleClickLogin} onShowRegister ={this.handleClickRegister}/>
+                            {this.props.showComingSoon ? (
+                                <React.Fragment>
+                                    <div
+                                        className={classNames(
+                                            styles.menuBarItem,
+                                            styles.hoverable,
+                                            styles.mystuffButton
+                                        )}
+                                    ></div>
+                                    <div
+                                        className={classNames(
+                                            styles.menuBarItem,
+                                            styles.hoverable,
+                                            styles.accountNavMenu
+                                        )}
+                                    >
+                                      
+
+                                        {
+                                            localStorage.getItem("login")!=='true'
+                                            ? <div style={{display:'flex', flexDirection:'row', alignContent:'center'}}>
+
+                                            
+                                            <div onClick={() => {
+                                                this.handleClickLogin();
+                                                // this.handleClickSaveMyProject();
+                                            }} style={{marginRight:'20px'}}><span>{"Đăng nhập"}</span></div>
+    
+                                            <div onClick={() => {
+                                                this.handleClickRegister();
+                                                // this.handleClickSaveMyProject();
+                                            }}><span>{"Đăng ký"}</span></div>
+                                            </div> :<div style={{display:'flex', flexDirection:'row', alignContent:'center'}}>
+
+                                            <img
+                                            className={styles.profileIcon}
+                                            src={profileIcon}/>
+                                            
+                                            <div style={{alignSelf:'center'}} onClick={() => {
+                                                this.handleClickRegister();
+                                                // this.handleClickSaveMyProject();
+                                            }}><span>{"Đinh Văn Đông"}</span></div>
+                                            
+                                            </div>
+                                        }
+                                    </div>
+                                </React.Fragment>
+                            ) : (
+                                []
+                            )}
                         </React.Fragment>
                     )}
                 </div>
@@ -888,9 +928,7 @@ MenuBar.propTypes = {
     onShowMyProject: PropTypes.func,
     onShowLogin: PropTypes.func,
     onShowRegister: PropTypes.func,
-    showScreen:PropTypes.func,
     onShowPM:PropTypes.func,
-    onShowLogout:PropTypes.func,
     onStoreMyProject: PropTypes.func,
     onShare: PropTypes.func,
     onStartSelectingFileUpload: PropTypes.func,

@@ -34,7 +34,9 @@ $sound-tertiary: hsla(300, 48%, 50%, 1); /* #BD42BD */
 
 $control-primary: hsla(38, 100%, 55%, 1); /* #FFAB19 */
 
-$data-primary: hsla(30, 100%, 55%, 1); /* #FF8C1A */
+$data-primary: hsla(163, 85%, 40%, 1);
+/*hsla(30, 100%, 55%, 1);*/
+ /* #FF8C1A */
 
 $pen-primary: hsla(163, 85%, 40%, 1); /* #0FBD8C */
 $pen-transparent: hsla(163, 85%, 40%, 0.25); /* #0FBD8C */

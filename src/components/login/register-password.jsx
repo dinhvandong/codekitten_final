@@ -39,38 +39,27 @@ export default class RegisterPassword extends React.Component {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                registration_code: localStorage.getItem("otp"),
+                registration_code: localStorage.getItem("signup_token"),
                 password: this.state.password,
                 client_id: "fcJoXwOWAaNPd8TiYckAR6Vi5RwtOysSGEiqIc6f",
                 client_secret:
                     "DBd4m5Il5jRLc5c07ktA3IBSjcpjbThfqPqIJQZDyI7Iy2NXJYoQOoPq9eyi8Wd8Xk8VWYzbksyOIQp9oU5DWfyGCkWJ8XuRNFOfZkegKTE5UjNNQckLnVbqCfxqeEqY",
             }),
         };
-
-        const requestJson = JSON.stringify({
-            registration_code: localStorage.getItem("otp"),
-            password: this.state.password,
-            client_id: "fcJoXwOWAaNPd8TiYckAR6Vi5RwtOysSGEiqIc6f",
-            client_secret:
-                "DBd4m5Il5jRLc5c07ktA3IBSjcpjbThfqPqIJQZDyI7Iy2NXJYoQOoPq9eyi8Wd8Xk8VWYzbksyOIQp9oU5DWfyGCkWJ8XuRNFOfZkegKTE5UjNNQckLnVbqCfxqeEqY",
-        });
-
-        console.log("register-password:", requestJson);
+        
         var url = APICodeKitten.registration_password;
         fetch(url, requestOptions)
             .then((response) => response.json())
             .then((data) => {
-                //this.setState({ user: data });
                 console.log("response:", data);
-
                 const value = data.message;
-
                 if(value.status_code==200)
                 {
-                   const passs =  this.state.password;
+                   console.log("Success:ABC");
+                   const pass =  this.state.password;
                    localStorage.setItem("password", pass);
-                   this.props.setShow(SCREENS.screen_ALL);
-
+                   localStorage.setItem("login", true);
+                   this.props.onClosePopup();
                 }
             });
     }
@@ -93,7 +82,7 @@ export default class RegisterPassword extends React.Component {
         e.preventDefault();
         console.log("The link was clicked.");
 
-        localStorage.setItem("isLogin", true);
+        //localStorage.setItem("login", true);
 
         //this.props.closePopup();
         this.requestAPI();

@@ -241,7 +241,7 @@ import {SCREENS}from "../gui/constant.js";
                             />
                         </div>
 
-                        <LoginCodeKitten setShow={this.props.setShow}/>
+                        <LoginCodeKitten closePopup = {this.props.closePopup} setShow={this.props.setShow}/>
                     </div>
                 </view>
             </Modal>

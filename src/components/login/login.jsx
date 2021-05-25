@@ -17,19 +17,22 @@ function Welcome(props) {
 export default class LoginCodeKitten extends React.Component {
     constructor(props) {
         super(props);
-
+        this.handleClick = this.handleClick.bind(this);
         this.state = {username:'', password:'', passwordShown:false};
         this.onClose = this.onClose.bind(this);
         this.onForgotPass = this.onForgotPass.bind(this);
         this.onRegister = this.onRegister.bind(this);
         this.togglePasswordVisiblity = this.togglePasswordVisiblity.bind(this);
+        this.onPasswordChange = this.onPasswordChange.bind(this);
+        this.onUserChange = this.onUserChange.bind(this);
+
     }
 
     togglePasswordVisiblity(){
         console.log("togglePasswordVisiblity")
         if(this.state.passwordShown){
             this.setState({passwordShown:false});
-        }else
+        } else
         {
             this.setState({passwordShown:true});
         }
@@ -47,6 +50,7 @@ export default class LoginCodeKitten extends React.Component {
       onClose()
       {
         this.props.setShow(SCREENS.screen_ALL);
+        this.props.closePopup();
       }
 
       onRegister()
@@ -67,16 +71,20 @@ export default class LoginCodeKitten extends React.Component {
         e.preventDefault();
         console.log("The link was clicked.");
 
-        const origin = this.state.username.substring(0,2);
+        const origin = this.state.username.substring(1, this.state.username.length);
 
         const data = {
             client_id: "fcJoXwOWAaNPd8TiYckAR6Vi5RwtOysSGEiqIc6f",
             client_secret:
                 "DBd4m5Il5jRLc5c07ktA3IBSjcpjbThfqPqIJQZDyI7Iy2NXJYoQOoPq9eyi8Wd8Xk8VWYzbksyOIQp9oU5DWfyGCkWJ8XuRNFOfZkegKTE5UjNNQckLnVbqCfxqeEqY",
             username: "+84" + origin,
-            password: this.state.password
-
+            password: this.state.password,
+            grant_type:"password"
         };
+
+        const jsonString = JSON.stringify(data);
+
+        console.log("jsonString||||||||",jsonString)
         var url = APICodeKitten.auth_token;
         return fetch(url, {
             method: "POST",
@@ -90,13 +98,16 @@ export default class LoginCodeKitten extends React.Component {
             .then(
                 (result) => {
                     console.log("Result", result);
-
                     const value = result.message;
-
                     if(value.status_code==200)
                     {
 
+                       // localStorage.setItem("login", true);
+                        localStorage.setItem("phonenumber", this.state.username);
+                        localStorage.setItem("username", this.state.username);
                         this.onClose();
+                        localStorage.setItem("login", true);
+
                     }
                 },
                 (error) => {}
@@ -179,14 +190,14 @@ export default class LoginCodeKitten extends React.Component {
                                         >
                                             {" "}
                                             <i onClick={this.togglePasswordVisiblity}
-                                                className={ this.state.passwordShown?
-                                                    styles.icon_visible:styles.icon_invisible
+                                                className={ this.state.passwordShown ?
+                                                    styles.icon_visible : styles.icon_invisible
                                                 }
                                             ></i>
                                         </button>
                                     </div>
 
-                                    <div className={styles.btn_primary}>
+                                    <div onClick={this.handleClick} className={styles.btn_primary}>
                                         <div
                                             style={{
                                                 fontSize: 18,

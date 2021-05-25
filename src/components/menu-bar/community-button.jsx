@@ -18,13 +18,14 @@ const CommunityButton = ({
             styles.communityButton
         )}
 
+
         //  className={styles.menuBarButton}
 
         iconClassName={styles.communityButtonIcon}
         iconSrc={mystuffIcon}
         onClick={onClick}
     >
-       Dự án của bạn
+   <span style={{fontWeight:'bold'}}>Quản lý dự án</span> 
     </Button>
 );
 
