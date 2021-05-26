@@ -72,7 +72,7 @@ class Storage extends ScratchStorage {
       // var link_download = ConfigServer.host + "/api/asset/find/" + asset.assetId;
       
 
-      const host = "http://staging.teky.asia/v1/code_kittens_api/assets/";
+      const host = "http://dev.teky.asia/v1/code_kittens_api/assets/";
 
       const isSprite = localStorage.getItem("sprite");
       console.log("isSprite",isSprite);
