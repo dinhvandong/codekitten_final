@@ -180,7 +180,7 @@ class AlertLogin extends React.Component {
                             <div style={{width:'100%', justifyContent:'center', justifyItems:'center', marginTop:'20px' , display:'flex', flexDirection:'row', height:'100%'}}>
 
 
-                            <button onClick={this.logout_confirm_yes} style={{width:'50px', marginRight:'20px', height:'20px'}}>OK</button>
+                            <button onClick={this.logout_confirm_yes} style={{width:'60px', height:'25px', display:'flex', justifyContent:'center'}}><span style={{alignSelf:'center',  fontSize:'12px'}}>OK</span></button>
 
                             
                             </div>
