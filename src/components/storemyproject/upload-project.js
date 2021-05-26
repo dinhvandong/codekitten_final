@@ -9,10 +9,11 @@ import iconExit from "./ic_exit.png";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import downloadProject from "../../lib/download-project";
-import saveproject from "./saveproject.css";
+import saveproject from "./upload-project.css";
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { setStoreMyProject } from "../../reducers/mode";
 
+import "./upload-project.css";
 class UploadProject extends React.Component {
     constructor(props) {
         super(props);
@@ -67,7 +68,7 @@ class UploadProject extends React.Component {
     }
     closePopup() {
         console.log("Close Popup");
-        this.props.closeMyProject(false);
+        this.props.onClosePopup();
     }
     render() {
         return (
@@ -85,6 +86,8 @@ class UploadProject extends React.Component {
                     <div
                         id="main"
                         style={{
+                            width: 500,
+                            height:600,
                             borderTopLeftRadius: 10,
                             borderTopRightRadius: 10,
                             borderBottomLeftRadius: 10,
@@ -97,8 +100,9 @@ class UploadProject extends React.Component {
                             style={{
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
-                                backgroundColor: "#1CC3A5",
-                                display: "flex",
+                                backgroundImage:
+                                "linear-gradient(to right,#1CC3A5, #F9F154)",
+                              display: "flex",
                                 justifyContent: "center",
                                 alignContent: "center",
                                 height: 50,
@@ -157,11 +161,13 @@ class UploadProject extends React.Component {
                                 placeholder="Mô tả thông tin về dự án"
                             ></textarea>
 
-                            <form onSubmit={this.onFormSubmit}>
-                                <h1>File Upload</h1>
-                                <input type="file" onChange={this.onChange} />
-                                <button type="submit">Upload</button>
+                            <form style={{backgroundImage:'red', width:'100%', height:'100px',marginBottom:'20px'}} onSubmit={this.onFormSubmit}>
+                                <h3>Chọn tệp </h3>
+                                <input  type="file" onChange={this.onChange} />
                             </form>
+
+                            <div style={{display:'flex', marginTop:'50px', alignContent:'center', alignItems:'center', flexDirection:'row',marginTop:'20px'}}>
+
                             <button
                                 className={saveproject.btn}
                                 onClick={(e) => {
@@ -177,6 +183,9 @@ class UploadProject extends React.Component {
                             >
                                 Huỷ
                             </button>
+                            
+                            </div>
+                            
                         </form>
                     </div>
                 </view>
@@ -188,12 +197,13 @@ class UploadProject extends React.Component {
 }
 
 UploadProject.propTypes = {
-    closeMyProject: PropTypes.func,
-    children: PropTypes.func,
-    className: PropTypes.string,
-    onSaveFinished: PropTypes.func,
-    projectFilename: PropTypes.string,
-    saveProjectSb3: PropTypes.func,
+    onClosePopup: PropTypes.func
+    // closeMyProject: PropTypes.func,
+    // children: PropTypes.func,
+    // className: PropTypes.string,
+    // onSaveFinished: PropTypes.func,
+    // projectFilename: PropTypes.string,
+    // saveProjectSb3: PropTypes.func,
 };
 
 const getProjectFilename = (curTitle, defaultTitle) => {
@@ -205,7 +215,7 @@ const getProjectFilename = (curTitle, defaultTitle) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    closeMyProject: () => dispatch(setStoreMyProject(false)),
+   // closeMyProject: () => dispatch(setStoreMyProject(false)),
 });
 // const mapStateToProps = (state, ownProps) => {
 //     return null;

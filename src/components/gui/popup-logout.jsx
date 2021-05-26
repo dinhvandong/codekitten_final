@@ -157,6 +157,8 @@ class PopUpLogout extends React.Component {
                                     alignSelf: "center",
                                     fontSize: "13px",
                                     backgroundColor: "#0FBD8C",
+                                    backgroundImage:
+                                        "linear-gradient(to right,#1CC3A5, #F9F154)"
                                 }}
                             >
                                 <img
@@ -177,12 +179,12 @@ class PopUpLogout extends React.Component {
                                 </span>
                             </div>
 
-                            <div style={{width:'100%', justifyContent:'center', justifyItems:'center', marginTop:'20px' , display:'flex', flexDirection:'row', height:'100%'}}>
+                            <div style={{width:'100%', fontSize:'12px', justifyContent:'center', justifyItems:'center', marginTop:'20px' , display:'flex', flexDirection:'row', height:'100%'}}>
 
 
-                            <button onClick={this.logout_confirm_yes} style={{width:'50px', marginRight:'20px', height:'20px'}}>Yes</button>
+                            <button onClick={this.logout_confirm_yes} style={{width:'60px', borderColor:'gray', marginRight:'20px', height:'25px'}}> <span>Yes</span></button>
 
-                            <button onClick={this.logout_confirm_no} style={{width:'50px', height:'20px'}}>No</button>
+                            <button onClick={this.logout_confirm_no} style={{width:'60px', borderColor:'gray', height:'25px'}}> <span style={{fontWeight:'bold'}}>NO</span></button>
                             
                             </div>
                         </div>

@@ -1,15 +1,16 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import Radio from "@material-ui/core/Radio";
-import Paper from "@material-ui/core/Paper";
+
 export default class ProjectList extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { spacing: 2 };
+        this.state = { spacing: 2 , arrayItems:[] };
+        const arrayProject = []
+        for(var i = 0;i<15;i++)
+        {
+            arrayProject.push({name: "Dinh Dong", project:"ABC"});
+        }
+        this.state = { arrayProject };
         this.onShowDetail = this.onShowDetail.bind(this);
     }
     handleChange(event) {
@@ -21,6 +22,8 @@ export default class ProjectList extends React.Component {
     }
 
     render() {
+
+        console.log("state.arrayItems", this.state.arrayProject.length);
         return (
 
 
@@ -31,7 +34,7 @@ export default class ProjectList extends React.Component {
                         justify="center"
                         spacing={this.state.spacing}
                     >
-                        {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 11,12,13,14,15].map((value) => (
+                        {this.state.arrayProject.map((value) => (
                             <Grid key={value} item>
                                 <div onClick={this.onShowDetail}>
                                     <ProjectItem />

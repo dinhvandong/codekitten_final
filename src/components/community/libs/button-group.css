@@ -10,11 +10,15 @@
     font-weight: bold;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    box-shadow: inset;
 
     cursor: pointer;
     }
 
     .customButton_active {
+
+        box-shadow: inset;
+
 
     background-color: "#FFF";
     border: 1.5px solid rgb(255, 255, 255);
