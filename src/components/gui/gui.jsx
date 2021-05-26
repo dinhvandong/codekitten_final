@@ -62,8 +62,6 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import Typography from "@material-ui/core/Typography";
 import { flex } from "to-style/src/prefixProperties";
 import { ButtonToolbar } from "react-bootstrap";
-import { Popup } from "reactjs-popup";
-import "reactjs-popup/dist/index.css";
 
 import ShowMyProject from "../myproject/myproject2";
 import StoreMyProject from "../storemyproject/storemyproject";

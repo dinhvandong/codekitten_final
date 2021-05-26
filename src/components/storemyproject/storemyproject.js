@@ -2,7 +2,6 @@
 import { flex } from "to-style/src/prefixProperties";
 import bindAll from "lodash.bindall";
 import {projectTitleInitialState} from '../../reducers/project-title';
-import "reactjs-popup/dist/index.css";
 import React from "react";
 import Modal from "react-awesome-modal";
 import iconCat from "./ic_cat.svg";

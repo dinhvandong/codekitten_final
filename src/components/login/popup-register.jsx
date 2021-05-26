@@ -5,7 +5,6 @@ import { flex } from "to-style/src/prefixProperties";
 import bindAll from "lodash.bindall";
 //myproject.css";
 
-import "reactjs-popup/dist/index.css";
 import React from "react";
 import Modal from "react-awesome-modal";
 import iconExit from "./btnClose.png";

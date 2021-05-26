@@ -1,12 +1,10 @@
 
 import { flex } from "to-style/src/prefixProperties";
 import { ButtonToolbar } from "react-bootstrap";
-import { Popup } from "reactjs-popup";
 import bindAll from "lodash.bindall";
 import myproject from "../myproject/myproject.css";
 //myproject.css";
 
-import "reactjs-popup/dist/index.css";
 import React from "react";
 import Modal from "react-awesome-modal";
 import iconCat from "../gui/ic_cat.svg";

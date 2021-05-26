@@ -6,7 +6,6 @@ import icon_pagging_next from "./pagging_next.png";
 import icon_pagging_previous from './pagging_previous.png';
 
 import ButtonGroup from "./libs/ButtonGroup.js";
-import "reactjs-popup/dist/index.css";
 import React from "react";
 import Modal from "react-awesome-modal";
 import iconExit from "./btnClose.png";
