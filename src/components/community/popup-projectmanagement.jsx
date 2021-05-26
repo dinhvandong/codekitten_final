@@ -6,7 +6,6 @@ import icon_pagging_next from "./pagging_next.png";
 import icon_pagging_previous from './pagging_previous.png';
 
 import ButtonGroup from "./libs/ButtonGroup.js";
-import ProjectList from "./project-list.jsx";
 import "reactjs-popup/dist/index.css";
 import React from "react";
 import Modal from "react-awesome-modal";
@@ -31,7 +30,6 @@ import AlertLogin from "../gui/alert-login.jsx";
 
 require("./bootstrap.min.css");
 
-import PaginationComponent from "react-reactstrap-pagination";
 import "./bootstrap.min.css";
 
 import UploadProject from "../storemyproject/upload-project.js";
