@@ -1,1 +1,134 @@
-[{"assetId":"f26611da-67a5-43df-901a-56af8b1f19b8","tags":[],"name":"Hình nền 1","bitmapResolution":1,"dataFormat":"jpg","md5ext":"f26611da-67a5-43df-901a-56af8b1f19b8.jpg","rotationCenterX":100,"rotationCenterY":100,"assetLink":"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg1.jpg"},{"assetId":"347e77e0-a60e-4474-b955-276b5de3c562","tags":[],"name":"Hình nền 2","bitmapResolution":1,"dataFormat":"jpg","md5ext":"347e77e0-a60e-4474-b955-276b5de3c562.jpg","rotationCenterX":100,"rotationCenterY":100,"assetLink":"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg2.jpg"},{"assetId":"9d7dd736-b960-475e-b225-bca37a318e84","tags":[],"name":"Hình nền 3","bitmapResolution":1,"dataFormat":"jpg","md5ext":"9d7dd736-b960-475e-b225-bca37a318e84.jpg","rotationCenterX":100,"rotationCenterY":100,"assetLink":"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg3.jpg"},{"assetId":"33c74eaf-f5a3-46f1-bf27-d3a4886a104d","tags":[],"name":"Hình nền 4","bitmapResolution":1,"dataFormat":"jpg","md5ext":"33c74eaf-f5a3-46f1-bf27-d3a4886a104d.jpg","rotationCenterX":100,"rotationCenterY":100,"assetLink":"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg4.jpg"},{"assetId":"b505f761-7cf2-4ed7-8be8-7599ca693702","tags":[],"name":"Hình nền 5","bitmapResolution":1,"dataFormat":"jpg","md5ext":"b505f761-7cf2-4ed7-8be8-7599ca693702.jpg","rotationCenterX":100,"rotationCenterY":100,"assetLink":"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg5.jpg"},{"assetId":"60db8517-20fb-405d-862b-404ce19bdaf9","tags":[],"name":"Hình nền 6","bitmapResolution":1,"dataFormat":"jpg","md5ext":"60db8517-20fb-405d-862b-404ce19bdaf9.jpg","rotationCenterX":100,"rotationCenterY":100,"assetLink":"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg6.jpg"},{"assetId":"326614a7-6041-4557-82f4-6de7c5f77137","tags":[],"name":"Hình nền 7","bitmapResolution":1,"dataFormat":"jpg","md5ext":"326614a7-6041-4557-82f4-6de7c5f77137.jpg","rotationCenterX":100,"rotationCenterY":100,"assetLink":"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg7.jpg"},{"assetId":"b20d9a2b-d18a-4878-988f-aad39164918d","tags":[],"name":"Hình nền 8","bitmapResolution":1,"dataFormat":"jpg","md5ext":"b20d9a2b-d18a-4878-988f-aad39164918d.jpg","rotationCenterX":100,"rotationCenterY":100,"assetLink":"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg8.jpg"},{"assetId":"2c9cc45b-dc51-4abb-bcd1-cb371cff36b8","tags":[],"name":"Hình nền 9","bitmapResolution":1,"dataFormat":"jpg","md5ext":"2c9cc45b-dc51-4abb-bcd1-cb371cff36b8.jpg","rotationCenterX":100,"rotationCenterY":100,"assetLink":"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg9.jpg"},{"assetId":"9315c8cc-5f84-429c-89b7-009d4ef252e6","tags":[],"name":"Hình nền 10","bitmapResolution":1,"dataFormat":"jpg","md5ext":"9315c8cc-5f84-429c-89b7-009d4ef252e6.jpg","rotationCenterX":100,"rotationCenterY":100,"assetLink":"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg10.jpg"},{"assetId":"24d4b15f-ce93-43ca-ac08-1d38d0e5e965","tags":[],"name":"Hình nền 11","bitmapResolution":1,"dataFormat":"jpg","md5ext":"24d4b15f-ce93-43ca-ac08-1d38d0e5e965.jpg","rotationCenterX":100,"rotationCenterY":100,"assetLink":"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg11.jpg"},{"assetId":"1c40eff9-9151-4ea1-bab0-4e783a7eea8b","tags":[],"name":"Hình nền 12","bitmapResolution":1,"dataFormat":"jpg","md5ext":"1c40eff9-9151-4ea1-bab0-4e783a7eea8b.jpg","rotationCenterX":100,"rotationCenterY":100,"assetLink":"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg12.jpg"}]
+[
+    {
+        "assetId": "f26611da-67a5-43df-901a-56af8b1f19b8",
+        "tags": [],
+        "name": "Hình nền 1",
+        "bitmapResolution": 1,
+        "dataFormat": "jpg",
+        "md5ext": "f26611da-67a5-43df-901a-56af8b1f19b8.jpg",
+        "rotationCenterX": 100,
+        "rotationCenterY": 100,
+        "assetLink": "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg1.jpg"
+    },
+    {
+        "assetId": "347e77e0-a60e-4474-b955-276b5de3c562",
+        "tags": [],
+        "name": "Hình nền 2",
+        "bitmapResolution": 1,
+        "dataFormat": "jpg",
+        "md5ext": "347e77e0-a60e-4474-b955-276b5de3c562.jpg",
+        "rotationCenterX": 100,
+        "rotationCenterY": 100,
+        "assetLink": "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg2.jpg"
+    },
+    {
+        "assetId": "9d7dd736-b960-475e-b225-bca37a318e84",
+        "tags": [],
+        "name": "Hình nền 3",
+        "bitmapResolution": 1,
+        "dataFormat": "jpg",
+        "md5ext": "9d7dd736-b960-475e-b225-bca37a318e84.jpg",
+        "rotationCenterX": 100,
+        "rotationCenterY": 100,
+        "assetLink": "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg3.jpg"
+    },
+    {
+        "assetId": "33c74eaf-f5a3-46f1-bf27-d3a4886a104d",
+        "tags": [],
+        "name": "Hình nền 4",
+        "bitmapResolution": 1,
+        "dataFormat": "jpg",
+        "md5ext": "33c74eaf-f5a3-46f1-bf27-d3a4886a104d.jpg",
+        "rotationCenterX": 100,
+        "rotationCenterY": 100,
+        "assetLink": "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg4.jpg"
+    },
+    {
+        "assetId": "b505f761-7cf2-4ed7-8be8-7599ca693702",
+        "tags": [],
+        "name": "Hình nền 5",
+        "bitmapResolution": 1,
+        "dataFormat": "jpg",
+        "md5ext": "b505f761-7cf2-4ed7-8be8-7599ca693702.jpg",
+        "rotationCenterX": 100,
+        "rotationCenterY": 100,
+        "assetLink": "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg5.jpg"
+    },
+    {
+        "assetId": "60db8517-20fb-405d-862b-404ce19bdaf9",
+        "tags": [],
+        "name": "Hình nền 6",
+        "bitmapResolution": 1,
+        "dataFormat": "jpg",
+        "md5ext": "60db8517-20fb-405d-862b-404ce19bdaf9.jpg",
+        "rotationCenterX": 100,
+        "rotationCenterY": 100,
+        "assetLink": "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg6.jpg"
+    },
+    {
+        "assetId": "326614a7-6041-4557-82f4-6de7c5f77137",
+        "tags": [],
+        "name": "Hình nền 7",
+        "bitmapResolution": 1,
+        "dataFormat": "jpg",
+        "md5ext": "326614a7-6041-4557-82f4-6de7c5f77137.jpg",
+        "rotationCenterX": 100,
+        "rotationCenterY": 100,
+        "assetLink": "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg7.jpg"
+    },
+    {
+        "assetId": "b20d9a2b-d18a-4878-988f-aad39164918d",
+        "tags": [],
+        "name": "Hình nền 8",
+        "bitmapResolution": 1,
+        "dataFormat": "jpg",
+        "md5ext": "b20d9a2b-d18a-4878-988f-aad39164918d.jpg",
+        "rotationCenterX": 100,
+        "rotationCenterY": 100,
+        "assetLink": "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg8.jpg"
+    },
+    {
+        "assetId": "2c9cc45b-dc51-4abb-bcd1-cb371cff36b8",
+        "tags": [],
+        "name": "Hình nền 9",
+        "bitmapResolution": 1,
+        "dataFormat": "jpg",
+        "md5ext": "2c9cc45b-dc51-4abb-bcd1-cb371cff36b8.jpg",
+        "rotationCenterX": 100,
+        "rotationCenterY": 100,
+        "assetLink": "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg9.jpg"
+    },
+    {
+        "assetId": "9315c8cc-5f84-429c-89b7-009d4ef252e6",
+        "tags": [],
+        "name": "Hình nền 10",
+        "bitmapResolution": 1,
+        "dataFormat": "jpg",
+        "md5ext": "9315c8cc-5f84-429c-89b7-009d4ef252e6.jpg",
+        "rotationCenterX": 100,
+        "rotationCenterY": 100,
+        "assetLink": "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg10.jpg"
+    },
+    {
+        "assetId": "24d4b15f-ce93-43ca-ac08-1d38d0e5e965",
+        "tags": [],
+        "name": "Hình nền 11",
+        "bitmapResolution": 1,
+        "dataFormat": "jpg",
+        "md5ext": "24d4b15f-ce93-43ca-ac08-1d38d0e5e965.jpg",
+        "rotationCenterX": 100,
+        "rotationCenterY": 100,
+        "assetLink": "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg11.jpg"
+    },
+    {
+        "assetId": "1c40eff9-9151-4ea1-bab0-4e783a7eea8b",
+        "tags": [],
+        "name": "Hình nền 12",
+        "bitmapResolution": 1,
+        "dataFormat": "jpg",
+        "md5ext": "1c40eff9-9151-4ea1-bab0-4e783a7eea8b.jpg",
+        "rotationCenterX": 100,
+        "rotationCenterY": 100,
+        "assetLink": "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/backgrounds/2021/05/25/bg12.jpg"
+    }
+]

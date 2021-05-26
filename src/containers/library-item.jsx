@@ -115,12 +115,14 @@ class LibraryItem extends React.PureComponent {
         console.log("iconRawURL",this.state.sprite);
         const iconMd5 = this.curIconMd5().split(".");
         var iconURL = "";
+        //const root = "https://dev.teky.asia/v1";
+
         if(localStorage.getItem("sprite")== "true")
         {
-            iconURL = 'http://staging.teky.asia/v1/code_kittens_api/assets/' + iconMd5[0] ;
+            iconURL = 'http://dev.teky.asia/v1/code_kittens_api/assets/' + iconMd5[0] ;
         }else
         {
-            iconURL = 'http://staging.teky.asia/v1/code_kittens_api/assets/' + iconMd5[0] + '?type=background' ;
+            iconURL = 'http://dev.teky.asia/v1/code_kittens_api/assets/' + iconMd5[0] + '?type=background' ;
         }
         //ConfigServer.host + "/api/asset/find/" + iconMd5[0];
         console.log("iconURL",iconURL);
