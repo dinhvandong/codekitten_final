@@ -116,7 +116,8 @@ class LibraryItem extends React.PureComponent {
         console.log("YourChoice",localStorage.getItem("choice") );
 
 
-        if(localStorage.getItem("choice")=="extension")
+        if(localStorage.getItem("choice")==="extension"
+         || localStorage.getItem("choice")=== "tutorial" )
         {
 
             const iconMd5 = this.curIconMd5();

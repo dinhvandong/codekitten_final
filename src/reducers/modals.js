@@ -94,6 +94,7 @@ const openConnectionModal = function () {
     return openModal(MODAL_CONNECTION);
 };
 const openTipsLibrary = function () {
+    localStorage.setItem("choice","tutorial");
     return openModal(MODAL_TIPS_LIBRARY);
 };
 
