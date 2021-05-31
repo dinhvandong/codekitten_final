@@ -101,6 +101,8 @@ class PopUpRegister extends React.Component {
                         borderBottomLeftRadius: 10,
                         borderBottomRightRadius: 10,
                         overflow: "hidden",
+                        display:'flex',
+                        justifyContent:'center'
                     }}
                 >
                     <div
@@ -117,7 +119,7 @@ class PopUpRegister extends React.Component {
                     >
                         <div
                             style={{
-                                marginBottom: -40,
+                                marginBottom: -30,
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
                                 backgroundColor: "transparent",

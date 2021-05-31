@@ -1,5 +1,4 @@
 import React from 'react';
-const ConfigServer = {host:"http://128.199.145.159:8080", 
-host_asset:"http://128.199.145.159:8080"};
+const ConfigServer = {host:"https://dev.teky.asia/v1"};
 //http://dev.codekitten.asia
 export default ConfigServer;

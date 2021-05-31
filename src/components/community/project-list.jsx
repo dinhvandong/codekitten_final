@@ -50,7 +50,7 @@ export default class ProjectList extends React.Component {
 
 import styles from "./project-item.css";
 import subject from "./uploads/img-info-subject.png";
-class ProjectItem extends React.Component {
+export default class ProjectItem extends React.Component {
     constructor(props) {
         super(props);
     }

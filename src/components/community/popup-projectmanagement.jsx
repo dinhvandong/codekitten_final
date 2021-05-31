@@ -3,7 +3,9 @@ import bindAll from "lodash.bindall";
 import styles from "./community.css";
 import icon_add from "./add-codekitten.svg";
 import icon_pagging_next from "./pagging_next.png";
-import icon_pagging_previous from './pagging_previous.png';
+import ic_next from "./ic_next.png";
+import ic_back from "./ic_back.png";
+import icon_pagging_previous from "./pagging_previous.png";
 
 import ButtonGroup from "./libs/ButtonGroup.js";
 import React from "react";
@@ -12,8 +14,8 @@ import iconExit from "./btnClose.png";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import PropTypes from "prop-types";
-
 import ProjectItem from "./project-item.jsx";
+import   '../../lib/sb-file-uploader-hoc.jsx';
 
 import Grid from "@material-ui/core/Grid";
 import {
@@ -49,6 +51,8 @@ class PopUpProjectManagement extends React.Component {
             "onShowUploadProject",
             "onCloseUploadProject",
             "onChangePage",
+            "onClosePopupDetail",
+            "onRemix",
         ]);
         this.state = {
             isDetail: false,
@@ -58,15 +62,58 @@ class PopUpProjectManagement extends React.Component {
 
         this.state = { spacing: 2, arrayItems: [] };
         const arrayProject = [];
+        const arrayProjectTemp = [];
         for (var i = 0; i < 15; i++) {
-            arrayProject.push({ name: "Dinh Dong", project: "ABC" });
+           // arrayProject.push({ name: "Dinh Dong", project: "ABC" });
         }
         this.state = { arrayProject };
+        this.state = {arrayProjectTemp};
         this.onShowDetail = this.onShowDetail.bind(this);
+
+        this.onSearchProject = this.onSearchProject.bind(this);
+    }
+
+    // componentDidMount() {
+    // var url = "https://dev.teky.asia/v1/code_kittens_api/projects";
+    // console.log("jsonStringFormData1");
+    //  const formData = new FormData();
+    //  formData.append("page",1);
+    //  fetch(url, {
+    //         method: "GET",
+    //         body:formData
+    //     })
+    //         .then((res) => res.json)
+    //         .then(
+    //             (result) => {
+
+    //                 console.log("jsonStringFormData2");
+
+    //                 console.log("Result", JSON.stringify(result));
+    //                  const value = result.message;
+    //                  if (value.status_code == 200) {
+    //                      this.setState({ arrayProject: result.data });
+    //                      console.log("arrayProjectJson", result.data);
+    //                  }
+    //             },
+    //             (error) => {}
+    //         );
+    // }
+
+    componentDidMount() {
+        fetch('https://dev.teky.asia/v1/code_kittens_api/projects')
+        .then((response) => response.json())
+        .then(result => {
+        console.log("result",result)
+        const value = result.message;
+                if (value.status_code == 200) {
+                    this.setState({ arrayProject: result.data });
+                    this.setState({ arrayProjectTemp: result.data });
+                    console.log("arrayProjectJson", result.data);
+                }
+        });
     }
 
     onChangePage(pageOfItems) {
-        // update state with new page of items
         this.setState({ pageOfItems: pageOfItems });
     }
 
@@ -78,9 +125,59 @@ class PopUpProjectManagement extends React.Component {
     handleChange(event) {
         setSpacing(Number(event.target.value));
     }
-    onShowDetail() {
-        console.log("showDetailCCCC");
-        this.props.onShowDetail();
+    onShowDetail(name, description, created_by) 
+    {
+          console.log("showDetailCCCC");
+          localStorage.setItem("name", name);
+          localStorage.setItem("description", description);
+          localStorage.setItem("created_by", created_by);
+          this.setState({ isDetail: true });
+
+    }
+
+    onSearchProject(e)
+    {
+
+        const text = e.target.value;
+
+        console.log("search", text);
+
+        this.setState({arrayProjectTemp:[]})
+
+        var arrayProjectSearch = [];
+
+        for (var i =0;i<this.state.arrayProject.length;i++)
+        {
+            const temp = this.state.arrayProject[i];
+
+            if (temp.name.includes(text))
+            {
+
+                arrayProjectSearch.push(temp);
+
+            }
+
+        }
+
+        if(text !== '')
+        {
+            this.setState({arrayProjectTemp:arrayProjectSearch})
+
+
+        }else
+        {
+
+            this.setState({arrayProjectTemp:this.state.arrayProject})
+
+        }
+
+
+
+
+
+
+
+
     }
 
     onCloseLoginAlert() {
@@ -95,6 +192,24 @@ class PopUpProjectManagement extends React.Component {
     }
     onShowUploadProject() {
         this.setState({ showUploadProject: true });
+    }
+    onClosePopupDetail() {
+        console.log("onClosePopupDetail");
+
+        this.setState({ isDetail: false });
+    }
+
+    onRemix() {
+        this.props.closePopup();
+        const link_download = 'https://dev.teky.asia/v1/code_kittens_api/projects/908d9c64-7ffa-4624-8db1-03962879b8cf'
+        //'https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/projects/files/Scratch_Project_BGD.sb3';
+        fetch(link_download).then(res => {
+            const bufferArray = res.arrayBuffer().readas;
+            //this.props.vm.loadProject(bufferArray)
+            //onLoadProject(bufferArray);
+            // this.props.vm
+            // .loadProject(bufferArray)
+          });
     }
     closePopup() {
         console.log("Close Popup");
@@ -118,8 +233,6 @@ class PopUpProjectManagement extends React.Component {
         return [year, month, day].join("-");
     }
 
-    componentDidMount() {}
-
     toArrayBuffer(buffer) {
         var ab = new ArrayBuffer(buffer.length);
         var view = new Uint8Array(ab);
@@ -133,17 +246,17 @@ class PopUpProjectManagement extends React.Component {
         var newDate = new Date(
             date.getTime() + date.getTimezoneOffset() * 60 * 1000
         );
-
         var offset = date.getTimezoneOffset() / 60;
         var hours = date.getHours();
-
         newDate.setHours(hours - offset);
-
         return newDate;
     }
     render() {
         return (
             <Modal
+
+
+                style={{width:'100%'}}
                 id="modal"
                 name="modal"
                 visible={true}
@@ -153,19 +266,27 @@ class PopUpProjectManagement extends React.Component {
                 <view
                     id="viewid"
                     style={{
+
                         borderTopLeftRadius: 10,
                         borderTopRightRadius: 10,
                         borderBottomLeftRadius: 10,
                         borderBottomRightRadius: 10,
                         backgroundColor: "transparent",
+                        width: "100%",
+                        margin: 0,
+                        padding: 0,
+                        top: 0,
+                        left: 0,
+                        width: "100%",
                         overflow: "hidden",
                     }}
                 >
                     <div
+
                         id="main"
                         style={{
+                            
                             width: "100%",
-
                             padding: "20px",
                             height: "700px",
                             borderTopLeftRadius: 10,
@@ -214,14 +335,13 @@ class PopUpProjectManagement extends React.Component {
                             />
                         </div>
 
-                        <div
+                        <div id="div5"
                             style={{
                                 width: "100%",
                                 flexDirection: "column",
                                 justifyContent: "flex-start",
                                 display: "flex",
                                 borderRadius: "20px",
-
                                 alignContent: "flex-start",
                                 alignItems: "flex-start",
                                 height: "100%",
@@ -263,7 +383,7 @@ class PopUpProjectManagement extends React.Component {
                                             backgroundColor: "#FFF",
                                         }}
                                     >
-                                        <input
+                                        <input onChange = {this.onSearchProject}
                                             className={styles.input_search}
                                             style={{
                                                 flex: 10,
@@ -328,8 +448,7 @@ class PopUpProjectManagement extends React.Component {
 
                             <div style={{ marginTop: "-95px" }}>
                                 <ul className={styles.tabs}>
-                                    {localStorage.getItem("login") ===
-                                    "true" ? (
+                                    {localStorage.getItem("login") == "true" ? (
                                         <ButtonGroup
                                             buttons={[
                                                 "Dự án cộng đồng",
@@ -395,24 +514,27 @@ class PopUpProjectManagement extends React.Component {
                                     <Grid
                                         container
                                         style={{ zIndex: 1, flexGrow: 1 }}
-                                        spacing={2}
+                                        spacing={10}
                                     >
-                                        <Grid item xs={12}>
+                                        <Grid item xs={20}>
                                             <Grid
                                                 container
                                                 justify="center"
                                                 spacing={this.state.spacing}
                                             >
-                                                {this.state.arrayProject.map(
+                                                {this.state.arrayProjectTemp.map(
                                                     (value) => (
                                                         <Grid key={value} item>
                                                             <div
                                                                 onClick={
-                                                                    this
-                                                                        .onShowDetail
+                                                                   () => this
+                                                                        .onShowDetail(value.name, value.description, value.created_by)
+                                                                        //() => this.handleSort(column)
+                                                                        
+                                                                       
                                                                 }
                                                             >
-                                                                <ProjectItem />
+                                                                <ProjectItem description = {value.description} name= {value.name} thumb = {value.thumbnail_base64} linkdownload= {'https://dev.teky.asia/v1/code_kittens_api/projects/'+ value.id} />
                                                             </div>
                                                         </Grid>
                                                     )
@@ -447,23 +569,28 @@ class PopUpProjectManagement extends React.Component {
                                             style={{
                                                 alignSelf: "center",
                                                 width: "50px",
-                                                display:'flex',
+                                                display: "flex",
                                                 height: "30px",
-                                                justifyContent:'center',
+                                                justifyContent: "center",
                                                 backgroundColor: "#1CC3A5",
                                                 borderColor: "white",
                                                 marginLeft: "10px",
                                             }}
                                         >
-
-                                        <img style={{alignSelf:'center', width:'20px', height:'20px'}} src={icon_pagging_previous} />
-                                        
+                                            <img
+                                                style={{
+                                                    alignSelf: "center",
+                                                    width: "20px",
+                                                    height: "20px",
+                                                }}
+                                                src={icon_pagging_previous}
+                                            />
                                         </div>
 
                                         <div
                                             style={{
-                                                justifyContent:'center',
-                                                display:'flex',
+                                                justifyContent: "center",
+                                                display: "flex",
 
                                                 alignSelf: "center",
                                                 width: "50px",
@@ -473,32 +600,45 @@ class PopUpProjectManagement extends React.Component {
                                                 marginLeft: "10px",
                                             }}
                                         >
-                                        <img style={{alignSelf:'center', width:'20px', height:'20px'}} src={icon_pagging_previous} />
-
+                                            <img
+                                                style={{
+                                                    alignSelf: "center",
+                                                    width: "10px",
+                                                    height: "10px",
+                                                }}
+                                                src={ic_back}
+                                            />
                                         </div>
-
-
-                                        <div
-                                        style={{
-                                            justifyContent:'center',
-                                            display:'flex',
-
-                                            alignSelf: "center",
-                                            width: "100px",
-                                            height: "30px",
-                                            backgroundColor: "#1CC3A5",
-                                            borderColor: "white",
-                                            marginLeft: "10px",
-                                        }}
-                                    >
-                                    <span  style={{alignSelf:'center', fontWeight:'bold', color:'white', fontSize:12}}>Trang 1/100</span>
-
-                                    </div>
 
                                         <div
                                             style={{
-                                                justifyContent:'center',
-                                                display:'flex',
+                                                justifyContent: "center",
+                                                display: "flex",
+
+                                                alignSelf: "center",
+                                                width: "100px",
+                                                height: "30px",
+                                                backgroundColor: "#1CC3A5",
+                                                borderColor: "white",
+                                                marginLeft: "10px",
+                                            }}
+                                        >
+                                            <span
+                                                style={{
+                                                    alignSelf: "center",
+                                                    fontWeight: "bold",
+                                                    color: "white",
+                                                    fontSize: 12,
+                                                }}
+                                            >
+                                                Trang 1/100
+                                            </span>
+                                        </div>
+
+                                        <div
+                                            style={{
+                                                justifyContent: "center",
+                                                display: "flex",
 
                                                 alignSelf: "center",
                                                 width: "50px",
@@ -508,16 +648,20 @@ class PopUpProjectManagement extends React.Component {
                                                 marginLeft: "10px",
                                             }}
                                         >
-                                        
-                                        <img style={{alignSelf:'center', width:'20px', height:'20px'}} src={icon_pagging_next} />
-
+                                            <img
+                                                style={{
+                                                    alignSelf: "center",
+                                                    width: "10px",
+                                                    height: "10px",
+                                                }}
+                                                src={ic_next}
+                                            />
                                         </div>
 
                                         <div
                                             style={{
-
-                                                justifyContent:'center',
-                                                display:'flex',
+                                                justifyContent: "center",
+                                                display: "flex",
 
                                                 alignSelf: "center",
                                                 width: "50px",
@@ -527,9 +671,14 @@ class PopUpProjectManagement extends React.Component {
                                                 marginLeft: "10px",
                                             }}
                                         >
-                                        
-                                        <img style={{alignSelf:'center', width:'20px', height:'20px'}} src={icon_pagging_next} />
-
+                                            <img
+                                                style={{
+                                                    alignSelf: "center",
+                                                    width: "20px",
+                                                    height: "20px",
+                                                }}
+                                                src={icon_pagging_next}
+                                            />
                                         </div>
                                     </div>
                                 </div>
@@ -544,7 +693,10 @@ class PopUpProjectManagement extends React.Component {
                                 >
                                     {this.state.isDetail ? (
                                         <ProjectDetail
-                                            onClosePopup={this.onClose}
+                                            onRemix={this.onRemix}
+                                            onClosePopup={
+                                                this.onClosePopupDetail
+                                            }
                                         />
                                     ) : (
                                         <div></div>
@@ -601,6 +753,9 @@ PopUpProjectManagement.propTypes = {
     //closeLogin: PropTypes.func,
     closePopup: PropTypes.func,
     setShow: PropTypes.func,
+    vm: PropTypes.shape({
+        loadProject: PropTypes.func
+    })
 };
 
 const mapDispatchToProps = (dispatch) => ({

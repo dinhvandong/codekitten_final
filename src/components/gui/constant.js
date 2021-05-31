@@ -6,7 +6,11 @@ export const SCREENS = {
      screen_OTP : "OTP",
      screen_ALL: "ALL",
      screen_PM:"ProjectManagement",
-     screen_Logout: "Logout"
+     screen_Logout: "Logout",
+     screen_LoginRequire: "LoginRequire",
+     screen_SaveProject: "SaveProject"
+
+
 
 
 }

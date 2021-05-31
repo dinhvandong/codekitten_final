@@ -42,33 +42,12 @@ import {SCREENS}from "../gui/constant.js";
         super(props);
         bindAll(this, [
             "closePopup"
-            // "handleChangePage",
-            // "handleChangeRowsPerPage",
-            // "convertStringtoDate",
-            // "formatDate",
-            // "convertUTCDateToLocalDate",
+           
         ]);
-        // this.state = { user: [], page: 0, rowsPerPage: 5, emptyRows: 0 };
-
-        // this.state.user = [];
-        // this.state.page = 0;
-        // this.state.rowsPerPage = 5;
-        // this.state.emptyRows =
-        //     this.state.rowsPerPage -
-        //     Math.min(
-        //         this.state.rowsPerPage,
-        //         this.state.user.length -
-        //             this.state.page * this.state.rowsPerPage
-        //     );
+       
     }
 
-    // handleChangePage(event, page) {
-    //     this.setState({ page });
-    // }
-
-    // handleChangeRowsPerPage(event) {
-    //     this.setState({ rowsPerPage: event.target.value });
-    // }
+    
     closePopup() {
         console.log("Close Popup");
         this.props.closePopup();
@@ -115,38 +94,6 @@ import {SCREENS}from "../gui/constant.js";
         return ab;
     }
 
-    // onload() {
-    //     console.log("Click CLick");
-    //     this.props.onLoadingStarted();
-    //     const filename = "./Scratch.sb3";
-    //     fs.readFile(filename, function (err, buffer) {
-    //         if (err) throw errr;
-    //         const bufferArray = toArrayBuffer(buffer);
-    //         this.props.onLoadingStarted();
-    //         const filename = this.fileToUpload && this.fileToUpload.name;
-    //         let loadingSuccess = false;
-    //         this.props.vm
-    //             .loadProject(bufferArray)
-    //             .then(() => {
-    //                 if (filename) {
-    //                     const uploadedProjectTitle =
-    //                         this.getProjectTitleFromFilename(filename);
-    //                     this.props.onSetProjectTitle(uploadedProjectTitle);
-    //                 }
-    //                 loadingSuccess = true;
-    //             })
-    //             .catch((error) => {
-    //                 log.warn(error);
-    //                 alert(this.props.intl.formatMessage(messages.loadError)); // eslint-disable-line no-alert
-    //             })
-    //             .then(() => {
-    //                 this.props.onLoadingFinished(
-    //                     this.props.loadingState,
-    //                     loadingSuccess
-    //                 );
-    //             });
-    //     });
-    // }
 
     convertUTCDateToLocalDate(date) {
         var newDate = new Date(
@@ -187,6 +134,8 @@ import {SCREENS}from "../gui/constant.js";
                         borderBottomLeftRadius: 10,
                         borderBottomRightRadius: 10,
                         overflow: "hidden",
+                        display:'flex',
+                        justifyContent:'center'
                     }}
                 >
                     <div
@@ -197,13 +146,12 @@ import {SCREENS}from "../gui/constant.js";
                             borderTopRightRadius: 10,
                             borderBottomLeftRadius: 10,
                             borderBottomRightRadius: 10,
-                            display: flex,
                             justifyContent: "center",
                         }}
                     >
                         <div
                             style={{
-                                marginBottom:-40,
+                                marginBottom:-30,
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
                                 backgroundColor: "transparent",
@@ -239,7 +187,7 @@ import {SCREENS}from "../gui/constant.js";
                             />
                         </div>
 
-                        <LoginCodeKitten closePopup = {this.props.closePopup} setShow={this.props.setShow}/>
+                        <LoginCodeKitten  closePopup = {this.props.closePopup} setShow={this.props.setShow}/>
                     </div>
                 </view>
             </Modal>

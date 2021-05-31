@@ -72,17 +72,21 @@ class Storage extends ScratchStorage {
       // var link_download = ConfigServer.host + "/api/asset/find/" + asset.assetId;
       
 
-      var host = "http://dev.teky.asia/v1/code_kittens_api/assets/";
+      var host = "https://dev.teky.asia/v1/code_kittens_api/assets/";
 
       const isSprite = localStorage.getItem("sprite");
       console.log("isSprite",isSprite);
       var iconURL = "";
-      if(isSprite){
+      if(isSprite==='true'){
           iconURL = host + asset.assetId
       }else
       {
           iconURL = host + asset.assetId + "?type=background";
       }
+
+      const link = 'https://dev.teky.asia/v1/code_kittens_api/assets/10989781-da64-4409-843a-4c1aecdbeeb3';
+      //"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/assets/2021/05/25/robot_8.svg";
+
       console.log("LINNNNNN:",iconURL);
        return iconURL;
     }

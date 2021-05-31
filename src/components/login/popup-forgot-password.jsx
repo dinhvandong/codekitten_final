@@ -120,6 +120,8 @@ import ForgotPassword from "./forgot-password.jsx";
                         borderBottomLeftRadius: 10,
                         borderBottomRightRadius: 10,
                         overflow: "hidden",
+                        display:'flex',
+                        justifyContent:'center'
                     }}
                 >
                     <div
@@ -136,7 +138,7 @@ import ForgotPassword from "./forgot-password.jsx";
                     >
                         <div
                             style={{
-                                marginBottom:-40,
+                                marginBottom:-30,
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
                                 backgroundColor: "transparent",

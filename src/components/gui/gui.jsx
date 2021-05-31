@@ -74,10 +74,11 @@ import PopUpLogin from "../login/popup-login.jsx";
 import LoginCodeKitten from "../login/login.jsx";
 import PopUpRegisterOTP from "../login/popup-register-otp.jsx";
 import PopupForgotPassword from "../login/popup-forgot-password.jsx";
-import PopUpRegisterPassword from '../login/popup-register-password.jsx';
+import PopUpRegisterPassword from "../login/popup-register-password.jsx";
 import PopUpProjectManagement from "../community/popup-projectmanagement.jsx";
 
-import PopUpLogout from './popup-logout.jsx';
+import AlertLogin from "./alert-login.jsx";
+import PopUpLogout from "./popup-logout.jsx";
 //import soundsIcon from './icon--sounds.svg';
 //ico_ Costumes-White.png
 const messages = defineMessages({
@@ -197,9 +198,11 @@ const GUIComponent = (props) => {
     if (isRendererSupported === null) {
         isRendererSupported = Renderer.isSupported();
     }
+    const [showPopupSaveProject, setShowPopupSaveProject] = useState(false);
     const [showRgOtp, setShowRgOtp] = useState(false);
     const [showPM, setShowPM] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
+    const [showRequireLogin, setShowRequireLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
     const [showRegisterPassword, setShowRegisterPassword] = useState(false);
     const [showForgotPassword, setShowForgotPassword] = useState(false);
@@ -219,9 +222,18 @@ const GUIComponent = (props) => {
         setShowForgotPassword(false);
         setShowPM(false);
         setShowLogoutAlert(false);
+        setShowRequireLogin(false);
+        setShowPopupSaveProject(false);
     };
 
-    
+    const onCloseLoginRequire = () => {
+        setShowRequireLogin(false);
+    };
+
+    const onShowLoginRequire = () => {
+        setShowRequireLogin(true);
+    };
+
     const setShow = (screen) => {
         switch (screen) {
             case SCREENS.screen_Login: {
@@ -232,6 +244,8 @@ const GUIComponent = (props) => {
                 setShowForgotPassword(false);
                 setShowPM(false);
                 setShowLogoutAlert(false);
+                setShowRequireLogin(false);
+                setShowPopupSaveProject(false);
 
                 break;
             }
@@ -244,7 +258,8 @@ const GUIComponent = (props) => {
                 setShowForgotPassword(false);
                 setShowPM(false);
                 setShowLogoutAlert(false);
-
+                setShowRequireLogin(false);
+                setShowPopupSaveProject(false);
 
                 break;
             }
@@ -257,7 +272,8 @@ const GUIComponent = (props) => {
                 setShowForgotPassword(false);
                 setShowPM(false);
                 setShowLogoutAlert(false);
-
+                setShowRequireLogin(false);
+                setShowPopupSaveProject(false);
 
                 break;
             }
@@ -270,7 +286,8 @@ const GUIComponent = (props) => {
                 setShowForgotPassword(true);
                 setShowPM(false);
                 setShowLogoutAlert(false);
-
+                setShowRequireLogin(false);
+                setShowPopupSaveProject(false);
 
                 break;
             }
@@ -282,12 +299,13 @@ const GUIComponent = (props) => {
                 setShowForgotPassword(false);
                 setShowPM(false);
                 setShowLogoutAlert(false);
-
+                setShowRequireLogin(false);
+                setShowPopupSaveProject(false);
 
                 break;
             }
 
-            case "ALL":{
+            case "ALL": {
                 setShowLogin(false);
                 setShowRgOtp(false);
                 setShowRegister(false);
@@ -295,11 +313,13 @@ const GUIComponent = (props) => {
                 setShowForgotPassword(false);
                 setShowPM(false);
                 setShowLogoutAlert(false);
+                setShowRequireLogin(false);
+                setShowPopupSaveProject(false);
 
                 break;
             }
 
-            case SCREENS.screen_PM:{
+            case SCREENS.screen_PM: {
                 setShowLogin(false);
                 setShowRgOtp(false);
                 setShowRegister(false);
@@ -307,11 +327,13 @@ const GUIComponent = (props) => {
                 setShowForgotPassword(false);
                 setShowPM(true);
                 setShowLogoutAlert(false);
+                setShowRequireLogin(false);
+                setShowPopupSaveProject(false);
 
-            break;
+                break;
             }
 
-            case SCREENS.screen_Logout:{
+            case SCREENS.screen_Logout: {
                 setShowLogin(false);
                 setShowRgOtp(false);
                 setShowRegister(false);
@@ -319,12 +341,61 @@ const GUIComponent = (props) => {
                 setShowForgotPassword(false);
                 setShowPM(false);
                 setShowLogoutAlert(true);
+                setShowRequireLogin(false);
+                setShowPopupSaveProject(false);
 
                 break;
             }
+
+            case SCREENS.screen_LoginRequire: {
+                setShowLogin(false);
+                setShowRgOtp(false);
+                setShowRegister(false);
+                setShowRegisterPassword(false);
+                setShowForgotPassword(false);
+                setShowPM(false);
+                setShowLogoutAlert(false);
+                setShowRequireLogin(true);
+                setShowPopupSaveProject(false);
+
+                break;
+            }
+
+            case SCREENS.screen_SaveProject: {
+
+                if(localStorage.getItem("login")==='true')
+                {
+                    setShowLogin(false);
+                    setShowRgOtp(false);
+                    setShowRegister(false);
+                    setShowRegisterPassword(false);
+                    setShowForgotPassword(false);
+                    setShowPM(false);
+                    setShowLogoutAlert(false);
+                    setShowRequireLogin(false);
+                    setShowPopupSaveProject(true);
+
+
+                }
+                else
+                {
+
+                setShowLogin(false);
+                setShowRgOtp(false);
+                setShowRegister(false);
+                setShowRegisterPassword(false);
+                setShowForgotPassword(false);
+                setShowPM(false);
+                setShowLogoutAlert(false);
+                setShowRequireLogin(true);
+                setShowPopupSaveProject(false);
+
+                }
+                
+            }
         }
     };
-  
+
     return (
         <MediaQuery minWidth={layout.fullSizeMinWidth}>
             {(isFullSize) => {
@@ -445,13 +516,17 @@ const GUIComponent = (props) => {
                                     onShowScreen={() => {
                                         setShow(screen_Register);
                                     }}
-
                                     onShowLogout={() => {
                                         setShow(SCREENS.screen_Logout);
                                     }}
-
                                     onShowPM={() => {
                                         setShow(SCREENS.screen_PM);
+                                    }}
+                                    onShowSaveProject={() => {
+                                        setShow(SCREENS.screen_SaveProject);
+                                    }}
+                                    onShowLoginRequire={() => {
+                                        setShow(SCREENS.screen_LoginRequire);
                                     }}
                                 />
                                 <Box className={styles.bodyWrapper}>
@@ -666,11 +741,20 @@ const GUIComponent = (props) => {
                                 <DragLayer />
                             </Box>
                             <div>
-                                {storeMyProject ? (
-                                    <StoreMyProject />
+                                {showPopupSaveProject ? (
+                                    <StoreMyProject closePopup={closeAll}
+                                    setShow={setShow}  />
                                 ) : (
-                                    <div></div>
+                                    <div> </div>
                                 )}
+                            </div>
+                            <div>
+                            {showRequireLogin ? (
+                                <AlertLogin onClosePopup = {closeAll} closePopupFromGUI ={closeAll}
+                                  />
+                            ) : (
+                                <div> </div>
+                            )}
                             </div>
                             <div>
                                 {showMyProject ? (
@@ -684,11 +768,15 @@ const GUIComponent = (props) => {
 
                             <div>
                                 {showLogin ? (
-                                    <PopUpLogin setShow={setShow} closePopup={closeAll} />
+                                    <PopUpLogin
+                                        setShow={setShow}
+                                        closePopup={closeAll}
+                                    />
                                 ) : (
                                     <div></div>
                                 )}
                             </div>
+
                             <div>
                                 {showRegister ? (
                                     <PopUpRegister
@@ -704,9 +792,8 @@ const GUIComponent = (props) => {
                             <div>
                                 {showRgOtp ? (
                                     <PopUpRegisterOTP
-                                    closePopup={closeAll}
-                                    setShow={setShow}
-
+                                        closePopup={closeAll}
+                                        setShow={setShow}
                                     />
                                 ) : (
                                     <div></div>
@@ -716,8 +803,8 @@ const GUIComponent = (props) => {
                             <div>
                                 {showForgotPassword ? (
                                     <PopupForgotPassword
-                                    closePopup={closeAll}
-                                    setShow={setShow}
+                                        closePopup={closeAll}
+                                        setShow={setShow}
                                     />
                                 ) : (
                                     <div></div>
@@ -727,20 +814,19 @@ const GUIComponent = (props) => {
                             <div>
                                 {showRegisterPassword ? (
                                     <PopUpRegisterPassword
-                                    closePopup={closeAll}
-                                    setShow={setShow}
+                                        closePopup={closeAll}
+                                        setShow={setShow}
                                     />
                                 ) : (
                                     <div></div>
                                 )}
                             </div>
-
 
                             <div>
                                 {showPM ? (
                                     <PopUpProjectManagement
-                                    closePopup={closeAll}
-                                    setShow={setShow}
+                                        closePopup={closeAll}
+                                        setShow={setShow}
                                     />
                                 ) : (
                                     <div></div>
@@ -748,15 +834,15 @@ const GUIComponent = (props) => {
                             </div>
 
                             <div>
-                            {logoutAlert ? (
-                                <PopUpLogout
-                                closePopup={closeAll}
-                                setShow={setShow}
-                                />
-                            ) : (
-                                <div></div>
-                            )}
-                        </div>
+                                {logoutAlert ? (
+                                    <PopUpLogout
+                                        closePopup={closeAll}
+                                        setShow={setShow}
+                                    />
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
                         </div>
                     );
                 }
@@ -817,8 +903,11 @@ GUIComponent.propTypes = {
     onShowRegister: PropTypes.func,
     onShowScreen: PropTypes.func,
     onShowPM: PropTypes.func,
-    onShowLogout:PropTypes.func,
+    onShowSaveProject: PropTypes.func,
+    onShowLoginRequire: PropTypes.func,
+    onShowLogout: PropTypes.func,
     onStoreMyProject: PropTypes.func,
+    onCloseLoginRequire: PropTypes.func,
     soundsTabVisible: PropTypes.bool,
     onShare: PropTypes.func,
     onShowPrivacyPolicy: PropTypes.func,

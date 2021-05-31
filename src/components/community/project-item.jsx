@@ -10,6 +10,7 @@ export default class ProjectItem extends React.Component {
     }
     render() {
         return (
+            <div className={styles.border_all}>
             <div className={styles.c_project_courses__outer} onClick={this.props.showDetail}>
                 <div className={styles.c_project_courses_before}>
                     <div className={styles.c_is_project}>
@@ -21,7 +22,7 @@ export default class ProjectItem extends React.Component {
 
                     <div className={styles.c_titlebox_project}>
                         <div className={styles.c_titlebox_project__left}>
-                            <span>Ninja siêu đẳng</span>
+                            <span>{this.props.name}</span>
                         </div>
 
                         <div className={styles.c_titlebox_project__right}>
@@ -37,10 +38,12 @@ export default class ProjectItem extends React.Component {
                             color: "#007bff",
                         }}
                     >
-                        <span>Bé làm game</span>
+                        <span>{this.props.description}</span>
                     </div>
                 </div>
             </div>
-        );
+        
+            </div>
+            );
     }
 }

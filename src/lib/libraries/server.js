@@ -16,7 +16,7 @@ request(
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization:"Bearer f8F5yGLxcmEKlfTCxaFGLvqeVzFPyy"
+            Authorization: "Bearer YJvWUUqhFWdkd2SaMVGmT9AgIKcanq",
         },
     },
     function (error, response, jsonContent) {
@@ -43,7 +43,7 @@ request(
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization:"Bearer f8F5yGLxcmEKlfTCxaFGLvqeVzFPyy"
+            Authorization: "Bearer YJvWUUqhFWdkd2SaMVGmT9AgIKcanq",
         },
     },
     function (error, response, jsonContent) {
@@ -70,7 +70,7 @@ request(
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization:"Bearer f8F5yGLxcmEKlfTCxaFGLvqeVzFPyy"
+            Authorization: "Bearer YJvWUUqhFWdkd2SaMVGmT9AgIKcanq",
         },
     },
     function (error, response, jsonContent) {

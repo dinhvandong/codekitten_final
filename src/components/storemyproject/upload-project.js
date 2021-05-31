@@ -13,6 +13,7 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { setStoreMyProject } from "../../reducers/mode";
 
 import "./upload-project.css";
+import ConfigServer from "../../config_server";
 class UploadProject extends React.Component {
     constructor(props) {
         super(props);
@@ -29,11 +30,15 @@ class UploadProject extends React.Component {
         ]);
         this.myChangeHandlerName.bind(this);
         this.myChangeHandlerDesc.bind(this);
-        this.state ={
-          file:null
+        this.state = {
+          file:null 
         }
+
+        this.state = {cover: null}
         this.onFormSubmit = this.onFormSubmit.bind(this)
-        this.onChange = this.onChange.bind(this)
+        this.onChangeCover = this.onChangeCover.bind(this)
+        this.onChangeFile = this.onChangeFile.bind(this)
+
     }
 
     myChangeHandlerName(event) {
@@ -45,24 +50,44 @@ class UploadProject extends React.Component {
         this.setState({ projectDesc: event.target.value });
         console.log("projectDesc", event.target.value);
     }
-    storeMyProject(name, desc) {
-        this.props.saveProjectSb3().then((content) => {
-            const fileName = `${name.substring(0, 100)}.sb3`;
-            downloadProject(fileName, content, name, desc);
-        });
+    storeMyProject(name, desc, file, cover) {
+        
+
+
+        const formData = new FormData();
+         const link_upload = ConfigServer.host + "/code_kittens_api/projects";
+         //https://dev.teky.asia/v1/code_kittens_api/projects/
+         //const file = new File([blob], filename);
+         formData.append("project_file", file);
+         formData.append("thumbnail", cover);
+         formData.append("description",desc);
+         formData.append("name",name);
+
+         return fetch(link_upload, {
+             method: "POST",
+             body: formData,
+         });
     }
     onFormSubmit(e){
       e.preventDefault() // Stop form submit
-      this.fileUpload(this.state.file).then((response)=>{
-        console.log(response.data);
-      })
+    //   this.fileUpload(this.state.file).then((response)=>{
+    //     console.log(response.data);
+    //   })
     }
-    onChange(e) {
+    onChangeFile(e) {
       this.setState({file:e.target.files[0]})
     }
+
+    onChangeCover(e) {
+        this.setState({cover:e.target.files[0]})
+      }
     saveproject(e) {
         e.preventDefault();
-        this.storeMyProject(this.state.projectName, this.state.projectDesc);
+
+        const file = this.state.file;
+        const cover = this.state.cover;
+
+        this.storeMyProject(this.state.projectName, this.state.projectDesc, file, cover);
         alert("Dự án lưu thành công !");
     }
     closePopup() {
@@ -80,6 +105,7 @@ class UploadProject extends React.Component {
                         borderBottomLeftRadius: 10,
                         borderBottomRightRadius: 10,
                         overflow: "hidden",
+                        display:'flex', justifyContent:'center'
                     }}
                 >
                     <div
@@ -91,7 +117,6 @@ class UploadProject extends React.Component {
                             borderTopRightRadius: 10,
                             borderBottomLeftRadius: 10,
                             borderBottomRightRadius: 10,
-                            display: flex,
                             justifyContent: "center",
                         }}
                     >
@@ -99,6 +124,7 @@ class UploadProject extends React.Component {
                             style={{
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
+                                
                                 backgroundImage:
                                 "linear-gradient(to right,#1CC3A5, #F9F154)",
                               display: "flex",
@@ -160,9 +186,12 @@ class UploadProject extends React.Component {
                                 placeholder="Mô tả thông tin về dự án"
                             ></textarea>
 
-                            <form style={{backgroundImage:'red', width:'100%', height:'100px',marginBottom:'20px'}} onSubmit={this.onFormSubmit}>
-                                <h3>Chọn tệp </h3>
-                                <input  type="file" onChange={this.onChange} />
+                            <form style={{backgroundImage:'red', width:'100%', height:'120px',marginBottom:'20px'}} onSubmit={this.onFormSubmit}>
+                                <h6>Chọn dự án </h6>
+                                <input  type="file" onChange={this.onChangeFile} />
+
+                                <h6 style={{marginTop:'10px'}}>Chọn ảnh bìa(400x400) </h6>
+                                <input  type="file" onChange={this.onChangeCover} />
                             </form>
 
                             <div style={{display:'flex', marginTop:'50px', alignContent:'center', alignItems:'center', flexDirection:'row',marginTop:'20px'}}>
@@ -178,7 +207,7 @@ class UploadProject extends React.Component {
                             <button
                                 type="button"
                                 className={saveproject.cancel}
-                                onclick="closeForm()"
+                                onClick={this.closePopup}
                             >
                                 Huỷ
                             </button>

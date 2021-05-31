@@ -50,7 +50,7 @@ const SBFileUploaderHOC = function (WrappedComponent) {
                 'handleStartSelectingFileUpload',
                 'handleChange',
                 'onload',
-                'removeFileObjects'
+                'removeFileObjects','onLoadProject'
             ]);
         }
         componentDidUpdate (prevProps) {
@@ -67,9 +67,12 @@ const SBFileUploaderHOC = function (WrappedComponent) {
         }
         // step 2: create a FileReader and an <input> element, and issue a
         // pseudo-click to it. That will open the file chooser dialog.
+        
+        // Tao ra project new 
         createFileObjects () {
             // redo step 7, in case it got skipped last time and its objects are
             // still in memory
+            //
             this.removeFileObjects();
             // create fileReader
             this.fileReader = new FileReader();
@@ -169,6 +172,40 @@ const SBFileUploaderHOC = function (WrappedComponent) {
                     });
             }
         }
+
+
+        onLoadProject(arrayBuffer)
+        {
+            // ham tu viet o day de load ve project
+            this.props.onLoadingStarted();
+                const filename = "test.sb3"
+                //this.fileToUpload && this.fileToUpload.name;
+                let loadingSuccess = false;
+                this.props.vm.loadProject(arrayBuffer)
+                    .then(() => {
+                        if (filename) {
+                            const uploadedProjectTitle = "test game"
+                            //this.getProjectTitleFromFilename(filename);
+                            this.props.onSetProjectTitle(uploadedProjectTitle);
+                        }
+                        loadingSuccess = true;
+                    })
+                    .catch(error => {
+                        log.warn(error);
+                        alert(this.props.intl.formatMessage(messages.loadError)); // eslint-disable-line no-alert
+                    })
+                    .then(() => {
+                        this.props.onLoadingFinished(this.props.loadingState, loadingSuccess);
+                        // go back to step 7: whether project loading succeeded
+                        // or failed, reset file objects
+                        this.removeFileObjects();
+                    });
+
+
+
+        }
+
+
         // step 7: remove the <input> element from the DOM and clear reader and
         // fileToUpload reference, so those objects can be garbage collected
         removeFileObjects () {

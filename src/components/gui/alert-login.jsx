@@ -27,6 +27,7 @@ class AlertLogin extends React.Component {
     logout_confirm_yes() {
         console.log("Close Popup");
         this.props.onClosePopup();
+        this.props.closePopupFromGUI();
        // localStorage.setItem("login", false);
     }
 
@@ -97,6 +98,8 @@ class AlertLogin extends React.Component {
                         borderBottomLeftRadius: 10,
                         borderBottomRightRadius: 10,
                         overflow: "hidden",
+                        display:'flex',
+                        justifyContent:'center'
                     }}
                 >
                     <div
@@ -113,7 +116,7 @@ class AlertLogin extends React.Component {
                     >
                         <div
                             style={{
-                                marginBottom: -40,
+                                marginBottom: -30,
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
                                 backgroundColor: "transparent",
@@ -180,7 +183,7 @@ class AlertLogin extends React.Component {
                             <div style={{width:'100%', justifyContent:'center', justifyItems:'center', marginTop:'20px' , display:'flex', flexDirection:'row', height:'100%'}}>
 
 
-                            <button onClick={this.logout_confirm_yes} style={{width:'60px', height:'25px', display:'flex', justifyContent:'center'}}><span style={{alignSelf:'center',  fontSize:'12px'}}>OK</span></button>
+                            <button onClick={this.logout_confirm_yes} style={{width:'60px', height:'25px', display:'flex', borderRadius:'5px', borderColor:'transparent', justifyContent:'center'}}><span style={{alignSelf:'center',  fontSize:'12px'}}>OK</span></button>
 
                             
                             </div>
@@ -196,6 +199,7 @@ AlertLogin.propTypes = {
     //closeLogin: PropTypes.func,
     onClosePopup: PropTypes.func,
     setShow: PropTypes.func,
+    closePopupFromGUI: PropTypes.func
 };
 
 const mapDispatchToProps = (dispatch) => ({

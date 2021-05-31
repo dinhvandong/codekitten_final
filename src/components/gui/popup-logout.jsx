@@ -97,6 +97,8 @@ class PopUpLogout extends React.Component {
                         borderBottomLeftRadius: 10,
                         borderBottomRightRadius: 10,
                         overflow: "hidden",
+                        display: 'flex',
+                        justifyContent: "center",
                     }}
                 >
                     <div
@@ -107,13 +109,12 @@ class PopUpLogout extends React.Component {
                             borderTopRightRadius: 10,
                             borderBottomLeftRadius: 10,
                             borderBottomRightRadius: 10,
-                            display: flex,
                             justifyContent: "center",
                         }}
                     >
                         <div
                             style={{
-                                marginBottom: -40,
+                                marginBottom: -30,
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
                                 backgroundColor: "transparent",
@@ -181,9 +182,9 @@ class PopUpLogout extends React.Component {
                             <div style={{width:'100%', fontSize:'12px', justifyContent:'center', justifyItems:'center', marginTop:'20px' , display:'flex', flexDirection:'row', height:'100%'}}>
 
 
-                            <button onClick={this.logout_confirm_yes} style={{width:'60px', borderColor:'gray', marginRight:'20px', height:'25px'}}> <span>Yes</span></button>
+                            <button onClick={this.logout_confirm_yes} style={{width:'60px', borderColor:'transparent', marginRight:'20px', height:'25px'}}> <span>Yes</span></button>
 
-                            <button onClick={this.logout_confirm_no} style={{width:'60px', borderColor:'gray', height:'25px'}}> <span style={{fontWeight:'bold'}}>NO</span></button>
+                            <button onClick={this.logout_confirm_no} style={{width:'60px', borderColor:'transparent', height:'25px'}}> <span style={{fontWeight:'bold'}}>NO</span></button>
                             
                             </div>
                         </div>

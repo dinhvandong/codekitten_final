@@ -8,7 +8,7 @@ const APICodeKitten =
     verify_mobile_otp_registration:
         root + "/auth/verify_mobile_otp_registration",
     registration_password: root + "/auth/registration_password",
-    auth_token: root + "/auth/token/",
+    auth_token: root + "/auth/login",
     auth_logout: root + "/auth/logout",
     change_password: root + "/auth/change_password",
     forgot_password: root + "/auth/forgot_password",

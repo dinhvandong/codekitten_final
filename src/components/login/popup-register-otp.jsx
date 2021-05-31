@@ -114,6 +114,8 @@ import RegisterOTP from "./register-otp.jsx";
                 <view
                     id="viewid"
                     style={{
+                        display:'flex',
+                        justifyContent:'center',
                         borderTopLeftRadius: 10,
                         borderTopRightRadius: 10,
                         borderBottomLeftRadius: 10,
@@ -135,7 +137,7 @@ import RegisterOTP from "./register-otp.jsx";
                     >
                         <div
                             style={{
-                                marginBottom:-40,
+                                marginBottom:-30,
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
                                 backgroundColor: "transparent",

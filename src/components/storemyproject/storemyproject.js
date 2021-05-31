@@ -29,6 +29,11 @@ class StoreMyProject extends React.Component {
     ]);
     this.myChangeHandlerName.bind(this);
     this.myChangeHandlerDesc.bind(this);
+    this.onChangeCover = this.onChangeCover.bind(this)
+
+    this.state = {cover: null}
+
+
     }
 
     myChangeHandlerName (event)
@@ -42,24 +47,30 @@ class StoreMyProject extends React.Component {
         this.setState({projectDesc: event.target.value});
         console.log("projectDesc",event.target.value);
       }
-    storeMyProject (name, desc) {
+    storeMyProject (name, desc, cover) {
        this.props.saveProjectSb3().then(content => {
         const fileName =  `${name.substring(0, 100)}.sb3`;
-        downloadProject(fileName, content,name, desc ); 
+        downloadProject(fileName, content,name, desc, cover ); 
        }); 
     }
 
     saveproject(e) 
     {
         e.preventDefault();
-        this.storeMyProject(this.state.projectName, this.state.projectDesc);
-        alert("Dự án lưu thành công !");
-    }       
+        this.storeMyProject(this.state.projectName, this.state.projectDesc, this.state.cover);
+        //alert("Dự án lưu thành công !");
+    }   
+    
+    onChangeCover(e) {
+        this.setState({cover:e.target.files[0]})
+      }
 
-    closePopup() 
+    closePopup(e) 
     {
+       // e.preventDefault();
         console.log("Close Popup");
-        this.props.closeMyProject(false);
+        this.props.closePopup();
+       // this.props.closeMyProject(false);
     }
     render() 
     {
@@ -78,6 +89,9 @@ class StoreMyProject extends React.Component {
                         borderBottomLeftRadius: 10,
                         borderBottomRightRadius: 10,
                         overflow: "hidden",
+                        display: 'flex',
+                        justifyContent: "center",
+
                     }}
                 >
                     <div
@@ -87,16 +101,18 @@ class StoreMyProject extends React.Component {
                             borderTopRightRadius: 10,
                             borderBottomLeftRadius: 10,
                             borderBottomRightRadius: 10,
-                            display: flex,
-                            justifyContent: "center",
+                            width:'500px',
+                            justifyContent:'center'
+
+                           
                         }}
                     >
                         <div
                             style={{
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
-                                backgroundColor: "#1CC3A5",
-                                display: "flex",
+                                backgroundImage:
+                                "linear-gradient(to right,#1CC3A5, #F9F154)",                                display: "flex",
                                 justifyContent: "center",
                                 alignContent: "center",
                                 height: 50,
@@ -155,21 +171,29 @@ class StoreMyProject extends React.Component {
                                 placeholder="Mô tả thông tin về dự án"
                             ></textarea>
 
-                            <SimpleReactFileUpload/>
+                            <h6 style={{marginTop:'10px'}}>Chọn ảnh bìa(400x400) </h6>
+                            <input  type="file" onChange={this.onChangeCover} />
+                     
+
+                            <div style={{display:'flex', marginTop:'50px', alignContent:'center', alignItems:'center', flexDirection:'row',marginTop:'20px'}}>
+
+
                             <button
-                                //type="submit"
+                                type="submit"
                                 className={saveproject.btn}
                                 //onClick={this.saveproject}
-                                onClick={(e) => {this.saveproject(e)}}>
+                                onClick={this.saveproject}>
                                 Lưu dự án
                             </button>
                             <button
-                                type="button"
+                                type="submit"
                                 className={saveproject.cancel}
-                                onclick="closeForm()"
+                                onclick= {this.closePopup}
                             >
                                 Huỷ
                             </button>
+
+                            </div>
                         </form>
 
                         
@@ -186,7 +210,10 @@ class StoreMyProject extends React.Component {
 }
 
 StoreMyProject.propTypes = {
-    closeMyProject: PropTypes.func,
+    closePopup: PropTypes.func,
+    setShow: PropTypes.func,
+
+    //closeMyProject: PropTypes.func,
     children: PropTypes.func,
     className: PropTypes.string,
     onSaveFinished: PropTypes.func,
@@ -204,7 +231,7 @@ const getProjectFilename = (curTitle, defaultTitle) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    closeMyProject: () => dispatch(setStoreMyProject(false)),
+   // closeMyProject: () => dispatch(setStoreMyProject(false)),
 });
 // const mapStateToProps = (state, ownProps) => {
 //     return null;

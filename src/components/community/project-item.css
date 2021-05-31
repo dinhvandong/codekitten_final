@@ -1,13 +1,33 @@
+.border_all {
 
+    width: 250px;
+    height: 250px;
+}
 .c_project_courses__outer {
     width: calc(100%);
     position: relative;
+    margin: 20px;
     z-index: 1;
     transition: all .2s ease;
-    width: 200px;
-    height: 260px;
+     width: 200px;
+    height: 260px; 
+   
 
 }
+
+
+.c_project_courses__outer:hover {
+    width: calc(100%);
+    position: relative;
+    margin: 20px;
+    z-index: 1;
+    transition: all .2s ease;
+     width: 250px;
+    height: 280px; 
+   
+
+}
+
 
 .icon_next_mysubject {
     background-image: url("./icon/next-mysubject.svg");
@@ -52,9 +72,28 @@
     content: "";
     width: 100%;
     padding-top: 0;
-    height: 230px;
+    /* height: 230px; */
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: 200px 200px;
+    background-position: bottom center;
+    transition: all .2s ease;
+    filter: drop-shadow(10px 30px 30px rgba(177, 188, 199, 0.15))
+}
+
+.c_project_courses_before:hover{
+    position: absolute;
+    z-index: -1;
+    background-image: url("./background-hover.png");
+    bottom: 0;
+    left: 0;
+    right: 0;
+    justify-content: center;
+    content: "";
+    width: 100%;
+    padding-top: 0;
+    /* height: 230px; */
+    background-repeat: no-repeat;
+    background-size: 242px 209px;
     background-position: bottom center;
     transition: all .2s ease;
     filter: drop-shadow(10px 30px 30px rgba(177, 188, 199, 0.15))
@@ -95,6 +134,7 @@
     left: 0;
     right: 0;
     bottom: 0;
+
     top: auto;
     transition: all .2s ease;
     background-image: url("./background-subject.png");

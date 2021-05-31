@@ -115,15 +115,20 @@ class LibraryItem extends React.PureComponent {
         console.log("iconRawURL",this.state.sprite);
         const iconMd5 = this.curIconMd5().split(".");
         var iconURL = "";
-        //const root = "https://dev.teky.asia/v1";
+        const root = "https://dev.teky.asia/v1";
 
         if(localStorage.getItem("sprite")== "true")
         {
-            iconURL = 'http://dev.teky.asia/v1/code_kittens_api/assets/' + iconMd5[0] ;
+            iconURL =  root + '/code_kittens_api/assets/' + iconMd5[0] ;
         }else
         {
-            iconURL = 'http://dev.teky.asia/v1/code_kittens_api/assets/' + iconMd5[0] + '?type=background' ;
+            iconURL =  root + '/code_kittens_api/assets/' + iconMd5[0] + '?type=background' ;
         }
+
+       // const link = "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/assets/2021/05/25/robot_8.svg";
+
+       const link = 'https://dev.teky.asia/v1/code_kittens_api/assets/10989781-da64-4409-843a-4c1aecdbeeb3';
+
         //ConfigServer.host + "/api/asset/find/" + iconMd5[0];
         console.log("iconURL",iconURL);
         return (

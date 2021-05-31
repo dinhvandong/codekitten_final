@@ -30,15 +30,20 @@ const getCostumeUrl = (function () {
             cachedUrl = asset.encodeDataURI();
         }
 
+        var iconURL = "";
+        //const root = "https://dev.teky.asia/v1";
 
-        var link_download =  ConfigServer.host + "/api/asset/find/" + asset.assetId;
+        if(localStorage.getItem("sprite")== "true")
+        {
+            iconURL = 'http://dev.teky.asia/v1/code_kittens_api/assets/' + asset.assetI ;
+        }else
+        {
+            iconURL = 'http://dev.teky.asia/v1/code_kittens_api/assets/' + asset.assetI + '?type=background' ;
+        }
 
-        console.log("link_download",asset);
+        //var link_download =  ConfigServer.host + "/api/asset/find/" + asset.assetId;
+        //console.log("link_download",asset);
         //8e84b654a7b457f5c97d16ac255d6dee
-
-
-       
-        
         return cachedUrl;
         //cachedUrl;
     };
