@@ -6,7 +6,7 @@
     align-self: center;
     margin-right: 10px;
     width: 100%;
-    font-weight: bold;
+    font-weight: normal;
     height: 40px;
     transition: height 1s;
     -webkit-transition: height 1s;

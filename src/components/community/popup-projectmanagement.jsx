@@ -25,6 +25,9 @@ import {
     intlShape,
 } from "react-intl";
 import MenuBarHOC from "../../containers/menu-bar-hoc.jsx";
+
+import SBFileUploaderHOC from '../../lib/sb-file-uploader-hoc.jsx';
+
 import { SCREENS } from "../gui/constant.js";
 import ProjectDetail from "./project-detail.jsx";
 import AlertLogin from "../gui/alert-login.jsx";
@@ -206,7 +209,10 @@ class PopUpProjectManagement extends React.Component {
 
     onRemix() {
         this.props.closePopup();
-        const link_download = 'https://dev.teky.asia/v1/code_kittens_api/projects/908d9c64-7ffa-4624-8db1-03962879b8cf'
+        const link_download = localStorage.getItem("link_download");
+
+        console.log("LinkSB3", link_download);
+        //'https://dev.teky.asia/v1/code_kittens_api/projects/908d9c64-7ffa-4624-8db1-03962879b8cf'
         //'https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/projects/files/Scratch_Project_BGD.sb3';
         fetch(link_download).then(res => {
             const bufferArray = res.arrayBuffer().readas;
@@ -380,9 +386,9 @@ class PopUpProjectManagement extends React.Component {
                                         style={{
                                             width: "100%",
                                             display: "flex",
-                                            height: "50px",
+                                            height: "35px",
                                             borderColor: "#000000",
-                                            borderRadius: "25px",
+                                            borderRadius: "15px",
                                             borderWidth: 5,
                                             marginRight: "20px",
                                             backgroundColor: "#FFF",
@@ -424,7 +430,7 @@ class PopUpProjectManagement extends React.Component {
                                         width: "150px",
                                         marginTop: "10px",
                                         marginBottom: "10px",
-                                        height: "50px",
+                                        height: "35px",
                                         marginRight: "50px",
                                         background: "#1CC3A5",
                                         alignSelf: "center",
