@@ -10,10 +10,15 @@
 
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 0.8rem;
-    color: $text-primary;
+    /* color: $ui-primary; */
+    /* $text-primary; */
     border-width: 2px;
     border-style: solid;
-    background: $colorgreen;
+    /* background: $colorgreen; */
+
+
+    box-shadow: 0px 0px 0px 4px $motion-transparent;
+    border: 2px solid $motion-primary;
 
     /* border-color: $ui-black-transparent; */
     border-radius: $space;
@@ -25,14 +30,21 @@
 }
 
 .sprite-selector-item.is-selected {
-    box-shadow: 0px 0px 0px 4px $motion-transparent;
+    box-shadow: 0px 0px 0px 4px $ui-primary;
+    /* $motion-transparent; */
     border: 2px solid $motion-primary;
     background: $ui-white;
+    border-radius: $space;
+    color: $ui-primary;
+
+
 }
 /*8497 007 24*/
 .sprite-selector-item:hover {
     border: 2px solid $colorgreen;
     background: $ui-white;
+    border-radius: $space;
+
 }
 
 .sprite-selector-item:hover .sprite-image, .is-selected .sprite-image {
@@ -93,9 +105,12 @@
 }
 
 .is-selected .sprite-info {
-    background: $colorgreen;
+    background:  $colorgreen;
+    /* $ui-primary; */
+    /* $colorgreen; */
     /* background: $motion-primary; */
     color: $ui-white;
+
 }
 
 .delete-button {
