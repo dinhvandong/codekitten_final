@@ -103,6 +103,8 @@ class TargetPane extends React.Component {
         console.log("handleNewSprite")
 
         localStorage.setItem("sprite", true);
+        localStorage.setItem("choice","sprite");
+
 
         this.props.vm.setEditingTarget(id);
         if (this.props.stage && id !== this.props.stage.id) {
@@ -138,6 +140,8 @@ class TargetPane extends React.Component {
 
         console.log("handleNewSprite")
         localStorage.setItem("sprite", true);
+        localStorage.setItem("choice","sprite");
+
         return this.props.vm.addSprite(spriteJSONString)
             .then(this.handleActivateBlocksTab);
     }
@@ -309,6 +313,8 @@ const mapDispatchToProps = dispatch => ({
         e.preventDefault();
         console.log("ClickSprite....");
         localStorage.setItem("sprite", true);
+        localStorage.setItem("choice","sprite");
+
         
         dispatch(openSpriteLibrary());
     },

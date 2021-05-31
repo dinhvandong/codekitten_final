@@ -71,6 +71,8 @@ const openCostumeLibrary = function () {
     return openModal(MODAL_COSTUME_LIBRARY);
 };
 const openExtensionLibrary = function () {
+
+    localStorage.setItem("choice","extension");
     return openModal(MODAL_EXTENSION_LIBRARY);
 };
 const openLoadingProject = function () {

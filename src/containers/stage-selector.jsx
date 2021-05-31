@@ -199,6 +199,7 @@ const mapDispatchToProps = dispatch => ({
         e.stopPropagation();
         console.log("onNewBackdropClick....");
         localStorage.setItem("sprite", false);
+        localStorage.setItem("choice","backdrop");
         dispatch(openBackdropLibrary());
     },
     onActivateTab: tabIndex => {

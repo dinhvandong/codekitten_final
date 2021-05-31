@@ -112,6 +112,50 @@ class LibraryItem extends React.PureComponent {
 
     }
     render () {
+
+        console.log("YourChoice",localStorage.getItem("choice") );
+
+
+        if(localStorage.getItem("choice")=="extension")
+        {
+
+            const iconMd5 = this.curIconMd5();
+            const iconURL = iconMd5 ?
+                `https://cdn.assets.scratch.mit.edu/internalapi/asset/${iconMd5}/get/` :
+                this.props.iconRawURL;
+            return (
+                <LibraryItemComponent
+                    bluetoothRequired={this.props.bluetoothRequired}
+                    collaborator={this.props.collaborator}
+                    description={this.props.description}
+                    disabled={this.props.disabled}
+                    extensionId={this.props.extensionId}
+                    featured={this.props.featured}
+                    hidden={this.props.hidden}
+                    iconURL={iconURL}
+                    icons={this.props.icons}
+                    id={this.props.id}
+                    insetIconURL={this.props.insetIconURL}
+                    internetConnectionRequired={this.props.internetConnectionRequired}
+                    isPlaying={this.props.isPlaying}
+                    name={this.props.name}
+                    showPlayButton={this.props.showPlayButton}
+                    onBlur={this.handleBlur}
+                    onClick={this.handleClick}
+                    onFocus={this.handleFocus}
+                    onKeyPress={this.handleKeyPress}
+                    onMouseEnter={this.handleMouseEnter}
+                    onMouseLeave={this.handleMouseLeave}
+                    onPlay={this.handlePlay}
+                    onStop={this.handleStop}
+                /> );
+
+
+
+
+        }
+
+
         console.log("iconRawURL",this.state.sprite);
         const iconMd5 = this.curIconMd5().split(".");
         var iconURL = "";
@@ -125,12 +169,6 @@ class LibraryItem extends React.PureComponent {
             iconURL =  root + '/code_kittens_api/assets/' + iconMd5[0] + '?type=background' ;
         }
 
-       // const link = "https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/assets/2021/05/25/robot_8.svg";
-
-       const link = 'https://dev.teky.asia/v1/code_kittens_api/assets/10989781-da64-4409-843a-4c1aecdbeeb3';
-
-        //ConfigServer.host + "/api/asset/find/" + iconMd5[0];
-        console.log("iconURL",iconURL);
         return (
             <LibraryItemComponent
                 bluetoothRequired={this.props.bluetoothRequired}
