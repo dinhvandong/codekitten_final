@@ -3,7 +3,7 @@ import styles from "./project-detail.css";
 import iconClose from "./icon/ico-close.png";
 import avatar from "./avatar.png";
 import refresh from "./refresh.png";
-import project_info from "./img-info-subject.png";
+//import project_info from "./img-info-subject.png";
 
 import iconEdit from "./edit.png";
 export default class ProjectDetail extends React.Component {
@@ -12,10 +12,22 @@ export default class ProjectDetail extends React.Component {
         this.onClose = this.onClose.bind(this);
         this.onRemix = this.onRemix.bind(this);
         this.state= {name: localStorage.getItem("name"),
-         description: localStorage.getItem("description"), 
-         created_by:localStorage.getItem("created_by")}
 
-        
+         description: localStorage.getItem("description"), 
+
+         created_by:localStorage.getItem("created_by"), 
+
+         link_download:localStorage.getItem("link_download"),
+
+         thumbnail:localStorage.getItem("thumbnail"),
+         
+         thumb_base64: ("url(data:image/jpg;base64," + localStorage.getItem("thumbnail_base64"))
+    }
+
+        /**  localStorage.setItem("link_download", 
+         * ConfigServer.host + '/code_kittens_api/projects/'+ id );
+          localStorage.setItem("thumbnail_base64", thumbnail_base64);
+         */
 
         // const name              = this.props.name;
         // const description       = this.props.description;
@@ -25,11 +37,19 @@ export default class ProjectDetail extends React.Component {
 
     componentDidMount()
     {
-
         this.setState({name: localStorage.getItem("name")});
+
         this.setState({description:localStorage.getItem("description")});
+
         this.setState({created_by: localStorage.getItem("created_by")});
 
+        this.setState({thumb_base64: "url(data:image/jpg;base64," + localStorage.getItem("thumbnail_base64") +")"});
+
+        this.setState({thumbnail: localStorage.getItem("thumbnail")});
+
+        this.setState({link_download: localStorage.getItem("link_download")});
+
+        console.log("Thumb_Base64", this.state.thumb_base64)
     }
 
     onRemix() {
@@ -190,7 +210,7 @@ export default class ProjectDetail extends React.Component {
                                 backgroundColor: "#FFF",
                             }}
                         >
-                            <div className={styles.border_project_detail}>
+                            <div style={{backgroundImage:"url(" + this.state.thumbnail + ")"}} className={styles.border_project_detail}>
                                 <img
                                     onClick={this.onRemix}
                                     style={{

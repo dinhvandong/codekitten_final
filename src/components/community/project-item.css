@@ -51,7 +51,9 @@
 
 .c_is_project_img {
    
-
+/* 
+    width: 200px;
+    height:180px; */
     position: absolute;
     z-index: 2;
     top: 0;

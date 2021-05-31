@@ -34,6 +34,7 @@ require("./bootstrap.min.css");
 import "./bootstrap.min.css";
 
 import UploadProject from "../storemyproject/upload-project.js";
+import ConfigServer from "../../config_server";
 class PopUpProjectManagement extends React.Component {
     constructor(props) {
         super(props);
@@ -125,12 +126,16 @@ class PopUpProjectManagement extends React.Component {
     handleChange(event) {
         setSpacing(Number(event.target.value));
     }
-    onShowDetail(name, description, created_by) 
+    onShowDetail(name, description, created_by, id, thumbnail_base64, thumbnail) 
     {
           console.log("showDetailCCCC");
           localStorage.setItem("name", name);
           localStorage.setItem("description", description);
           localStorage.setItem("created_by", created_by);
+          localStorage.setItem("link_download", ConfigServer.host + '/code_kittens_api/projects/'+ id );
+          localStorage.setItem("thumbnail_base64", thumbnail_base64);
+          localStorage.setItem("thumbnail", thumbnail);
+
           this.setState({ isDetail: true });
 
     }
@@ -528,10 +533,8 @@ class PopUpProjectManagement extends React.Component {
                                                             <div
                                                                 onClick={
                                                                    () => this
-                                                                        .onShowDetail(value.name, value.description, value.created_by)
-                                                                        //() => this.handleSort(column)
-                                                                        
-                                                                       
+                                                                        .onShowDetail(value.name, value.description, value.created_by, value.id, value.thumbnail_base64, value.thumbnail)
+                                                                        //() => this.handleSort(column)                                                                       
                                                                 }
                                                             >
                                                                 <ProjectItem description = {value.description} name= {value.name} thumb = {value.thumbnail_base64} linkdownload= {'https://dev.teky.asia/v1/code_kittens_api/projects/'+ value.id} />
