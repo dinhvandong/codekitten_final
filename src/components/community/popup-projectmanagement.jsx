@@ -500,7 +500,7 @@ class PopUpProjectManagement extends React.Component {
                                             marginTop: "10px",
                                         }}
                                     >
-                                        <span>Tổng cộng có 32 dự án </span>
+                                        <span>Tổng cộng có {this.state.arrayProjectTemp.length} dự án </span>
                                     </div>
                                 </div>
 
