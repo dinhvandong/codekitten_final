@@ -14,6 +14,8 @@ import { setStoreMyProject } from "../../reducers/mode";
 
 import "./upload-project.css";
 import ConfigServer from "../../config_server";
+import Switch from "react-switch";
+
 class UploadProject extends React.Component {
     constructor(props) {
         super(props);
@@ -31,15 +33,23 @@ class UploadProject extends React.Component {
         this.myChangeHandlerName.bind(this);
         this.myChangeHandlerDesc.bind(this);
         this.state = {
-          file:null 
-        }
+            file: null,
+        };
 
-        this.state = {cover: null}
-        this.onFormSubmit = this.onFormSubmit.bind(this)
-        this.onChangeCover = this.onChangeCover.bind(this)
-        this.onChangeFile = this.onChangeFile.bind(this)
-
+        this.state = { cover: null };
+        this.state = {isPublic:false};
+        this.state = {fileExtension:''};
+        this.onFormSubmit = this.onFormSubmit.bind(this);
+        this.onChangeCover = this.onChangeCover.bind(this);
+        this.onChangeFile = this.onChangeFile.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
+
+    handleChange() {
+        this.setState({ isPublic: !this.state.isPublic });
+
+        console.log("CheckPublic", this.state.isPublic);
+      }
 
     myChangeHandlerName(event) {
         this.setState({ projectName: event.target.value });
@@ -51,44 +61,85 @@ class UploadProject extends React.Component {
         console.log("projectDesc", event.target.value);
     }
     storeMyProject(name, desc, file, cover) {
-        
-
-
         const formData = new FormData();
-         const link_upload = ConfigServer.host + "/code_kittens_api/projects";
-         //https://dev.teky.asia/v1/code_kittens_api/projects/
-         //const file = new File([blob], filename);
-         formData.append("project_file", file);
-         formData.append("thumbnail", cover);
-         formData.append("description",desc);
-         formData.append("name",name);
+        const link_upload = ConfigServer.host + "/code_kittens_api/projects";
+        //https://dev.teky.asia/v1/code_kittens_api/projects/
+        //const file = new File([blob], filename);
+        formData.append("project_file", file);
+        formData.append("thumbnail", cover);
+        formData.append("description", desc);
+        formData.append("name", name);
+        var isPublic =false
+         if( this.state.isPublic=== 'true')
+         {
+             isPublic = true;
+         }else
+         {
+             isPublic = false
+         }
+        formData.append("is_public", isPublic);
 
-         return fetch(link_upload, {
-             method: "POST",
-             body: formData,
-         });
+
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') },
+            body:formData
+        }; 
+
+        console.log("Upload:", formData);
+
+      
+        if(this.state.fileExtension == 'sb3')
+        {
+
+            fetch(link_upload, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+    
+                console.log("UploadResponse", result);
+            });
+        }else
+        {
+            alert("Định dạng File dự án chưa đúng");
+
+
+        }
+       
     }
-    onFormSubmit(e){
-      e.preventDefault() // Stop form submit
-    //   this.fileUpload(this.state.file).then((response)=>{
-    //     console.log(response.data);
-    //   })
+    onFormSubmit(e) {
+        e.preventDefault(); // Stop form submit
+        //   this.fileUpload(this.state.file).then((response)=>{
+        //     console.log(response.data);
+        //   })
     }
     onChangeFile(e) {
-      this.setState({file:e.target.files[0]})
+        this.setState({ file: e.target.files[0] });
+
+
+        this.setState({fileExtension:e.target.files[0].name.split(".")[1] })
+
+        console.log("FILEZZZZ",e.target.files[0].name.split(".")[1] );
     }
 
     onChangeCover(e) {
-        this.setState({cover:e.target.files[0]})
-      }
+        this.setState({ cover: e.target.files[0] });
+    }
     saveproject(e) {
         e.preventDefault();
 
         const file = this.state.file;
         const cover = this.state.cover;
 
-        this.storeMyProject(this.state.projectName, this.state.projectDesc, file, cover);
-        alert("Dự án lưu thành công !");
+        this.storeMyProject(
+            this.state.projectName,
+            this.state.projectDesc,
+            file,
+            cover
+        );
+
+        this.props.onRefresh();
+        this.props.onClosePopup();
+
     }
     closePopup() {
         console.log("Close Popup");
@@ -105,14 +156,15 @@ class UploadProject extends React.Component {
                         borderBottomLeftRadius: 10,
                         borderBottomRightRadius: 10,
                         overflow: "hidden",
-                        display:'flex', justifyContent:'center'
+                        display: "flex",
+                        justifyContent: "center",
                     }}
                 >
                     <div
                         id="main"
                         style={{
                             width: 500,
-                            height:600,
+                            height: 600,
                             borderTopLeftRadius: 10,
                             borderTopRightRadius: 10,
                             borderBottomLeftRadius: 10,
@@ -124,10 +176,10 @@ class UploadProject extends React.Component {
                             style={{
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
-                                
+
                                 backgroundImage:
-                                "linear-gradient(to right,#1CC3A5, #F9F154)",
-                              display: "flex",
+                                    "linear-gradient(to right,#1CC3A5, #F9F154)",
+                                display: "flex",
                                 justifyContent: "center",
                                 alignContent: "center",
                                 height: 50,
@@ -186,34 +238,65 @@ class UploadProject extends React.Component {
                                 placeholder="Mô tả thông tin về dự án"
                             ></textarea>
 
-                            <form style={{backgroundImage:'red', width:'100%', height:'120px',marginBottom:'20px'}} onSubmit={this.onFormSubmit}>
+                            <form
+                                style={{
+                                    backgroundImage: "red",
+                                    width: "100%",
+                                    height: "120px",
+                                    marginBottom: "20px",
+                                }}
+                                onSubmit={this.onFormSubmit}
+                            >
                                 <h6>Chọn dự án </h6>
-                                <input  type="file" onChange={this.onChangeFile} />
+                                <input
+                                    type="file"
+                                    onChange={this.onChangeFile}
+                                />
 
-                                <h6 style={{marginTop:'10px'}}>Chọn ảnh bìa(400x400) </h6>
-                                <input  type="file" onChange={this.onChangeCover} />
+                                <h6 style={{ marginTop: "10px" }}>
+                                    Chọn ảnh bìa(400x400){" "}
+                                </h6>
+                                <input
+                                    type="file"
+                                    onChange={this.onChangeCover}
+                                />
                             </form>
 
-                            <div style={{display:'flex', marginTop:'50px', alignContent:'center', alignItems:'center', flexDirection:'row',marginTop:'20px'}}>
+                            <div style={{display:'flex', flexDirection:'row'}}>
+                                <Switch
+                                    onChange={this.handleChange}
+                                    checked={this.state.isPublic}
+                                />
+                                <span style={{marginLeft:'10px'}}>Chia sẻ với cộng đồng</span>
 
-                            <button
-                                className={saveproject.btn}
-                                onClick={(e) => {
-                                    this.saveproject(e);
+                            </div>
+
+                            <div
+                                style={{
+                                    display: "flex",
+                                    marginTop: "50px",
+                                    alignContent: "center",
+                                    alignItems: "center",
+                                    flexDirection: "row",
+                                    marginTop: "20px",
                                 }}
                             >
-                                Lưu dự án
-                            </button>
-                            <button
-                                type="button"
-                                className={saveproject.cancel}
-                                onClick={this.closePopup}
-                            >
-                                Huỷ
-                            </button>
-                            
+                                <button
+                                    className={saveproject.btn}
+                                    onClick={(e) => {
+                                        this.saveproject(e);
+                                    }}
+                                >
+                                    Lưu dự án
+                                </button>
+                                <button
+                                    type="button"
+                                    className={saveproject.cancel}
+                                    onClick={this.closePopup}
+                                >
+                                    Huỷ
+                                </button>
                             </div>
-                            
                         </form>
                     </div>
                 </view>
@@ -225,7 +308,8 @@ class UploadProject extends React.Component {
 }
 
 UploadProject.propTypes = {
-    onClosePopup: PropTypes.func
+    onClosePopup: PropTypes.func,
+    onRefresh: PropTypes.func
     // closeMyProject: PropTypes.func,
     // children: PropTypes.func,
     // className: PropTypes.string,
@@ -243,7 +327,7 @@ const getProjectFilename = (curTitle, defaultTitle) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-   // closeMyProject: () => dispatch(setStoreMyProject(false)),
+    // closeMyProject: () => dispatch(setStoreMyProject(false)),
 });
 // const mapStateToProps = (state, ownProps) => {
 //     return null;

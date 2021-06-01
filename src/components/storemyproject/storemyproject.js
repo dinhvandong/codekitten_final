@@ -14,6 +14,7 @@ import saveproject from "./saveproject.css";
 import 'react-confirm-alert/src/react-confirm-alert.css'; // Import css
 import { setStoreMyProject } from "../../reducers/mode";
 import SimpleReactFileUpload from "./react-file-upload";
+import Switch from "react-switch";
 
 class StoreMyProject extends React.Component {
     constructor(props) {
@@ -30,12 +31,13 @@ class StoreMyProject extends React.Component {
     this.myChangeHandlerName.bind(this);
     this.myChangeHandlerDesc.bind(this);
     this.onChangeCover = this.onChangeCover.bind(this)
-
     this.state = {cover: null}
-
-
+    this.state = {isPublic:false};
     }
-
+    handleChange() {
+        this.setState({ isPublic: !this.state.isPublic });
+        console.log("CheckPublic", this.state.isPublic);
+      }
     myChangeHandlerName (event)
       {
         this.setState({projectName: event.target.value});
@@ -50,7 +52,7 @@ class StoreMyProject extends React.Component {
     storeMyProject (name, desc, cover) {
        this.props.saveProjectSb3().then(content => {
         const fileName =  `${name.substring(0, 100)}.sb3`;
-        downloadProject(fileName, content,name, desc, cover ); 
+        downloadProject(fileName, content,name, desc, cover, this.state.isPublic ); 
        }); 
     }
 
@@ -150,7 +152,6 @@ class StoreMyProject extends React.Component {
                                 src={iconExit}
                             />
                         </div>
-
                         <form className={saveproject.formcontainer}>
                             <h2 style={{ color: "#1CC3A5" }}></h2>
                             <label className={saveproject.label} for="name">
@@ -161,7 +162,6 @@ class StoreMyProject extends React.Component {
                                 placeholder="Tên dự án"
                                 onChange ={this.myChangeHandlerName}
                             />
-
                             <label className={saveproject.label} for="name">
                                 <b>Mô tả</b>
                             </label>
@@ -170,11 +170,15 @@ class StoreMyProject extends React.Component {
                                 type="text"
                                 placeholder="Mô tả thông tin về dự án"
                             ></textarea>
-
                             <h6 style={{marginTop:'10px'}}>Chọn ảnh bìa(400x400) </h6>
                             <input  type="file" onChange={this.onChangeCover} />
-                     
-
+                            <div style={{display:'flex', flexDirection:'row', marginTop:'20px'}}>
+                                <Switch
+                                    onChange={this.handleChange}
+                                    checked={this.state.isPublic}
+                                />
+                                <span style={{marginLeft:'10px'}}>Chia sẻ với cộng đồng</span>
+                            </div>
                             <div style={{display:'flex', marginTop:'50px', alignContent:'center', alignItems:'center', flexDirection:'row',marginTop:'20px'}}>
 
 
@@ -195,8 +199,6 @@ class StoreMyProject extends React.Component {
 
                             </div>
                         </form>
-
-                        
                     </div>
                 </view>
             

@@ -1,5 +1,5 @@
 import ConfigServer from "../config_server";
-export default (filename, blob, projectName, projectDesc, cover) => {
+export default (filename, blob, projectName, projectDesc, cover, is_public) => {
     const formData = new FormData();
     // const  link_download = ConfigServer.host +'/api/upload';
     const link_upload = ConfigServer.host + "/code_kittens_api/projects";
@@ -13,25 +13,34 @@ export default (filename, blob, projectName, projectDesc, cover) => {
     formData.append("description", projectDesc);
     formData.append("name", projectName);
 
-    fetch(link_upload, {
-        method: "POST",
-        body: formData,
-    })
+    var isPublic = false;
+
+    if(is_public==='false'){
+        isPublic = false;
+    }else
+    {
+        isPublic = true;
+    }
+    formData.append("is_public", isPublic);
+
+
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') },
+        body:formData
+    }; 
+
+    fetch(link_upload, requestOptions)
         .then((response) => response.json())
         .then((result) => {
             console.log("JSON_LOGIN:", result);
-
             const value = result.message;
             if (value.status_code == 200)
             {
-
                 alert("Dự án lưu thành công");
-
             }else
             {
-
                 alert("Dự án lưu thất bại");
-
             }
         });
 

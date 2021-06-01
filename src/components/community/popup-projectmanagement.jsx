@@ -15,8 +15,8 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import PropTypes from "prop-types";
 import ProjectItem from "./project-item.jsx";
-import   '../../lib/sb-file-uploader-hoc.jsx';
-
+import "../../lib/sb-file-uploader-hoc.jsx";
+import { setProjectTitle } from "../../reducers/project-title";
 import Grid from "@material-ui/core/Grid";
 import {
     defineMessages,
@@ -26,7 +26,7 @@ import {
 } from "react-intl";
 import MenuBarHOC from "../../containers/menu-bar-hoc.jsx";
 
-import SBFileUploaderHOC from '../../lib/sb-file-uploader-hoc.jsx';
+import SBFileUploaderHOC from "../../lib/sb-file-uploader-hoc.jsx";
 
 import { SCREENS } from "../gui/constant.js";
 import ProjectDetail from "./project-detail.jsx";
@@ -38,6 +38,9 @@ import "./bootstrap.min.css";
 
 import UploadProject from "../storemyproject/upload-project.js";
 import ConfigServer from "../../config_server";
+//const fs = require('fs');
+import fs from "fs";
+
 class PopUpProjectManagement extends React.Component {
     constructor(props) {
         super(props);
@@ -51,70 +54,133 @@ class PopUpProjectManagement extends React.Component {
         bindAll(this, [
             "closePopup",
             "onShowLoginAlert",
+
             "onCloseLoginAlert",
             "onShowUploadProject",
             "onCloseUploadProject",
             "onChangePage",
             "onClosePopupDetail",
             "onRemix",
+            "clickTab","onChangeTab"
         ]);
         this.state = {
             isDetail: false,
             showAlertLogin: false,
             showUploadProject: false,
+            selectedTab: 0,
         };
 
         this.state = { spacing: 2, arrayItems: [] };
-        const arrayProject = [];
-        const arrayProjectTemp = [];
-        for (var i = 0; i < 15; i++) {
-           // arrayProject.push({ name: "Dinh Dong", project: "ABC" });
-        }
-        this.state = { arrayProject };
-        this.state = {arrayProjectTemp};
+
+
+
+        this.state = ({ 
+            arrayProjectPublic:[],
+            arrayProjectPublicTemp :[],
+            arrayProject:[],
+            arrayMyProject:[],
+            arrayProjectTemp:[],
+            arrayMyProjectTemp:[] });
+
         this.onShowDetail = this.onShowDetail.bind(this);
+        localStorage.setItem("clicktab",0);
+
 
         this.onSearchProject = this.onSearchProject.bind(this);
+        this.onRefresh = this.onRefresh.bind(this);
     }
 
-    // componentDidMount() {
-    // var url = "https://dev.teky.asia/v1/code_kittens_api/projects";
-    // console.log("jsonStringFormData1");
-    //  const formData = new FormData();
-    //  formData.append("page",1);
-    //  fetch(url, {
-    //         method: "GET",
-    //         body:formData
-    //     })
-    //         .then((res) => res.json)
-    //         .then(
-    //             (result) => {
 
-    //                 console.log("jsonStringFormData2");
+    onRefresh()
+    {
 
-    //                 console.log("Result", JSON.stringify(result));
-    //                  const value = result.message;
-    //                  if (value.status_code == 200) {
-    //                      this.setState({ arrayProject: result.data });
-    //                      console.log("arrayProjectJson", result.data);
-    //                  }
-    //             },
-    //             (error) => {}
-    //         );
-    // }
-
-    componentDidMount() {
-        fetch('https://dev.teky.asia/v1/code_kittens_api/projects')
+        fetch("https://dev.teky.asia/v1/code_kittens_api/projects")
         .then((response) => response.json())
-        .then(result => {
-        console.log("result",result)
-        const value = result.message;
-                if (value.status_code == 200) {
-                    this.setState({ arrayProject: result.data });
-                    this.setState({ arrayProjectTemp: result.data });
-                    console.log("arrayProjectJson", result.data);
-                }
+        .then((result) => {
+            console.log("result", result);
+            const value = result.message;
+            if (value.status_code == 200) {
+                this.setState({ arrayProjectPublic: result.data });
+                this.setState({ arrayProjectPublicTemp: result.data });
+                console.log("onRefresh1", result.data);
+                this.onChangeTab();
+
+            }
         });
+
+    const token =    localStorage.getItem('token');
+    console.log("Token", token);
+
+    const requestOptions = {
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+        };            
+    fetch("https://dev.teky.asia/v1/code_kittens_api/my_projects", requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+        console.log("my_result", result);
+        const value = result.message;
+        if (value.status_code == 200) {
+            this.setState({ arrayMyProject: result.data });
+            this.setState({ arrayMyProjectTemp: result.data });
+            console.log("onRefresh2", result.data);
+
+            this.onChangeTab();
+
+
+
+        }
+    });
+
+
+
+
+
+    }
+    componentDidMount() {
+        localStorage.setItem("clicktab",0);
+        fetch("https://dev.teky.asia/v1/code_kittens_api/projects")
+            .then((response) => response.json())
+            .then((result) => {
+                console.log("result", result);
+                const value = result.message;
+                if (value.status_code == 200) {
+                    this.setState({ arrayProjectPublic: result.data });
+                    this.setState({ arrayProjectPublicTemp: result.data });
+                    console.log("arrayProjectJson1", result.data);
+
+
+                    this.onChangeTab();
+
+                }
+            });
+
+        const token =    localStorage.getItem('token');
+        console.log("Token", token);
+
+        const requestOptions = {
+                method: 'GET',
+                headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+            };            
+        fetch("https://dev.teky.asia/v1/code_kittens_api/my_projects", requestOptions)
+        .then((response) => response.json())
+        .then((result) => {
+            console.log("my_result", result);
+            const value = result.message;
+            if (value.status_code == 200) {
+                this.setState({ arrayMyProject: result.data });
+                this.setState({ arrayMyProjectTemp: result.data });
+                console.log("arrayMyProjectJson2", result.data);
+
+                this.onChangeTab();
+
+            }
+        });
+
+
+
+
+
     }
 
     onChangePage(pageOfItems) {
@@ -129,63 +195,50 @@ class PopUpProjectManagement extends React.Component {
     handleChange(event) {
         setSpacing(Number(event.target.value));
     }
-    onShowDetail(name, description, created_by, id, thumbnail_base64, thumbnail) 
-    {
-          console.log("showDetailCCCC");
-          localStorage.setItem("name", name);
-          localStorage.setItem("description", description);
-          localStorage.setItem("created_by", created_by);
-          localStorage.setItem("link_download", ConfigServer.host + '/code_kittens_api/projects/'+ id );
-          localStorage.setItem("thumbnail_base64", thumbnail_base64);
-          localStorage.setItem("thumbnail", thumbnail);
+    onShowDetail(
+        name,
+        description,
+        created_by,
+        id,
+        thumbnail_base64,
+        thumbnail
+    ) {
+        console.log("showDetailCCCC");
+        localStorage.setItem("name", name);
+        localStorage.setItem("description", description);
+        localStorage.setItem("created_by", created_by);
+        localStorage.setItem(
+            "link_download",
+            ConfigServer.host + "/code_kittens_api/projects/" + id
+        );
+        localStorage.setItem("thumbnail_base64", thumbnail_base64);
+        localStorage.setItem("thumbnail", thumbnail);
 
-          this.setState({ isDetail: true });
-
+        this.setState({ isDetail: true });
     }
 
-    onSearchProject(e)
-    {
-
+    onSearchProject(e) {
         const text = e.target.value;
 
         console.log("search", text);
 
-        this.setState({arrayProjectTemp:[]})
+        this.setState({ arrayProjectTemp: [] });
 
         var arrayProjectSearch = [];
 
-        for (var i =0;i<this.state.arrayProject.length;i++)
-        {
+        for (var i = 0; i < this.state.arrayProject.length; i++) {
             const temp = this.state.arrayProject[i];
 
-            if (temp.name.includes(text))
-            {
-
+            if (temp.name.includes(text)) {
                 arrayProjectSearch.push(temp);
-
             }
-
         }
 
-        if(text !== '')
-        {
-            this.setState({arrayProjectTemp:arrayProjectSearch})
-
-
-        }else
-        {
-
-            this.setState({arrayProjectTemp:this.state.arrayProject})
-
+        if (text !== "") {
+            this.setState({ arrayProjectTemp: arrayProjectSearch });
+        } else {
+            this.setState({ arrayProjectTemp: this.state.arrayProject });
         }
-
-
-
-
-
-
-
-
     }
 
     onCloseLoginAlert() {
@@ -208,23 +261,37 @@ class PopUpProjectManagement extends React.Component {
     }
 
     onRemix() {
-        this.props.closePopup();
         const link_download = localStorage.getItem("link_download");
+        fetch(link_download)
+            .then((r) => r.arrayBuffer())
+            .then((buffer) => {
+                this.props.vm
+                    .loadProject(buffer)
+                    .then(() => {
+                        console.log("loadProject", 1);
+                        if (true) {
+                            this.props.onSetProjectTitle("title Project");
+                        }
+                    })
+                    .catch((error) => {
+                        console.log("loadProject", 2);
+                    })
+                    .then(() => {
+                        console.log("loadProject", 3);
+                    });
+            });
 
-        console.log("LinkSB3", link_download);
-        //'https://dev.teky.asia/v1/code_kittens_api/projects/908d9c64-7ffa-4624-8db1-03962879b8cf'
-        //'https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/projects/files/Scratch_Project_BGD.sb3';
-        fetch(link_download).then(res => {
-            const bufferArray = res.arrayBuffer().readas;
-            //this.props.vm.loadProject(bufferArray)
-            //onLoadProject(bufferArray);
-            // this.props.vm
-            // .loadProject(bufferArray)
-          });
+        this.props.closePopup();
+    }
+
+    clickTab(e) {
+        console.log("Click Tab");
+        console.log("id", e);
     }
     closePopup() {
         console.log("Close Popup");
         this.props.closePopup();
+        //this.onRemix();
     }
     onGoforgotPassword() {
         setShow(SCREENS.screen_ForgotPassword);
@@ -252,6 +319,7 @@ class PopUpProjectManagement extends React.Component {
         }
         return ab;
     }
+    
 
     convertUTCDateToLocalDate(date) {
         var newDate = new Date(
@@ -262,12 +330,37 @@ class PopUpProjectManagement extends React.Component {
         newDate.setHours(hours - offset);
         return newDate;
     }
+
+    onChangeTab()
+    {
+
+        const clickTab = localStorage.getItem("clicktab");
+        console.log("clickTabAAA", clickTab);
+
+        if(clickTab==0)
+        {
+            console.log("clickTabAAA00:", clickTab);
+
+            this.setState({arrayProject: this.state.arrayProjectPublic});
+            this.setState({arrayProjectTemp: this.state.arrayProjectPublic});
+        }else
+        {
+            console.log("clickTabAAA11:", clickTab);
+
+            this.setState({arrayProject: this.state.arrayMyProject});
+            this.setState({arrayProjectTemp: this.state.arrayMyProject});
+
+        }
+
+
+    }
     render() {
+        
+
+
         return (
             <Modal
-
-
-                style={{width:'100%'}}
+                style={{ width: "100%" }}
                 id="modal"
                 name="modal"
                 visible={true}
@@ -277,7 +370,6 @@ class PopUpProjectManagement extends React.Component {
                 <view
                     id="viewid"
                     style={{
-
                         borderTopLeftRadius: 10,
                         borderTopRightRadius: 10,
                         borderBottomLeftRadius: 10,
@@ -293,10 +385,8 @@ class PopUpProjectManagement extends React.Component {
                     }}
                 >
                     <div
-
                         id="main"
                         style={{
-                            
                             width: "100%",
                             padding: "20px",
                             height: "700px",
@@ -346,7 +436,8 @@ class PopUpProjectManagement extends React.Component {
                             />
                         </div>
 
-                        <div id="div5"
+                        <div
+                            id="div5"
                             style={{
                                 width: "100%",
                                 flexDirection: "column",
@@ -394,7 +485,8 @@ class PopUpProjectManagement extends React.Component {
                                             backgroundColor: "#FFF",
                                         }}
                                     >
-                                        <input onChange = {this.onSearchProject}
+                                        <input
+                                            onChange={this.onSearchProject}
                                             className={styles.input_search}
                                             style={{
                                                 flex: 10,
@@ -465,291 +557,328 @@ class PopUpProjectManagement extends React.Component {
                                                 "Dự án cộng đồng",
                                                 "Dự án của tôi",
                                             ]}
-                                            doSomethingAfterClick={
-                                                this.printButtonLabel
+                                            doSomethingAfterClick = {
+                                                this.onChangeTab
                                             }
                                         />
                                     ) : (
                                         <ButtonGroup
                                             buttons={["Dự án cộng đồng"]}
-                                            doSomethingAfterClick={
-                                                this.printButtonLabel
+                                            doSomethingAfterClick = {
+                                                this.onChangeTab
                                             }
                                         />
                                     )}
                                 </ul>
                             </div>
 
+
+
+                            <div
+                            style={{
+                                width: "100%",
+                                height: "100%",
+                                borderBottomLeftRadius: "10px",
+                                borderBottomRightRadius: "10px",
+                                backgroundColor: "#FFF",
+                            }}
+                        >
                             <div
                                 style={{
-                                    width: "100%",
-                                    height: "100%",
-                                    borderBottomLeftRadius: "10px",
-                                    borderBottomRightRadius: "10px",
-                                    backgroundColor: "#FFF",
+                                    marginTop: "30px",
+                                    marginLeft: "20px",
                                 }}
                             >
                                 <div
                                     style={{
-                                        marginTop: "30px",
-                                        marginLeft: "20px",
+                                        fontWeight: "bold",
+                                        fontSize: 16,
                                     }}
                                 >
-                                    <div
-                                        style={{
-                                            fontWeight: "bold",
-                                            fontSize: 16,
-                                        }}
-                                    >
-                                        <span>Toàn bộ dự án </span>
-                                    </div>
-
-                                    <div
-                                        style={{
-                                            fontWeight: "normal",
-                                            fontSize: 14,
-                                            marginTop: "10px",
-                                        }}
-                                    >
-                                        <span>Tìm thấy {this.state.arrayProjectTemp.length} dự án </span>
-                                    </div>
+                                    <span>Toàn bộ dự án </span>
                                 </div>
 
                                 <div
                                     style={{
-                                        width: "100%",
-                                        height: "526px",
-                                        overflowY: "scroll",
+                                        fontWeight: "normal",
+                                        fontSize: 14,
+                                        marginTop: "10px",
                                     }}
                                 >
-                                    <Grid
-                                        container
-                                        style={{ zIndex: 1, flexGrow: 1 }}
-                                        spacing={10}
-                                    >
-                                        <Grid item xs={20}>
-                                            <Grid
-                                                container
-                                                justify="center"
-                                                spacing={this.state.spacing}
-                                            >
-                                                {this.state.arrayProjectTemp.map(
-                                                    (value) => (
-                                                        <Grid key={value} item>
-                                                            <div
-                                                                onClick={
-                                                                   () => this
-                                                                        .onShowDetail(value.name, value.description, value.created_by, value.id, value.thumbnail_base64, value.thumbnail)
-                                                                        //() => this.handleSort(column)                                                                       
-                                                                }
-                                                            >
-                                                                <ProjectItem description = {value.description} name= {value.name} thumb = {value.thumbnail_base64} linkdownload= {'https://dev.teky.asia/v1/code_kittens_api/projects/'+ value.id} />
-                                                            </div>
-                                                        </Grid>
-                                                    )
-                                                )}
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                </div>
-
-                                <div
-                                    style={{
-                                        width: "100%",
-                                        height: "50px",
-                                        display: "flex",
-                                        alignContent: "center",
-                                        alignItems: "center",
-                                        marginTop: "0px",
-                                        borderBottomLeftRadius: "10px",
-                                        borderBottomRightRadius: "10px",
-                                    }}
-                                >
-                                    <div
-                                        style={{
-                                            display: "flex",
-                                            justifyContent: "center",
-                                            flexDirection: "row",
-                                            width: "100%",
-                                            alignItems: "center",
-                                        }}
-                                    >
-                                        <div
-                                            style={{
-                                                alignSelf: "center",
-                                                width: "50px",
-                                                display: "flex",
-                                                height: "30px",
-                                                justifyContent: "center",
-                                                backgroundColor: "#1CC3A5",
-                                                borderColor: "white",
-                                                marginLeft: "10px",
-                                            }}
-                                        >
-                                            <img
-                                                style={{
-                                                    alignSelf: "center",
-                                                    width: "20px",
-                                                    height: "20px",
-                                                }}
-                                                src={icon_pagging_previous}
-                                            />
-                                        </div>
-
-                                        <div
-                                            style={{
-                                                justifyContent: "center",
-                                                display: "flex",
-
-                                                alignSelf: "center",
-                                                width: "50px",
-                                                height: "30px",
-                                                backgroundColor: "#1CC3A5",
-                                                borderColor: "white",
-                                                marginLeft: "10px",
-                                            }}
-                                        >
-                                            <img
-                                                style={{
-                                                    alignSelf: "center",
-                                                    width: "10px",
-                                                    height: "10px",
-                                                }}
-                                                src={ic_back}
-                                            />
-                                        </div>
-
-                                        <div
-                                            style={{
-                                                justifyContent: "center",
-                                                display: "flex",
-
-                                                alignSelf: "center",
-                                                width: "100px",
-                                                height: "30px",
-                                                backgroundColor: "#1CC3A5",
-                                                borderColor: "white",
-                                                marginLeft: "10px",
-                                            }}
-                                        >
-                                            <span
-                                                style={{
-                                                    alignSelf: "center",
-                                                    fontWeight: "bold",
-                                                    color: "white",
-                                                    fontSize: 12,
-                                                }}
-                                            >
-                                                Trang 1/100
-                                            </span>
-                                        </div>
-
-                                        <div
-                                            style={{
-                                                justifyContent: "center",
-                                                display: "flex",
-
-                                                alignSelf: "center",
-                                                width: "50px",
-                                                height: "30px",
-                                                backgroundColor: "#1CC3A5",
-                                                borderColor: "white",
-                                                marginLeft: "10px",
-                                            }}
-                                        >
-                                            <img
-                                                style={{
-                                                    alignSelf: "center",
-                                                    width: "10px",
-                                                    height: "10px",
-                                                }}
-                                                src={ic_next}
-                                            />
-                                        </div>
-
-                                        <div
-                                            style={{
-                                                justifyContent: "center",
-                                                display: "flex",
-
-                                                alignSelf: "center",
-                                                width: "50px",
-                                                height: "30px",
-                                                backgroundColor: "#1CC3A5",
-                                                borderColor: "white",
-                                                marginLeft: "10px",
-                                            }}
-                                        >
-                                            <img
-                                                style={{
-                                                    alignSelf: "center",
-                                                    width: "20px",
-                                                    height: "20px",
-                                                }}
-                                                src={icon_pagging_next}
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div
-                                    style={{
-                                        marginTop: "30px",
-                                        zIndex: 5,
-                                        height: "100%",
-                                        width: "100%",
-                                    }}
-                                >
-                                    {this.state.isDetail ? (
-                                        <ProjectDetail
-                                            onRemix={this.onRemix}
-                                            onClosePopup={
-                                                this.onClosePopupDetail
-                                            }
-                                        />
-                                    ) : (
-                                        <div></div>
-                                    )}
-                                </div>
-
-                                <div
-                                    style={{
-                                        marginTop: "30px",
-                                        zIndex: 5,
-                                        height: "100%",
-                                        width: "100%",
-                                    }}
-                                >
-                                    {this.state.showAlertLogin ? (
-                                        <AlertLogin
-                                            onClosePopup={
-                                                this.onCloseLoginAlert
-                                            }
-                                        />
-                                    ) : (
-                                        <div></div>
-                                    )}
-                                </div>
-
-                                <div
-                                    style={{
-                                        marginTop: "30px",
-                                        zIndex: 5,
-                                        height: "100%",
-                                        width: "100%",
-                                    }}
-                                >
-                                    {this.state.showUploadProject ? (
-                                        <UploadProject
-                                            onClosePopup={
-                                                this.onCloseUploadProject
-                                            }
-                                        />
-                                    ) : (
-                                        <div></div>
-                                    )}
+                                    <span>
+                                        Tìm thấy{" "}
+                                        {
+                                            this.state.arrayProjectTemp
+                                                .length
+                                        }{" "}
+                                        dự án{" "}
+                                    </span>
                                 </div>
                             </div>
+
+                            <div
+                                style={{
+                                    width: "100%",
+                                    height: "526px",
+                                    overflowY: "scroll",
+                                }}
+                            >
+                                <Grid
+                                    container
+                                    style={{ zIndex: 1, flexGrow: 1 }}
+                                    spacing={10}
+                                >
+                                    <Grid item xs={20}>
+                                        <Grid
+                                            container
+                                            justify="center"
+                                            spacing={this.state.spacing}
+                                        >
+                                            {this.state.arrayProjectTemp.map(
+                                                (value) => (
+                                                    <Grid
+                                                        key={value}
+                                                        item
+                                                    >
+                                                        <div
+                                                            onClick={
+                                                                () =>
+                                                                    this.onShowDetail(
+                                                                        value.name,
+                                                                        value.description,
+                                                                        value.created_by,
+                                                                        value.id,
+                                                                        value.thumbnail_base64,
+                                                                        value.thumbnail
+                                                                    )
+                                                                //() => this.handleSort(column)
+                                                            }
+                                                        >
+                                                            <ProjectItem
+                                                                description={
+                                                                    value.description
+                                                                }
+                                                                name={
+                                                                    value.name
+                                                                }
+                                                                thumb={
+                                                                    value.thumbnail_base64
+                                                                }
+                                                                linkdownload={
+                                                                    "https://dev.teky.asia/v1/code_kittens_api/projects/" +
+                                                                    value.id
+                                                                }
+                                                            />
+                                                        </div>
+                                                    </Grid>
+                                                )
+                                            )}
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                            </div>
+
+                            <div
+                                style={{
+                                    width: "100%",
+                                    height: "50px",
+                                    display: "flex",
+                                    alignContent: "center",
+                                    alignItems: "center",
+                                    marginTop: "0px",
+                                    borderBottomLeftRadius: "10px",
+                                    borderBottomRightRadius: "10px",
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        display: "flex",
+                                        justifyContent: "center",
+                                        flexDirection: "row",
+                                        width: "100%",
+                                        alignItems: "center",
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            alignSelf: "center",
+                                            width: "50px",
+                                            display: "flex",
+                                            height: "30px",
+                                            justifyContent: "center",
+                                            backgroundColor: "#1CC3A5",
+                                            borderColor: "white",
+                                            marginLeft: "10px",
+                                        }}
+                                    >
+                                        <img
+                                            style={{
+                                                alignSelf: "center",
+                                                width: "20px",
+                                                height: "20px",
+                                            }}
+                                            src={icon_pagging_previous}
+                                        />
+                                    </div>
+
+                                    <div
+                                        style={{
+                                            justifyContent: "center",
+                                            display: "flex",
+
+                                            alignSelf: "center",
+                                            width: "50px",
+                                            height: "30px",
+                                            backgroundColor: "#1CC3A5",
+                                            borderColor: "white",
+                                            marginLeft: "10px",
+                                        }}
+                                    >
+                                        <img
+                                            style={{
+                                                alignSelf: "center",
+                                                width: "10px",
+                                                height: "10px",
+                                            }}
+                                            src={ic_back}
+                                        />
+                                    </div>
+
+                                    <div
+                                        style={{
+                                            justifyContent: "center",
+                                            display: "flex",
+
+                                            alignSelf: "center",
+                                            width: "100px",
+                                            height: "30px",
+                                            backgroundColor: "#1CC3A5",
+                                            borderColor: "white",
+                                            marginLeft: "10px",
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                alignSelf: "center",
+                                                fontWeight: "bold",
+                                                color: "white",
+                                                fontSize: 12,
+                                            }}
+                                        >
+                                            Trang 1/100
+                                        </span>
+                                    </div>
+
+                                    <div
+                                        style={{
+                                            justifyContent: "center",
+                                            display: "flex",
+
+                                            alignSelf: "center",
+                                            width: "50px",
+                                            height: "30px",
+                                            backgroundColor: "#1CC3A5",
+                                            borderColor: "white",
+                                            marginLeft: "10px",
+                                        }}
+                                    >
+                                        <img
+                                            style={{
+                                                alignSelf: "center",
+                                                width: "10px",
+                                                height: "10px",
+                                            }}
+                                            src={ic_next}
+                                        />
+                                    </div>
+
+                                    <div
+                                        style={{
+                                            justifyContent: "center",
+                                            display: "flex",
+
+                                            alignSelf: "center",
+                                            width: "50px",
+                                            height: "30px",
+                                            backgroundColor: "#1CC3A5",
+                                            borderColor: "white",
+                                            marginLeft: "10px",
+                                        }}
+                                    >
+                                        <img
+                                            style={{
+                                                alignSelf: "center",
+                                                width: "20px",
+                                                height: "20px",
+                                            }}
+                                            src={icon_pagging_next}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div
+                                style={{
+                                    marginTop: "30px",
+                                    zIndex: 5,
+                                    height: "100%",
+                                    width: "100%",
+                                }}
+                            >
+                                {this.state.isDetail ? (
+                                    <ProjectDetail
+                                        onRemix={this.onRemix}
+                                        onClosePopup={
+                                            this.onClosePopupDetail
+                                        }
+                                    />
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
+
+                            <div
+                                style={{
+                                    marginTop: "30px",
+                                    zIndex: 5,
+                                    height: "100%",
+                                    width: "100%",
+                                }}
+                            >
+                                {this.state.showAlertLogin ? (
+                                    <AlertLogin
+                                        onClosePopup={
+                                            this.onCloseLoginAlert
+                                        }
+                                    />
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
+
+                            <div
+                                style={{
+                                    marginTop: "30px",
+                                    zIndex: 5,
+                                    height: "100%",
+                                    width: "100%",
+                                }}
+                            >
+                                {this.state.showUploadProject ? (
+                                    <UploadProject onRefresh = {this.onRefresh}
+                                        onClosePopup={
+                                            this.onCloseUploadProject
+                                        }
+                                    />
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
+                        </div>
+                   
+               
+
+                           
                         </div>
                     </div>
                 </view>
@@ -763,19 +892,23 @@ PopUpProjectManagement.propTypes = {
     closePopup: PropTypes.func,
     setShow: PropTypes.func,
     vm: PropTypes.shape({
-        loadProject: PropTypes.func
-    })
+        loadProject: PropTypes.func,
+    }),
+    onSetProjectTitle: PropTypes.func,
 };
 
 const mapDispatchToProps = (dispatch) => ({
     // closeLogin: () => dispatch(setShowLogin(false)),
+    onSetProjectTitle: (title) => dispatch(setProjectTitle(title)),
 });
 const mapStateToProps = (state, ownProps) => {
-    return null;
+    return {
+        vm: state.scratchGui.vm,
+    };
 };
 
 export default compose(
     injectIntl,
     MenuBarHOC,
-    connect(null, mapDispatchToProps)
+    connect(mapStateToProps, mapDispatchToProps)
 )(PopUpProjectManagement);

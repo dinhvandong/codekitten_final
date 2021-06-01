@@ -314,7 +314,6 @@ const mapDispatchToProps = dispatch => ({
         console.log("ClickSprite....");
         localStorage.setItem("sprite", true);
         localStorage.setItem("choice","sprite");
-
         
         dispatch(openSpriteLibrary());
     },

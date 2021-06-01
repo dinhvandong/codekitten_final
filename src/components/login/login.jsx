@@ -97,13 +97,14 @@ export default class LoginCodeKitten extends React.Component {
 
                 console.log("JSON_LOGIN:", result);
 
+                const returnData = result.data;
                 const value = result.message;
                             if(value.status_code==200)
                             {
                                 localStorage.setItem("phonenumber", this.state.username);
                                 localStorage.setItem("username", this.state.username);
                                 localStorage.setItem("login", true);
-
+                                localStorage.setItem("token", returnData.access_token);
                                 this.onClose();
 
                             }

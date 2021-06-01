@@ -54,7 +54,7 @@ export default class ProjectDetail extends React.Component {
 
     onRemix() {
         console.log("Onremix_AAAA");
-        this.props.onClosePopup();
+       // this.props.onClosePopup();
         this.props.onRemix();
     }
 
