@@ -69,13 +69,21 @@ class UploadProject extends React.Component {
         formData.append("thumbnail", cover);
         formData.append("description", desc);
         formData.append("name", name);
+        console.log("isPUBBBBB", this.state.isPublic);
         var isPublic =false
-         if( this.state.isPublic=== 'true')
+         if( this.state.isPublic)
          {
              isPublic = true;
+
+             console.log("isPUBBBBB", "YESS");
+
+
+
          }else
          {
              isPublic = false
+             console.log("isPUBBBBB", "NOO");
+
          }
         formData.append("is_public", isPublic);
 
