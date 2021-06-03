@@ -1,11 +1,11 @@
 import {defineMessages} from 'react-intl';
 
 export default defineMessages({
-    all: {
-        defaultMessage: 'All',
-        description: 'Tag for filtering a library for everything',
-        id: 'gui.libraryTags.all'
-    },
+    // all: {
+    //     defaultMessage: 'All',
+    //     description: 'Tag for filtering a library for everything',
+    //     id: 'gui.libraryTags.all'
+    // },
     animals: {
         defaultMessage: 'Animals',
         description: 'Tag for filtering a library for animals',
