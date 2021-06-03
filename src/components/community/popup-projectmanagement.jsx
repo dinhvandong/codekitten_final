@@ -18,6 +18,7 @@ import ProjectItem from "./project-item.jsx";
 import "../../lib/sb-file-uploader-hoc.jsx";
 import { setProjectTitle } from "../../reducers/project-title";
 import Grid from "@material-ui/core/Grid";
+import ProjectDeleteQuestion from './project-delete.jsx';
 import {
     defineMessages,
     FormattedMessage,
@@ -39,7 +40,6 @@ import "./bootstrap.min.css";
 import UploadProject from "../storemyproject/upload-project.js";
 import ConfigServer from "../../config_server";
 //const fs = require('fs');
-import fs from "fs";
 
 class PopUpProjectManagement extends React.Component {
     constructor(props) {
@@ -65,6 +65,7 @@ class PopUpProjectManagement extends React.Component {
         ]);
         this.state = {
             isDetail: false,
+            isDelete:false,
             showAlertLogin: false,
             showUploadProject: false,
             selectedTab: 0,
@@ -86,13 +87,21 @@ class PopUpProjectManagement extends React.Component {
         localStorage.setItem("clicktab",0);
 
 
+        this.onConfirmDeleteProject = this.onConfirmDeleteProject.bind(this);
         this.onSearchProject = this.onSearchProject.bind(this);
         this.onRefresh = this.onRefresh.bind(this);
+
+        this.onDeleteProject = this.onDeleteProject.bind(this);
+        this.onSetShowDetail = this.onSetShowDetail.bind(this);
+
+        this.onCloseDeleteProject = this.onCloseDeleteProject.bind(this);
     }
 
 
     onRefresh()
     {
+
+        console.log("onF5");
 
         fetch("https://dev.teky.asia/v1/code_kittens_api/projects")
         .then((response) => response.json())
@@ -124,16 +133,10 @@ class PopUpProjectManagement extends React.Component {
             this.setState({ arrayMyProject: result.data });
             this.setState({ arrayMyProjectTemp: result.data });
             console.log("onRefresh2", result.data);
-
             this.onChangeTab();
-
-
 
         }
     });
-
-
-
 
 
     }
@@ -195,6 +198,13 @@ class PopUpProjectManagement extends React.Component {
     handleChange(event) {
         setSpacing(Number(event.target.value));
     }
+
+    onSetShowDetail()
+    {
+
+      this.setState({ isDetail: true });
+
+    }
     onShowDetail(
         name,
         description,
@@ -211,10 +221,24 @@ class PopUpProjectManagement extends React.Component {
             "link_download",
             ConfigServer.host + "/code_kittens_api/projects/" + id
         );
+        localStorage.setItem("id_project_selected", id);
         localStorage.setItem("thumbnail_base64", thumbnail_base64);
         localStorage.setItem("thumbnail", thumbnail);
 
-        this.setState({ isDetail: true });
+       // this.setState({ isDetail: true });
+    }
+
+    onDeleteProject()
+    {
+        console.log("OndeleteProject");
+        this.setState({isDelete:true});
+    }
+
+    onCloseDeleteProject()
+    {
+        this.setState({isDelete:false});
+
+
     }
 
     onSearchProject(e) {
@@ -282,6 +306,58 @@ class PopUpProjectManagement extends React.Component {
             });
 
         this.props.closePopup();
+    }
+
+    onRemix2() {
+        const link_download = localStorage.getItem("link_download");
+        fetch(link_download)
+            .then((r) => r.arrayBuffer())
+            .then((buffer) => {
+                this.props.vm
+                    .loadProject(buffer)
+                    .then(() => {
+                        console.log("loadProject", 1);
+                        if (true) {
+                            this.props.onSetProjectTitle("title Project");
+                        }
+                    })
+                    .catch((error) => {
+                        console.log("loadProject", 2);
+                    })
+                    .then(() => {
+                        console.log("loadProject", 3);
+                    });
+            });
+
+       // this.props.closePopup();
+    }
+
+    onConfirmDeleteProject()
+    {
+        const id_project = localStorage.getItem("id_project_selected");
+        const requestOptions = {
+            method: 'DELETE',
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
+        };            
+    fetch("https://dev.teky.asia/v1/code_kittens_api/projects/"+id_project , requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+        console.log("my_result", result);
+        const value = result.message;
+        if (value.status_code == 200) {
+            //this.setState({ arrayMyProject: result.data });
+            //this.setState({ arrayMyProjectTemp: result.data });
+            //console.log("arrayMyProjectJson2", result.data);
+            //this.onChangeTab();
+            this.onRefresh();
+            this.onCloseDeleteProject();
+            
+        }
+    });
+
+
+
+
     }
 
     clickTab(e) {
@@ -641,7 +717,7 @@ class PopUpProjectManagement extends React.Component {
                                                         item
                                                     >
                                                         <div
-                                                            onClick={
+                                                            onClick= {
                                                                 () =>
                                                                     this.onShowDetail(
                                                                         value.name,
@@ -651,10 +727,12 @@ class PopUpProjectManagement extends React.Component {
                                                                         value.thumbnail_base64,
                                                                         value.thumbnail
                                                                     )
-                                                                //() => this.handleSort(column)
-                                                            }
+                                                           }
                                                         >
                                                             <ProjectItem
+                                                            onSetShowDetail = {this.onSetShowDetail}                                                               
+                                                                onDeleteProject = {this.onDeleteProject}
+                                                                isPublic = {localStorage.getItem("clicktab")}
                                                                 description={
                                                                     value.description
                                                                 }
@@ -835,6 +913,21 @@ class PopUpProjectManagement extends React.Component {
                                 ) : (
                                     <div></div>
                                 )}
+
+
+                                {this.state.isDelete === true ? (
+                                    <ProjectDeleteQuestion 
+                                    onCloseDelete = {this.onCloseDeleteProject}
+                                    onDeleteProject = {this.onConfirmDeleteProject}
+                                    />
+                                ) : (
+                                    <div></div>
+                                )}
+
+
+
+
+
                             </div>
 
                             <div

@@ -7,6 +7,25 @@ export default class ProjectItem extends React.Component {
 
     constructor(props) {
         super(props);
+
+        this.deleteProject = this.deleteProject.bind(this);
+        this.onShowDetail = this.onShowDetail.bind(this);
+    }
+
+    deleteProject()
+    {
+        console.log("onDeleteProject");
+        this.props.onDeleteProject();
+
+
+
+    }
+
+    onShowDetail()
+    {
+
+        console.log("this.props.onShowDetail()");
+        this.props.onSetShowDetail();
     }
     render() {
         return (
@@ -26,7 +45,15 @@ export default class ProjectItem extends React.Component {
                         </div>
 
                         <div className={styles.c_titlebox_project__right}>
-                            <i className={styles.icon_next_mysubject}></i>
+                            <i onClick={this.onShowDetail}  className={styles.icon_next_mysubject}></i>
+
+                            {
+
+                                this.props.isPublic === '1'?  
+                                 <i onClick={this.deleteProject} className={styles.icon_delete_sprite}></i>:<div></div>
+
+                            }
+
                         </div>
                     </div>
 

@@ -33,10 +33,40 @@
     background-image: url("./icon/next-mysubject.svg");
     background-repeat: no-repeat;
     background-position: center center;
+    align-self: center;
+
     width: 22px;
     height: 22px;
     background-size: cover;
     display: inline-block
+}
+.icon_delete_sprite{
+
+    background-image: url("./icon_bin2.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+    background-size: cover;
+    align-self: center;
+    display: inline-block
+
+}
+
+.icon_delete_sprite:hover{
+
+    background-image: url("./icon_bin.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-left: 5px;
+
+    width: 25px;
+    height: 25px;
+    background-size: cover;
+    align-self: center;
+    display: inline-block
+
 }
 
 .c_is_project {
@@ -121,7 +151,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
-    width: 125px;
+    width: 150px;
 
 }
 .c_titlebox_project__right  {
