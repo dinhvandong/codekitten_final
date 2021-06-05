@@ -1,12 +1,14 @@
 import messages from './tag-messages.js';
 export default [
-    {tag: 'animals', intlLabel: messages.animals},
-    {tag: 'people', intlLabel: messages.people},
-    {tag: 'fantasy', intlLabel: messages.fantasy},
-    {tag: 'dance', intlLabel: messages.dance},
-    {tag: 'music', intlLabel: messages.music},
-    {tag: 'sports', intlLabel: messages.sports},
-    {tag: 'food', intlLabel: messages.food},
-    {tag: 'fashion', intlLabel: messages.fashion},
-    {tag: 'letters', intlLabel: messages.letters}
+    {tag: 'famous', intlLabel: messages.famous},
+    {tag: 'folk', intlLabel: messages.folk},
+    {tag: 'meal', intlLabel: messages.meal},
+    {tag: 'robot', intlLabel: messages.robot},
+    {tag: 'plannet', intlLabel: messages.plannet},
+    {tag: 'monster', intlLabel: messages.monster},
+    {tag: 'spaceship', intlLabel: messages.spaceship},
+    {tag: 'fish', intlLabel: messages.fish},
+    {tag: 'game', intlLabel: messages.game},
+    {tag: 'family', intlLabel: messages.family}
+
 ];

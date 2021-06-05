@@ -63,8 +63,6 @@ class UploadProject extends React.Component {
     storeMyProject(name, desc, file, cover) {
         const formData = new FormData();
         const link_upload = ConfigServer.host + "/code_kittens_api/projects";
-        //https://dev.teky.asia/v1/code_kittens_api/projects/
-        //const file = new File([blob], filename);
         formData.append("project_file", file);
         formData.append("thumbnail", cover);
         formData.append("description", desc);

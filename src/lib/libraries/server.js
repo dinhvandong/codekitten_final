@@ -1,8 +1,8 @@
 var request = require("request");
 const fs = require("fs");
-const root = "http://dev.teky.asia";
+//const root = "http://dev.teky.asia";
 
-//const root = "http://staging.teky.asia";
+const root = "http://staging.teky.asia";
 // "http://128.199.145.159:8080";
 var url_costumes = root + "/v1/code_kittens_api/costumes";
 var url_sprites = root + "/v1/code_kittens_api/sprites";
@@ -63,29 +63,29 @@ request(
     }
 );
 
-// request(
-//     {
-//         url: url_backdrops,
-//         json: true,
-//         headers: {
-//             Accept: "application/json",
-//             "Content-Type": "application/json",
-//             Authorization: "Bearer YJvWUUqhFWdkd2SaMVGmT9AgIKcanq",
-//         },
-//     },
-//     function (error, response, jsonContent) {
-//         console.log(jsonContent);
-//         if (!error && response.statusCode === 200) {
-//             // console.log(jsonContent) // Print the json response
-//             jsonCont = JSON.stringify(jsonContent.data);
+request(
+    {
+        url: url_backdrops,
+        json: true,
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: "Bearer YJvWUUqhFWdkd2SaMVGmT9AgIKcanq",
+        },
+    },
+    function (error, response, jsonContent) {
+        console.log(jsonContent);
+        if (!error && response.statusCode === 200) {
+            // console.log(jsonContent) // Print the json response
+            jsonCont = JSON.stringify(jsonContent.data);
 
-//             fs.writeFile("./backdrops.json", jsonCont, "utf8", (err) => {
-//                 if (err) {
-//                     console.log(`Error writing file: ${err}`);
-//                 } else {
-//                     console.log(`url_costumes File is written successfully!`);
-//                 }
-//             });
-//         }
-//     }
-// );
+            fs.writeFile("./backdrops.json", jsonCont, "utf8", (err) => {
+                if (err) {
+                    console.log(`Error writing file: ${err}`);
+                } else {
+                    console.log(`url_costumes File is written successfully!`);
+                }
+            });
+        }
+    }
+);

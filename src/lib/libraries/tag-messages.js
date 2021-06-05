@@ -1,129 +1,60 @@
 import {defineMessages} from 'react-intl';
 
 export default defineMessages({
-    // all: {
-    //     defaultMessage: 'All',
-    //     description: 'Tag for filtering a library for everything',
-    //     id: 'gui.libraryTags.all'
-    // },
-    animals: {
-        defaultMessage: 'Animals',
+
+    famous: {
+        defaultMessage: 'Danh nhân',
         description: 'Tag for filtering a library for animals',
-        id: 'gui.libraryTags.animals'
+        id: 'gui.libraryTags.famous'
     },
-    dance: {
-        defaultMessage: 'Dance',
+    folk: {
+        defaultMessage: 'Dân gian',
         description: 'Tag for filtering a library for dance',
-        id: 'gui.libraryTags.dance'
+        id: 'gui.libraryTags.folk'
     },
-    effects: {
-        defaultMessage: 'Effects',
+    meal: {
+        defaultMessage: 'Đồ ăn Việt',
         description: 'Tag for filtering a library for effects',
-        id: 'gui.libraryTags.effects'
+        id: 'gui.libraryTags.meal'
     },
-    fantasy: {
-        defaultMessage: 'Fantasy',
+    robot: {
+        defaultMessage: 'Người máy',
         description: 'Tag for filtering a library for fantasy',
-        id: 'gui.libraryTags.fantasy'
+        id: 'gui.libraryTags.robot'
     },
-    fashion: {
-        defaultMessage: 'Fashion',
+    plannet: {
+        defaultMessage: 'Hành tinh',
         description: 'Tag for filtering a library for fashion',
-        id: 'gui.libraryTags.fashion'
+        id: 'gui.libraryTags.plannet'
     },
-    food: {
-        defaultMessage: 'Food',
+    monster: {
+        defaultMessage: 'Quái vật',
         description: 'Tag for filtering a library for food',
-        id: 'gui.libraryTags.food'
+        id: 'gui.libraryTags.monster'
     },
-    indoors: {
-        defaultMessage: 'Indoors',
+    spaceship: {
+        defaultMessage: 'Phi thuyền',
         description: 'Tag for filtering a library for indoors',
-        id: 'gui.libraryTags.indoors'
+        id: 'gui.libraryTags.spaceship'
     },
-    loops: {
-        defaultMessage: 'Loops',
+    fish: {
+        defaultMessage: 'Cá',
         description: 'Tag for filtering a library for loops',
-        id: 'gui.libraryTags.loops'
+        id: 'gui.libraryTags.fish'
     },
-    music: {
-        defaultMessage: 'Music',
+    game: {
+        defaultMessage: 'Trò chơi',
         description: 'Tag for filtering a library for music',
-        id: 'gui.libraryTags.music'
+        id: 'gui.libraryTags.game'
     },
-    notes: {
-        defaultMessage: 'Notes',
+    family: {
+        defaultMessage: 'Gia đình',
         description: 'Tag for filtering a library for notes',
-        id: 'gui.libraryTags.notes'
+        id: 'gui.libraryTags.family'
     },
-    outdoors: {
-        defaultMessage: 'Outdoors',
+    ocean: {
+        defaultMessage: 'Đại dương',
         description: 'Tag for filtering a library for outdoors',
-        id: 'gui.libraryTags.outdoors'
-    },
-    patterns: {
-        defaultMessage: 'Patterns',
-        description: 'Tag for filtering a library for patterns',
-        id: 'gui.libraryTags.patterns'
-    },
-    people: {
-        defaultMessage: 'People',
-        description: 'Tag for filtering a library for people',
-        id: 'gui.libraryTags.people'
-    },
-    percussion: {
-        defaultMessage: 'Percussion',
-        description: 'Tag for filtering a library for percussion',
-        id: 'gui.libraryTags.percussion'
-    },
-    space: {
-        defaultMessage: 'Space',
-        description: 'Tag for filtering a library for space',
-        id: 'gui.libraryTags.space'
-    },
-    sports: {
-        defaultMessage: 'Sports',
-        description: 'Tag for filtering a library for sports',
-        id: 'gui.libraryTags.sports'
-    },
-    underwater: {
-        defaultMessage: 'Underwater',
-        description: 'Tag for filtering a library for underwater',
-        id: 'gui.libraryTags.underwater'
-    },
-    voice: {
-        defaultMessage: 'Voice',
-        description: 'Tag for filtering a library for voice',
-        id: 'gui.libraryTags.voice'
-    },
-    wacky: {
-        defaultMessage: 'Wacky',
-        description: 'Tag for filtering a library for wacky',
-        id: 'gui.libraryTags.wacky'
-    },
-    animation: {
-        defaultMessage: 'Animation',
-        description: 'Tag for filtering a library for animation',
-        id: 'gui.libraryTags.animation'
-    },
-    art: {
-        defaultMessage: 'Art',
-        description: 'Tag for filtering a library for art',
-        id: 'gui.libraryTags.art'
-    },
-    games: {
-        defaultMessage: 'Games',
-        description: 'Tag for filtering a library for games',
-        id: 'gui.libraryTags.games'
-    },
-    stories: {
-        defaultMessage: 'Stories',
-        description: 'Tag for filtering a library for stories',
-        id: 'gui.libraryTags.stories'
-    },
-    letters: {
-        defaultMessage: 'Letters',
-        description: 'Tag for filtering a library for letters',
-        id: 'gui.libraryTags.letters'
+        id: 'gui.libraryTags.ocean'
     }
 });

@@ -1,6 +1,6 @@
-const root = "https://dev.teky.asia/v1";
+//const root = "https://dev.teky.asia/v1";
 
-//const root = "https://staging.teky.asia/v1";
+const root = "https://staging.teky.asia/v1";
 
 const APICodeKitten = 
 {

@@ -35,10 +35,10 @@ const getCostumeUrl = (function () {
 
         if(localStorage.getItem("sprite")== "true")
         {
-            iconURL = 'http://dev.teky.asia/v1/code_kittens_api/assets/' + asset.assetI ;
+            iconURL = ConfigServer.host + '/code_kittens_api/assets/' + asset.assetI ;
         }else
         {
-            iconURL = 'http://dev.teky.asia/v1/code_kittens_api/assets/' + asset.assetI + '?type=background' ;
+            iconURL = ConfigServer.host + '/code_kittens_api/assets/' + asset.assetI + '?type=background' ;
         }
 
         //var link_download =  ConfigServer.host + "/api/asset/find/" + asset.assetId;

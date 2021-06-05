@@ -160,14 +160,13 @@ class LibraryItem extends React.PureComponent {
         console.log("iconRawURL",this.state.sprite);
         const iconMd5 = this.curIconMd5().split(".");
         var iconURL = "";
-        const root = "https://dev.teky.asia/v1";
 
         if(localStorage.getItem("sprite")== "true")
         {
-            iconURL =  root + '/code_kittens_api/assets/' + iconMd5[0] ;
+            iconURL =  ConfigServer.host  + '/code_kittens_api/assets/' + iconMd5[0] ;
         }else
         {
-            iconURL =  root + '/code_kittens_api/assets/' + iconMd5[0] + '?type=background' ;
+            iconURL =  ConfigServer.host  + '/code_kittens_api/assets/' + iconMd5[0] + '?type=background' ;
         }
 
         return (

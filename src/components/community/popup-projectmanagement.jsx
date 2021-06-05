@@ -103,7 +103,7 @@ class PopUpProjectManagement extends React.Component {
 
         console.log("onF5");
 
-        fetch("https://dev.teky.asia/v1/code_kittens_api/projects")
+        fetch( ConfigServer.host + "/code_kittens_api/projects")
         .then((response) => response.json())
         .then((result) => {
             console.log("result", result);
@@ -124,7 +124,7 @@ class PopUpProjectManagement extends React.Component {
             method: 'GET',
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         };            
-    fetch("https://dev.teky.asia/v1/code_kittens_api/my_projects", requestOptions)
+    fetch( ConfigServer.host + "/code_kittens_api/my_projects", requestOptions)
     .then((response) => response.json())
     .then((result) => {
         console.log("my_result", result);
@@ -142,7 +142,7 @@ class PopUpProjectManagement extends React.Component {
     }
     componentDidMount() {
         localStorage.setItem("clicktab",0);
-        fetch("https://dev.teky.asia/v1/code_kittens_api/projects")
+        fetch(ConfigServer.host + "/code_kittens_api/projects")
             .then((response) => response.json())
             .then((result) => {
                 console.log("result", result);
@@ -165,7 +165,7 @@ class PopUpProjectManagement extends React.Component {
                 method: 'GET',
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
             };            
-        fetch("https://dev.teky.asia/v1/code_kittens_api/my_projects", requestOptions)
+        fetch(ConfigServer.host + "/code_kittens_api/my_projects", requestOptions)
         .then((response) => response.json())
         .then((result) => {
             console.log("my_result", result);
@@ -339,7 +339,7 @@ class PopUpProjectManagement extends React.Component {
             method: 'DELETE',
             headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
         };            
-    fetch("https://dev.teky.asia/v1/code_kittens_api/projects/"+id_project , requestOptions)
+    fetch( ConfigServer.host + "/code_kittens_api/projects/"+id_project , requestOptions)
     .then((response) => response.json())
     .then((result) => {
         console.log("my_result", result);
@@ -743,7 +743,7 @@ class PopUpProjectManagement extends React.Component {
                                                                     value.thumbnail_base64
                                                                 }
                                                                 linkdownload={
-                                                                    "https://dev.teky.asia/v1/code_kittens_api/projects/" +
+                                                                    ConfigServer.host + "/code_kittens_api/projects/" +
                                                                     value.id
                                                                 }
                                                             />

@@ -82,7 +82,7 @@ export default class LoginCodeKitten extends React.Component {
             grant_type:"password"
         };
 
-        var url = 'https://dev.teky.asia/v1/auth/login';
+        var url = ConfigServer.host + '/auth/login';
 
 
         const requestOptions = {
