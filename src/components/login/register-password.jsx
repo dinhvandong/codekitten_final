@@ -64,7 +64,8 @@ export default class RegisterPassword extends React.Component {
                    const pass =  this.state.password;
                    localStorage.setItem("password", pass);
                    localStorage.setItem("login", true);
-                   const token = dataToken.access_token   ;                             localStorage.setItem("token", returnData.access_token);
+                   const token = dataToken.access_token   ;                             
+                   localStorage.setItem("token", token);
 
                    localStorage.setItem("token", token);
 
