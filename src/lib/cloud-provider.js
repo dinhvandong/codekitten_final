@@ -39,18 +39,18 @@ class CloudProvider {
     openConnection () {
         this.connectionAttempts += 1;
 
-        try {
-            this.connection = new WebSocket((location.protocol === 'http:' ? 'ws://' : 'wss://') + this.cloudHost);
-        } catch (e) {
-            log.warn('Websocket support is not available in this browser', e);
-            this.connection = null;
-            return;
-        }
+        // try {
+        //     this.connection = new WebSocket((location.protocol === 'http:' ? 'ws://' : 'wss://') + this.cloudHost);
+        // } catch (e) {
+        //     log.warn('Websocket support is not available in this browser', e);
+        //     this.connection = null;
+        //     return;
+        // }
 
-        this.connection.onerror = this.onError.bind(this);
-        this.connection.onmessage = this.onMessage.bind(this);
-        this.connection.onopen = this.onOpen.bind(this);
-        this.connection.onclose = this.onClose.bind(this);
+        // this.connection.onerror = this.onError.bind(this);
+        // this.connection.onmessage = this.onMessage.bind(this);
+        // this.connection.onopen = this.onOpen.bind(this);
+        // this.connection.onclose = this.onClose.bind(this);
     }
 
     onError (event) {
@@ -64,7 +64,7 @@ class CloudProvider {
         messageString.split('\n').forEach(message => {
             if (message) { // .split can also contain '' in the array it returns
                 const parsedData = this.parseMessage(JSON.parse(message));
-                this.vm.postIOData('cloud', parsedData);
+               // this.vm.postIOData('cloud', parsedData);
             }
         });
     }
@@ -126,26 +126,26 @@ class CloudProvider {
      * @param {string} dataNewName The new name for the cloud variable (if renaming)
      */
     writeToServer (methodName, dataName, dataValue, dataNewName) {
-        const msg = {};
-        msg.method = methodName;
-        msg.user = this.username;
-        msg.project_id = this.projectId;
+        // const msg = {};
+        // msg.method = methodName;
+        // msg.user = this.username;
+        // msg.project_id = this.projectId;
 
-        // Optional string params can use simple falsey undefined check
-        if (dataName) msg.name = dataName;
-        if (dataNewName) msg.new_name = dataNewName;
+        // // Optional string params can use simple falsey undefined check
+        // if (dataName) msg.name = dataName;
+        // if (dataNewName) msg.new_name = dataNewName;
 
-        // Optional number params need different undefined check
-        if (typeof dataValue !== 'undefined' && dataValue !== null) msg.value = dataValue;
+        // // Optional number params need different undefined check
+        // if (typeof dataValue !== 'undefined' && dataValue !== null) msg.value = dataValue;
 
-        const dataToWrite = JSON.stringify(msg);
-        if (this.connection && this.connection.readyState === WebSocket.OPEN) {
-            this.sendCloudData(dataToWrite);
-        } else if (msg.method === 'create' || msg.method === 'delete' || msg.method === 'rename') {
-            // Save data for sending when connection is open, iff the data
-            // is a create, rename, or  delete
-            this.queuedData.push(dataToWrite);
-        }
+        // const dataToWrite = JSON.stringify(msg);
+        // if (this.connection && this.connection.readyState === WebSocket.OPEN) {
+        //     this.sendCloudData(dataToWrite);
+        // } else if (msg.method === 'create' || msg.method === 'delete' || msg.method === 'rename') {
+        //     // Save data for sending when connection is open, iff the data
+        //     // is a create, rename, or  delete
+        //     this.queuedData.push(dataToWrite);
+        // }
 
     }
 
