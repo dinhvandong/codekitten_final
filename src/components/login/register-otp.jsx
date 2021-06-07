@@ -128,7 +128,7 @@ export default class RegisterOTP extends React.Component {
                     });
 
                     localStorage.setItem("otp", otp );
-                    localStorage.setItem("signup_token",token.signup_token)
+                    localStorage.setItem("token",token.signup_token)
                     this.props.setShow(SCREENS.screen_RegisterPassword);
                     console.log("requestJson",requestJson);
                 }

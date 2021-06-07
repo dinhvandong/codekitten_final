@@ -69,13 +69,7 @@ class Storage extends ScratchStorage {
         || localStorage.getItem("choice") === "tutorial")
         {
           return `${this.assetHost}/internalapi/asset/${asset.assetId}.${asset.dataFormat}/get/`;
-        }
-       // const host = ip.address()+":8080";
-        // const baseUrl =  host + ":8080";
-         //ConfigServer.host = host;
-      //  return `${this.assetHost}/internalapi/asset/${asset.assetId}.${asset.dataFormat}/get/`;
-      // var link_download = ConfigServer.host + "/api/asset/find/" + asset.assetId;
-      
+        }      
       var host = ConfigServer.host + "/code_kittens_api/assets/";
 
       const isSprite = localStorage.getItem("sprite");
@@ -87,11 +81,6 @@ class Storage extends ScratchStorage {
       {
           iconURL = host + asset.assetId + "?type=background";
       }
-
-      //const link = 'https://dev.teky.asia/v1/code_kittens_api/assets/10989781-da64-4409-843a-4c1aecdbeeb3';
-      //"https://sgp1.digitaloceanspaces.com/devlms/teky20/media/code-kitten/assets/2021/05/25/robot_8.svg";
-
-      console.log("LINNNNNN:",iconURL);
        return iconURL;
     }
     getAssetCreateConfig (asset) {

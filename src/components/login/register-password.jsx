@@ -40,7 +40,7 @@ export default class RegisterPassword extends React.Component {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                registration_code: localStorage.getItem("signup_token"),
+                registration_code: localStorage.getItem("token"),
                 password: this.state.password,
                 client_id: ConfigServer.client_id ,
                 client_secret:
