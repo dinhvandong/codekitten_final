@@ -1,5 +1,5 @@
 import ScratchStorage from 'scratch-storage';
-import ConfigServer from '../config_server';
+import ConfigServer from '../config_server.js';
 
 import defaultProject from './default-project';
 
@@ -65,7 +65,8 @@ class Storage extends ScratchStorage {
         var ip = require("ip");;
         console.log ("Dia chi IP:", ip.address() );
 
-        if(localStorage.getItem("choice") === "extension")
+        if(localStorage.getItem("choice") === "extension" 
+        || localStorage.getItem("choice") === "tutorial")
         {
 
           return `${this.assetHost}/internalapi/asset/${asset.assetId}.${asset.dataFormat}/get/`;

@@ -5,7 +5,7 @@ import iconFlag from "./upload/vietnam.png";
 import iconCodeKittenRight from "./images/teky/codekitten-orange-right.png";
 //"images/teky/codekitten.png"
 import styles from "./login.css";
-import APICodeKitten from "../../api";
+import APICodeKitten from "../../api.js";
 import { func } from "prop-types";
 import { SCREENS } from "../gui/constant";
 export default class RegisterCodeKitten extends React.Component 

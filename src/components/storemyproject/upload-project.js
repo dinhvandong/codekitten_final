@@ -13,7 +13,7 @@ import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { setStoreMyProject } from "../../reducers/mode";
 
 import "./upload-project.css";
-import ConfigServer from "../../config_server";
+import ConfigServer from "../../config_server.js";
 import Switch from "react-switch";
 
 class UploadProject extends React.Component {

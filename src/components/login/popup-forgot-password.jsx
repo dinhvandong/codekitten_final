@@ -34,7 +34,7 @@ import MenuBarHOC from "../../containers/menu-bar-hoc.jsx";
 import { Paper, TablePagination } from "@material-ui/core";
 import { autoUpdateProject } from "../../reducers/project-state";
 import TablePaginationActions from "@material-ui/core/TablePagination/TablePaginationActions";
-import ConfigServer from "../../config_server";
+import ConfigServer from "../../config_server.js";
 import Re from "./register-codekitten.jsx";
 import ForgotPassword from "./forgot-password.jsx";
 

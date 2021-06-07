@@ -1,4 +1,4 @@
-import ConfigServer from "../config_server";
+import ConfigServer from "../config_server.js";
 export default (filename, blob, projectName, projectDesc, cover, is_public) => {
     const formData = new FormData();
     // const  link_download = ConfigServer.host +'/api/upload';

@@ -1,6 +1,6 @@
 import storage from './storage';
 import {inlineSvgFonts} from 'scratch-svg-renderer';
-import ConfigServer from '../config_server';
+import ConfigServer from '../config_server.js';
 // Contains 'font-family', but doesn't only contain 'font-family="none"'
 const HAS_FONT_REGEXP = 'font-family(?!="none")';
 const ip = require("ip");;

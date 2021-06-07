@@ -1,4 +1,4 @@
-import ConfigServer from "../config_server";
+import ConfigServer from "../config_server.js";
 
 export default (filename, blob) => {
     const downloadLink = document.createElement('a');

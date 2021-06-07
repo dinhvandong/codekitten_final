@@ -1,5 +1,5 @@
 import { func } from "prop-types";
-import ConfigServer from "../config_server";
+import ConfigServer from "../config_server.js";
 
 const SET_FULL_SCREEN = "scratch-gui/mode/SET_FULL_SCREEN";
 const SET_PLAYER = "scratch-gui/mode/SET_PLAYER";

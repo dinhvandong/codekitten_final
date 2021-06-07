@@ -7,6 +7,7 @@ import styles from "./login.css";
 import "./login.css";
 import { SCREENS } from "../gui/constant";
 import APICodeKitten from "../../api";
+import ConfigServer from "../../config_server.js";
 
 //"./css/style.min.css";
 //"./login.css";

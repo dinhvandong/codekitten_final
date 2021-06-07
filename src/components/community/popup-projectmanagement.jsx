@@ -38,7 +38,7 @@ require("./bootstrap.min.css");
 import "./bootstrap.min.css";
 
 import UploadProject from "../storemyproject/upload-project.js";
-import ConfigServer from "../../config_server";
+import ConfigServer from "../../config_server.js";
 //const fs = require('fs');
 
 class PopUpProjectManagement extends React.Component {
