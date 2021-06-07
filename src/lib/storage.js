@@ -68,19 +68,14 @@ class Storage extends ScratchStorage {
         if(localStorage.getItem("choice") === "extension" 
         || localStorage.getItem("choice") === "tutorial")
         {
-
           return `${this.assetHost}/internalapi/asset/${asset.assetId}.${asset.dataFormat}/get/`;
-
-
         }
-
        // const host = ip.address()+":8080";
         // const baseUrl =  host + ":8080";
          //ConfigServer.host = host;
       //  return `${this.assetHost}/internalapi/asset/${asset.assetId}.${asset.dataFormat}/get/`;
       // var link_download = ConfigServer.host + "/api/asset/find/" + asset.assetId;
       
-
       var host = ConfigServer.host + "/code_kittens_api/assets/";
 
       const isSprite = localStorage.getItem("sprite");

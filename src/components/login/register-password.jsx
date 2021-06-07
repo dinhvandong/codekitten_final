@@ -10,6 +10,7 @@ import { SCREENS } from "../gui/constant";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
+import ConfigServer from "../../config_server";
 const eye = <FontAwesomeIcon icon={faEye} />;
 
 function Welcome(props) {
@@ -41,9 +42,9 @@ export default class RegisterPassword extends React.Component {
             body: JSON.stringify({
                 registration_code: localStorage.getItem("signup_token"),
                 password: this.state.password,
-                client_id: "fcJoXwOWAaNPd8TiYckAR6Vi5RwtOysSGEiqIc6f",
+                client_id: ConfigServer.client_id ,
                 client_secret:
-                    "DBd4m5Il5jRLc5c07ktA3IBSjcpjbThfqPqIJQZDyI7Iy2NXJYoQOoPq9eyi8Wd8Xk8VWYzbksyOIQp9oU5DWfyGCkWJ8XuRNFOfZkegKTE5UjNNQckLnVbqCfxqeEqY",
+                   ConfigServer.client_secret
             }),
         };
         
@@ -53,12 +54,20 @@ export default class RegisterPassword extends React.Component {
             .then((data) => {
                 console.log("response:", data);
                 const value = data.message;
+
+                const dataToken = data.data;
+
+
                 if(value.status_code==200)
                 {
                    console.log("Success:ABC");
                    const pass =  this.state.password;
                    localStorage.setItem("password", pass);
                    localStorage.setItem("login", true);
+                   const token = dataToken.access_token   ;                             localStorage.setItem("token", returnData.access_token);
+
+                   localStorage.setItem("token", token);
+
                    this.props.onClosePopup();
                 }
             });

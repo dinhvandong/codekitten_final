@@ -33,6 +33,7 @@ class StoreMyProject extends React.Component {
     this.onChangeCover = this.onChangeCover.bind(this)
     this.state = {cover: null}
     this.state = {isPublic:false};
+    this.handleChange = this.handleChange.bind(this);
     }
     handleChange() {
         this.setState({ isPublic: !this.state.isPublic });
@@ -61,6 +62,8 @@ class StoreMyProject extends React.Component {
         e.preventDefault();
         this.storeMyProject(this.state.projectName, this.state.projectDesc, this.state.cover);
         //alert("Dự án lưu thành công !");
+        this.props.closePopup();
+
     }   
     
     onChangeCover(e) {
@@ -174,18 +177,16 @@ class StoreMyProject extends React.Component {
                             <input  type="file" onChange={this.onChangeCover} />
                             <div style={{display:'flex', flexDirection:'row', marginTop:'20px'}}>
                                 <Switch
-                                    onChange={this.handleChange}
-                                    checked={this.state.isPublic}
+                                    onChange ={this.handleChange}
+                                    checked  =  {this.state.isPublic}
                                 />
                                 <span style={{marginLeft:'10px'}}>Chia sẻ với cộng đồng</span>
                             </div>
-                            <div style={{display:'flex', marginTop:'50px', alignContent:'center', alignItems:'center', flexDirection:'row',marginTop:'20px'}}>
-
-
+                            <div style={{display:'flex', marginTop:'100px',
+                             alignContent:'center', alignItems:'center', flexDirection:'row',marginTop:'20px'}}>
                             <button
                                 type="submit"
                                 className={saveproject.btn}
-                                //onClick={this.saveproject}
                                 onClick={this.saveproject}>
                                 Lưu dự án
                             </button>

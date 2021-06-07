@@ -30,7 +30,7 @@ export default (filename, blob, projectName, projectDesc, cover, is_public) => {
         body:formData
     }; 
 
-    fetch(link_upload, requestOptions)
+    return fetch(link_upload, requestOptions)
         .then((response) => response.json())
         .then((result) => {
             console.log("JSON_LOGIN:", result);
@@ -44,25 +44,25 @@ export default (filename, blob, projectName, projectDesc, cover, is_public) => {
             }
         });
 
-    const downloadLink = document.createElement("a");
-    document.body.appendChild(downloadLink);
-    console.log("download1");
+    // const downloadLink = document.createElement("a");
+    // document.body.appendChild(downloadLink);
+    // console.log("download1");
 
-    if ("download" in HTMLAnchorElement.prototype) {
-        const url = window.URL.createObjectURL(blob);
-        downloadLink.href = url;
-        downloadLink.download = filename;
-        downloadLink.type = blob.type;
-        downloadLink.click();
-        // console.log("download2");
-        var reader = new window.FileReader();
-        reader.readAsDataURL(blob);
-        reader.onloadend = function () {
-            window.setTimeout(() => {
-                document.body.removeChild(downloadLink);
-                window.URL.revokeObjectURL(url);
-            }, 1000);
-        };
-    } else {
-    }
+    // if ("download" in HTMLAnchorElement.prototype) {
+    //     const url = window.URL.createObjectURL(blob);
+    //     downloadLink.href = url;
+    //     downloadLink.download = filename;
+    //     downloadLink.type = blob.type;
+    //     downloadLink.click();
+    //     // console.log("download2");
+    //     var reader = new window.FileReader();
+    //     reader.readAsDataURL(blob);
+    //     reader.onloadend = function () {
+    //         window.setTimeout(() => {
+    //             document.body.removeChild(downloadLink);
+    //             window.URL.revokeObjectURL(url);
+    //         }, 1000);
+    //     };
+    // } else {
+    // }
 };

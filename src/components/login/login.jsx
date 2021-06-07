@@ -75,9 +75,9 @@ export default class LoginCodeKitten extends React.Component {
      {
         const origin = this.state.username.substring(1, this.state.username.length);
         const data = {
-            client_id: "fcJoXwOWAaNPd8TiYckAR6Vi5RwtOysSGEiqIc6f",
+            client_id: ConfigServer.client_id ,
             client_secret:
-                "DBd4m5Il5jRLc5c07ktA3IBSjcpjbThfqPqIJQZDyI7Iy2NXJYoQOoPq9eyi8Wd8Xk8VWYzbksyOIQp9oU5DWfyGCkWJ8XuRNFOfZkegKTE5UjNNQckLnVbqCfxqeEqY",
+               ConfigServer.client_secret  ,
             username: "+84" + origin,
             password: this.state.password,
             grant_type:"password"
@@ -91,13 +91,12 @@ export default class LoginCodeKitten extends React.Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         };
+
+        console.log("JSON_LOGIN:",JSON.stringify(data) );
         fetch(url, requestOptions)
             .then(response => response.json())
             .then(result => {
-
-
                 console.log("JSON_LOGIN:", result);
-
                 const returnData = result.data;
                 const value = result.message;
                             if(value.status_code==200)
