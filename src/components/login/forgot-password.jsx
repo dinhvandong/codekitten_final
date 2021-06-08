@@ -5,58 +5,80 @@ import iconCodeKittenRight from "./images/teky/codekitten-primary-right.png";
 import styles from "./login.css";
 import iconFlag from "./upload/vietnam.png";
 import { SCREENS } from "../gui/constant";
+import APICodeKitten from "../../api.js";
+import ConfigServer from "../../config_server.js";
 
 export default class ForgotPassword extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
         this.state = {phonenumber:""};
+        this.onMoveAuthenOTP = this.onMoveAuthenOTP.bind(this);
         this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
     }
 
     onChangePhoneNumber(e){
-
         this.setState({phonenumber: e.target.value});
     }
 
     onMoveAuthenOTP()
     {
-
-        this.props.setShow(SCREENS.screen_OTP);
+        this.props.setShow(SCREENS.screen_ForgotOTP);
     }
     handleClick(e) {
         e.preventDefault();
-        console.log("The link was clicked.");
+        console.log("The link was clicked.", this.state.phonenumber);
         const data = {
-            mobile_number: "+84"+ this.state.phonenumber,
+            mobile_number: "+84" + this.state.phonenumber,
+            client_id: ConfigServer.client_id,
+            client_secret: ConfigServer.client_secret
+
         };
-        var url = APICodeKitten.mobile_otp_registration;
-        return fetch(url, {
-            method: "POST",
-            body: data,
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-        })
-            .then((res) => res.json)
-            .then(
-                (result) => {
-                    console.log("Result", result);
 
-                    const value = result.message;
+         const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        };
 
-                    if(value.status_code==200)
-                    {
+       var url = APICodeKitten.forgot_password_by_phone;
 
-                        
+        fetch(url, requestOptions)
+        .then(response => response.json())
+        .then(result => {
+            console.log("JSON_LOGIN:", result);
+            const returnData = result.data;
+            const value = result.message;
+                        if(value.status_code==200)
+                        {
+
+                            this.onMoveAuthenOTP();
+
+                            // localStorage.setItem("phonenumber", this.state.username);
+                            // localStorage.setItem("username", this.state.username);
+                            // localStorage.setItem("login", true);
+                            // localStorage.setItem("token", returnData.access_token);
+                            // this.onClose();
+
+                        }
+
+        });
 
 
 
-                    }
-                },
-                (error) => {}
-            );
+        // var url = APICodeKitten.forgot_password_by_phone;
+        // fetch(url, requestOptions)
+        //     .then((res) => res.json)
+        //     .then(
+        //         result => {
+        //             console.log("Result", result.message);
+        //             const value = result.message;
+        //             if(value.status_code==200)
+        //             {
+        //                 this.onMoveAuthenOTP();
+        //             }
+        //         }
+        //     );
     }
     render() {
         return (
@@ -96,7 +118,6 @@ export default class ForgotPassword extends React.Component {
                                 <div className={styles.c_login_top}>
                                     <img src={iconCodeKitten} />
                                 </div>
-
                                 <div className={styles.c_login__form}>
                                     <div
                                         className={
@@ -144,7 +165,7 @@ export default class ForgotPassword extends React.Component {
                                                 >
                                                     +84
                                                 </span>{" "}
-                                                <input
+                                                <input onChange={this.onChangePhoneNumber}
                                                     className={
                                                         styles.input_phone
                                                     }
@@ -159,17 +180,16 @@ export default class ForgotPassword extends React.Component {
                                     >
                                         <div
                                             style={{
-                                                fontSize: 18,
+                                                fontSize: 16,
                                                 fontWeight: "lighter",
                                                 height: "100%",
                                                 display: "flex",
                                                 alignItems: "center",
-                                                flex: 3,
+                                                flex: 5,
                                             }}
                                         >
                                             <span>
-                                                <b>Gửi yêu cầu</b> qua điện
-                                                thoại
+                                                Gửi yêu cầu qua điện thoại
                                             </span>
                                         </div>
 

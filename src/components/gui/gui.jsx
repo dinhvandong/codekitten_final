@@ -76,9 +76,10 @@ import PopUpRegisterOTP from "../login/popup-register-otp.jsx";
 import PopupForgotPassword from "../login/popup-forgot-password.jsx";
 import PopUpRegisterPassword from "../login/popup-register-password.jsx";
 import PopUpProjectManagement from "../community/popup-projectmanagement.jsx";
-
+import PopUpForgotOTP from "../login/popup-forgot-otp.jsx";
 import AlertLogin from "./alert-login.jsx";
 import PopUpLogout from "./popup-logout.jsx";
+import { truncate } from "fs";
 //import soundsIcon from './icon--sounds.svg';
 //ico_ Costumes-White.png
 const messages = defineMessages({
@@ -207,6 +208,7 @@ const GUIComponent = (props) => {
     const [showRegisterPassword, setShowRegisterPassword] = useState(false);
     const [showForgotPassword, setShowForgotPassword] = useState(false);
     const [logoutAlert, setShowLogoutAlert] = useState(false);
+    const [showForgotOTP, setShowForgotOTP] = useState(false);
     const screen_Login = "Login";
     const screen_Logout = "Login";
 
@@ -224,6 +226,7 @@ const GUIComponent = (props) => {
         setShowLogoutAlert(false);
         setShowRequireLogin(false);
         setShowPopupSaveProject(false);
+        setShowForgotOTP(false);
     };
 
     const onCloseLoginRequire = () => {
@@ -246,6 +249,8 @@ const GUIComponent = (props) => {
                 setShowLogoutAlert(false);
                 setShowRequireLogin(false);
                 setShowPopupSaveProject(false);
+                setShowForgotOTP(false);
+
 
                 break;
             }
@@ -260,6 +265,8 @@ const GUIComponent = (props) => {
                 setShowLogoutAlert(false);
                 setShowRequireLogin(false);
                 setShowPopupSaveProject(false);
+                setShowForgotOTP(false);
+
 
                 break;
             }
@@ -274,6 +281,7 @@ const GUIComponent = (props) => {
                 setShowLogoutAlert(false);
                 setShowRequireLogin(false);
                 setShowPopupSaveProject(false);
+                setShowForgotOTP(false);
 
                 break;
             }
@@ -288,6 +296,7 @@ const GUIComponent = (props) => {
                 setShowLogoutAlert(false);
                 setShowRequireLogin(false);
                 setShowPopupSaveProject(false);
+                setShowForgotOTP(false);
 
                 break;
             }
@@ -301,6 +310,7 @@ const GUIComponent = (props) => {
                 setShowLogoutAlert(false);
                 setShowRequireLogin(false);
                 setShowPopupSaveProject(false);
+                setShowForgotOTP(false);
 
                 break;
             }
@@ -315,6 +325,7 @@ const GUIComponent = (props) => {
                 setShowLogoutAlert(false);
                 setShowRequireLogin(false);
                 setShowPopupSaveProject(false);
+                setShowForgotOTP(false);
 
                 break;
             }
@@ -329,6 +340,7 @@ const GUIComponent = (props) => {
                 setShowLogoutAlert(false);
                 setShowRequireLogin(false);
                 setShowPopupSaveProject(false);
+                setShowForgotOTP(false);
 
                 break;
             }
@@ -343,6 +355,7 @@ const GUIComponent = (props) => {
                 setShowLogoutAlert(true);
                 setShowRequireLogin(false);
                 setShowPopupSaveProject(false);
+                setShowForgotOTP(false);
 
                 break;
             }
@@ -357,7 +370,21 @@ const GUIComponent = (props) => {
                 setShowLogoutAlert(false);
                 setShowRequireLogin(true);
                 setShowPopupSaveProject(false);
+                setShowForgotOTP(false);
+                break;
+            }
 
+            case SCREENS.screen_ForgotOTP: {
+                setShowLogin(false);
+                setShowRgOtp(false);
+                setShowRegister(false);
+                setShowRegisterPassword(false);
+                setShowForgotPassword(false);
+                setShowPM(false);
+                setShowLogoutAlert(false);
+                setShowRequireLogin(false);
+                setShowPopupSaveProject(false);
+                setShowForgotOTP(true);
                 break;
             }
 
@@ -374,6 +401,7 @@ const GUIComponent = (props) => {
                     setShowLogoutAlert(false);
                     setShowRequireLogin(false);
                     setShowPopupSaveProject(true);
+                    setShowForgotOTP(false);
 
 
                 }
@@ -389,6 +417,7 @@ const GUIComponent = (props) => {
                 setShowLogoutAlert(false);
                 setShowRequireLogin(true);
                 setShowPopupSaveProject(false);
+                setShowForgotOTP(false);
 
                 }
                 
@@ -836,6 +865,17 @@ const GUIComponent = (props) => {
                             <div>
                                 {logoutAlert ? (
                                     <PopUpLogout
+                                        closePopup={closeAll}
+                                        setShow={setShow}
+                                    />
+                                ) : (
+                                    <div></div>
+                                )}
+                            </div>
+
+                            <div>
+                                {showForgotOTP ? (
+                                    <PopUpForgotOTP
                                         closePopup={closeAll}
                                         setShow={setShow}
                                     />

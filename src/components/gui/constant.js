@@ -8,8 +8,8 @@ export const SCREENS = {
      screen_PM:"ProjectManagement",
      screen_Logout: "Logout",
      screen_LoginRequire: "LoginRequire",
-     screen_SaveProject: "SaveProject"
-
+     screen_SaveProject: "SaveProject",
+     screen_ForgotOTP: "ForgotOTP",
 
 
 
