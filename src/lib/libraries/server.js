@@ -11,7 +11,6 @@ var url_backdrops = root + "/v1/code_kittens_api/backdrops";
 request(
     {
         url: url_costumes,
-
         json: true,
         headers: {
             Accept: "application/json",
@@ -24,7 +23,6 @@ request(
         if (!error && response.statusCode === 200) {
             console.log(jsonContent); // Print the json response
             jsonCont = JSON.stringify(jsonContent);
-
             fs.writeFile("./costumes.json", jsonCont, "utf8", (err) => {
                 if (err) {
                     console.log(`Error writing file: ${err}`);
@@ -35,9 +33,6 @@ request(
         }
     }
 );
-
-
-
 
 request(
     {

@@ -56,5 +56,57 @@ export default defineMessages({
         defaultMessage: 'Đại dương',
         description: 'Tag for filtering a library for outdoors',
         id: 'gui.libraryTags.ocean'
+    },
+
+    city: {
+        defaultMessage: 'Thành phố',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.city'
+    },
+    universe: {
+        defaultMessage: 'Vũ trụ',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.universe'
+    },
+    stage: {
+        defaultMessage: 'Sân khấu',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.stage'
+    },
+    stadium: {
+        defaultMessage: 'Sân vận động',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.stadium'
+    },
+   
+    school: {
+        defaultMessage: 'Trường học',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.school'
+    },
+    forest: {
+        defaultMessage: 'Rừng',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.forest'
+    },
+    farm: {
+        defaultMessage: 'Nông trại',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.farm'
+    },
+    desert: {
+        defaultMessage: 'Sa mạc',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.desert'
+    },
+    home: {
+        defaultMessage: 'Nhà ở',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.home'
+    },
+    beach: {
+        defaultMessage: 'Bãi biển',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.beach'
     }
 });
