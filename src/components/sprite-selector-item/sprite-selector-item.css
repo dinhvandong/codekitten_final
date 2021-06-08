@@ -73,8 +73,8 @@
 .sprite-image {
     user-select: none;
     pointer-events: none;
-    max-width: 64px;
-    max-height: 64px;
+    max-width: 50px;
+    max-height: 50px;
     resize: both;
 }
 
