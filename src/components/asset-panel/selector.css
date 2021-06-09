@@ -8,7 +8,9 @@
     flex-direction: column;
     justify-content: space-between;
     background: #fff;;
-    opacity: 10%;
+    opacity: 100%;
+
+    /* opacity: 10%; */
      /* #FFF; */
 }
 
