@@ -17,22 +17,10 @@ export default class RegisterCodeKitten extends React.Component
         this.handleTexChange = this.handleTexChange.bind(this);
         this.requestAPI = this.requestAPI.bind(this);
         this.moveToAuthenOTP = this.moveToAuthenOTP.bind(this);
-      // this.handleActionParent = this.handleActionParent.bind(this);
     }
-
-    // handleActionParent() {
-    //     console.log('called from parent')
-    // }
-
-
     moveToAuthenOTP()
     {
-
-       // this.props.onClosePopup();
-
-       //onClick={()=>{}}
        this.props.setShow(SCREENS.screen_OTP)
-
     }
     requestAPI() 
     {
@@ -46,16 +34,10 @@ export default class RegisterCodeKitten extends React.Component
         fetch(url, requestOptions)
             .then((response) => response.json())
             .then((data) => {
-                console.log("response:", data);
-                // kiem tra data neu success
                 const value = data.message;
-                console.log("value:", value);
                 if(value.status_code==200)
                 {
-
                     localStorage.setItem("phonenumber", "+84" + phoneNumber);
-                    console.log("moveToAuthenOTP:");
-
                     this.moveToAuthenOTP();
                 }
             });
@@ -67,7 +49,6 @@ export default class RegisterCodeKitten extends React.Component
     handleClick(e) 
     {
         e.preventDefault();
-        console.log("The link was clicked.");
         this.requestAPI();
     }
     render() {

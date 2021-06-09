@@ -35,7 +35,7 @@ export default class ProjectItem extends React.Component {
                     <div className={styles.c_is_project}>
                         <img
                             className={styles.c_is_project_img}
-                            src={'data:image/png;base64,'+ this.props.thumb}
+                             src={this.props.thumb}
                         />
                     </div>
 

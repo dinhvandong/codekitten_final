@@ -22,7 +22,7 @@ import {emptySprite} from '../lib/empty-assets';
 import {highlightTarget} from '../reducers/targets';
 import {fetchSprite, fetchCode} from '../lib/backpack-api';
 import randomizeSpritePosition from '../lib/randomize-sprite-position';
-import downloadBlob from '../lib/download-blob';
+import downloadBlob from '../lib/download-blob2';
 
 class TargetPane extends React.Component {
     constructor (props) {

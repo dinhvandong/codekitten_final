@@ -9,7 +9,6 @@ import ProjectList from "./project-list.jsx";
 import ProjectDetail from "./project-detail.jsx";
 
  export default class  Community extends React.Component {
-
     constructor(props)
     {
         super(props);
@@ -18,10 +17,8 @@ import ProjectDetail from "./project-detail.jsx";
         this.printButtonLabel = this.printButtonLabel.bind(this);
         this.onShowDetail = this.onShowDetail.bind(this);
     }
-   // let isDetail = true;
     printButtonLabel(event){
         console.log(event.target.name);
-        //do some stuff here
     };
 
     onShowDetail()
@@ -162,7 +159,6 @@ import ProjectDetail from "./project-detail.jsx";
                             <span>Tổng cộng có 32 dự án </span>
                         </div>
                     </div>
-    
                     <ProjectList  onShowDetail={this.onShowDetail} />
                     <div         
                         style={{ marginTop: "30px", zIndex:5, height:'100%', width: "100%"}}
@@ -174,9 +170,6 @@ import ProjectDetail from "./project-detail.jsx";
                     </div>
                 </div>
             </div>
-       
-       
-       
             );
     }
 }

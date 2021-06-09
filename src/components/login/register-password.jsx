@@ -6,13 +6,10 @@ import styles from "./login.css";
 import "./login.css";
 import APICodeKitten from "../../api";
 import { SCREENS } from "../gui/constant";
-
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import ConfigServer from "../../config_server";
 const eye = <FontAwesomeIcon icon={faEye} />;
-
 function Welcome(props) {
     return <h1>Hello, {props.name}</h1>;
 }
@@ -52,31 +49,24 @@ export default class RegisterPassword extends React.Component {
         fetch(url, requestOptions)
             .then((response) => response.json())
             .then((data) => {
-                console.log("response:", data);
                 const value = data.message;
-
                 const dataToken = data.data;
-
-
                 if(value.status_code==200)
                 {
-                   console.log("Success:ABC");
                    const pass =  this.state.password;
                    localStorage.setItem("password", pass);
                    localStorage.setItem("login", true);
                    const token = dataToken.access_token   ;                             
                    localStorage.setItem("token", token);
-
                    localStorage.setItem("token", token);
-
                    this.props.onClosePopup();
                 }
             });
     }
 
      togglePasswordVisiblity(){
-        console.log("togglePasswordVisiblity")
-        if(this.state.passwordShown){
+        if(this.state.passwordShown)
+        {
             this.setState({passwordShown:false});
         }else
         {
@@ -90,11 +80,6 @@ export default class RegisterPassword extends React.Component {
       }
     handleClick(e) {
         e.preventDefault();
-        console.log("The link was clicked.");
-
-        //localStorage.setItem("login", true);
-
-        //this.props.closePopup();
         this.requestAPI();
     }
 

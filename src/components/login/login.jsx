@@ -31,7 +31,6 @@ export default class LoginCodeKitten extends React.Component {
     }
 
     togglePasswordVisiblity(){
-        console.log("togglePasswordVisiblity")
         if(this.state.passwordShown){
             this.setState({passwordShown:false});
         } else
@@ -91,12 +90,9 @@ export default class LoginCodeKitten extends React.Component {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         };
-
-        console.log("JSON_LOGIN:",JSON.stringify(data) );
         fetch(url, requestOptions)
             .then(response => response.json())
             .then(result => {
-                console.log("JSON_LOGIN:", result);
                 const returnData = result.data;
                 const value = result.message;
                             if(value.status_code==200)
@@ -118,46 +114,9 @@ export default class LoginCodeKitten extends React.Component {
     
     handleClick(e) {
         e.preventDefault();
-        console.log("The link was clicked.");
 
         this.requestAPI()
-        // const origin = this.state.username.substring(1, this.state.username.length);
-        // const data = {
-        //     client_id: "fcJoXwOWAaNPd8TiYckAR6Vi5RwtOysSGEiqIc6f",
-        //     client_secret:
-        //         "DBd4m5Il5jRLc5c07ktA3IBSjcpjbThfqPqIJQZDyI7Iy2NXJYoQOoPq9eyi8Wd8Xk8VWYzbksyOIQp9oU5DWfyGCkWJ8XuRNFOfZkegKTE5UjNNQckLnVbqCfxqeEqY",
-        //     username: "+84" + origin,
-        //     password: this.state.password,
-        //     grant_type:"password"
-        // };
-        // var url = 'https://dev.teky.asia/v1/auth/login';
-
-        // const jsonString = JSON.stringify(data);
-
-        // console.log("jsonString",jsonString);
-        // fetch(url, {
-        //     method: "POST",
-        //     body: jsonString,
-        //     headers: {
-        //         "Accept": "application/json",
-        //         "Content-Type": "application/json",
-        //     },
-        // })
-        //     .then((res) => res.json)
-        //     .then(
-        //         (result) => {
-        //             console.log("Result", JSON.stringify(result));
-        //             const value = result.message;
-        //             if(value.status_code==200)
-        //             {
-        //                 localStorage.setItem("phonenumber", this.state.username);
-        //                 localStorage.setItem("username", this.state.username);
-        //                 this.onClose();
-        //                 localStorage.setItem("login", true);
-        //             }
-        //         },
-        //         (error) => {}
-        //     );
+       
     }
 
     render() {

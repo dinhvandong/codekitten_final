@@ -25,8 +25,6 @@ export default class ProjectList extends React.Component {
 
         console.log("state.arrayItems", this.state.arrayProject.length);
         return (
-
-
             <Grid container style={{ zIndex: 1, flexGrow: 1 }} spacing={2}>
                 <Grid item xs={12}>
                     <Grid

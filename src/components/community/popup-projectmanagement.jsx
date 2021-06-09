@@ -101,24 +101,20 @@ class PopUpProjectManagement extends React.Component {
     onRefresh()
     {
 
-        console.log("onF5");
 
         fetch( ConfigServer.host + "/code_kittens_api/projects")
         .then((response) => response.json())
         .then((result) => {
-            console.log("result", result);
             const value = result.message;
             if (value.status_code == 200) {
                 this.setState({ arrayProjectPublic: result.data });
                 this.setState({ arrayProjectPublicTemp: result.data });
-                console.log("onRefresh1", result.data);
                 this.onChangeTab();
 
             }
         });
 
     const token =    localStorage.getItem('token');
-    console.log("Token", token);
 
     const requestOptions = {
             method: 'GET',
@@ -127,12 +123,10 @@ class PopUpProjectManagement extends React.Component {
     fetch( ConfigServer.host + "/code_kittens_api/my_projects", requestOptions)
     .then((response) => response.json())
     .then((result) => {
-        console.log("my_result", result);
         const value = result.message;
         if (value.status_code == 200) {
             this.setState({ arrayMyProject: result.data });
             this.setState({ arrayMyProjectTemp: result.data });
-            console.log("onRefresh2", result.data);
             this.onChangeTab();
 
         }
@@ -145,22 +139,16 @@ class PopUpProjectManagement extends React.Component {
         fetch(ConfigServer.host + "/code_kittens_api/projects")
             .then((response) => response.json())
             .then((result) => {
-                console.log("result", result);
                 const value = result.message;
                 if (value.status_code == 200) {
                     this.setState({ arrayProjectPublic: result.data });
                     this.setState({ arrayProjectPublicTemp: result.data });
-                    console.log("arrayProjectJson1", result.data);
-
-
                     this.onChangeTab();
 
                 }
             });
 
         const token =    localStorage.getItem('token');
-        console.log("Token", token);
-
         const requestOptions = {
                 method: 'GET',
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
@@ -168,13 +156,10 @@ class PopUpProjectManagement extends React.Component {
         fetch(ConfigServer.host + "/code_kittens_api/my_projects", requestOptions)
         .then((response) => response.json())
         .then((result) => {
-            console.log("my_result", result);
             const value = result.message;
             if (value.status_code == 200) {
                 this.setState({ arrayMyProject: result.data });
                 this.setState({ arrayMyProjectTemp: result.data });
-                console.log("arrayMyProjectJson2", result.data);
-
                 this.onChangeTab();
 
             }
@@ -191,7 +176,6 @@ class PopUpProjectManagement extends React.Component {
     }
 
     handleSelected(selectedPage) {
-        console.log("selected", selectedPage);
         this.setState({ selectedPage: selectedPage });
     }
 
@@ -213,7 +197,6 @@ class PopUpProjectManagement extends React.Component {
         thumbnail_base64,
         thumbnail
     ) {
-        console.log("showDetailCCCC");
         localStorage.setItem("name", name);
         localStorage.setItem("description", description);
         localStorage.setItem("created_by", created_by);
@@ -230,7 +213,6 @@ class PopUpProjectManagement extends React.Component {
 
     onDeleteProject()
     {
-        console.log("OndeleteProject");
         this.setState({isDelete:true});
     }
 
@@ -243,13 +225,8 @@ class PopUpProjectManagement extends React.Component {
 
     onSearchProject(e) {
         const text = e.target.value;
-
-        console.log("search", text);
-
         this.setState({ arrayProjectTemp: [] });
-
         var arrayProjectSearch = [];
-
         for (var i = 0; i < this.state.arrayProject.length; i++) {
             const temp = this.state.arrayProject[i];
 
@@ -279,8 +256,6 @@ class PopUpProjectManagement extends React.Component {
         this.setState({ showUploadProject: true });
     }
     onClosePopupDetail() {
-        console.log("onClosePopupDetail");
-
         this.setState({ isDetail: false });
     }
 
@@ -292,16 +267,13 @@ class PopUpProjectManagement extends React.Component {
                 this.props.vm
                     .loadProject(buffer)
                     .then(() => {
-                        console.log("loadProject", 1);
                         if (true) {
                             this.props.onSetProjectTitle("title Project");
                         }
                     })
                     .catch((error) => {
-                        console.log("loadProject", 2);
                     })
                     .then(() => {
-                        console.log("loadProject", 3);
                     });
             });
 
@@ -316,16 +288,13 @@ class PopUpProjectManagement extends React.Component {
                 this.props.vm
                     .loadProject(buffer)
                     .then(() => {
-                        console.log("loadProject", 1);
                         if (true) {
                             this.props.onSetProjectTitle("title Project");
                         }
                     })
                     .catch((error) => {
-                        console.log("loadProject", 2);
                     })
                     .then(() => {
-                        console.log("loadProject", 3);
                     });
             });
 
@@ -342,30 +311,17 @@ class PopUpProjectManagement extends React.Component {
     fetch( ConfigServer.host + "/code_kittens_api/projects/"+id_project , requestOptions)
     .then((response) => response.json())
     .then((result) => {
-        console.log("my_result", result);
         const value = result.message;
         if (value.status_code == 200) {
-            //this.setState({ arrayMyProject: result.data });
-            //this.setState({ arrayMyProjectTemp: result.data });
-            //console.log("arrayMyProjectJson2", result.data);
-            //this.onChangeTab();
             this.onRefresh();
             this.onCloseDeleteProject();
-            
         }
     });
-
-
-
-
     }
 
     clickTab(e) {
-        console.log("Click Tab");
-        console.log("id", e);
     }
     closePopup() {
-        console.log("Close Popup");
         this.props.closePopup();
         //this.onRemix();
     }
@@ -411,18 +367,12 @@ class PopUpProjectManagement extends React.Component {
     {
 
         const clickTab = localStorage.getItem("clicktab");
-        console.log("clickTabAAA", clickTab);
-
         if(clickTab==0)
         {
-            console.log("clickTabAAA00:", clickTab);
-
             this.setState({arrayProject: this.state.arrayProjectPublic});
             this.setState({arrayProjectTemp: this.state.arrayProjectPublic});
         }else
         {
-            console.log("clickTabAAA11:", clickTab);
-
             this.setState({arrayProject: this.state.arrayMyProject});
             this.setState({arrayProjectTemp: this.state.arrayMyProject});
 
@@ -431,9 +381,6 @@ class PopUpProjectManagement extends React.Component {
 
     }
     render() {
-        
-
-
         return (
             <Modal
                 style={{ width: "100%" }}
@@ -465,7 +412,7 @@ class PopUpProjectManagement extends React.Component {
                         style={{
                             width: "100%",
                             padding: "20px",
-                            height: "700px",
+                            height: "90%",
                             borderTopLeftRadius: 10,
                             borderTopRightRadius: 10,
                             borderBottomLeftRadius: 10,
@@ -532,7 +479,7 @@ class PopUpProjectManagement extends React.Component {
                                     display: "flex",
                                     flexDirection: "row",
                                     alignSelf: "center",
-                                    height: "100px",
+                                    height: "70px",
                                     borderTopLeftRadius: "10px",
                                     borderTopRightRadius: "10px",
                                     background: "#1CC3A5",
@@ -740,7 +687,7 @@ class PopUpProjectManagement extends React.Component {
                                                                     value.name
                                                                 }
                                                                 thumb={
-                                                                    value.thumbnail_base64
+                                                                    value.thumbnail
                                                                 }
                                                                 linkdownload={
                                                                     ConfigServer.host + "/code_kittens_api/projects/" +
