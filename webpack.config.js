@@ -67,8 +67,6 @@ const base = {
                     // in much lower dependencies.
                     babelrc: false,
                     plugins: [
-                        '@babel/transform-runtime',
-
                         "@babel/plugin-syntax-dynamic-import",
                         "@babel/plugin-transform-async-to-generator",
                         "@babel/plugin-proposal-object-rest-spread",
@@ -142,9 +140,7 @@ module.exports = [
     // to run editor examples
     defaultsDeep({}, base, {
         entry: {
-            
             "lib.min": ["react", "react-dom"],
-            
             gui: "./src/playground/index.jsx",
             blocksonly: "./src/playground/blocks-only.jsx",
             compatibilitytesting: "./src/playground/compatibility-testing.jsx",
