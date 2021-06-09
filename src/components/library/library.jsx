@@ -18,16 +18,32 @@ const messages = defineMessages({
         id: 'gui.library.filterPlaceholder',
         defaultMessage: 'Search',
         description: 'Placeholder text for library search field'
-    },
-    allTag: {
-        id: 'gui.library.allTag',
-        defaultMessage: 'All',
-        description: 'Label for library tag to revert to all items after filtering by tag.'
     }
+    ,
+    allTag: {
+         id: 'gui.library.allTag',
+         defaultMessage: 'All',
+         description: 'Label for library tag to revert to all items after filtering by tag.'
+    },
+    famous: {
+        defaultMessage: 'Danh nhân',
+        description: 'Tag for filtering a library for animals',
+        id: 'gui.libraryTags.famous'
+    },
+    ocean: {
+        defaultMessage: 'Đại dương',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.ocean'
+    },
+  
 });
 
 const ALL_TAG = {tag: 'all', intlLabel: messages.allTag};
-const tagListPrefix = [ALL_TAG];
+const SPRITE_TAG = {tag:'Danh nhân', intlLabel: messages.famous};
+const BACKDROP_TAG = {tag:'Đại dương', intlLabel: messages.ocean};
+// const tagListPrefix = [ALL_TAG, SPRITE_TAG, BACKDROP_TAG];
+const tagListPrefix = [];
+
 
 class LibraryComponent extends React.Component {
     constructor (props) {
@@ -46,11 +62,20 @@ class LibraryComponent extends React.Component {
         this.state = {
             playingItem: null,
             filterQuery: '',
-            selectedTag: ALL_TAG.tag,
+            // selectedTag: SPRITE_TAG.tag,
             loaded: false
         };
     }
     componentDidMount () {
+
+        if (localStorage.getItem("isSprite") == true)
+        {
+            
+
+
+
+        }
+
         // Allow the spinner to display before loading the content
         setTimeout(() => {
             this.setState({loaded: true});
@@ -128,22 +153,22 @@ class LibraryComponent extends React.Component {
         this.setState({filterQuery: ''});
     }
     getFilteredData () {
-        if (this.state.selectedTag === 'all') {
-            if (!this.state.filterQuery) return this.props.data;
-            return this.props.data.filter(dataItem => (
-                (dataItem.tags || [])
-                    // Second argument to map sets `this`
-                    .map(String.prototype.toLowerCase.call, String.prototype.toLowerCase)
-                    .concat(dataItem.name ?
-                        (typeof dataItem.name === 'string' ?
-                        // Use the name if it is a string, else use formatMessage to get the translated name
-                            dataItem.name : this.props.intl.formatMessage(dataItem.name.props)
-                        ).toLowerCase() :
-                        null)
-                    .join('\n') // unlikely to partially match newlines
-                    .indexOf(this.state.filterQuery.toLowerCase()) !== -1
-            ));
-        }
+        // if (this.state.selectedTag === 'all') {
+        //     if (!this.state.filterQuery) return this.props.data;
+        //     return this.props.data.filter(dataItem => (
+        //         (dataItem.tags || [])
+        //             // Second argument to map sets `this`
+        //             .map(String.prototype.toLowerCase.call, String.prototype.toLowerCase)
+        //             .concat(dataItem.name ?
+        //                 (typeof dataItem.name === 'string' ?
+        //                 // Use the name if it is a string, else use formatMessage to get the translated name
+        //                     dataItem.name : this.props.intl.formatMessage(dataItem.name.props)
+        //                 ).toLowerCase() :
+        //                 null)
+        //             .join('\n') // unlikely to partially match newlines
+        //             .indexOf(this.state.filterQuery.toLowerCase()) !== -1
+        //     ));
+        // }
         return this.props.data.filter(dataItem => (
             dataItem.tags &&
             dataItem.tags

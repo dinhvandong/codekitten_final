@@ -259,25 +259,38 @@ class PopUpProjectManagement extends React.Component {
         this.setState({ isDetail: false });
     }
 
-    onRemix() {
+      onRemix() {
         const link_download = localStorage.getItem("link_download");
         fetch(link_download)
             .then((r) => r.arrayBuffer())
             .then((buffer) => {
+
+                console.log("upload_project:",0);
                 this.props.vm
                     .loadProject(buffer)
                     .then(() => {
                         if (true) {
+                            console.log("upload_project:",1);
+
                             this.props.onSetProjectTitle("title Project");
                         }
                     })
                     .catch((error) => {
+
+                        console.log("upload_project:",error);
+
                     })
                     .then(() => {
+
+                        console.log("upload_project:",3);
+
+
                     });
             });
 
-        this.props.closePopup();
+            this.props.closePopup();
+
+
     }
 
     onRemix2() {
