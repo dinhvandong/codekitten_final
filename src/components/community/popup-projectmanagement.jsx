@@ -79,6 +79,7 @@ class PopUpProjectManagement extends React.Component {
             arrayProjectPublic:[],
             arrayProjectPublicTemp :[],
             arrayProject:[],
+            isLoad:false,
             arrayMyProject:[],
             arrayProjectTemp:[],
             arrayMyProjectTemp:[] });
@@ -259,36 +260,51 @@ class PopUpProjectManagement extends React.Component {
         this.setState({ isDetail: false });
     }
 
+
       onRemix() {
-        const link_download = localStorage.getItem("link_download");
-        fetch(link_download)
-            .then((r) => r.arrayBuffer())
-            .then((buffer) => {
 
-                console.log("upload_project:",0);
-                this.props.vm
-                    .loadProject(buffer)
-                    .then(() => {
-                        if (true) {
-                            console.log("upload_project:",1);
+        if(!this.state.isLoad)
+        {
 
-                            this.props.onSetProjectTitle("title Project");
-                        }
-                    })
-                    .catch((error) => {
+            const link_download = localStorage.getItem("link_download");
+            fetch(link_download)
+                .then((r) => r.arrayBuffer())
+                .then((buffer) => {
+    
+                    console.log("upload_project:",0);
+    
+    
+                    this.props.vm
+                        .loadProject(buffer)
+                        .then(() => {
+                            if (true) {
+                                console.log("upload_project:",1);
+    
+                                this.props.onSetProjectTitle("title Project");
+                            }
+                        })
+                        .catch((error) => {
+    
+                            console.log("upload_project:",error);
+    
+                        })
+                        .then(() => {
+    
+                            console.log("upload_project:",3);
+                            this.setState({isLoad:true});
+    
+    
+                        });
+                });
+    
+                this.props.closePopup();
 
-                        console.log("upload_project:",error);
-
-                    })
-                    .then(() => {
-
-                        console.log("upload_project:",3);
 
 
-                    });
-            });
 
-            this.props.closePopup();
+        }
+
+       
 
 
     }
