@@ -267,6 +267,8 @@ class PopUpProjectManagement extends React.Component {
         {
 
             const link_download = localStorage.getItem("link_download");
+            let loadingSuccess = false;
+
             fetch(link_download)
                 .then((r) => r.arrayBuffer())
                 .then((buffer) => {
@@ -277,10 +279,13 @@ class PopUpProjectManagement extends React.Component {
                     this.props.vm
                         .loadProject(buffer)
                         .then(() => {
-                            if (true) {
+                            if (!loadingSuccess) {
+
                                 console.log("upload_project:",1);
     
                                 this.props.onSetProjectTitle("title Project");
+
+                                loadingSuccess = true ;
                             }
                         })
                         .catch((error) => {

@@ -24,12 +24,7 @@ export default class ForgotOTP extends React.Component {
     }
     componentDidMount() {}
     componentDidUpdate() {
-        console.log("this.state.number1Str", this.state.number1Str);
-        console.log("this.state.number2Str", this.state.number2Str);
-        console.log("this.state.number3Str", this.state.number3Str);
-        console.log("this.state.number4Str", this.state.number4Str);
-        console.log("this.state.number5Str", this.state.number5Str);
-        console.log("this.state.number6Str", this.state.number6Str);
+       
     }
     requestAPI() {
         this.state.number1Str = localStorage.getItem("num1");
@@ -63,10 +58,7 @@ export default class ForgotOTP extends React.Component {
                 const value = data.message;
                 const token = data.data;
                 if (value.status_code == 200) {
-                    const requestJson = JSON.stringify({
-                        mobile_number: localStorage.getItem("phonenumber"),
-                        sms_code: otp,
-                    });
+                   
                     localStorage.setItem("otp", otp);
                     localStorage.setItem("token", token.signup_token);
                     this.props.onClosePopup();

@@ -52,12 +52,12 @@ export default class ProjectItem extends React.Component {
                     <div
                         style={{
                             marginLeft: "20px",
-                            fontSize: 10,
+                            fontSize: 12,
                             fontWeight: "bold",
                             color: "#007bff",
                         }}
                     >
-                        <span>{`${this.props.description.substring(0, 50)}` }</span>
+                        <span>{this.props.description}</span>
                     </div>
                 </div>
             </div>

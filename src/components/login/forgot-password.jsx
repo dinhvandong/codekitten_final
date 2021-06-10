@@ -27,7 +27,6 @@ export default class ForgotPassword extends React.Component {
     }
     handleClick(e) {
         e.preventDefault();
-        console.log("The link was clicked.", this.state.phonenumber);
         const data = {
             mobile_number: "+84" + this.state.phonenumber,
             client_id: ConfigServer.client_id,
@@ -46,7 +45,6 @@ export default class ForgotPassword extends React.Component {
         fetch(url, requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log("JSON_LOGIN:", result);
             const returnData = result.data;
             const value = result.message;
                         if(value.status_code==200)
@@ -64,21 +62,6 @@ export default class ForgotPassword extends React.Component {
 
         });
 
-
-
-        // var url = APICodeKitten.forgot_password_by_phone;
-        // fetch(url, requestOptions)
-        //     .then((res) => res.json)
-        //     .then(
-        //         result => {
-        //             console.log("Result", result.message);
-        //             const value = result.message;
-        //             if(value.status_code==200)
-        //             {
-        //                 this.onMoveAuthenOTP();
-        //             }
-        //         }
-        //     );
     }
     render() {
         return (

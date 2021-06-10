@@ -102,7 +102,7 @@ import RegisterOTP from "./register-otp.jsx";
                             />
                         </div>
 
-                        <RegisterOTP  setShow ={this.props.setShow} onClosePopup={this.props.onClosePopup} />
+                        <RegisterOTP  setShow ={this.props.setShow} onClosePopup={this.props.closePopup} />
                     </div>
                 </view>
             </Modal>

@@ -40,6 +40,18 @@
     background-size: cover;
     display: inline-block
 }
+
+.icon_next_mysubject:hover {
+    background-image: url("./icon/next-mysubject2.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    align-self: center;
+    
+    width: 22px;
+    height: 22px;
+    background-size: cover;
+    display: inline-block
+}
 .icon_delete_sprite{
 
     background-image: url("./icon_bin2.png");
@@ -88,6 +100,8 @@
     z-index: 2;
     top: 0;
     left: 50%;
+    border-color: gray;
+    border-width: 2px;
     transform: translateX(-50%);
     width: 80%;
     border-radius: 10px;
@@ -106,7 +120,7 @@
     padding-top: 0;
     /* height: 230px; */
     background-repeat: no-repeat;
-    background-size: 200px 200px;
+    background-size: 200px 150px;
     background-position: bottom center;
     transition: all .2s ease;
     filter: drop-shadow(10px 30px 30px rgba(177, 188, 199, 0.15))
@@ -132,13 +146,14 @@
 }
 .c_titlebox_project  {
     display: flex;
+    margin-top: -20px;
     align-items: center;
-    padding-bottom: 5px;
+     padding-bottom: 5px;
     margin-bottom: 0px;
     position: relative;
     z-index: 1;
     margin-left: 20px;
-    margin-right: 20px;
+    margin-right: 00px;
 
 }
 
@@ -151,12 +166,15 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
-    width: 150px;
+    width: 100%;
 
 }
 .c_titlebox_project__right  {
-    margin-left: auto;
+    /* margin-left: auto; */
+    flex-direction: row;    
+    margin-right: 10px;
     display: flex;
+    justify-content: right;
     font-size: 12px
 }
 

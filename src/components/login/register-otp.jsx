@@ -76,12 +76,7 @@ export default class RegisterOTP extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log("this.state.number1Str", this.state.number1Str);
-        console.log("this.state.number2Str", this.state.number2Str);
-        console.log("this.state.number3Str", this.state.number3Str);
-        console.log("this.state.number4Str", this.state.number4Str);
-        console.log("this.state.number5Str", this.state.number5Str);
-        console.log("this.state.number6Str", this.state.number6Str);
+       
     }
     requestAPI() {
         this.state.number1Str = localStorage.getItem("num1");
@@ -111,13 +106,7 @@ export default class RegisterOTP extends React.Component {
         fetch(url, requestOptions)
             .then((response) => response.json())
             .then((data) => {
-                //this.setState({ user: data });
-                console.log("response:", data);
                 const value = data.message;
-                console.log("value:", value);
-
-                console.log("data", data.data);
-
                 const token = data.data;
                 if(value.status_code==200)
                 {
@@ -130,7 +119,6 @@ export default class RegisterOTP extends React.Component {
                     localStorage.setItem("otp", otp );
                     localStorage.setItem("token",token.signup_token)
                     this.props.setShow(SCREENS.screen_RegisterPassword);
-                    console.log("requestJson",requestJson);
                 }
             });
     }
