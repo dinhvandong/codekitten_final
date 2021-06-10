@@ -18,7 +18,7 @@ import ProjectItem from "./project-item.jsx";
 import "../../lib/sb-file-uploader-hoc.jsx";
 import { setProjectTitle } from "../../reducers/project-title";
 import Grid from "@material-ui/core/Grid";
-import ProjectDeleteQuestion from './project-delete.jsx';
+import ProjectDeleteQuestion from "./project-delete.jsx";
 import {
     defineMessages,
     FormattedMessage,
@@ -27,6 +27,7 @@ import {
 } from "react-intl";
 import MenuBarHOC from "../../containers/menu-bar-hoc.jsx";
 
+import   './empty-cache';
 import SBFileUploaderHOC from "../../lib/sb-file-uploader-hoc.jsx";
 
 import { SCREENS } from "../gui/constant.js";
@@ -42,19 +43,18 @@ import ConfigServer from "../../config_server.js";
 
 import {
     openLoadingProject,
-    closeLoadingProject
-} from '../../../src/reducers/modals';
+    closeLoadingProject,
+} from "../../../src/reducers/modals";
 //'../reducers/modals';
 //const fs = require('fs');
-
 
 import {
     LoadingStates,
     getIsLoadingUpload,
     getIsShowingWithoutId,
     onLoadedProject,
-    requestProjectUpload
-} from '../../../src/reducers/project-state';
+    requestProjectUpload,
+} from "../../../src/reducers/project-state";
 
 class PopUpProjectManagement extends React.Component {
     constructor(props) {
@@ -63,6 +63,8 @@ class PopUpProjectManagement extends React.Component {
         this.state = {
             selectedPage: 1,
         };
+
+        this.state = {fileupload: null};
 
         this.handleSelected = this.handleSelected.bind(this);
 
@@ -76,11 +78,12 @@ class PopUpProjectManagement extends React.Component {
             "onChangePage",
             "onClosePopupDetail",
             "onRemix",
-            "clickTab","onChangeTab"
+            "clickTab",
+            "onChangeTab",
         ]);
         this.state = {
             isDetail: false,
-            isDelete:false,
+            isDelete: false,
             showAlertLogin: false,
             showUploadProject: false,
             selectedTab: 0,
@@ -88,20 +91,18 @@ class PopUpProjectManagement extends React.Component {
 
         this.state = { spacing: 2, arrayItems: [] };
 
-
-
-        this.state = ({ 
-            arrayProjectPublic:[],
-            arrayProjectPublicTemp :[],
-            arrayProject:[],
-            isLoad:false,
-            arrayMyProject:[],
-            arrayProjectTemp:[],
-            arrayMyProjectTemp:[] });
+        this.state = {
+            arrayProjectPublic: [],
+            arrayProjectPublicTemp: [],
+            arrayProject: [],
+            isLoad: false,
+            arrayMyProject: [],
+            arrayProjectTemp: [],
+            arrayMyProjectTemp: [],
+        };
 
         this.onShowDetail = this.onShowDetail.bind(this);
-        localStorage.setItem("clicktab",0);
-
+        localStorage.setItem("clicktab", 0);
 
         this.onConfirmDeleteProject = this.onConfirmDeleteProject.bind(this);
         this.onSearchProject = this.onSearchProject.bind(this);
@@ -111,47 +112,12 @@ class PopUpProjectManagement extends React.Component {
         this.onSetShowDetail = this.onSetShowDetail.bind(this);
 
         this.onCloseDeleteProject = this.onCloseDeleteProject.bind(this);
+
+        this.emptyCache = this.emptyCache.bind(this);
+        this.removeFileObjects = this.removeFileObjects.bind(this);
     }
 
-
-    onRefresh()
-    {
-
-
-        fetch( ConfigServer.host + "/code_kittens_api/projects")
-        .then((response) => response.json())
-        .then((result) => {
-            const value = result.message;
-            if (value.status_code == 200) {
-                this.setState({ arrayProjectPublic: result.data });
-                this.setState({ arrayProjectPublicTemp: result.data });
-                this.onChangeTab();
-
-            }
-        });
-
-    const token =    localStorage.getItem('token');
-
-    const requestOptions = {
-            method: 'GET',
-            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
-        };            
-    fetch( ConfigServer.host + "/code_kittens_api/my_projects", requestOptions)
-    .then((response) => response.json())
-    .then((result) => {
-        const value = result.message;
-        if (value.status_code == 200) {
-            this.setState({ arrayMyProject: result.data });
-            this.setState({ arrayMyProjectTemp: result.data });
-            this.onChangeTab();
-
-        }
-    });
-
-
-    }
-    componentDidMount() {
-        localStorage.setItem("clicktab",0);
+    onRefresh() {
         fetch(ConfigServer.host + "/code_kittens_api/projects")
             .then((response) => response.json())
             .then((result) => {
@@ -160,32 +126,79 @@ class PopUpProjectManagement extends React.Component {
                     this.setState({ arrayProjectPublic: result.data });
                     this.setState({ arrayProjectPublicTemp: result.data });
                     this.onChangeTab();
-
                 }
             });
 
-        const token =    localStorage.getItem('token');
+        const token = localStorage.getItem("token");
+
         const requestOptions = {
-                method: 'GET',
-                headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
-            };            
-        fetch(ConfigServer.host + "/code_kittens_api/my_projects", requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-            const value = result.message;
-            if (value.status_code == 200) {
-                this.setState({ arrayMyProject: result.data });
-                this.setState({ arrayMyProjectTemp: result.data });
-                this.onChangeTab();
-
-            }
-        });
-
-
-
-
-
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        };
+        fetch(
+            ConfigServer.host + "/code_kittens_api/my_projects",
+            requestOptions
+        )
+            .then((response) => response.json())
+            .then((result) => {
+                const value = result.message;
+                if (value.status_code == 200) {
+                    this.setState({ arrayMyProject: result.data });
+                    this.setState({ arrayMyProjectTemp: result.data });
+                    this.onChangeTab();
+                }
+            });
     }
+    componentDidMount() {
+        localStorage.setItem("clicktab", 0);
+        fetch(ConfigServer.host + "/code_kittens_api/projects")
+            .then((response) => response.json())
+            .then((result) => {
+                const value = result.message;
+                if (value.status_code == 200) {
+                    this.setState({ arrayProjectPublic: result.data });
+                    this.setState({ arrayProjectPublicTemp: result.data });
+                    this.onChangeTab();
+                }
+            });
+
+        const token = localStorage.getItem("token");
+        const requestOptions = {
+            method: "GET",
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        };
+        fetch(
+            ConfigServer.host + "/code_kittens_api/my_projects",
+            requestOptions
+        )
+            .then((response) => response.json())
+            .then((result) => {
+                const value = result.message;
+                if (value.status_code == 200) {
+                    this.setState({ arrayMyProject: result.data });
+                    this.setState({ arrayMyProjectTemp: result.data });
+                    this.onChangeTab();
+                }
+            });
+
+
+
+          
+    
+    
+
+
+   
+    
+    }
+
+  
+
+
 
     onChangePage(pageOfItems) {
         this.setState({ pageOfItems: pageOfItems });
@@ -199,11 +212,8 @@ class PopUpProjectManagement extends React.Component {
         setSpacing(Number(event.target.value));
     }
 
-    onSetShowDetail()
-    {
-
-      this.setState({ isDetail: true });
-
+    onSetShowDetail() {
+        this.setState({ isDetail: true });
     }
     onShowDetail(
         name,
@@ -224,19 +234,15 @@ class PopUpProjectManagement extends React.Component {
         localStorage.setItem("thumbnail_base64", thumbnail_base64);
         localStorage.setItem("thumbnail", thumbnail);
 
-       // this.setState({ isDetail: true });
+        // this.setState({ isDetail: true });
     }
 
-    onDeleteProject()
-    {
-        this.setState({isDelete:true});
+    onDeleteProject() {
+        this.setState({ isDelete: true });
     }
 
-    onCloseDeleteProject()
-    {
-        this.setState({isDelete:false});
-
-
+    onCloseDeleteProject() {
+        this.setState({ isDelete: false });
     }
 
     onSearchProject(e) {
@@ -275,43 +281,70 @@ class PopUpProjectManagement extends React.Component {
         this.setState({ isDetail: false });
     }
 
+    removeFileObjects() {
+        if (this.inputElement) {
+            this.inputElement.value = null;
+            document.body.removeChild(this.inputElement);
+        }
+        this.inputElement = null;
+    }
 
-      onRemix() {
+    emptyCache(){
+        if('caches' in window){
+        caches.keys().then((names) => {
+                // Delete all the cache files
+                names.forEach(name => {
+                    caches.delete(name);
+                })
+            });
+    
+            // Makes sure the page reloads. Changes are only visible after you refresh.
+            //window.location.reload(true);
+        }
+    }
 
-       
+    onRemix(e) {
+        let loadingSuccess = false;
         this.props.onLoadingStarted();
-       //this.props.requestProjectUpload(loadingState);
-
-        if(!this.state.isLoad)
-        {
-            //this.props.vm.deleteSprite();
-            //.loadProject(null);
+        if (!this.loadingSuccess) {
             const link_download = localStorage.getItem("link_download");
-            let loadingSuccess = false;
+             this.setState({fileupload:null});
+           // this.emptyCache();
             fetch(link_download)
                 .then((r) => r.arrayBuffer())
                 .then((buffer) => {
-                    console.log("upload_project:",0);
+                    console.log("upload_project:", 0);
+                   // this.setState({fileupload: buffer});
+                    const file = buffer;
+                   console.log("upload_project:", 1);
+               
+                   console.log("upload_project:", 2);
+               
+                   if(!loadingSuccess)
+                   {
+
                     this.props.vm
-                        .loadProject(buffer)
-                        .then(() => {
-                            if (!loadingSuccess) {
-                                console.log("upload_project:",1);
-                                this.props.onSetProjectTitle("title Project");
-                                loadingSuccess = true ;
-                            }
-                        })
-                        .catch((error) => {
-                            console.log("upload_project:",error);
-                        })
-                        .then(() => {
-                            console.log("upload_project:",3);
-                            this.setState({isLoad:true});
-                            this.props.onCloseLoadingStarted();
-                            //this.props.onLoadingFinished(this.props.loadingState, loadingSuccess);
-                        });
+                    .loadProject(buffer)
+                    .then(() => {
+                        if (!loadingSuccess) {
+                            console.log("upload_project:", 1);
+                            this.props.onSetProjectTitle("title Project");
+                            loadingSuccess = true;
+                        }
+                    })
+                    .catch((error) => {})
+                    .then(() => {
+                        this.props.onCloseLoadingStarted();
+                        //this.props.onLoadingFinished(this.props.loadingState, loadingSuccess);
+                    });
+
+
+                   }
+                  
                 });
+
                 this.props.closePopup();
+
         }
     }
 
@@ -327,35 +360,36 @@ class PopUpProjectManagement extends React.Component {
                             this.props.onSetProjectTitle("title Project");
                         }
                     })
-                    .catch((error) => {
-                    })
-                    .then(() => {
-                    });
+                    .catch((error) => {})
+                    .then(() => {});
             });
 
-       // this.props.closePopup();
+        // this.props.closePopup();
     }
 
-    onConfirmDeleteProject()
-    {
+    onConfirmDeleteProject() {
         const id_project = localStorage.getItem("id_project_selected");
         const requestOptions = {
-            method: 'DELETE',
-            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
-        };            
-    fetch( ConfigServer.host + "/code_kittens_api/projects/"+id_project , requestOptions)
-    .then((response) => response.json())
-    .then((result) => {
-        const value = result.message;
-        if (value.status_code == 200) {
-            this.onRefresh();
-            this.onCloseDeleteProject();
-        }
-    });
+            method: "DELETE",
+            headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+            },
+        };
+        fetch(
+            ConfigServer.host + "/code_kittens_api/projects/" + id_project,
+            requestOptions
+        )
+            .then((response) => response.json())
+            .then((result) => {
+                const value = result.message;
+                if (value.status_code == 200) {
+                    this.onRefresh();
+                    this.onCloseDeleteProject();
+                }
+            });
     }
 
-    clickTab(e) {
-    }
+    clickTab(e) {}
     closePopup() {
         this.props.closePopup();
         //this.onRemix();
@@ -386,7 +420,6 @@ class PopUpProjectManagement extends React.Component {
         }
         return ab;
     }
-    
 
     convertUTCDateToLocalDate(date) {
         var newDate = new Date(
@@ -398,27 +431,24 @@ class PopUpProjectManagement extends React.Component {
         return newDate;
     }
 
-    onChangeTab()
-    {
-
+    onChangeTab() {
         const clickTab = localStorage.getItem("clicktab");
-        if(clickTab==0)
-        {
-            this.setState({arrayProject: this.state.arrayProjectPublic});
-            this.setState({arrayProjectTemp: this.state.arrayProjectPublic});
-        }else
-        {
-            this.setState({arrayProject: this.state.arrayMyProject});
-            this.setState({arrayProjectTemp: this.state.arrayMyProject});
-
+        if (clickTab == 0) {
+            this.setState({ arrayProject: this.state.arrayProjectPublic });
+            this.setState({ arrayProjectTemp: this.state.arrayProjectPublic });
+        } else {
+            this.setState({ arrayProject: this.state.arrayMyProject });
+            this.setState({ arrayProjectTemp: this.state.arrayMyProject });
         }
-
-
     }
     render() {
-
-       
-
+        const {
+            /* eslint-disable no-unused-vars */
+            loadingState,
+            requestProjectUpload: requestProjectUploadProp,
+            /* eslint-enable no-unused-vars */
+            ...componentProps
+        } = this.props;
 
         return (
             <Modal
@@ -619,14 +649,14 @@ class PopUpProjectManagement extends React.Component {
                                                 "Dự án cộng đồng",
                                                 "Dự án của tôi",
                                             ]}
-                                            doSomethingAfterClick = {
+                                            doSomethingAfterClick={
                                                 this.onChangeTab
                                             }
                                         />
                                     ) : (
                                         <ButtonGroup
                                             buttons={["Dự án cộng đồng"]}
-                                            doSomethingAfterClick = {
+                                            doSomethingAfterClick={
                                                 this.onChangeTab
                                             }
                                         />
@@ -634,77 +664,68 @@ class PopUpProjectManagement extends React.Component {
                                 </ul>
                             </div>
 
-
-
-                            <div
-                            style={{
-                                width: "100%",
-                                height: "100%",
-                                borderBottomLeftRadius: "10px",
-                                borderBottomRightRadius: "10px",
-                                backgroundColor: "#FFF",
-                            }}
-                        >
-                            <div
-                                style={{
-                                    marginTop: "30px",
-                                    marginLeft: "20px",
-                                }}
-                            >
-                                <div
-                                    style={{
-                                        fontWeight: "bold",
-                                        fontSize: 16,
-                                    }}
-                                >
-                                    <span>Toàn bộ dự án </span>
-                                </div>
-
-                                <div
-                                    style={{
-                                        fontWeight: "normal",
-                                        fontSize: 14,
-                                        marginTop: "10px",
-                                    }}
-                                >
-                                    <span>
-                                        Tìm thấy{" "}
-                                        {
-                                            this.state.arrayProjectTemp
-                                                .length
-                                        }{" "}
-                                        dự án{" "}
-                                    </span>
-                                </div>
-                            </div>
-
                             <div
                                 style={{
                                     width: "100%",
-                                    height: "526px",
-                                    overflowY: "scroll",
+                                    height: "100%",
+                                    borderBottomLeftRadius: "10px",
+                                    borderBottomRightRadius: "10px",
+                                    backgroundColor: "#FFF",
                                 }}
                             >
-                                <Grid
-                                    container
-                                    style={{ zIndex: 1, flexGrow: 1 }}
-                                    spacing={10}
+                                <div
+                                    style={{
+                                        marginTop: "30px",
+                                        marginLeft: "20px",
+                                    }}
                                 >
-                                    <Grid item xs={20}>
-                                        <Grid
-                                            container
-                                            justify="center"
-                                            spacing={this.state.spacing}
-                                        >
-                                            {this.state.arrayProjectTemp.map(
-                                                (value) => (
-                                                    <Grid
-                                                        key={value}
-                                                        item
-                                                    >
-                                                        <div
-                                                            onClick= {
-                                                                () =>
+                                    <div
+                                        style={{
+                                            fontWeight: "bold",
+                                            fontSize: 16,
+                                        }}
+                                    >
+                                        <span>Toàn bộ dự án </span>
+                                    </div>
+
+                                    <div
+                                        style={{
+                                            fontWeight: "normal",
+                                            fontSize: 14,
+                                            marginTop: "10px",
+                                        }}
+                                    >
+                                        <span>
+                                            Tìm thấy{" "}
+                                            {this.state.arrayProjectTemp.length}{" "}
+                                            dự án{" "}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style={{
+                                        width: "100%",
+                                        height: "526px",
+                                        overflowY: "scroll",
+                                    }}
+                                >
+                                    <Grid
+                                        container
+                                        style={{ zIndex: 1, flexGrow: 1 }}
+                                        spacing={10}
+                                    >
+                                        <Grid item xs={20}>
+                                            <Grid
+                                                container
+                                                justify="center"
+                                                spacing={this.state.spacing}
+                                            >
+                                                {this.state.arrayProjectTemp.map(
+                                                    (value) => (
+                                                        <Grid key={value} item>
+                                                            <div
+                                                                onClick={() =>
                                                                     this.onShowDetail(
                                                                         value.name,
                                                                         value.description,
@@ -713,251 +734,255 @@ class PopUpProjectManagement extends React.Component {
                                                                         value.thumbnail_base64,
                                                                         value.thumbnail
                                                                     )
-                                                           }
-                                                        >
-                                                            <ProjectItem
-                                                            onSetShowDetail = {this.onSetShowDetail}                                                               
-                                                                onDeleteProject = {this.onDeleteProject}
-                                                                isPublic = {localStorage.getItem("clicktab")}
-                                                                description={
-                                                                    value.description
                                                                 }
-                                                                name={
-                                                                    value.name
-                                                                }
-                                                                thumb={
-                                                                    value.thumbnail
-                                                                }
-                                                                linkdownload={
-                                                                    ConfigServer.host + "/code_kittens_api/projects/" +
-                                                                    value.id
-                                                                }
-                                                            />
-                                                        </div>
-                                                    </Grid>
-                                                )
-                                            )}
+                                                            >
+                                                                <ProjectItem
+                                                                    onSetShowDetail={
+                                                                        this
+                                                                            .onSetShowDetail
+                                                                    }
+                                                                    onDeleteProject={
+                                                                        this
+                                                                            .onDeleteProject
+                                                                    }
+                                                                    isPublic={localStorage.getItem(
+                                                                        "clicktab"
+                                                                    )}
+                                                                    description={
+                                                                        value.description
+                                                                    }
+                                                                    name={
+                                                                        value.name
+                                                                    }
+                                                                    thumb={
+                                                                        value.thumbnail
+                                                                    }
+                                                                    linkdownload={
+                                                                        ConfigServer.host +
+                                                                        "/code_kittens_api/projects/" +
+                                                                        value.id
+                                                                    }
+                                                                />
+                                                            </div>
+                                                        </Grid>
+                                                    )
+                                                )}
+                                            </Grid>
                                         </Grid>
                                     </Grid>
-                                </Grid>
-                            </div>
+                                </div>
 
-                            <div
-                                style={{
-                                    width: "100%",
-                                    height: "50px",
-                                    display: "flex",
-                                    alignContent: "center",
-                                    alignItems: "center",
-                                    marginTop: "0px",
-                                    borderBottomLeftRadius: "10px",
-                                    borderBottomRightRadius: "10px",
-                                }}
-                            >
                                 <div
                                     style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        flexDirection: "row",
                                         width: "100%",
+                                        height: "50px",
+                                        display: "flex",
+                                        alignContent: "center",
                                         alignItems: "center",
+                                        marginTop: "0px",
+                                        borderBottomLeftRadius: "10px",
+                                        borderBottomRightRadius: "10px",
                                     }}
                                 >
                                     <div
                                         style={{
-                                            alignSelf: "center",
-                                            width: "50px",
                                             display: "flex",
-                                            height: "30px",
                                             justifyContent: "center",
-                                            backgroundColor: "#1CC3A5",
-                                            borderColor: "white",
-                                            marginLeft: "10px",
+                                            flexDirection: "row",
+                                            width: "100%",
+                                            alignItems: "center",
                                         }}
                                     >
-                                        <img
+                                        <div
                                             style={{
                                                 alignSelf: "center",
-                                                width: "20px",
-                                                height: "20px",
-                                            }}
-                                            src={icon_pagging_previous}
-                                        />
-                                    </div>
-
-                                    <div
-                                        style={{
-                                            justifyContent: "center",
-                                            display: "flex",
-
-                                            alignSelf: "center",
-                                            width: "50px",
-                                            height: "30px",
-                                            backgroundColor: "#1CC3A5",
-                                            borderColor: "white",
-                                            marginLeft: "10px",
-                                        }}
-                                    >
-                                        <img
-                                            style={{
-                                                alignSelf: "center",
-                                                width: "10px",
-                                                height: "10px",
-                                            }}
-                                            src={ic_back}
-                                        />
-                                    </div>
-
-                                    <div
-                                        style={{
-                                            justifyContent: "center",
-                                            display: "flex",
-
-                                            alignSelf: "center",
-                                            width: "100px",
-                                            height: "30px",
-                                            backgroundColor: "#1CC3A5",
-                                            borderColor: "white",
-                                            marginLeft: "10px",
-                                        }}
-                                    >
-                                        <span
-                                            style={{
-                                                alignSelf: "center",
-                                                fontWeight: "bold",
-                                                color: "white",
-                                                fontSize: 12,
+                                                width: "50px",
+                                                display: "flex",
+                                                height: "30px",
+                                                justifyContent: "center",
+                                                backgroundColor: "#1CC3A5",
+                                                borderColor: "white",
+                                                marginLeft: "10px",
                                             }}
                                         >
-                                            Trang 1/100
-                                        </span>
-                                    </div>
+                                            <img
+                                                style={{
+                                                    alignSelf: "center",
+                                                    width: "20px",
+                                                    height: "20px",
+                                                }}
+                                                src={icon_pagging_previous}
+                                            />
+                                        </div>
 
-                                    <div
-                                        style={{
-                                            justifyContent: "center",
-                                            display: "flex",
-
-                                            alignSelf: "center",
-                                            width: "50px",
-                                            height: "30px",
-                                            backgroundColor: "#1CC3A5",
-                                            borderColor: "white",
-                                            marginLeft: "10px",
-                                        }}
-                                    >
-                                        <img
+                                        <div
                                             style={{
+                                                justifyContent: "center",
+                                                display: "flex",
+
                                                 alignSelf: "center",
-                                                width: "10px",
-                                                height: "10px",
+                                                width: "50px",
+                                                height: "30px",
+                                                backgroundColor: "#1CC3A5",
+                                                borderColor: "white",
+                                                marginLeft: "10px",
                                             }}
-                                            src={ic_next}
-                                        />
-                                    </div>
+                                        >
+                                            <img
+                                                style={{
+                                                    alignSelf: "center",
+                                                    width: "10px",
+                                                    height: "10px",
+                                                }}
+                                                src={ic_back}
+                                            />
+                                        </div>
 
-                                    <div
-                                        style={{
-                                            justifyContent: "center",
-                                            display: "flex",
-
-                                            alignSelf: "center",
-                                            width: "50px",
-                                            height: "30px",
-                                            backgroundColor: "#1CC3A5",
-                                            borderColor: "white",
-                                            marginLeft: "10px",
-                                        }}
-                                    >
-                                        <img
+                                        <div
                                             style={{
+                                                justifyContent: "center",
+                                                display: "flex",
+
                                                 alignSelf: "center",
-                                                width: "20px",
-                                                height: "20px",
+                                                width: "100px",
+                                                height: "30px",
+                                                backgroundColor: "#1CC3A5",
+                                                borderColor: "white",
+                                                marginLeft: "10px",
                                             }}
-                                            src={icon_pagging_next}
-                                        />
+                                        >
+                                            <span
+                                                style={{
+                                                    alignSelf: "center",
+                                                    fontWeight: "bold",
+                                                    color: "white",
+                                                    fontSize: 12,
+                                                }}
+                                            >
+                                                Trang 1/100
+                                            </span>
+                                        </div>
+
+                                        <div
+                                            style={{
+                                                justifyContent: "center",
+                                                display: "flex",
+
+                                                alignSelf: "center",
+                                                width: "50px",
+                                                height: "30px",
+                                                backgroundColor: "#1CC3A5",
+                                                borderColor: "white",
+                                                marginLeft: "10px",
+                                            }}
+                                        >
+                                            <img
+                                                style={{
+                                                    alignSelf: "center",
+                                                    width: "10px",
+                                                    height: "10px",
+                                                }}
+                                                src={ic_next}
+                                            />
+                                        </div>
+
+                                        <div
+                                            style={{
+                                                justifyContent: "center",
+                                                display: "flex",
+
+                                                alignSelf: "center",
+                                                width: "50px",
+                                                height: "30px",
+                                                backgroundColor: "#1CC3A5",
+                                                borderColor: "white",
+                                                marginLeft: "10px",
+                                            }}
+                                        >
+                                            <img
+                                                style={{
+                                                    alignSelf: "center",
+                                                    width: "20px",
+                                                    height: "20px",
+                                                }}
+                                                src={icon_pagging_next}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
+
+                                <div
+                                    style={{
+                                        marginTop: "30px",
+                                        zIndex: 5,
+                                        height: "100%",
+                                        width: "100%",
+                                    }}
+                                >
+                                    {this.state.isDetail ? (
+                                        <ProjectDetail
+                                            onRemix={this.onRemix}
+                                            onClosePopup={
+                                                this.onClosePopupDetail
+                                            }
+                                        />
+                                    ) : (
+                                        <div></div>
+                                    )}
+
+                                    {this.state.isDelete === true ? (
+                                        <ProjectDeleteQuestion
+                                            onCloseDelete={
+                                                this.onCloseDeleteProject
+                                            }
+                                            onDeleteProject={
+                                                this.onConfirmDeleteProject
+                                            }
+                                        />
+                                    ) : (
+                                        <div></div>
+                                    )}
+                                </div>
+
+                                <div
+                                    style={{
+                                        marginTop: "30px",
+                                        zIndex: 5,
+                                        height: "100%",
+                                        width: "100%",
+                                    }}
+                                >
+                                    {this.state.showAlertLogin ? (
+                                        <AlertLogin
+                                            onClosePopup={
+                                                this.onCloseLoginAlert
+                                            }
+                                        />
+                                    ) : (
+                                        <div></div>
+                                    )}
+                                </div>
+
+                                <div
+                                    style={{
+                                        marginTop: "30px",
+                                        zIndex: 5,
+                                        height: "100%",
+                                        width: "100%",
+                                    }}
+                                >
+                                    {this.state.showUploadProject ? (
+                                        <UploadProject
+                                            onRefresh={this.onRefresh}
+                                            onClosePopup={
+                                                this.onCloseUploadProject
+                                            }
+                                        />
+                                    ) : (
+                                        <div></div>
+                                    )}
+                                </div>
                             </div>
-
-                            <div
-                                style={{
-                                    marginTop: "30px",
-                                    zIndex: 5,
-                                    height: "100%",
-                                    width: "100%",
-                                }}
-                            >
-                                {this.state.isDetail ? (
-                                    <ProjectDetail
-                                        onRemix={this.onRemix}
-                                        onClosePopup={
-                                            this.onClosePopupDetail
-                                        }
-                                    />
-                                ) : (
-                                    <div></div>
-                                )}
-
-
-                                {this.state.isDelete === true ? (
-                                    <ProjectDeleteQuestion 
-                                    onCloseDelete = {this.onCloseDeleteProject}
-                                    onDeleteProject = {this.onConfirmDeleteProject}
-                                    />
-                                ) : (
-                                    <div></div>
-                                )}
-
-
-
-
-
-                            </div>
-
-                            <div
-                                style={{
-                                    marginTop: "30px",
-                                    zIndex: 5,
-                                    height: "100%",
-                                    width: "100%",
-                                }}
-                            >
-                                {this.state.showAlertLogin ? (
-                                    <AlertLogin
-                                        onClosePopup={
-                                            this.onCloseLoginAlert
-                                        }
-                                    />
-                                ) : (
-                                    <div></div>
-                                )}
-                            </div>
-
-                            <div
-                                style={{
-                                    marginTop: "30px",
-                                    zIndex: 5,
-                                    height: "100%",
-                                    width: "100%",
-                                }}
-                            >
-                                {this.state.showUploadProject ? (
-                                    <UploadProject onRefresh = {this.onRefresh}
-                                        onClosePopup={
-                                            this.onCloseUploadProject
-                                        }
-                                    />
-                                ) : (
-                                    <div></div>
-                                )}
-                            </div>
-                        </div>
-                   
-               
-
-                           
                         </div>
                     </div>
                 </view>
@@ -975,21 +1000,21 @@ PopUpProjectManagement.propTypes = {
     }),
     onSetProjectTitle: PropTypes.func,
     onLoadingFinished: PropTypes.func,
-    onCloseLoadingStarted:PropTypes.func,
-
+    onCloseLoadingStarted: PropTypes.func,
+    requestProjectUpload: PropTypes.func,
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
     // closeLogin: () => dispatch(setShowLogin(false)),
     onLoadingStarted: () => dispatch(openLoadingProject()),
-    onCloseLoadingStarted:()=> dispatch(closeLoadingProject()),
+    onCloseLoadingStarted: () => dispatch(closeLoadingProject()),
     onLoadingFinished: (loadingState, success) => {
         dispatch(onLoadedProject(loadingState, ownProps.canSave, success));
         dispatch(closeLoadingProject());
         dispatch(closeFileMenu());
     },
-    requestProjectUpload: loadingState => dispatch(requestProjectUpload(loadingState)),
-
+    requestProjectUpload: (loadingState) =>
+        dispatch(requestProjectUpload(loadingState)),
 
     onSetProjectTitle: (title) => dispatch(setProjectTitle(title)),
 });
@@ -998,9 +1023,10 @@ const mapStateToProps = (state, ownProps) => {
         vm: state.scratchGui.vm,
     };
 };
-
+const mergeProps = (stateProps, dispatchProps, ownProps) =>
+    Object.assign({}, stateProps, dispatchProps, ownProps);
 export default compose(
     injectIntl,
     MenuBarHOC,
-    connect(mapStateToProps, mapDispatchToProps)
+    connect(mapStateToProps, mapDispatchToProps, mergeProps)
 )(PopUpProjectManagement);

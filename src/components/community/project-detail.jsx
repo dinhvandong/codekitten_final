@@ -25,6 +25,8 @@ export default class ProjectDetail extends React.Component {
          thumb_base64: ("url(data:image/jpg;base64," + localStorage.getItem("thumbnail_base64"))
     }
 
+    this.state = {isRemix: false};
+
         /**  localStorage.setItem("link_download", 
          * ConfigServer.host + '/code_kittens_api/projects/'+ id );
           localStorage.setItem("thumbnail_base64", thumbnail_base64);
@@ -53,10 +55,16 @@ export default class ProjectDetail extends React.Component {
         console.log("Thumb_Base64", this.state.thumb_base64)
     }
 
+
     onRemix() {
         console.log("Onremix_AAAA");
        // this.props.onClosePopup();
+
+       if(this.state.isRemix===false)
+       {
         this.props.onRemix();
+        this.setState({isRemix:true});
+       }
     }
 
     onClose() {
@@ -294,7 +302,7 @@ export default class ProjectDetail extends React.Component {
                                         }}
                                     />
 
-                                    <div
+                                    <div id="loadproject"
                                         style={{
                                             alignSelf: "center",
                                             marginLeft: "5px",
@@ -302,7 +310,6 @@ export default class ProjectDetail extends React.Component {
                                             fontWeight: "normal",
                                             fontSize: 12
                                         }}
-                                        onClick={this.onRemix}
                                     >
                                         <span>Sửa dự án</span>
                                     </div>
