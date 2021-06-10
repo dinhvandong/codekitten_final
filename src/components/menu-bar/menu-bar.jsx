@@ -478,8 +478,18 @@ class MenuBar extends React.Component {
                                 )}
                             >
                                 <div>
+
+                                <img
+                                    className={styles.languageIcon}
+                                    src={languageIcon}
+                                />
+                                <img
+                                    className={styles.languageCaret}
+                                    src={dropdownCaret}
+                                />
+                            </div>
+                            <LanguageSelector label={this.props.intl.formatMessage(ariaMessages.language)} />
                                 
-                                </div>
                             </div>
                         )}
                         {this.props.canManageFiles && (

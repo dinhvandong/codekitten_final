@@ -14,9 +14,9 @@ import ConnectedIntlProvider from './connected-intl-provider.jsx';
 const LocalizationHOC = function (WrappedComponent) {
     class LocalizationWrapper extends React.Component {
         componentDidUpdate (prevProps) {
-            // if (prevProps.locale !== this.props.locale) {
-            //     this.props.onSetLanguage(this.props.locale);
-            // }
+            if (prevProps.locale !== this.props.locale) {
+                this.props.onSetLanguage(this.props.locale);
+            }
 
             this.props.onSetLanguage(this.props.locale);
 

@@ -4,16 +4,16 @@
  */
 
 const wideLocales = [
-    'ab',
-    'ca',
-    'de',
+    // 'ab',
+    // 'ca',
+    // 'de',
     'el',
-    'it',
-    'ja',
-    'ja-Hira',
-    'ko',
-    'hu',
-    'ru',
+    // 'it',
+    // 'ja',
+    // 'ja-Hira',
+    // 'ko',
+    // 'hu',
+    // 'ru',
     'vi'
 ];
 
