@@ -6,6 +6,7 @@ import refresh from "./refresh.png";
 //import project_info from "./img-info-subject.png";
 
 import iconEdit from "./edit.png";
+import style from "react-awesome-modal/lib/style";
 export default class ProjectDetail extends React.Component {
     constructor(props) {
         super(props);
@@ -280,18 +281,8 @@ export default class ProjectDetail extends React.Component {
                                     </div>
                                 </div>
 
-                                <div
-                                    style={{
-                                        width: "120px",
-                                        justifyContent: "center",
-                                        borderRadius: "10px",
-                                        flexDirection: "row",
-                                        display: "flex",
-                                        alignSelf: "center",
-                                        marginRight: "20px",
-                                        height: "30px",
-                                        backgroundColor: "#1CC3A5",
-                                    }}
+                                <button className={styles.buttonRemix}
+                                    
                                     onClick={this.onRemix}
                                 >
                                     <img
@@ -309,13 +300,13 @@ export default class ProjectDetail extends React.Component {
                                             marginLeft: "5px",
                                             color: "#FFF",
                                             fontWeight: "normal",
-                                            fontSize: 12,
+                                            fontSize: 12
                                         }}
                                         onClick={this.onRemix}
                                     >
                                         <span>Sửa dự án</span>
                                     </div>
-                                </div>
+                                </button>
                             </div>
                         </div>
                     </div>

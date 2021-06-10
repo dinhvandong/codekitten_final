@@ -39,7 +39,22 @@ import "./bootstrap.min.css";
 
 import UploadProject from "../storemyproject/upload-project.js";
 import ConfigServer from "../../config_server.js";
+
+import {
+    openLoadingProject,
+    closeLoadingProject
+} from '../../../src/reducers/modals';
+//'../reducers/modals';
 //const fs = require('fs');
+
+
+import {
+    LoadingStates,
+    getIsLoadingUpload,
+    getIsShowingWithoutId,
+    onLoadedProject,
+    requestProjectUpload
+} from '../../../src/reducers/project-state';
 
 class PopUpProjectManagement extends React.Component {
     constructor(props) {
@@ -263,55 +278,41 @@ class PopUpProjectManagement extends React.Component {
 
       onRemix() {
 
+       
+        this.props.onLoadingStarted();
+       //this.props.requestProjectUpload(loadingState);
+
         if(!this.state.isLoad)
         {
-
+            //this.props.vm.deleteSprite();
+            //.loadProject(null);
             const link_download = localStorage.getItem("link_download");
             let loadingSuccess = false;
-
             fetch(link_download)
                 .then((r) => r.arrayBuffer())
                 .then((buffer) => {
-    
                     console.log("upload_project:",0);
-    
-    
                     this.props.vm
                         .loadProject(buffer)
                         .then(() => {
                             if (!loadingSuccess) {
-
                                 console.log("upload_project:",1);
-    
                                 this.props.onSetProjectTitle("title Project");
-
                                 loadingSuccess = true ;
                             }
                         })
                         .catch((error) => {
-    
                             console.log("upload_project:",error);
-    
                         })
                         .then(() => {
-    
                             console.log("upload_project:",3);
                             this.setState({isLoad:true});
-    
-    
+                            this.props.onCloseLoadingStarted();
+                            //this.props.onLoadingFinished(this.props.loadingState, loadingSuccess);
                         });
                 });
-    
                 this.props.closePopup();
-
-
-
-
         }
-
-       
-
-
     }
 
     onRemix2() {
@@ -415,6 +416,10 @@ class PopUpProjectManagement extends React.Component {
 
     }
     render() {
+
+       
+
+
         return (
             <Modal
                 style={{ width: "100%" }}
@@ -969,10 +974,23 @@ PopUpProjectManagement.propTypes = {
         loadProject: PropTypes.func,
     }),
     onSetProjectTitle: PropTypes.func,
+    onLoadingFinished: PropTypes.func,
+    onCloseLoadingStarted:PropTypes.func,
+
 };
 
 const mapDispatchToProps = (dispatch) => ({
     // closeLogin: () => dispatch(setShowLogin(false)),
+    onLoadingStarted: () => dispatch(openLoadingProject()),
+    onCloseLoadingStarted:()=> dispatch(closeLoadingProject()),
+    onLoadingFinished: (loadingState, success) => {
+        dispatch(onLoadedProject(loadingState, ownProps.canSave, success));
+        dispatch(closeLoadingProject());
+        dispatch(closeFileMenu());
+    },
+    requestProjectUpload: loadingState => dispatch(requestProjectUpload(loadingState)),
+
+
     onSetProjectTitle: (title) => dispatch(setProjectTitle(title)),
 });
 const mapStateToProps = (state, ownProps) => {

@@ -11,3 +11,51 @@
     border-radius: 10px;
     background-size: cover;
 }
+
+.buttonRemix {
+
+
+    width: 120px;
+    justify-content: center;
+    border-radius: 10px;
+    flex-direction: row;
+    display: flex;
+    border-color: transparent;
+    border-width: 0px;
+    align-self: center;
+    margin-right: 20px;
+    height: 30px;
+    background-color:#1CC3A5 ;
+
+}
+
+.buttonRemix:hover {
+
+
+    width: 120px;
+    justify-content: center;
+    border-radius: 10px;
+    flex-direction: row;
+    display: flex;
+    border-color: transparent;
+    border-width: 0px;
+    align-self: center;
+    margin-right: 20px;
+    height: 30px;
+    background-color:red ;
+
+}
+
+/*style={{
+width: "120px",
+justifyContent: "center",
+borderRadius: "10px",
+flexDirection: "row",
+display: "flex",
+borderColor:'transparent',
+borderWidth:'0px',
+alignSelf: "center",
+marginRight: "20px",
+height: "30px",
+backgroundColor: "#1CC3A5",
+}}*/
