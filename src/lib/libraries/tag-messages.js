@@ -118,5 +118,52 @@ export default defineMessages({
         defaultMessage: 'Người',
         description: 'Tag for filtering a library for outdoors',
         id: 'gui.libraryTags.person'
-    }
+    },
+    animals: {
+        defaultMessage: 'Animals',
+        description: 'Tag for filtering a library for animals',
+        id: 'gui.libraryTags.animals'
+    },
+    effects: {
+        defaultMessage: 'Effects',
+        description: 'Tag for filtering a library for effects',
+        id: 'gui.libraryTags.effects'
+    },
+    loops: {
+        defaultMessage: 'Loops',
+        description: 'Tag for filtering a library for loops',
+        id: 'gui.libraryTags.loops'
+    },
+    notes: {
+        defaultMessage: 'Notes',
+        description: 'Tag for filtering a library for notes',
+        id: 'gui.libraryTags.notes'
+    },
+    percussion: {
+        defaultMessage: 'Percussion',
+        description: 'Tag for filtering a library for percussion',
+        id: 'gui.libraryTags.percussion'
+    },
+    space: {
+        defaultMessage: 'Space',
+        description: 'Tag for filtering a library for space',
+        id: 'gui.libraryTags.space'
+    },
+    sports: {
+        defaultMessage: 'Sports',
+        description: 'Tag for filtering a library for sports',
+        id: 'gui.libraryTags.sports'
+    },
+    voice: {
+        defaultMessage: 'Voice',
+        description: 'Tag for filtering a library for voice',
+        id: 'gui.libraryTags.voice'
+    },
+    wacky: {
+        defaultMessage: 'Wacky',
+        description: 'Tag for filtering a library for wacky',
+        id: 'gui.libraryTags.wacky'
+    },
+
+
 });

@@ -317,6 +317,8 @@ const mapDispatchToProps = dispatch => ({
     onActivateCostumesTab: () => dispatch(activateTab(COSTUMES_TAB_INDEX)),
     onNewSoundFromLibraryClick: e => {
         e.preventDefault();
+        console.log("onNewSoundFromLibraryClick");
+        localStorage.setItem("choice", "sound");
         dispatch(openSoundLibrary());
     },
     onNewSoundFromRecordingClick: () => {

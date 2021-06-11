@@ -65,8 +65,8 @@ class Storage extends ScratchStorage {
         var ip = require("ip");;
         console.log ("Dia chi IP:", ip.address() );
 
-        if(localStorage.getItem("choice") === "extension" 
-        || localStorage.getItem("choice") === "tutorial")
+        if(localStorage.getItem("choice") != "sprite" 
+        && localStorage.getItem("choice") != "backdrop")
         {
           return `${this.assetHost}/internalapi/asset/${asset.assetId}.${asset.dataFormat}/get/`;
         }      

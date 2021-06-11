@@ -148,11 +148,11 @@ class LibraryComponent extends React.Component {
     }
     getFilteredData() {
 
-        if (localStorage.getItem("choice") == 'extension')
-
+        if (localStorage.getItem("choice")!= 'sprite'
+         && localStorage.getItem("choice")!= 'backdrop')
         {
 
-            if (this.state.selectedTag === 'all') {
+            if (this.state.selectedTag === 'all') { 
                 if (!this.state.filterQuery) return this.props.data;
                 return this.props.data.filter(dataItem => (
                     (dataItem.tags || [])
