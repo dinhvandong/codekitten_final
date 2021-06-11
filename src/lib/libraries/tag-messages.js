@@ -37,21 +37,12 @@ export default defineMessages({
         description: 'Tag for filtering a library for indoors',
         id: 'gui.libraryTags.spaceship'
     },
-    fish: {
-        defaultMessage: 'Cá',
-        description: 'Tag for filtering a library for loops',
-        id: 'gui.libraryTags.fish'
-    },
     game: {
         defaultMessage: 'Trò chơi',
         description: 'Tag for filtering a library for music',
         id: 'gui.libraryTags.game'
     },
-    family: {
-        defaultMessage: 'Gia đình',
-        description: 'Tag for filtering a library for notes',
-        id: 'gui.libraryTags.family'
-    },
+    
     ocean: {
         defaultMessage: 'Đại dương',
         description: 'Tag for filtering a library for outdoors',
@@ -72,6 +63,20 @@ export default defineMessages({
         defaultMessage: 'Sân khấu',
         description: 'Tag for filtering a library for outdoors',
         id: 'gui.libraryTags.stage'
+    },
+    vehicle:{
+
+        defaultMessage: 'Xe cộ',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.vehicle'
+
+    },
+    animal:{
+
+        defaultMessage: 'Động vật',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.animal'
+
     },
     stadium: {
         defaultMessage: 'Sân vận động',
@@ -108,5 +113,10 @@ export default defineMessages({
         defaultMessage: 'Bãi biển',
         description: 'Tag for filtering a library for outdoors',
         id: 'gui.libraryTags.beach'
+    },
+    person: {
+        defaultMessage: 'Người',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.person'
     }
 });

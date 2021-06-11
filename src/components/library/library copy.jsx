@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import bindAll from 'lodash.bindall';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { defineMessages, injectIntl, intlShape } from 'react-intl';
+import {defineMessages, injectIntl, intlShape} from 'react-intl';
 
 import LibraryItem from '../../containers/library-item.jsx';
 import Modal from '../../containers/modal.jsx';
@@ -18,19 +18,35 @@ const messages = defineMessages({
         id: 'gui.library.filterPlaceholder',
         defaultMessage: 'Search',
         description: 'Placeholder text for library search field'
-    },
-    allTag: {
-        id: 'gui.library.allTag',
-        defaultMessage: 'All',
-        description: 'Label for library tag to revert to all items after filtering by tag.'
     }
+    ,
+    allTag: {
+         id: 'gui.library.allTag',
+         defaultMessage: 'All',
+         description: 'Label for library tag to revert to all items after filtering by tag.'
+    },
+    famous: {
+        defaultMessage: 'Danh nhân',
+        description: 'Tag for filtering a library for animals',
+        id: 'gui.libraryTags.famous'
+    },
+    ocean: {
+        defaultMessage: 'Đại dương',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.ocean'
+    },
+  
 });
 
-const ALL_TAG = { tag: 'all', intlLabel: messages.allTag };
-//const tagListPrefix = [ALL_TAG];
+const ALL_TAG = {tag: 'all', intlLabel: messages.allTag};
+const SPRITE_TAG = {tag:'Danh nhân', intlLabel: messages.famous};
+const BACKDROP_TAG = {tag:'Đại dương', intlLabel: messages.ocean};
+// const tagListPrefix = [ALL_TAG, SPRITE_TAG, BACKDROP_TAG];
+const tagListPrefix = [];
+
 
 class LibraryComponent extends React.Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         bindAll(this, [
             'handleClose',
@@ -44,52 +60,42 @@ class LibraryComponent extends React.Component {
             'setFilteredDataRef'
         ]);
         this.state = {
-            tagListPrefix:[],
             playingItem: null,
             filterQuery: '',
-            selectedTag: ALL_TAG.tag,
+            selectedTag: SPRITE_TAG.tag,
             loaded: false
         };
     }
-    componentDidMount() {
-
+    componentDidMount () {
 
         if (localStorage.getItem("choice") == 'extension')
         {
             
-           // tagListPrefix.push(ALL_TAG);
-           this.setState({tagListPrefix:[ALL_TAG]});
+            tagListPrefix.push(ALL_TAG);
 
 
         }
-        else
-        {
 
-            this.setState({tagListPrefix:[]});
-        }
         // Allow the spinner to display before loading the content
         setTimeout(() => {
-            this.setState({ loaded: true });
+            this.setState({loaded: true});
         });
         if (this.props.setStopHandler) this.props.setStopHandler(this.handlePlayingEnd);
     }
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate (prevProps, prevState) {
         if (prevState.filterQuery !== this.state.filterQuery ||
             prevState.selectedTag !== this.state.selectedTag) {
             this.scrollToTop();
         }
     }
-    handleSelect(id) {
+    handleSelect (id) {
         this.handleClose();
         this.props.onItemSelected(this.getFilteredData()[id]);
-
-        let valueJson = JSON.stringify(this.getFilteredData()[id]);
-         console.log("ValueJSON:"+ valueJson);
     }
-    handleClose() {
+    handleClose () {
         this.props.onRequestClose();
     }
-    handleTagClick(tag) {
+    handleTagClick (tag) {
         if (this.state.playingItem === null) {
             this.setState({
                 filterQuery: '',
@@ -104,7 +110,7 @@ class LibraryComponent extends React.Component {
             });
         }
     }
-    handleMouseEnter(id) {
+    handleMouseEnter (id) {
         // don't restart if mouse over already playing item
         if (this.props.onItemMouseEnter && this.state.playingItem !== id) {
             this.props.onItemMouseEnter(this.getFilteredData()[id]);
@@ -113,7 +119,7 @@ class LibraryComponent extends React.Component {
             });
         }
     }
-    handleMouseLeave(id) {
+    handleMouseLeave (id) {
         if (this.props.onItemMouseLeave) {
             this.props.onItemMouseLeave(this.getFilteredData()[id]);
             this.setState({
@@ -121,14 +127,14 @@ class LibraryComponent extends React.Component {
             });
         }
     }
-    handlePlayingEnd() {
+    handlePlayingEnd () {
         if (this.state.playingItem !== null) {
             this.setState({
                 playingItem: null
             });
         }
     }
-    handleFilterChange(event) {
+    handleFilterChange (event) {
         if (this.state.playingItem === null) {
             this.setState({
                 filterQuery: event.target.value,
@@ -143,51 +149,40 @@ class LibraryComponent extends React.Component {
             });
         }
     }
-    handleFilterClear() {
-        this.setState({ filterQuery: '' });
+    handleFilterClear () {
+        this.setState({filterQuery: ''});
     }
-    getFilteredData() {
-
-        if (localStorage.getItem("choice") == 'extension')
-
-        {
-
-            if (this.state.selectedTag === 'all') {
-                if (!this.state.filterQuery) return this.props.data;
-                return this.props.data.filter(dataItem => (
-                    (dataItem.tags || [])
-                        // Second argument to map sets `this`
-                        .map(String.prototype.toLowerCase.call, String.prototype.toLowerCase)
-                        .concat(dataItem.name ?
-                            (typeof dataItem.name === 'string' ?
-                                // Use the name if it is a string, else use formatMessage to get the translated name
-                                dataItem.name : this.props.intl.formatMessage(dataItem.name.props)
-                            ).toLowerCase() :
-                            null)
-                        .join('\n') // unlikely to partially match newlines
-                        .indexOf(this.state.filterQuery.toLowerCase()) !== -1
-                ));
-            }
-           
-
-
+    getFilteredData () {
+        if (this.state.selectedTag === 'all') {
+            if (!this.state.filterQuery) return this.props.data;
+            return this.props.data.filter(dataItem => (
+                (dataItem.tags || [])
+                    // Second argument to map sets `this`
+                    .map(String.prototype.toLowerCase.call, String.prototype.toLowerCase)
+                    .concat(dataItem.name ?
+                        (typeof dataItem.name === 'string' ?
+                        // Use the name if it is a string, else use formatMessage to get the translated name
+                            dataItem.name : this.props.intl.formatMessage(dataItem.name.props)
+                        ).toLowerCase() :
+                        null)
+                    .join('\n') // unlikely to partially match newlines
+                    .indexOf(this.state.filterQuery.toLowerCase()) !== -1
+            ));
         }
-
         return this.props.data.filter(dataItem => (
             dataItem.tags &&
             dataItem.tags
                 .map(String.prototype.toLowerCase.call, String.prototype.toLowerCase)
                 .indexOf(this.state.selectedTag) !== -1
         ));
-       
     }
-    scrollToTop() {
+    scrollToTop () {
         this.filteredDataRef.scrollTop = 0;
     }
-    setFilteredDataRef(ref) {
+    setFilteredDataRef (ref) {
         this.filteredDataRef = ref;
     }
-    render() {
+    render () {
         return (
             <Modal
                 fullScreen
@@ -215,7 +210,7 @@ class LibraryComponent extends React.Component {
                         )}
                         {this.props.tags &&
                             <div className={styles.tagWrapper}>
-                                {this.state.tagListPrefix.concat(this.props.tags).map((tagProps, id) => (
+                                {tagListPrefix.concat(this.props.tags).map((tagProps, id) => (
                                     <TagButton
                                         active={this.state.selectedTag === tagProps.tag.toLowerCase()}
                                         className={classNames(
@@ -247,15 +242,17 @@ class LibraryComponent extends React.Component {
                             extensionId={dataItem.extensionId}
                             featured={dataItem.featured}
                             hidden={dataItem.hidden}
-                            iconMd5={dataItem.costumes ? dataItem.costumes[0].md5ext : dataItem.md5ext}
-                            iconRawURL=
-                            {dataItem.rawURL}
+                            iconMd5={dataItem.costumes? 
+                                dataItem.costumes[0].md5ext : dataItem.md5ext}
+                            iconRawURL={dataItem.rawURL}
                             icons={dataItem.costumes}
                             id={index}
                             insetIconURL={dataItem.insetIconURL}
-                            internetConnectionRequired={dataItem.internetConnectionRequired}
+                            internetConnectionRequired=
+                            {dataItem.internetConnectionRequired}
                             isPlaying={this.state.playingItem === index}
-                            key={typeof dataItem.name === 'string' ? dataItem.name : dataItem.rawURL}
+                            key={typeof dataItem.name === 'string' ? 
+                            dataItem.name : dataItem.rawURL}
                             name={dataItem.name}
                             showPlayButton={this.props.showPlayButton}
                             onMouseEnter={this.handleMouseEnter}
@@ -278,7 +275,7 @@ class LibraryComponent extends React.Component {
 
 LibraryComponent.propTypes = {
     data: PropTypes.arrayOf(
-        /*eslint-disable react/no - unused - prop - types, lines - around - comment*/
+        /* eslint-disable react/no-unused-prop-types, lines-around-comment */
         // An item in the library
         PropTypes.shape({
             // @todo remove md5/rawURL prop from library, refactor to use storage
@@ -289,8 +286,8 @@ LibraryComponent.propTypes = {
             ]),
             rawURL: PropTypes.string
         })
-        /*eslint - enable react / no - unused - prop - types, lines - around - comment */
-),
+        /* eslint-enable react/no-unused-prop-types, lines-around-comment */
+    ),
     filterable: PropTypes.bool,
     id: PropTypes.string.isRequired,
     intl: intlShape.isRequired,
@@ -308,4 +305,5 @@ LibraryComponent.defaultProps = {
     filterable: true,
     showPlayButton: false
 };
+
 export default injectIntl(LibraryComponent);

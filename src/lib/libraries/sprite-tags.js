@@ -7,8 +7,10 @@ export default [
     {tag: 'plannet', intlLabel: messages.plannet},
     {tag: 'monster', intlLabel: messages.monster},
     {tag: 'spaceship', intlLabel: messages.spaceship},
-    {tag: 'fish', intlLabel: messages.fish},
+    {tag: 'animal', intlLabel: messages.animal},
     {tag: 'game', intlLabel: messages.game},
-    {tag: 'family', intlLabel: messages.family}
+    {tag: 'person', intlLabel: messages.person},
+    {tag: 'vehicle', intlLabel: messages.vehicle}
+
 
 ];
