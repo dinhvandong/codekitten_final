@@ -7,6 +7,13 @@
     
 
 }
+.community-button:hover {
+    box-shadow: 0 0 0 1px $ui-black-transparent;
+    background: #FF8C1A;
+    font: 1em sans-serif;
+    
+
+}
 .community-button-icon {
     height: 1.25rem;
 }

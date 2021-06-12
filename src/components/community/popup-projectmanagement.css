@@ -1,0 +1,67 @@
+/* display: "flex",
+alignContent: "center",
+justifyContent: "center",
+flexDirection: "row",
+color: "#FFF",
+fontWeight: "bold",
+fontSize: 14,
+flex: 1,
+width: "150px",
+marginTop: "10px",
+marginBottom: "10px",
+height: "35px",
+marginRight: "50px",
+background: "#1CC3A5",
+alignSelf: "center",
+borderColor: "#1CC3A5",
+alignContent: "flex-end",
+borderRadius: "25px", */
+@import "../../css/colors.css";
+
+
+.buttonAddProject {
+
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    align-self: center;
+    color: white;
+    font-weight: bold;
+    font-size: 14;
+    flex: 1;
+    width: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 35px;
+    margin-right: 50px;
+    background-color:$data-primary ;
+    align-content: flex-end;
+    border-radius: 25px;
+    
+    border-color: transparent;
+
+}
+
+
+.buttonAddProject:hover {
+
+    border-color: transparent;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: row;
+    color: white;
+    font-weight: bold;
+    font-size: 14;
+    flex: 1;
+    width: 160px;
+    /* margin-top: 10px;
+    margin-bottom: 10px; */
+    height: 40px;
+    /* margin-right: 50px; */
+    background-color:$data-button-hover ;
+    align-content: flex-end;
+    border-radius: 25px;
+    
+}

@@ -37,7 +37,7 @@ $control-primary: hsla(38, 100%, 55%, 1); /* #FFAB19 */
 $data-primary: hsla(163, 85%, 40%, 1);
 /*hsla(30, 100%, 55%, 1);*/
  /* #FF8C1A */
-
+$data-button-hover:hsla(30, 100%, 55%, 1);
 $pen-primary: hsla(163, 85%, 40%, 1); /* #0FBD8C */
 $pen-transparent: hsla(163, 85%, 40%, 0.25); /* #0FBD8C */
 

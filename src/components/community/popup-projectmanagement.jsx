@@ -40,6 +40,7 @@ import "./bootstrap.min.css";
 
 import UploadProject from "../storemyproject/upload-project.js";
 import ConfigServer from "../../config_server.js";
+import styles2 from './popup-projectmanagement.css';
 
 import {
     openLoadingProject,
@@ -602,26 +603,7 @@ class PopUpProjectManagement extends React.Component {
                                             ? this.onShowUploadProject
                                             : this.onShowLoginAlert
                                     }
-                                    style={{
-                                        display: "flex",
-                                        alignContent: "center",
-                                        justifyContent: "center",
-                                        flexDirection: "row",
-                                        color: "#FFF",
-                                        fontWeight: "bold",
-                                        fontSize: 14,
-                                        flex: 1,
-                                        width: "150px",
-                                        marginTop: "10px",
-                                        marginBottom: "10px",
-                                        height: "35px",
-                                        marginRight: "50px",
-                                        background: "#1CC3A5",
-                                        alignSelf: "center",
-                                        borderColor: "#1CC3A5",
-                                        alignContent: "flex-end",
-                                        borderRadius: "25px",
-                                    }}
+                                    className={styles2.buttonAddProject}
                                 >
                                     <div style={{ alignSelf: "center" }}>
                                         {" "}
