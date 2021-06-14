@@ -113,7 +113,8 @@ class LibraryItem extends React.PureComponent {
     render () {
         console.log("YourChoice",localStorage.getItem("choice") );
         if(localStorage.getItem("choice")!="sprite"
-         && localStorage.getItem("choice")!= "backdrop")
+         && localStorage.getItem("choice")!= "backdrop" 
+         && localStorage.getItem("choice")!="costume")
         {
             console.log("SoundLibssss");
             const iconMd5 = this.curIconMd5();
@@ -150,14 +151,14 @@ class LibraryItem extends React.PureComponent {
         console.log("iconRawURL",this.state.sprite);
         const iconMd5 = this.curIconMd5().split(".");
         var iconURL = "";
-
-        if(localStorage.getItem("sprite")== "true")
+        if(localStorage.getItem("sprite")== "true" || localStorage.getItem("choice")=="costume")
         {
             iconURL =  ConfigServer.host  + '/code_kittens_api/assets/' + iconMd5[0] ;
         }else
         {
             iconURL =  ConfigServer.host  + '/code_kittens_api/assets/' + iconMd5[0] + '?type=background' ;
         }
+        
         return (
             <LibraryItemComponent
                 bluetoothRequired={this.props.bluetoothRequired}

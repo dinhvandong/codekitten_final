@@ -126,6 +126,7 @@ const SBFileUploaderHOC = function (WrappedComponent) {
         // step 5: called from componentDidUpdate when project state shows
         // that project data has finished "uploading" into the browser
         handleFinishedLoadingUpload () {
+            
             if (this.fileToUpload && this.fileReader) {
                 // begin to read data from the file. When finished,
                 // cues step 6 using the reader's onload callback

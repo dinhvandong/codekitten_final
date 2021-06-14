@@ -66,7 +66,8 @@ class Storage extends ScratchStorage {
         console.log ("Dia chi IP:", ip.address() );
 
         if(localStorage.getItem("choice") != "sprite" 
-        && localStorage.getItem("choice") != "backdrop")
+        && localStorage.getItem("choice") != "backdrop"
+         && localStorage.getItem("choice")!="costume")
         {
           return `${this.assetHost}/internalapi/asset/${asset.assetId}.${asset.dataFormat}/get/`;
         }      
@@ -75,7 +76,7 @@ class Storage extends ScratchStorage {
       const isSprite = localStorage.getItem("sprite");
       console.log("isSprite",isSprite);
       var iconURL = "";
-      if(isSprite==='true'){
+      if(isSprite==='true' || localStorage.getItem("choice")=="costume" ){
           iconURL = host + asset.assetId
       }else
       {

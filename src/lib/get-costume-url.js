@@ -33,7 +33,7 @@ const getCostumeUrl = (function () {
         var iconURL = "";
         //const root = "https://dev.teky.asia/v1";
 
-        if(localStorage.getItem("sprite")== "true")
+        if(localStorage.getItem("sprite")== "true" || localStorage.getItem("choice")=="costume")
         {
             iconURL = ConfigServer.host + '/code_kittens_api/assets/' + asset.assetI ;
         }else

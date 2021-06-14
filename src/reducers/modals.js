@@ -68,6 +68,9 @@ const openCameraCapture = function () {
     return openModal(MODAL_CAMERA_CAPTURE);
 };
 const openCostumeLibrary = function () {
+
+    localStorage.setItem("choice","costume");
+
     return openModal(MODAL_COSTUME_LIBRARY);
 };
 const openExtensionLibrary = function () {
