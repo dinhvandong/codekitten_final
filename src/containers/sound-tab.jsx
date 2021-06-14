@@ -38,6 +38,7 @@ import {
 
 import {setRestore} from '../reducers/restore-deletion';
 import {showStandardAlert, closeAlertWithId} from '../reducers/alerts';
+import { check } from 'bowser';
 
 class SoundTab extends React.Component {
     constructor (props) {
@@ -313,6 +314,23 @@ const mapStateToProps = state => ({
     soundRecorderVisible: state.scratchGui.modals.soundRecorder
 });
 
+
+const  checkPermissions =() => {
+    const permissions = navigator.mediaDevices.getUserMedia({audio: true, video: false})
+    permissions.then((stream) => {
+      alert('accepted the permissions');
+    //   this.setState(((prevState) => {
+    //     havePermissions: !prevState.havePermissions
+    //   }));
+    })
+    .catch((err) => {
+    //   this.setState(((prevState) => {
+    //     havePermissions: false
+    //   }));
+      console.log(`${err.name} : ${err.message}`)
+    });
+  }
+
 const mapDispatchToProps = dispatch => ({
     onActivateCostumesTab: () => dispatch(activateTab(COSTUMES_TAB_INDEX)),
     onNewSoundFromLibraryClick: e => {
@@ -322,6 +340,8 @@ const mapDispatchToProps = dispatch => ({
         dispatch(openSoundLibrary());
     },
     onNewSoundFromRecordingClick: () => {
+
+        checkPermissions();
         dispatch(openSoundRecorder());
     },
     onRequestCloseSoundLibrary: () => {

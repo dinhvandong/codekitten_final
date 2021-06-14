@@ -21,16 +21,20 @@ class PaintEditorWrapper extends React.Component {
             this.props.name !== nextProps.name;
     }
     handleUpdateName (name) {
+        console.log("handleUpdateName")
         this.props.vm.renameCostume(this.props.selectedCostumeIndex, name);
     }
     handleUpdateImage (isVector, image, rotationCenterX, rotationCenterY) {
+        console.log("handleUpdateImage")
         if (isVector) {
+            console.log("handleUpdateImage","SVG")
             this.props.vm.updateSvg(
                 this.props.selectedCostumeIndex,
                 image,
                 rotationCenterX,
                 rotationCenterY);
         } else {
+            console.log("handleUpdateImage","BitMap");
             this.props.vm.updateBitmap(
                 this.props.selectedCostumeIndex,
                 image,
