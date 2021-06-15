@@ -757,11 +757,10 @@ class PopUpProjectManagement extends React.Component {
                                 <div
                                     style={{
                                         width: "100%",
-                                        height: "50px",
+                                        height: "30px",
                                         display: "flex",
                                         alignContent: "center",
                                         alignItems: "center",
-                                        marginTop: "0px",
                                         borderBottomLeftRadius: "10px",
                                         borderBottomRightRadius: "10px",
                                     }}
@@ -777,7 +776,7 @@ class PopUpProjectManagement extends React.Component {
                                     >
                                         <div
                                             style={{
-                                                alignSelf: "center",
+                                                alignSelf: "flex-end",
                                                 width: "50px",
                                                 display: "flex",
                                                 height: "30px",
@@ -802,7 +801,7 @@ class PopUpProjectManagement extends React.Component {
                                                 justifyContent: "center",
                                                 display: "flex",
 
-                                                alignSelf: "center",
+                                                alignSelf: "flex-end",
                                                 width: "50px",
                                                 height: "30px",
                                                 backgroundColor: "#1CC3A5",
@@ -825,7 +824,7 @@ class PopUpProjectManagement extends React.Component {
                                                 justifyContent: "center",
                                                 display: "flex",
 
-                                                alignSelf: "center",
+                                                alignSelf: "flex-end",
                                                 width: "100px",
                                                 height: "30px",
                                                 backgroundColor: "#1CC3A5",
@@ -850,7 +849,7 @@ class PopUpProjectManagement extends React.Component {
                                                 justifyContent: "center",
                                                 display: "flex",
 
-                                                alignSelf: "center",
+                                                alignSelf: "flex-end",
                                                 width: "50px",
                                                 height: "30px",
                                                 backgroundColor: "#1CC3A5",
@@ -873,7 +872,7 @@ class PopUpProjectManagement extends React.Component {
                                                 justifyContent: "center",
                                                 display: "flex",
 
-                                                alignSelf: "center",
+                                                alignSelf: "flex-end",
                                                 width: "50px",
                                                 height: "30px",
                                                 backgroundColor: "#1CC3A5",

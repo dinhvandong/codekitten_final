@@ -5,7 +5,7 @@
 .monitor-container {
     position: absolute;
     background: #F9F154;
-    opacity: 10%;
+    opacity: 100%;
     /* $ui-primary; */
     z-index: $z-index-monitor;
     border: 1px solid $ui-black-transparent;
