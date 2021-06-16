@@ -237,6 +237,10 @@ const GUIComponent = (props) => {
         setShowRequireLogin(true);
     };
 
+
+   
+      
+
     const setShow = (screen) => {
         switch (screen) {
             case SCREENS.screen_Login: {

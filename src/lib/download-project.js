@@ -3,15 +3,22 @@ export default (filename, blob, projectName, projectDesc, cover, is_public) => {
     const formData = new FormData();
     // const  link_download = ConfigServer.host +'/api/upload';
     const link_upload = ConfigServer.host + "/code_kittens_api/projects";
-    const file = new File([blob], filename);
-    //  formData.append("file", file);
-    //  formData.append("name", projectName);
-    //  formData.append("projectDesc",projectDesc);
 
+    const id_project = localStorage.getItem("id_project_selected");
+
+    const link_update_project = ConfigServer.host + "/code_kittens_api/projects/" + id_project;
+
+    const file = new File([blob], filename);
+   
     formData.append("project_file", file);
-    formData.append("thumbnail", cover);
+    if(localStorage.getItem("update_cover") == 'true')
+    {
+        formData.append("thumbnail", cover);
+
+    }
     formData.append("description", projectDesc);
     formData.append("name", projectName);
+    //formData.append("published", is_public);
 
     var isPublic = false;
 
@@ -21,48 +28,56 @@ export default (filename, blob, projectName, projectDesc, cover, is_public) => {
     {
         isPublic = true;
     }
+
+    console.log("Public_project", isPublic);
     formData.append("is_public", isPublic);
 
+    if(localStorage.getItem("update_project")=='true')
+    {
+        console.log("Update");
 
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') },
-        body:formData
-    }; 
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') },
+            body:formData
+        }; 
+    
+        return fetch(link_update_project, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                console.log("JSON_LOGIN:", result);
+                const value = result.message;
+                if (value.status_code == 200)
+                {
+                    alert("Dự án cập nhật thành công");
+                }else
+                {
+                    alert("Dự án cập nhật thất bại");
+                }
+            });
+    }else
+    {
 
-    return fetch(link_upload, requestOptions)
-        .then((response) => response.json())
-        .then((result) => {
-            console.log("JSON_LOGIN:", result);
-            const value = result.message;
-            if (value.status_code == 200)
-            {
-                alert("Dự án lưu thành công");
-            }else
-            {
-                alert("Dự án lưu thất bại");
-            }
-        });
+        console.log("CreateNew");
 
-    // const downloadLink = document.createElement("a");
-    // document.body.appendChild(downloadLink);
-    // console.log("download1");
-
-    // if ("download" in HTMLAnchorElement.prototype) {
-    //     const url = window.URL.createObjectURL(blob);
-    //     downloadLink.href = url;
-    //     downloadLink.download = filename;
-    //     downloadLink.type = blob.type;
-    //     downloadLink.click();
-    //     // console.log("download2");
-    //     var reader = new window.FileReader();
-    //     reader.readAsDataURL(blob);
-    //     reader.onloadend = function () {
-    //         window.setTimeout(() => {
-    //             document.body.removeChild(downloadLink);
-    //             window.URL.revokeObjectURL(url);
-    //         }, 1000);
-    //     };
-    // } else {
-    // }
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') },
+            body:formData
+        }; 
+    
+        return fetch(link_upload, requestOptions)
+            .then((response) => response.json())
+            .then((result) => {
+                console.log("JSON_LOGIN:", result);
+                const value = result.message;
+                if (value.status_code == 200)
+                {
+                    alert("Dự án lưu thành công");
+                }else
+                {
+                    alert("Dự án lưu thất bại");
+                }
+            });
+    }
 };

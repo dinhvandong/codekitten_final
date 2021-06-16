@@ -222,7 +222,8 @@ class PopUpProjectManagement extends React.Component {
         created_by,
         id,
         thumbnail_base64,
-        thumbnail
+        thumbnail,
+         is_public
     ) {
         localStorage.setItem("name", name);
         localStorage.setItem("description", description);
@@ -234,6 +235,22 @@ class PopUpProjectManagement extends React.Component {
         localStorage.setItem("id_project_selected", id);
         localStorage.setItem("thumbnail_base64", thumbnail_base64);
         localStorage.setItem("thumbnail", thumbnail);
+        localStorage.setItem("is_public",is_public);
+
+        var x = 0;
+        localStorage.setItem("update_project", false);
+
+
+        for (x =0;x< this.state.arrayMyProject.length;x++)
+        {
+            const item = this.state.arrayMyProject[x];
+            if(item.id==id)
+            {
+                localStorage.setItem("update_project", true);
+            }
+            
+        }
+
 
         // this.setState({ isDetail: true });
     }
@@ -305,6 +322,20 @@ class PopUpProjectManagement extends React.Component {
     }
 
     onRemix(e) {
+
+        /*
+         localStorage.setItem("name", name);
+        localStorage.setItem("description", description);
+        localStorage.setItem("created_by", created_by);
+        localStorage.setItem(
+            "link_download",
+            ConfigServer.host + "/code_kittens_api/projects/" + id
+        );
+        localStorage.setItem("id_project_selected", id);
+        localStorage.setItem("thumbnail_base64", thumbnail_base64);
+        localStorage.setItem("thumbnail", thumbnail);
+        
+        */
         let loadingSuccess = false;
         this.props.onLoadingStarted();
         if (!this.loadingSuccess) {
@@ -328,6 +359,8 @@ class PopUpProjectManagement extends React.Component {
                     .loadProject(buffer)
                     .then(() => {
                         if (!loadingSuccess) {
+                            //localStorage.setItem("update_project", true);
+                            //id_project_selected
                             console.log("upload_project:", 1);
                             this.props.onSetProjectTitle("title Project");
                             loadingSuccess = true;
@@ -714,7 +747,8 @@ class PopUpProjectManagement extends React.Component {
                                                                         value.created_by,
                                                                         value.id,
                                                                         value.thumbnail_base64,
-                                                                        value.thumbnail
+                                                                        value.thumbnail,
+                                                                        value.is_public
                                                                     )
                                                                 }
                                                             >

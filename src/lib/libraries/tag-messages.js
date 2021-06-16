@@ -99,20 +99,15 @@ export default defineMessages({
         description: 'Tag for filtering a library for outdoors',
         id: 'gui.libraryTags.farm'
     },
-    desert: {
-        defaultMessage: 'Sa mạc',
+    construction: {
+        defaultMessage: 'Công trình',
         description: 'Tag for filtering a library for outdoors',
-        id: 'gui.libraryTags.desert'
+        id: 'gui.libraryTags.construction'
     },
-    home: {
-        defaultMessage: 'Nhà ở',
+    nature: {
+        defaultMessage: 'Thiên nhiên',
         description: 'Tag for filtering a library for outdoors',
-        id: 'gui.libraryTags.home'
-    },
-    beach: {
-        defaultMessage: 'Bãi biển',
-        description: 'Tag for filtering a library for outdoors',
-        id: 'gui.libraryTags.beach'
+        id: 'gui.libraryTags.nature'
     },
     person: {
         defaultMessage: 'Người',
