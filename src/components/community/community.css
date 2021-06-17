@@ -6,14 +6,29 @@
     align-self: center;
     margin-right: 10px;
     width: 100%;
-    font-weight: normal;
+    font-weight: 200%;
     height: 40px;
     transition: height 1s;
     -webkit-transition: height 1s;
 }
+
+.input_search::-webkit-input-placeholder {
+    font-weight: 200;
+    color:#AFB2B3;
+}
+.input_search::-moz-placeholder {
+    font-weight: 200;
+    color:#AFB2B3;
+}
+.input_search::-ms-input-placeholder {
+    font-weight: 200;
+    color:#AFB2B3;
+}
 .input_search::placeholder {
 
     color: black;
+    font-weight: 200%;
+
 }
 
 .ico_search_codekitten {
@@ -43,7 +58,7 @@
 
 .tabs {
     list-style: none;
-    margin: 60px auto 0;
+    margin: 60px auto -0.1px;
     width: 660px;
 }
 

@@ -43,8 +43,28 @@ borderRadius: "25px", */
 
 }
 
+.buttonPage{
+    cursor: pointer;
+
+    background-color: #1CC3A5;
+    /* justifyContent: "center",
+    display: "flex",
+
+    alignSelf: "flex-end",
+    width: "100px",
+    height: "30px",
+    backgroundColor: "#1CC3A5",
+    borderColor: "white",
+    marginLeft: "10px", */
+}
+.buttonPage:hover {
+    background-color: orange;
+    cursor: pointer;
+
+}
 
 .buttonAddProject:hover {
+    cursor: pointer;
 
     border-color: transparent;
     display: flex;

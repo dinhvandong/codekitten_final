@@ -27,7 +27,7 @@ const messages = defineMessages({
 });
 
 const ALL_TAG = { tag: 'all', intlLabel: messages.allTag };
-//const tagListPrefix = [ALL_TAG];
+const tagListPrefix = [ALL_TAG];
 
 class LibraryComponent extends React.Component {
     constructor(props) {
@@ -44,7 +44,7 @@ class LibraryComponent extends React.Component {
             'setFilteredDataRef'
         ]);
         this.state = {
-            tagListPrefix:[],
+          //  tagListPrefix:[],
             playingItem: null,
             filterQuery: '',
             selectedTag: ALL_TAG.tag,
@@ -58,14 +58,14 @@ class LibraryComponent extends React.Component {
         {
             
            // tagListPrefix.push(ALL_TAG);
-           this.setState({tagListPrefix:[ALL_TAG]});
+           //this.setState({tagListPrefix:[ALL_TAG]});
 
 
         }
         else
         {
 
-            this.setState({tagListPrefix:[]});
+           // this.setState({tagListPrefix:[ALL_TAG]});
         }
         // Allow the spinner to display before loading the content
         setTimeout(() => {
@@ -148,8 +148,9 @@ class LibraryComponent extends React.Component {
     }
     getFilteredData() {
 
-        if (localStorage.getItem("choice")!= 'sprite'
-         && localStorage.getItem("choice")!= 'backdrop')
+        // if (localStorage.getItem("choice")!= 'sprite'
+        //  && localStorage.getItem("choice")!= 'backdrop')
+        if(true)
         {
 
             if (this.state.selectedTag === 'all') { 
@@ -215,7 +216,7 @@ class LibraryComponent extends React.Component {
                         )}
                         {this.props.tags &&
                             <div className={styles.tagWrapper}>
-                                {this.state.tagListPrefix.concat(this.props.tags).map((tagProps, id) => (
+                                {tagListPrefix.concat(this.props.tags).map((tagProps, id) => (
                                     <TagButton
                                         active={this.state.selectedTag === tagProps.tag.toLowerCase()}
                                         className={classNames(

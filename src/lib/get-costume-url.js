@@ -30,16 +30,16 @@ const getCostumeUrl = (function () {
             cachedUrl = asset.encodeDataURI();
         }
 
-        var iconURL = "";
-        //const root = "https://dev.teky.asia/v1";
+        // var iconURL = "";
+        // //const root = "https://dev.teky.asia/v1";
 
-        if(localStorage.getItem("sprite")== "true" || localStorage.getItem("choice")=="costume")
-        {
-            iconURL = ConfigServer.host + '/code_kittens_api/assets/' + asset.assetI ;
-        }else
-        {
-            iconURL = ConfigServer.host + '/code_kittens_api/assets/' + asset.assetI + '?type=background' ;
-        }
+        // if(localStorage.getItem("sprite")== "true" || localStorage.getItem("choice")=="costume")
+        // {
+        //     iconURL = ConfigServer.host + '/code_kittens_api/assets/' + asset.assetI ;
+        // }else
+        // {
+        //     iconURL = ConfigServer.host + '/code_kittens_api/assets/' + asset.assetI + '?type=background' ;
+        // }
 
         //var link_download =  ConfigServer.host + "/api/asset/find/" + asset.assetId;
         //console.log("link_download",asset);

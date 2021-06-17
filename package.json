@@ -82,6 +82,7 @@
     "react-intl": "2.9.0",
     "react-modal": "^3.9.1",
     "react-popover": "0.5.10",
+    "react-precache-img": "^2.0.5",
     "react-redux": "5.0.7",
     "react-responsive": "5.0.0",
     "react-router": "^5.2.0",

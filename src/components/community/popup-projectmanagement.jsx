@@ -27,7 +27,7 @@ import {
 } from "react-intl";
 import MenuBarHOC from "../../containers/menu-bar-hoc.jsx";
 
-import   './empty-cache';
+import "./empty-cache";
 import SBFileUploaderHOC from "../../lib/sb-file-uploader-hoc.jsx";
 
 import { SCREENS } from "../gui/constant.js";
@@ -40,7 +40,7 @@ import "./bootstrap.min.css";
 
 import UploadProject from "../storemyproject/upload-project.js";
 import ConfigServer from "../../config_server.js";
-import styles2 from './popup-projectmanagement.css';
+import styles2 from "./popup-projectmanagement.css";
 
 import {
     openLoadingProject,
@@ -60,12 +60,6 @@ import {
 class PopUpProjectManagement extends React.Component {
     constructor(props) {
         super(props);
-
-        this.state = {
-            selectedPage: 1,
-        };
-
-        this.state = {fileupload: null};
 
         this.handleSelected = this.handleSelected.bind(this);
 
@@ -100,6 +94,17 @@ class PopUpProjectManagement extends React.Component {
             arrayMyProject: [],
             arrayProjectTemp: [],
             arrayMyProjectTemp: [],
+            selectedPage: 1,
+            selectedPage1: 1,
+
+            selectedPage2: 1,
+            pageSize: 50,
+
+            pageSize1: 50,
+            pageSize2: 50,
+            pageTotal: 0,
+            pageTotal1: 0,
+            pageTotal2: 0,
         };
 
         this.onShowDetail = this.onShowDetail.bind(this);
@@ -107,6 +112,8 @@ class PopUpProjectManagement extends React.Component {
 
         this.onConfirmDeleteProject = this.onConfirmDeleteProject.bind(this);
         this.onSearchProject = this.onSearchProject.bind(this);
+        this.onRefreshNext = this.onRefreshNext.bind(this);
+        this.onRefreshPrevious = this.onRefreshPrevious.bind(this);
         this.onRefresh = this.onRefresh.bind(this);
 
         this.onDeleteProject = this.onDeleteProject.bind(this);
@@ -116,55 +123,422 @@ class PopUpProjectManagement extends React.Component {
 
         this.emptyCache = this.emptyCache.bind(this);
         this.removeFileObjects = this.removeFileObjects.bind(this);
+        this.onPreviousPage = this.onPreviousPage.bind(this);
+        this.onNextPage = this.onNextPage.bind(this);
+        this.onGoStartPage = this.onGoStartPage.bind(this);
+        this.onGoEndPage = this.onGoEndPage.bind(this);
     }
+
+    onGoStartPage()
+    {
+
+        const clickTab = localStorage.getItem("clicktab");
+        if (clickTab == 0) {
+            this.setState({ selectedPage1: 1 });
+            this.setState({pageCurrent:1});
+
+            this.onRefreshStartPage();
+        } else {
+            this.setState({ selectedPage2: 1 });
+            this.setState({pageCurrent:1});
+
+            this.onRefreshStartPage();
+        }
+    }
+
+    onGoEndPage()
+    {
+
+        const clickTab = localStorage.getItem("clicktab");
+        if (clickTab == 0) {
+           
+
+            this.setState({ selectedPage1: this.state.pageTotal1 });
+            this.setState({pageCurrent:this.state.pageTotal1});
+            this.onRefreshEndPage();
+
+           
+        } else {
+            //const pageCurrent = this.state.selectedPage2;
+
+            this.setState({ selectedPage2: this.state.pageTotal2 });
+            this.setState({pageCurrent:this.state.pageTotal2});
+            this.onRefreshEndPage();
+        }
+
+
+
+    }
+    onPreviousPage() {
+        const clickTab = localStorage.getItem("clicktab");
+        if (clickTab == 0) {
+            const pageCurrent = this.state.selectedPage1;
+
+            if (pageCurrent > 1) {
+                this.setState({ selectedPage1: pageCurrent - 1 });
+
+                this.onRefreshPrevious();
+            }
+        } else {
+            const pageCurrent = this.state.selectedPage2;
+            if (pageCurrent > 1) {
+                this.setState({ selectedPage2: pageCurrent - 1 });
+                this.onRefreshPrevious();
+            }
+        }
+    }
+
+    onNextPage() {
+        const clickTab = localStorage.getItem("clicktab");
+        if (clickTab == 0) {
+            const pageCurrent = this.state.selectedPage1;
+            console.log("pageCurrent",pageCurrent);
+
+            if (pageCurrent < this.state.pageTotal1) {
+                this.setState({ selectedPage1: (pageCurrent + 1) });
+                console.log("Next Page", this.state.selectedPage1 )
+                this.onRefreshNext();
+            }
+        } else {
+            const pageCurrent = this.state.selectedPage2;
+            if (pageCurrent < this.state.pageTotal2) {
+                this.setState({ selectedPage2: (pageCurrent + 1) });
+                this.onRefreshNext();
+            }
+        }
+    }
+
+    onRefreshNext() {
+        const clickTab = localStorage.getItem("clicktab");
+
+        if (clickTab == 0) {
+            fetch(
+                ConfigServer.host +
+                    "/code_kittens_api/projects?page=" +
+                    (this.state.selectedPage1 + 1) +
+                    "&per_page=" +
+                    this.state.pageSize1
+            )
+                .then((response) => response.json())
+                .then((result) => {
+                    console.log("componentDidMount00:", result.message);
+
+                    const value = result.message;
+                    if (value.status_code == 200) {
+                        console.log("arrayProjectPublic", result);
+                        this.setState({
+                            arrayProjectPublic: result.data.projects,
+                        });
+                        this.setState({
+                            arrayProjectPublicTemp: result.data.projects,
+                        });
+
+                        this.setState({ pageTotal1: result.data.total_page });
+                        this.onChangeTab();
+                    }
+                });
+        } else {
+            const requestOptions = {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+            };
+            fetch(
+                ConfigServer.host +
+                    "/code_kittens_api/my_projects?page=" +
+                    (this.state.selectedPage2 + 1 ) + 
+                    "&per_page=" +
+                    this.state.pageSize2,
+                requestOptions
+            )
+                .then((response) => response.json())
+                .then((result) => {
+                    const value = result.message;
+                    if (value.status_code == 200) {
+                        this.setState({ arrayMyProject: result.data.projects });
+                        this.setState({
+                            arrayMyProjectTemp: result.data.projects,
+                        });
+                        this.onChangeTab();
+                        this.setState({ pageTotal2: result.data.total_page });
+                    }
+                });
+        }
+    }
+
+
+
+
+    onRefreshPrevious() {
+        const clickTab = localStorage.getItem("clicktab");
+
+        if (clickTab == 0) {
+            fetch(
+                ConfigServer.host +
+                    "/code_kittens_api/projects?page=" +
+                    (this.state.selectedPage1 - 1) +
+                    "&per_page=" +
+                    this.state.pageSize1
+            )
+                .then((response) => response.json())
+                .then((result) => {
+                    console.log("componentDidMount00:", result.message);
+
+                    const value = result.message;
+                    if (value.status_code == 200) {
+                        console.log("arrayProjectPublic", result);
+                        this.setState({
+                            arrayProjectPublic: result.data.projects,
+                        });
+                        this.setState({
+                            arrayProjectPublicTemp: result.data.projects,
+                        });
+
+                        this.setState({ pageTotal1: result.data.total_page });
+                        this.onChangeTab();
+                    }
+                });
+        } else {
+            const requestOptions = {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+            };
+            fetch(
+                ConfigServer.host +
+                    "/code_kittens_api/my_projects?page=" +
+                    (this.state.selectedPage2 - 1 ) + 
+                    "&per_page=" +
+                    this.state.pageSize2,
+                requestOptions
+            )
+                .then((response) => response.json())
+                .then((result) => {
+                    const value = result.message;
+                    if (value.status_code == 200) {
+                        this.setState({ arrayMyProject: result.data.projects });
+                        this.setState({
+                            arrayMyProjectTemp: result.data.projects,
+                        });
+                        this.onChangeTab();
+                        this.setState({ pageTotal2: result.data.total_page });
+                    }
+                });
+        }
+    }
+
+
+
+    onRefreshEndPage() {
+        const clickTab = localStorage.getItem("clicktab");
+        if (clickTab == 0) {
+
+            console.log("pageTotal1",this.state.pageTotal1);
+            fetch(
+                ConfigServer.host +
+                    "/code_kittens_api/projects?page=" +
+                    (this.state.pageTotal1) +
+                    "&per_page=" +
+                    this.state.pageSize1
+            )
+                .then((response) => response.json())
+                .then((result) => {
+                    console.log("componentDidMount00:", result.message);
+
+                    const value = result.message;
+                    if (value.status_code == 200) {
+                        console.log("arrayProjectPublic", result);
+                        this.setState({
+                            arrayProjectPublic: result.data.projects,
+                        });
+                        this.setState({
+                            arrayProjectPublicTemp: result.data.projects,
+                        });
+
+                        this.setState({ pageTotal1: result.data.total_page });
+                        this.onChangeTab();
+                    }
+                });
+        } else {
+            const requestOptions = {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+            };
+            fetch(
+                ConfigServer.host +
+                    "/code_kittens_api/my_projects?page=" +
+                    (this.state.pageTotal2) + 
+                    "&per_page=" +
+                    this.state.pageSize2,
+                requestOptions
+            )
+                .then((response) => response.json())
+                .then((result) => {
+                    const value = result.message;
+                    if (value.status_code == 200) {
+                        this.setState({ arrayMyProject: result.data.projects });
+                        this.setState({
+                            arrayMyProjectTemp: result.data.projects,
+                        });
+                        this.onChangeTab();
+                        this.setState({ pageTotal2: result.data.total_page });
+                    }
+                });
+        }
+    }
+
+
+    onRefreshStartPage() {
+        const clickTab = localStorage.getItem("clicktab");
+
+        if (clickTab == 0) {
+            fetch(
+                ConfigServer.host +
+                    "/code_kittens_api/projects?page=" +
+                    1 +
+                    "&per_page=" +
+                    this.state.pageSize1
+            )
+                .then((response) => response.json())
+                .then((result) => {
+                    console.log("componentDidMount00:", result.message);
+
+                    const value = result.message;
+                    if (value.status_code == 200) {
+                        console.log("arrayProjectPublic", result);
+                        this.setState({
+                            arrayProjectPublic: result.data.projects,
+                        });
+                        this.setState({
+                            arrayProjectPublicTemp: result.data.projects,
+                        });
+
+                        this.setState({ pageTotal1: result.data.total_page });
+                        this.onChangeTab();
+                    }
+                });
+        } else {
+            const requestOptions = {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+            };
+            fetch(
+                ConfigServer.host +
+                    "/code_kittens_api/my_projects?page=" +
+                    1 + 
+                    "&per_page=" +
+                    this.state.pageSize2,
+                requestOptions
+            )
+                .then((response) => response.json())
+                .then((result) => {
+                    const value = result.message;
+                    if (value.status_code == 200) {
+                        this.setState({ arrayMyProject: result.data.projects });
+                        this.setState({
+                            arrayMyProjectTemp: result.data.projects,
+                        });
+                        this.onChangeTab();
+                        this.setState({ pageTotal2: result.data.total_page });
+                    }
+                });
+        }
+    }
+
 
     onRefresh() {
-        fetch(ConfigServer.host + "/code_kittens_api/projects")
-            .then((response) => response.json())
-            .then((result) => {
-                const value = result.message;
-                if (value.status_code == 200) {
-                    this.setState({ arrayProjectPublic: result.data });
-                    this.setState({ arrayProjectPublicTemp: result.data });
-                    this.onChangeTab();
-                }
-            });
+        const clickTab = localStorage.getItem("clicktab");
 
-        const token = localStorage.getItem("token");
+        if (clickTab == 0) {
+            fetch(
+                ConfigServer.host +
+                    "/code_kittens_api/projects?page=" +
+                    (this.state.selectedPage1) +
+                    "&per_page=" +
+                    this.state.pageSize1
+            )
+                .then((response) => response.json())
+                .then((result) => {
+                    console.log("componentDidMount00:", result.message);
 
-        const requestOptions = {
-            method: "GET",
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("token"),
-            },
-        };
-        fetch(
-            ConfigServer.host + "/code_kittens_api/my_projects",
-            requestOptions
-        )
-            .then((response) => response.json())
-            .then((result) => {
-                const value = result.message;
-                if (value.status_code == 200) {
-                    this.setState({ arrayMyProject: result.data });
-                    this.setState({ arrayMyProjectTemp: result.data });
-                    this.onChangeTab();
-                }
-            });
+                    const value = result.message;
+                    if (value.status_code == 200) {
+                        console.log("arrayProjectPublic", result);
+                        this.setState({
+                            arrayProjectPublic: result.data.projects,
+                        });
+                        this.setState({
+                            arrayProjectPublicTemp: result.data.projects,
+                        });
+
+                        this.setState({ pageTotal1: result.data.total_page });
+                        this.onChangeTab();
+                    }
+                });
+        } else {
+            const requestOptions = {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+            };
+            fetch(
+                ConfigServer.host +
+                    "/code_kittens_api/my_projects?page=" +
+                    (this.state.selectedPage2) + 
+                    "&per_page=" +
+                    this.state.pageSize2,
+                requestOptions
+            )
+                .then((response) => response.json())
+                .then((result) => {
+                    const value = result.message;
+                    if (value.status_code == 200) {
+                        this.setState({ arrayMyProject: result.data.projects });
+                        this.setState({
+                            arrayMyProjectTemp: result.data.projects,
+                        });
+                        this.onChangeTab();
+                        this.setState({ pageTotal2: result.data.total_page });
+                    }
+                });
+        }
     }
     componentDidMount() {
+        console.log("componentDidMount1:", this.state.pageSize);
+        console.log("componentDidMount2:", this.state.selectedPage);
+
         localStorage.setItem("clicktab", 0);
-        fetch(ConfigServer.host + "/code_kittens_api/projects")
+
+        fetch(
+            ConfigServer.host +
+                "/code_kittens_api/projects?page=" +
+                this.state.selectedPage +
+                "&per_page=" +
+                this.state.pageSize
+        )
             .then((response) => response.json())
             .then((result) => {
+                console.log("componentDidMount00:", result.message);
+
                 const value = result.message;
                 if (value.status_code == 200) {
-                    this.setState({ arrayProjectPublic: result.data });
-                    this.setState({ arrayProjectPublicTemp: result.data });
+                    console.log("arrayProjectPublic", result);
+                    this.setState({ arrayProjectPublic: result.data.projects });
+                    this.setState({
+                        arrayProjectPublicTemp: result.data.projects,
+                    });
+
+                    this.setState({ pageTotal1: result.data.total_page });
                     this.onChangeTab();
                 }
             });
-
         const token = localStorage.getItem("token");
         const requestOptions = {
             method: "GET",
@@ -173,34 +547,24 @@ class PopUpProjectManagement extends React.Component {
             },
         };
         fetch(
-            ConfigServer.host + "/code_kittens_api/my_projects",
+            ConfigServer.host +
+                "/code_kittens_api/my_projects?page=" +
+                this.state.selectedPage +
+                "&per_page=" +
+                this.state.pageSize,
             requestOptions
         )
             .then((response) => response.json())
             .then((result) => {
                 const value = result.message;
                 if (value.status_code == 200) {
-                    this.setState({ arrayMyProject: result.data });
-                    this.setState({ arrayMyProjectTemp: result.data });
+                    this.setState({ arrayMyProject: result.data.projects });
+                    this.setState({ arrayMyProjectTemp: result.data.projects });
                     this.onChangeTab();
+                    this.setState({ pageTotal2: result.data.total_page });
                 }
             });
-
-
-
-          
-    
-    
-
-
-   
-    
     }
-
-  
-
-
-
     onChangePage(pageOfItems) {
         this.setState({ pageOfItems: pageOfItems });
     }
@@ -223,7 +587,7 @@ class PopUpProjectManagement extends React.Component {
         id,
         thumbnail_base64,
         thumbnail,
-         is_public
+        is_public
     ) {
         localStorage.setItem("name", name);
         localStorage.setItem("description", description);
@@ -235,22 +599,17 @@ class PopUpProjectManagement extends React.Component {
         localStorage.setItem("id_project_selected", id);
         localStorage.setItem("thumbnail_base64", thumbnail_base64);
         localStorage.setItem("thumbnail", thumbnail);
-        localStorage.setItem("is_public",is_public);
+        localStorage.setItem("is_public", is_public);
 
         var x = 0;
         localStorage.setItem("update_project", false);
 
-
-        for (x =0;x< this.state.arrayMyProject.length;x++)
-        {
+        for (x = 0; x < this.state.arrayMyProject.length; x++) {
             const item = this.state.arrayMyProject[x];
-            if(item.id==id)
-            {
+            if (item.id == id) {
                 localStorage.setItem("update_project", true);
             }
-            
         }
-
 
         // this.setState({ isDetail: true });
     }
@@ -307,22 +666,21 @@ class PopUpProjectManagement extends React.Component {
         this.inputElement = null;
     }
 
-    emptyCache(){
-        if('caches' in window){
-        caches.keys().then((names) => {
+    emptyCache() {
+        if ("caches" in window) {
+            caches.keys().then((names) => {
                 // Delete all the cache files
-                names.forEach(name => {
+                names.forEach((name) => {
                     caches.delete(name);
-                })
+                });
             });
-    
+
             // Makes sure the page reloads. Changes are only visible after you refresh.
             //window.location.reload(true);
         }
     }
 
     onRemix(e) {
-
         /*
          localStorage.setItem("name", name);
         localStorage.setItem("description", description);
@@ -340,45 +698,41 @@ class PopUpProjectManagement extends React.Component {
         this.props.onLoadingStarted();
         if (!this.loadingSuccess) {
             const link_download = localStorage.getItem("link_download");
-             this.setState({fileupload:null});
-           // this.emptyCache();
+            this.setState({ fileupload: null });
+            // this.emptyCache();
             fetch(link_download)
                 .then((r) => r.arrayBuffer())
                 .then((buffer) => {
                     console.log("upload_project:", 0);
-                   // this.setState({fileupload: buffer});
+                    // this.setState({fileupload: buffer});
                     const file = buffer;
-                   console.log("upload_project:", 1);
-               
-                   console.log("upload_project:", 2);
-               
-                   if(!loadingSuccess)
-                   {
+                    console.log("upload_project:", 1);
 
-                    this.props.vm
-                    .loadProject(buffer)
-                    .then(() => {
-                        if (!loadingSuccess) {
-                            //localStorage.setItem("update_project", true);
-                            //id_project_selected
-                            console.log("upload_project:", 1);
-                            this.props.onSetProjectTitle("title Project");
-                            loadingSuccess = true;
-                        }
-                    })
-                    .catch((error) => {})
-                    .then(() => {
-                        this.props.onCloseLoadingStarted();
-                        //this.props.onLoadingFinished(this.props.loadingState, loadingSuccess);
-                    });
+                    console.log("upload_project:", 2);
 
-
-                   }
-                  
+                    if (!loadingSuccess) {
+                        this.props.vm
+                            .loadProject(buffer)
+                            .then(() => {
+                                if (!loadingSuccess) {
+                                    //localStorage.setItem("update_project", true);
+                                    //id_project_selected
+                                    console.log("upload_project:", 1);
+                                    this.props.onSetProjectTitle(
+                                        "title Project"
+                                    );
+                                    loadingSuccess = true;
+                                }
+                            })
+                            .catch((error) => {})
+                            .then(() => {
+                                this.props.onCloseLoadingStarted();
+                                //this.props.onLoadingFinished(this.props.loadingState, loadingSuccess);
+                            });
+                    }
                 });
 
-                this.props.closePopup();
-
+            this.props.closePopup();
         }
     }
 
@@ -470,9 +824,13 @@ class PopUpProjectManagement extends React.Component {
         if (clickTab == 0) {
             this.setState({ arrayProject: this.state.arrayProjectPublic });
             this.setState({ arrayProjectTemp: this.state.arrayProjectPublic });
+            this.setState({ selectedPage: this.state.selectedPage1 });
+            this.setState({ pageTotal: this.state.pageTotal1 });
         } else {
             this.setState({ arrayProject: this.state.arrayMyProject });
             this.setState({ arrayProjectTemp: this.state.arrayMyProject });
+            this.setState({ selectedPage: this.state.selectedPage2 });
+            this.setState({ pageTotal: this.state.pageTotal2 });
         }
     }
     render() {
@@ -603,10 +961,10 @@ class PopUpProjectManagement extends React.Component {
                                         style={{
                                             width: "100%",
                                             display: "flex",
-                                            height: "35px",
+                                            height: "45px",
                                             borderColor: "#000000",
                                             borderRadius: "15px",
-                                            borderWidth: 5,
+                                            borderWidth: "5px",
                                             marginRight: "20px",
                                             backgroundColor: "#FFF",
                                         }}
@@ -615,6 +973,7 @@ class PopUpProjectManagement extends React.Component {
                                             onChange={this.onSearchProject}
                                             className={styles.input_search}
                                             style={{
+                                                fontWeight: "lighter",
                                                 flex: 10,
                                                 width: "100%",
                                                 marginLeft: "20px",
@@ -809,13 +1168,14 @@ class PopUpProjectManagement extends React.Component {
                                         }}
                                     >
                                         <div
+                                         onClick={this.onGoStartPage}
+                                            className={styles2.buttonPage}
                                             style={{
                                                 alignSelf: "flex-end",
                                                 width: "50px",
                                                 display: "flex",
                                                 height: "30px",
                                                 justifyContent: "center",
-                                                backgroundColor: "#1CC3A5",
                                                 borderColor: "white",
                                                 marginLeft: "10px",
                                             }}
@@ -831,6 +1191,8 @@ class PopUpProjectManagement extends React.Component {
                                         </div>
 
                                         <div
+                                            className={styles2.buttonPage}
+                                            onClick={this.onPreviousPage}
                                             style={{
                                                 justifyContent: "center",
                                                 display: "flex",
@@ -838,7 +1200,6 @@ class PopUpProjectManagement extends React.Component {
                                                 alignSelf: "flex-end",
                                                 width: "50px",
                                                 height: "30px",
-                                                backgroundColor: "#1CC3A5",
                                                 borderColor: "white",
                                                 marginLeft: "10px",
                                             }}
@@ -854,6 +1215,7 @@ class PopUpProjectManagement extends React.Component {
                                         </div>
 
                                         <div
+                                            className={styles2.buttonPage}
                                             style={{
                                                 justifyContent: "center",
                                                 display: "flex",
@@ -861,7 +1223,6 @@ class PopUpProjectManagement extends React.Component {
                                                 alignSelf: "flex-end",
                                                 width: "100px",
                                                 height: "30px",
-                                                backgroundColor: "#1CC3A5",
                                                 borderColor: "white",
                                                 marginLeft: "10px",
                                             }}
@@ -874,11 +1235,14 @@ class PopUpProjectManagement extends React.Component {
                                                     fontSize: 12,
                                                 }}
                                             >
-                                                Trang 1/100
+                                                Trang {this.state.selectedPage}/{" "}
+                                                {this.state.pageTotal}
                                             </span>
                                         </div>
 
                                         <div
+                                            className={styles2.buttonPage}
+                                            onClick={this.onNextPage}
                                             style={{
                                                 justifyContent: "center",
                                                 display: "flex",
@@ -886,7 +1250,6 @@ class PopUpProjectManagement extends React.Component {
                                                 alignSelf: "flex-end",
                                                 width: "50px",
                                                 height: "30px",
-                                                backgroundColor: "#1CC3A5",
                                                 borderColor: "white",
                                                 marginLeft: "10px",
                                             }}
@@ -902,6 +1265,9 @@ class PopUpProjectManagement extends React.Component {
                                         </div>
 
                                         <div
+                                        onClick={this.onGoEndPage}
+
+                                            className={styles2.buttonPage}
                                             style={{
                                                 justifyContent: "center",
                                                 display: "flex",
@@ -909,7 +1275,6 @@ class PopUpProjectManagement extends React.Component {
                                                 alignSelf: "flex-end",
                                                 width: "50px",
                                                 height: "30px",
-                                                backgroundColor: "#1CC3A5",
                                                 borderColor: "white",
                                                 marginLeft: "10px",
                                             }}
