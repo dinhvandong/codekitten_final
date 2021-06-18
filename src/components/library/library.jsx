@@ -28,7 +28,7 @@ const messages = defineMessages({
 
 const ALL_TAG = { tag: 'all', intlLabel: messages.allTag };
 const tagListPrefix = [ALL_TAG];
-
+import Toast from 'react-bootstrap/Toast';
 class LibraryComponent extends React.Component {
     constructor(props) {
         super(props);
@@ -106,6 +106,8 @@ class LibraryComponent extends React.Component {
     }
     handleMouseEnter(id) {
         // don't restart if mouse over already playing item
+
+
         if (this.props.onItemMouseEnter && this.state.playingItem !== id) {
             this.props.onItemMouseEnter(this.getFilteredData()[id]);
             this.setState({
@@ -239,6 +241,8 @@ class LibraryComponent extends React.Component {
                     })}
                     ref={this.setFilteredDataRef}
                 >
+
+                
                     {this.state.loaded ? this.getFilteredData().map((dataItem, index) => (
                         <LibraryItem
                             bluetoothRequired={dataItem.bluetoothRequired}
@@ -263,6 +267,10 @@ class LibraryComponent extends React.Component {
                             onMouseLeave={this.handleMouseLeave}
                             onSelect={this.handleSelect}
                         />
+
+                       
+
+
                     )) : (
                         <div className={styles.spinnerWrapper}>
                             <Spinner

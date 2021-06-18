@@ -9,11 +9,20 @@ export default (filename, blob, projectName, projectDesc, cover, is_public) => {
     const link_update_project = ConfigServer.host + "/code_kittens_api/projects/" + id_project;
 
     const file = new File([blob], filename);
+
+    if(file != null)
+    {
+
+        formData.append("project_file", file);
+
+    }
    
-    formData.append("project_file", file);
     if(localStorage.getItem("update_cover") == 'true')
     {
-        formData.append("thumbnail", cover);
+        if(cover != null)
+        {
+            formData.append("thumbnail", cover);
+        }
 
     }
     formData.append("description", projectDesc);
@@ -45,7 +54,7 @@ export default (filename, blob, projectName, projectDesc, cover, is_public) => {
         return fetch(link_update_project, requestOptions)
             .then((response) => response.json())
             .then((result) => {
-                console.log("JSON_LOGIN:", result);
+                console.log("JSON_LOGIN:", result.message);
                 const value = result.message;
                 if (value.status_code == 200)
                 {
