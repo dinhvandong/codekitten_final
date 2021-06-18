@@ -15,6 +15,7 @@
 .buttonRemix {
 
 
+    cursor: pointer;
     width: 120px;
     justify-content: center;
     border-radius: 10px;
@@ -30,6 +31,8 @@
 }
 
 .buttonRemix:hover {
+    cursor: pointer;
+
 
 
     width: 120px;

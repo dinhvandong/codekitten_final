@@ -674,26 +674,11 @@ class PopUpProjectManagement extends React.Component {
                     caches.delete(name);
                 });
             });
-
-            // Makes sure the page reloads. Changes are only visible after you refresh.
-            //window.location.reload(true);
         }
     }
 
     onRemix(e) {
-        /*
-         localStorage.setItem("name", name);
-        localStorage.setItem("description", description);
-        localStorage.setItem("created_by", created_by);
-        localStorage.setItem(
-            "link_download",
-            ConfigServer.host + "/code_kittens_api/projects/" + id
-        );
-        localStorage.setItem("id_project_selected", id);
-        localStorage.setItem("thumbnail_base64", thumbnail_base64);
-        localStorage.setItem("thumbnail", thumbnail);
         
-        */
         let loadingSuccess = false;
         this.props.onLoadingStarted();
         if (!this.loadingSuccess) {
@@ -910,6 +895,7 @@ class PopUpProjectManagement extends React.Component {
                             <img
                                 onClick={this.closePopup}
                                 style={{
+                                    cursor:'pointer',
                                     zIndex: 100,
                                     marginRight: 5,
                                     width: 25,
@@ -1098,7 +1084,7 @@ class PopUpProjectManagement extends React.Component {
                                                 {this.state.arrayProjectTemp.map(
                                                     (value) => (
                                                         <Grid key={value} item>
-                                                            <div
+                                                            <div 
                                                                 onClick={() =>
                                                                     this.onShowDetail(
                                                                         value.name,
@@ -1171,6 +1157,7 @@ class PopUpProjectManagement extends React.Component {
                                          onClick={this.onGoStartPage}
                                             className={styles2.buttonPage}
                                             style={{
+                                                cursor:'pointer',
                                                 alignSelf: "flex-end",
                                                 width: "50px",
                                                 display: "flex",
@@ -1194,6 +1181,7 @@ class PopUpProjectManagement extends React.Component {
                                             className={styles2.buttonPage}
                                             onClick={this.onPreviousPage}
                                             style={{
+                                                cursor:'pointer',
                                                 justifyContent: "center",
                                                 display: "flex",
 
@@ -1219,6 +1207,7 @@ class PopUpProjectManagement extends React.Component {
                                             style={{
                                                 justifyContent: "center",
                                                 display: "flex",
+                                                cursor:'pointer',
 
                                                 alignSelf: "flex-end",
                                                 width: "100px",
@@ -1244,6 +1233,7 @@ class PopUpProjectManagement extends React.Component {
                                             className={styles2.buttonPage}
                                             onClick={this.onNextPage}
                                             style={{
+                                                cursor:'pointer',
                                                 justifyContent: "center",
                                                 display: "flex",
 

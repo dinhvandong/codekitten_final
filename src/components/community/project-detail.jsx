@@ -127,7 +127,7 @@ export default class ProjectDetail extends React.Component {
                         </div>
 
                         <div
-                            style={{ alignSelf: "center", marginRight: "10px" }}
+                            style={{ alignSelf: "center", marginRight: "10px" , cursor:'pointer' }}
                             onClick={this.onClose}
                         >
                             <img
@@ -219,7 +219,7 @@ export default class ProjectDetail extends React.Component {
                                 backgroundColor: "#FFF",
                             }}
                         >
-                            <div style={{backgroundImage:"url(" + this.state.thumbnail + ")"}} className={styles.border_project_detail}>
+                            <div style={{backgroundImage:"url(" + this.state.thumbnail + ")", cursor:'pointer'}} className={styles.border_project_detail}>
                                 <img
                                     onClick={this.onRemix}
                                     style={{
