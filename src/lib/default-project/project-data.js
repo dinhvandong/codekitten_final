@@ -90,6 +90,15 @@ const projectData = translateFunction => {
                         dataFormat: 'svg',
                         rotationCenterX: 200,
                         rotationCenterY: 120
+                    },
+                    {
+                        assetId: '67e0db3305b3c8bac3a363b1c428892e',
+                        name: translator(messages.costume, {index: 3}),
+                        bitmapResolution: 1,
+                        md5ext: '67e0db3305b3c8bac3a363b1c428892e.svg',
+                        dataFormat: 'svg',
+                        rotationCenterX: 200,
+                        rotationCenterY: 120
                     }
                 ],
                 sounds: [
@@ -115,6 +124,7 @@ const projectData = translateFunction => {
         ],
         meta: {
             semver: '3.0.0',
+            
             vm: '0.1.0',
             agent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36' // eslint-disable-line max-len
         }
