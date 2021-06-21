@@ -7,16 +7,24 @@
     letter-spacing: 0.5px;
     background-color: #94dcb6;
     color: rgb(0, 0, 0);
-    /* border: none; */
-    /* background-image: url('../tab-active.png'); */
     font-size: 14px;
-     /* border: 0px solid #94dcb6; */
     font-weight: 200%;
      box-shadow: inset;
-    /* border-style: hidden; */
     border-color: transparent;
     cursor: pointer;
     outline: none;
+
+}
+.customButton:focus {
+
+    outline: none;
+
+
+}
+
+.customButton_active:focus {
+
+        outline: none;
 
 }
 .customButton:hover {
@@ -49,7 +57,7 @@
     cursor: pointer;
 }
 
-.active {
+customButton_active:active {
     background-color: "#FFF";
-    border: 1.5px solid rgb(25, 26, 24);
+    /* border: 1.5px solid rgb(25, 26, 24); */
 }

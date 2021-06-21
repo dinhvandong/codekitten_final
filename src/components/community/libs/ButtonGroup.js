@@ -4,8 +4,9 @@ const ButtonGroup = ({ buttons, doSomethingAfterClick }) => {
     const [clickedId, setClickedId] = useState(0);
 
     const handleClick = (event, id) => {
+        event.preventDefault();
+
         setClickedId(id);
-        console.log("ClickTab", id );
         localStorage.setItem("clicktab", id);
         doSomethingAfterClick(event);
     };
