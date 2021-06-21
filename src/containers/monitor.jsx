@@ -8,7 +8,7 @@ import MonitorComponent, {monitorModes} from '../components/monitor/monitor.jsx'
 import {addMonitorRect, getInitialPosition, resizeMonitorRect, removeMonitorRect} from '../reducers/monitor-layout';
 import {getVariable, setVariableValue} from '../lib/variable-utils';
 import importCSV from '../lib/import-csv';
-import downloadBlob from '../lib/download-blob';
+import downloadBlob from '../lib/download-blob2';
 import SliderPrompt from './slider-prompt.jsx';
 
 import {connect} from 'react-redux';

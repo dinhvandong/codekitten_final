@@ -98,13 +98,16 @@ class PopUpProjectManagement extends React.Component {
             selectedPage1: 1,
 
             selectedPage2: 1,
-            pageSize: 50,
+            pageSize: 20,
 
-            pageSize1: 50,
-            pageSize2: 50,
+            pageSize1: 20,
+            pageSize2: 20,
             pageTotal: 0,
             pageTotal1: 0,
             pageTotal2: 0,
+            total_item1:0,
+            total_item2:0,
+            total_item:0
         };
 
         this.onShowDetail = this.onShowDetail.bind(this);
@@ -536,6 +539,7 @@ class PopUpProjectManagement extends React.Component {
                     });
 
                     this.setState({ pageTotal1: result.data.total_page });
+                    this.setState({total_item1: result.data.total_item});
                     this.onChangeTab();
                 }
             });
@@ -562,6 +566,8 @@ class PopUpProjectManagement extends React.Component {
                     this.setState({ arrayMyProjectTemp: result.data.projects });
                     this.onChangeTab();
                     this.setState({ pageTotal2: result.data.total_page });
+                    this.setState({total_item2: result.data.total_item});
+
                 }
             });
     }
@@ -811,11 +817,14 @@ class PopUpProjectManagement extends React.Component {
             this.setState({ arrayProjectTemp: this.state.arrayProjectPublic });
             this.setState({ selectedPage: this.state.selectedPage1 });
             this.setState({ pageTotal: this.state.pageTotal1 });
+            this.setState({total_item: this.state.total_item1});
         } else {
             this.setState({ arrayProject: this.state.arrayMyProject });
             this.setState({ arrayProjectTemp: this.state.arrayMyProject });
             this.setState({ selectedPage: this.state.selectedPage2 });
             this.setState({ pageTotal: this.state.pageTotal2 });
+            this.setState({total_item: this.state.total_item2});
+
         }
     }
     render() {
@@ -1057,7 +1066,7 @@ class PopUpProjectManagement extends React.Component {
                                     >
                                         <span>
                                             Tìm thấy{" "}
-                                            {this.state.arrayProjectTemp.length}{" "}
+                                            {this.state.total_item}{" "}
                                             dự án{" "}
                                         </span>
                                     </div>

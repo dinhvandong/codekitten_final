@@ -21,7 +21,7 @@ import soundLibraryContent from '../lib/libraries/sounds.json';
 import {handleFileUpload, soundUpload} from '../lib/file-uploader.js';
 import errorBoundaryHOC from '../lib/error-boundary-hoc.jsx';
 import DragConstants from '../lib/drag-constants';
-import downloadBlob from '../lib/download-blob';
+import downloadBlob from '../lib/download-blob2';
 
 import {connect} from 'react-redux';
 

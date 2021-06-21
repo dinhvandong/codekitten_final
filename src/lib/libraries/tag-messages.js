@@ -114,6 +114,11 @@ export default defineMessages({
         description: 'Tag for filtering a library for outdoors',
         id: 'gui.libraryTags.person'
     },
+    vietnam: {
+        defaultMessage: 'Việt Nam',
+        description: 'Tag for filtering a library for outdoors',
+        id: 'gui.libraryTags.vietnam'
+    },
     animals: {
         defaultMessage: 'Animals',
         description: 'Tag for filtering a library for animals',

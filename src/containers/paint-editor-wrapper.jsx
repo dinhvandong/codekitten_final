@@ -38,7 +38,7 @@ class PaintEditorWrapper extends React.Component {
                 image,
                 rotationCenterX,
                 rotationCenterY,
-                2 /* bitmapResolution */);
+               2 /* bitmapResolution */);
         }
     }
     render () {

@@ -10,7 +10,9 @@ export default [
     {tag: 'animal', intlLabel: messages.animal},
     {tag: 'game', intlLabel: messages.game},
     {tag: 'person', intlLabel: messages.person},
-    {tag: 'vehicle', intlLabel: messages.vehicle}
+    {tag: 'vehicle', intlLabel: messages.vehicle},
+    {tag: 'vietnam', intlLabel: messages.vietnam}
+
 
 
 ];
