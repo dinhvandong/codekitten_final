@@ -5,7 +5,7 @@ export default [
     {tag: 'universe', intlLabel: messages.universe},
     {tag: 'stage', intlLabel: messages.stage},
     {tag: 'construction', intlLabel: messages.construction},
-    {tag: 'nature', intlLabel: messages.nature},
+    {tag: 'nature', intlLabel: messages.nature}
 
 
 ];
