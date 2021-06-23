@@ -42,6 +42,9 @@ import UploadProject from "../storemyproject/upload-project.js";
 import ConfigServer from "../../config_server.js";
 import styles2 from "./popup-projectmanagement.css";
 
+
+import {Dropdown} from './libs/drop-down.js';
+
 import {
     openLoadingProject,
     closeLoadingProject,
@@ -107,7 +110,9 @@ class PopUpProjectManagement extends React.Component {
             pageTotal2: 0,
             total_item1:0,
             total_item2:0,
-            total_item:0
+            total_item:0,
+            options : ['Basic', 'Intermediate', 'Hard', 
+  'Expert']
         };
 
         this.onShowDetail = this.onShowDetail.bind(this);
@@ -130,6 +135,9 @@ class PopUpProjectManagement extends React.Component {
         this.onNextPage = this.onNextPage.bind(this);
         this.onGoStartPage = this.onGoStartPage.bind(this);
         this.onGoEndPage = this.onGoEndPage.bind(this);
+
+        this.setState({options:['Basic', 'Intermediate', 'Hard', 
+  'Expert']});
     }
 
     onGoStartPage()
@@ -828,6 +836,9 @@ class PopUpProjectManagement extends React.Component {
         }
     }
     render() {
+
+        const options = ['Monday', 'Tuesday', 'Thursday', 
+  'Friday', 'Saturday', 'Sunday']; 
         const {
             /* eslint-disable no-unused-vars */
             loadingState,
@@ -1044,12 +1055,16 @@ class PopUpProjectManagement extends React.Component {
                             >
                                 <div
                                     style={{
+                                        display:'flex',
+                                        flexDirection:'row',
                                         marginTop: "30px",
                                         marginLeft: "20px",
                                     }}
                                 >
+                                <div style={{width:'200px'}} >
                                     <div
                                         style={{
+                                            width:'200px',
                                             fontWeight: "bold",
                                             fontSize: 16,
                                         }}
@@ -1059,6 +1074,7 @@ class PopUpProjectManagement extends React.Component {
 
                                     <div
                                         style={{
+                                            width:'200px',
                                             fontWeight: "normal",
                                             fontSize: 14,
                                             marginTop: "10px",
@@ -1070,6 +1086,16 @@ class PopUpProjectManagement extends React.Component {
                                             dự án{" "}
                                         </span>
                                     </div>
+
+                                   </div> 
+
+                                   <div style={{width:'100%'}}>
+
+                                   </div>
+                                  <div style={{marginRight:'20px', height:50, marginTop: '0px', zIndex:1000}}>
+
+                                        <Dropdown />
+                                 </div>
                                 </div>
 
                                 <div
