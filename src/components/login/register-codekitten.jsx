@@ -2,21 +2,25 @@ import React from "react";
 import ReactDOM from "react-dom";
 import iconCodeKitten from "./images/teky/codekitten.png";
 import iconFlag from "./upload/vietnam.png";
+import iconUser  from "./ic_user.png";
+
 import iconCodeKittenRight from "./images/teky/codekitten-orange-right.png";
 //"images/teky/codekitten.png"
 import styles from "./login.css";
 import APICodeKitten from "../../api.js";
 import { func } from "prop-types";
 import { SCREENS } from "../gui/constant";
+import { red } from "@material-ui/core/colors";
 export default class RegisterCodeKitten extends React.Component 
 {
     constructor(props) {
         super(props);
-        this.state ={isSuccess: false, phoneNumber:""};
+        this.state ={isSuccess: false, phoneNumber:"", userName:"", errorString:""};
         this.handleClick = this.handleClick.bind(this);
         this.handleTexChange = this.handleTexChange.bind(this);
         this.requestAPI = this.requestAPI.bind(this);
         this.moveToAuthenOTP = this.moveToAuthenOTP.bind(this);
+        this.handleUserChange = this.handleUserChange.bind(this);
     }
     moveToAuthenOTP()
     {
@@ -24,27 +28,42 @@ export default class RegisterCodeKitten extends React.Component
     }
     requestAPI() 
     {
+        this.setState({errorString:""});
         const phoneNumber = this.state.phoneNumber;
+        const userName = this.state.userName;
         const requestOptions = {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ mobile_number: "+84" + phoneNumber }),
+            body: JSON.stringify({ mobile_number: "+84" + phoneNumber , 
+             full_name: userName }),
         };
         var url = APICodeKitten.mobile_otp_registration;
         fetch(url, requestOptions)
             .then((response) => response.json())
             .then((data) => {
                 const value = data.message;
+                console.log("Register", JSON.stringify(value));
                 if(value.status_code==200)
                 {
                     localStorage.setItem("phonenumber", "+84" + phoneNumber);
                     this.moveToAuthenOTP();
+                }else
+                {
+                    this.setState({errorString:"Đăng ký thất bại"});
+
                 }
             });
     }
     handleTexChange(event) 
     {
         this.setState({ phoneNumber: event.target.value });
+    }
+
+    handleUserChange(event)
+    {
+
+        this.setState({ userName: event.target.value });
+
     }
     handleClick(e) 
     {
@@ -102,8 +121,64 @@ export default class RegisterCodeKitten extends React.Component
                                                 styles.c_login__form__form_group__c_icon_country
                                             }
                                         >
+                                            <img src={iconUser} />
+                                        </div>
+
+                                      
+
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                justifyContent: "flex-start",
+                                                flexDirection: "column",
+                                            }}
+                                        >
+                                            <div
+                                                style={{
+                                                    marginLeft: "10px",
+                                                    fontWeight: 8,
+                                                    color: "#9ea9c9",
+                                                }}
+                                            >
+                                                <span>Họ tên</span>
+                                            </div>
+
+                                            <div
+                                                style={{
+                                                    display: "flex",
+                                                    flexDirection: "row",
+                                                    justifyContent:"center",
+                                                    alignItems:'center',
+                                                    marginLeft: "10px",
+                                                    fontWeight: 10,
+                                                    color: "#9ea9c9",
+                                                }}
+                                            >
+                                               
+                                                <input onChange={this.handleUserChange}
+                                                    className={
+                                                        styles.input_phone
+                                                    }
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div
+                                        className={
+                                            styles.c_login__form__form_group__form_control_phone
+                                        }
+                                    >
+                                        <div
+                                            className={
+                                                styles.c_login__form__form_group__c_icon_country
+                                            }
+                                        >
                                             <img src={iconFlag} />
                                         </div>
+
+                                      
 
                                         <div
                                             style={{
@@ -147,6 +222,10 @@ export default class RegisterCodeKitten extends React.Component
                                                 />
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div>
+                                    <span style={{color:'red', marginTop:'10px'}}>{this.state.errorString}</span>
                                     </div>
                                     <button
                                         id="button"

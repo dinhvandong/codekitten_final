@@ -130,7 +130,7 @@ class StoreMyProject extends React.Component {
                                 borderTopLeftRadius: 10,
                                 borderTopRightRadius: 10,
                                 backgroundImage:
-                                    "linear-gradient(to right,#1CC3A5, #F9F154)",
+                                    "linear-gradient(to right,#1CC3A5, #1CC3A5)",
                                 display: "flex",
                                 justifyContent: "center",
                                 alignContent: "center",
@@ -208,6 +208,22 @@ class StoreMyProject extends React.Component {
                                     Chia sẻ với cộng đồng
                                 </span>
                             </div>
+
+                            <div
+                            style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                marginTop: "20px",
+                            }}
+                        >
+                            <Switch
+                                onChange={this.handleChange}
+                                checked={this.state.isPublic}
+                            />
+                            <span style={{ marginLeft: "10px" }}>
+                                Tham gia cuộc thi
+                            </span>
+                        </div>
                             <div
                                 style={{
                                     display: "flex",

@@ -10,7 +10,5 @@ export const SCREENS = {
      screen_LoginRequire: "LoginRequire",
      screen_SaveProject: "SaveProject",
      screen_ForgotOTP: "ForgotOTP",
-
-
-
+     screen_Tutorial:"Tutorial"
 }

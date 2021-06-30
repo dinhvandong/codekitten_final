@@ -32,6 +32,8 @@ class ExtensionLibrary extends React.PureComponent {
     handleItemSelect (item) {
         const id = item.extensionId;
         let url = item.extensionURL ? item.extensionURL : id;
+
+        console.log("Extension", url);
         if (!item.disabled && !id) {
             // eslint-disable-next-line no-alert
             url = prompt(this.props.intl.formatMessage(messages.extensionUrl));

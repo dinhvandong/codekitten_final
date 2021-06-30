@@ -50,7 +50,7 @@ export default class MenuLogin extends React.Component {
                         <div
                             style={{ alignSelf:'center',marginRight:'10px', color: "#000000", fontWeight: "bold" }}
                         >
-                            {localStorage.getItem("phonenumber")}
+                            {localStorage.getItem("fullname")}
                         </div>
 
                         <img onClick={this.showLogout} style={{ alignSelf:'center', width:'20px', height:'20px', marginRight:'10px'}} src={logoutIcon} />

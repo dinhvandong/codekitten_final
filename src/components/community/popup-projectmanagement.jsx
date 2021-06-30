@@ -42,8 +42,7 @@ import UploadProject from "../storemyproject/upload-project.js";
 import ConfigServer from "../../config_server.js";
 import styles2 from "./popup-projectmanagement.css";
 
-
-import {Dropdown} from './libs/drop-down.js';
+import { Dropdown } from "./libs/drop-down.js";
 
 import {
     openLoadingProject,
@@ -108,11 +107,10 @@ class PopUpProjectManagement extends React.Component {
             pageTotal: 0,
             pageTotal1: 0,
             pageTotal2: 0,
-            total_item1:0,
-            total_item2:0,
-            total_item:0,
-            options : ['Basic', 'Intermediate', 'Hard', 
-  'Expert']
+            total_item1: 0,
+            total_item2: 0,
+            total_item: 0,
+            options: ["Basic", "Intermediate", "Hard", "Expert"], tabCurrent:0
         };
 
         this.onShowDetail = this.onShowDetail.bind(this);
@@ -136,49 +134,37 @@ class PopUpProjectManagement extends React.Component {
         this.onGoStartPage = this.onGoStartPage.bind(this);
         this.onGoEndPage = this.onGoEndPage.bind(this);
 
-        this.setState({options:['Basic', 'Intermediate', 'Hard', 
-  'Expert']});
+        this.setState({ options: ["Basic", "Intermediate", "Hard", "Expert"] });
     }
 
-    onGoStartPage()
-    {
-
+    onGoStartPage() {
         const clickTab = localStorage.getItem("clicktab");
         if (clickTab == 0) {
             this.setState({ selectedPage1: 1 });
-            this.setState({pageCurrent:1});
+            this.setState({ pageCurrent: 1 });
 
             this.onRefreshStartPage();
         } else {
             this.setState({ selectedPage2: 1 });
-            this.setState({pageCurrent:1});
+            this.setState({ pageCurrent: 1 });
 
             this.onRefreshStartPage();
         }
     }
 
-    onGoEndPage()
-    {
-
+    onGoEndPage() {
         const clickTab = localStorage.getItem("clicktab");
         if (clickTab == 0) {
-           
-
             this.setState({ selectedPage1: this.state.pageTotal1 });
-            this.setState({pageCurrent:this.state.pageTotal1});
+            this.setState({ pageCurrent: this.state.pageTotal1 });
             this.onRefreshEndPage();
-
-           
         } else {
             //const pageCurrent = this.state.selectedPage2;
 
             this.setState({ selectedPage2: this.state.pageTotal2 });
-            this.setState({pageCurrent:this.state.pageTotal2});
+            this.setState({ pageCurrent: this.state.pageTotal2 });
             this.onRefreshEndPage();
         }
-
-
-
     }
     onPreviousPage() {
         const clickTab = localStorage.getItem("clicktab");
@@ -203,17 +189,17 @@ class PopUpProjectManagement extends React.Component {
         const clickTab = localStorage.getItem("clicktab");
         if (clickTab == 0) {
             const pageCurrent = this.state.selectedPage1;
-            console.log("pageCurrent",pageCurrent);
+            console.log("pageCurrent", pageCurrent);
 
             if (pageCurrent < this.state.pageTotal1) {
-                this.setState({ selectedPage1: (pageCurrent + 1) });
-                console.log("Next Page", this.state.selectedPage1 )
+                this.setState({ selectedPage1: pageCurrent + 1 });
+                console.log("Next Page", this.state.selectedPage1);
                 this.onRefreshNext();
             }
         } else {
             const pageCurrent = this.state.selectedPage2;
             if (pageCurrent < this.state.pageTotal2) {
-                this.setState({ selectedPage2: (pageCurrent + 1) });
+                this.setState({ selectedPage2: pageCurrent + 1 });
                 this.onRefreshNext();
             }
         }
@@ -258,7 +244,7 @@ class PopUpProjectManagement extends React.Component {
             fetch(
                 ConfigServer.host +
                     "/code_kittens_api/my_projects?page=" +
-                    (this.state.selectedPage2 + 1 ) + 
+                    (this.state.selectedPage2 + 1) +
                     "&per_page=" +
                     this.state.pageSize2,
                 requestOptions
@@ -277,9 +263,6 @@ class PopUpProjectManagement extends React.Component {
                 });
         }
     }
-
-
-
 
     onRefreshPrevious() {
         const clickTab = localStorage.getItem("clicktab");
@@ -320,7 +303,7 @@ class PopUpProjectManagement extends React.Component {
             fetch(
                 ConfigServer.host +
                     "/code_kittens_api/my_projects?page=" +
-                    (this.state.selectedPage2 - 1 ) + 
+                    (this.state.selectedPage2 - 1) +
                     "&per_page=" +
                     this.state.pageSize2,
                 requestOptions
@@ -340,17 +323,14 @@ class PopUpProjectManagement extends React.Component {
         }
     }
 
-
-
     onRefreshEndPage() {
         const clickTab = localStorage.getItem("clicktab");
         if (clickTab == 0) {
-
-            console.log("pageTotal1",this.state.pageTotal1);
+            console.log("pageTotal1", this.state.pageTotal1);
             fetch(
                 ConfigServer.host +
                     "/code_kittens_api/projects?page=" +
-                    (this.state.pageTotal1) +
+                    this.state.pageTotal1 +
                     "&per_page=" +
                     this.state.pageSize1
             )
@@ -382,7 +362,7 @@ class PopUpProjectManagement extends React.Component {
             fetch(
                 ConfigServer.host +
                     "/code_kittens_api/my_projects?page=" +
-                    (this.state.pageTotal2) + 
+                    this.state.pageTotal2 +
                     "&per_page=" +
                     this.state.pageSize2,
                 requestOptions
@@ -401,7 +381,6 @@ class PopUpProjectManagement extends React.Component {
                 });
         }
     }
-
 
     onRefreshStartPage() {
         const clickTab = localStorage.getItem("clicktab");
@@ -442,7 +421,7 @@ class PopUpProjectManagement extends React.Component {
             fetch(
                 ConfigServer.host +
                     "/code_kittens_api/my_projects?page=" +
-                    1 + 
+                    1 +
                     "&per_page=" +
                     this.state.pageSize2,
                 requestOptions
@@ -462,7 +441,6 @@ class PopUpProjectManagement extends React.Component {
         }
     }
 
-
     onRefresh() {
         const clickTab = localStorage.getItem("clicktab");
 
@@ -470,7 +448,7 @@ class PopUpProjectManagement extends React.Component {
             fetch(
                 ConfigServer.host +
                     "/code_kittens_api/projects?page=" +
-                    (this.state.selectedPage1) +
+                    this.state.selectedPage1 +
                     "&per_page=" +
                     this.state.pageSize1
             )
@@ -502,7 +480,7 @@ class PopUpProjectManagement extends React.Component {
             fetch(
                 ConfigServer.host +
                     "/code_kittens_api/my_projects?page=" +
-                    (this.state.selectedPage2) + 
+                    this.state.selectedPage2 +
                     "&per_page=" +
                     this.state.pageSize2,
                 requestOptions
@@ -547,7 +525,7 @@ class PopUpProjectManagement extends React.Component {
                     });
 
                     this.setState({ pageTotal1: result.data.total_page });
-                    this.setState({total_item1: result.data.total_item});
+                    this.setState({ total_item1: result.data.total_item });
                     this.onChangeTab();
                 }
             });
@@ -574,8 +552,7 @@ class PopUpProjectManagement extends React.Component {
                     this.setState({ arrayMyProjectTemp: result.data.projects });
                     this.onChangeTab();
                     this.setState({ pageTotal2: result.data.total_page });
-                    this.setState({total_item2: result.data.total_item});
-
+                    this.setState({ total_item2: result.data.total_item });
                 }
             });
     }
@@ -614,18 +591,14 @@ class PopUpProjectManagement extends React.Component {
         localStorage.setItem("thumbnail_base64", thumbnail_base64);
         localStorage.setItem("thumbnail", thumbnail);
         localStorage.setItem("is_public", is_public);
-
         var x = 0;
         localStorage.setItem("update_project", false);
-
         for (x = 0; x < this.state.arrayMyProject.length; x++) {
             const item = this.state.arrayMyProject[x];
             if (item.id == id) {
                 localStorage.setItem("update_project", true);
             }
         }
-
-        // this.setState({ isDetail: true });
     }
 
     onDeleteProject() {
@@ -692,30 +665,20 @@ class PopUpProjectManagement extends React.Component {
     }
 
     onRemix(e) {
-        
         let loadingSuccess = false;
         this.props.onLoadingStarted();
         if (!this.loadingSuccess) {
             const link_download = localStorage.getItem("link_download");
             this.setState({ fileupload: null });
-            // this.emptyCache();
             fetch(link_download)
                 .then((r) => r.arrayBuffer())
                 .then((buffer) => {
-                    console.log("upload_project:", 0);
-                    // this.setState({fileupload: buffer});
                     const file = buffer;
-                    console.log("upload_project:", 1);
-
-                    console.log("upload_project:", 2);
-
                     if (!loadingSuccess) {
                         this.props.vm
                             .loadProject(buffer)
                             .then(() => {
                                 if (!loadingSuccess) {
-                                    //localStorage.setItem("update_project", true);
-                                    //id_project_selected
                                     console.log("upload_project:", 1);
                                     this.props.onSetProjectTitle(
                                         "title Project"
@@ -726,7 +689,6 @@ class PopUpProjectManagement extends React.Component {
                             .catch((error) => {})
                             .then(() => {
                                 this.props.onCloseLoadingStarted();
-                                //this.props.onLoadingFinished(this.props.loadingState, loadingSuccess);
                             });
                     }
                 });
@@ -820,25 +782,37 @@ class PopUpProjectManagement extends React.Component {
 
     onChangeTab() {
         const clickTab = localStorage.getItem("clicktab");
+
+
+        this.setState({tabCurrent:clickTab});
+
+        console.log("TabCurrent", clickTab);
+        
         if (clickTab == 0) {
             this.setState({ arrayProject: this.state.arrayProjectPublic });
             this.setState({ arrayProjectTemp: this.state.arrayProjectPublic });
             this.setState({ selectedPage: this.state.selectedPage1 });
             this.setState({ pageTotal: this.state.pageTotal1 });
-            this.setState({total_item: this.state.total_item1});
-        } else {
+            this.setState({ total_item: this.state.total_item1 });
+        } else if (clickTab == 1) {
             this.setState({ arrayProject: this.state.arrayMyProject });
             this.setState({ arrayProjectTemp: this.state.arrayMyProject });
             this.setState({ selectedPage: this.state.selectedPage2 });
             this.setState({ pageTotal: this.state.pageTotal2 });
-            this.setState({total_item: this.state.total_item2});
+            this.setState({ total_item: this.state.total_item2 });
+        } else if (clickTab == 2) {
 
         }
     }
     render() {
-
-        const options = ['Monday', 'Tuesday', 'Thursday', 
-  'Friday', 'Saturday', 'Sunday']; 
+        const options = [
+            "Monday",
+            "Tuesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday",
+        ];
         const {
             /* eslint-disable no-unused-vars */
             loadingState,
@@ -846,6 +820,10 @@ class PopUpProjectManagement extends React.Component {
             /* eslint-enable no-unused-vars */
             ...componentProps
         } = this.props;
+
+       // const tabCurrent = localStorage.getItem("clicktab");
+
+     //   console.log("tabCurrent",tabCurrent);
 
         return (
             <Modal
@@ -883,7 +861,7 @@ class PopUpProjectManagement extends React.Component {
                             borderTopRightRadius: 10,
                             borderBottomLeftRadius: 10,
                             borderBottomRightRadius: 10,
-                            display: flex,
+                            // display: 'flex',
                             alignContent: "center",
                             justifyContent: "center",
                         }}
@@ -915,7 +893,7 @@ class PopUpProjectManagement extends React.Component {
                             <img
                                 onClick={this.closePopup}
                                 style={{
-                                    cursor:'pointer',
+                                    cursor: "pointer",
                                     zIndex: 100,
                                     marginRight: 5,
                                     width: 25,
@@ -951,10 +929,10 @@ class PopUpProjectManagement extends React.Component {
                                     borderTopRightRadius: "10px",
                                     background: "#1CC3A5",
                                     backgroundImage:
-                                        "linear-gradient(to right,#1CC3A5, #F9F154)",
+                                        "linear-gradient(to right,#1CC3A5, #1CC3A5)",
                                 }}
                             >
-                                <div style={{ width: "100%", flex: 7 }}></div>
+                                <div style={{ width:"100%",flex:7}}></div>
 
                                 <div
                                     style={{
@@ -1028,6 +1006,7 @@ class PopUpProjectManagement extends React.Component {
                                             buttons={[
                                                 "Dự án cộng đồng",
                                                 "Dự án của tôi",
+                                                "Sản phẩm dự thi",
                                             ]}
                                             doSomethingAfterClick={
                                                 this.onChangeTab
@@ -1055,49 +1034,113 @@ class PopUpProjectManagement extends React.Component {
                             >
                                 <div
                                     style={{
-                                        display:'flex',
-                                        flexDirection:'row',
+                                        display: "flex",
+                                        flexDirection: "row",
                                         marginTop: "30px",
                                         marginLeft: "20px",
                                     }}
                                 >
-                                <div style={{width:'200px'}} >
-                                    <div
-                                        style={{
-                                            width:'200px',
-                                            fontWeight: "bold",
-                                            fontSize: 16,
-                                        }}
-                                    >
-                                        <span>Toàn bộ dự án </span>
+                                    <div style={{ width: "200px" }}>
+                                        <div
+                                            style={{
+                                                width: "200px",
+                                                fontWeight: "bold",
+                                                fontSize: 16,
+                                            }}
+                                        >
+                                            <span>Toàn bộ dự án </span>
+                                        </div>
+
+                                        <div
+                                            style={{
+                                                width: "200px",
+                                                fontWeight: "normal",
+                                                fontSize: 14,
+                                                marginTop: "10px",
+                                            }}
+                                        >
+                                            <span>
+                                                Tìm thấy {this.state.total_item}{" "}
+                                                dự án{" "}
+                                            </span>
+                                        </div>
                                     </div>
 
-                                    <div
+                                    <div style={{ width: "100%" }}></div>
+                                    {
+
+                                        this.state.tabCurrent ==2 ? <div style={{display:'flex', flexDirection:'row'}}>
+                                        
+                                        <div
                                         style={{
-                                            width:'200px',
-                                            fontWeight: "normal",
-                                            fontSize: 14,
-                                            marginTop: "10px",
+                                            display: "flex",
+                                            flexDirection: "row",
                                         }}
                                     >
-                                        <span>
-                                            Tìm thấy{" "}
-                                            {this.state.total_item}{" "}
-                                            dự án{" "}
-                                        </span>
+                                        <div
+                                            style={{
+                                                width: 60,
+                                                alignSelf: "center",
+                                            }}
+                                        >
+                                            <span>Từ ngày</span>
+                                        </div>
+                                        <input
+                                            style={{
+                                                height: "30px",
+                                                alignSelf: "center",
+                                            }}
+                                            type="date"
+                                            id="startTime"
+                                            name="startTime"
+                                        />
                                     </div>
+                                        <div
+                                        style={{
+                                            display: "flex",
+                                            flexDirection: "row",
+                                        }}
+                                    >
+                                        <div
+                                            style={{
+                                                width: 80,
+                                                alignSelf: "center",
+                                                marginLeft: 20,
+                                            }}
+                                        >
+                                            {" "}
+                                            <span>Đến ngày</span>
+                                        </div>
+                                        <input
+                                            style={{
+                                                height: "30px",
+                                                alignSelf: "center", marginRight:'100px'
+                                            }}
+                                            type="date"
+                                            id="endTime"
+                                            name="endTime"
+                                        />
+                                    </div>
+                          
+                                        </div> :<div></div>
 
-                                   </div> 
+                                    }
+                                    {
 
-                                   <div style={{width:'100%'}}>
-
-                                   </div>
-                                  <div style={{marginRight:'20px', height:50, marginTop: '0px', zIndex:1000}}>
-
+                                        this.state.tabCurrent != 2?  <div
+                                        style={{
+                                            marginRight: "20px",
+                                            marginLeft: 50,
+                                            height: "30px",
+                                            marginTop: "0px",
+                                            zIndex: 1000,
+                                        }}
+                                    >
                                         <Dropdown />
-                                 </div>
+                                    </div> :<div></div>
+                                    }
+                                   
                                 </div>
-
                                 <div
                                     style={{
                                         width: "100%",
@@ -1119,7 +1162,7 @@ class PopUpProjectManagement extends React.Component {
                                                 {this.state.arrayProjectTemp.map(
                                                     (value) => (
                                                         <Grid key={value} item>
-                                                            <div 
+                                                            <div
                                                                 onClick={() =>
                                                                     this.onShowDetail(
                                                                         value.name,
@@ -1189,10 +1232,10 @@ class PopUpProjectManagement extends React.Component {
                                         }}
                                     >
                                         <div
-                                         onClick={this.onGoStartPage}
+                                            onClick={this.onGoStartPage}
                                             className={styles2.buttonPage}
                                             style={{
-                                                cursor:'pointer',
+                                                cursor: "pointer",
                                                 alignSelf: "flex-end",
                                                 width: "50px",
                                                 display: "flex",
@@ -1216,7 +1259,7 @@ class PopUpProjectManagement extends React.Component {
                                             className={styles2.buttonPage}
                                             onClick={this.onPreviousPage}
                                             style={{
-                                                cursor:'pointer',
+                                                cursor: "pointer",
                                                 justifyContent: "center",
                                                 display: "flex",
 
@@ -1242,7 +1285,7 @@ class PopUpProjectManagement extends React.Component {
                                             style={{
                                                 justifyContent: "center",
                                                 display: "flex",
-                                                cursor:'pointer',
+                                                cursor: "pointer",
 
                                                 alignSelf: "flex-end",
                                                 width: "100px",
@@ -1268,7 +1311,7 @@ class PopUpProjectManagement extends React.Component {
                                             className={styles2.buttonPage}
                                             onClick={this.onNextPage}
                                             style={{
-                                                cursor:'pointer',
+                                                cursor: "pointer",
                                                 justifyContent: "center",
                                                 display: "flex",
 
@@ -1290,8 +1333,7 @@ class PopUpProjectManagement extends React.Component {
                                         </div>
 
                                         <div
-                                        onClick={this.onGoEndPage}
-
+                                            onClick={this.onGoEndPage}
                                             className={styles2.buttonPage}
                                             style={{
                                                 justifyContent: "center",

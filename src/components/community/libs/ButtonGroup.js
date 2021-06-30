@@ -7,6 +7,7 @@ const ButtonGroup = ({ buttons, doSomethingAfterClick }) => {
         event.preventDefault();
 
         setClickedId(id);
+        console.log("IDCLICK", id);
         localStorage.setItem("clicktab", id);
         doSomethingAfterClick(event);
     };

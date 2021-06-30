@@ -1,5 +1,6 @@
 import React from 'react';
 import {FormattedMessage} from 'react-intl';
+import physicsImage from './physics.png';
 
 import musicIconURL from './music/music.png';
 import musicInsetIconURL from './music/music-small.svg';
@@ -47,6 +48,30 @@ import gdxforConnectionIconURL from './gdxfor/gdxfor-illustration.svg';
 import gdxforConnectionSmallIconURL from './gdxfor/gdxfor-small.svg';
 
 export default [
+    {
+       
+        name: (
+            <FormattedMessage
+                defaultMessage="Physics"
+                description="Name for the 'Physics' extension"
+                id="gui.extension.griffpatch.name"
+            />
+        ),
+        extensionId: 'griffpatch',
+        // collaborator: 'Griffpatch',
+        iconURL: physicsImage,
+        insetIconURL: wedo2ConnectionSmallIconURL,
+        description: (
+            <FormattedMessage
+                defaultMessage="Box2D Physics extension."
+                description="Description for the 'Griffpatch' extension"
+                id="gui.extension.griffpatch.description"
+            />
+        ),
+        featured: true,
+        disabled: false
+    },
+   
     {
         name: (
             <FormattedMessage

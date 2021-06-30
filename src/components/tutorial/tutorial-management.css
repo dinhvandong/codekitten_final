@@ -1,0 +1,44 @@
+.ico_search_codekitten {
+    background-image: url("../community/icon/search-codekitten.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 16px;
+    height: 16px;
+    align-self: center;
+    margin-right: 20px;
+    background-size: cover;
+    display: inline-block
+}
+
+.input_search {
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    outline: none;
+    font-size: 14;
+    align-self: center;
+    margin-right: 10px;
+    width: 100%;
+    font-weight: 200%;
+    height: 40px;
+    transition: height 1s;
+    -webkit-transition: height 1s;
+}
+
+.input_search::-webkit-input-placeholder {
+    font-weight: 200;
+    color:#AFB2B3;
+}
+.input_search::-moz-placeholder {
+    font-weight: 200;
+    color:#AFB2B3;
+}
+.input_search::-ms-input-placeholder {
+    font-weight: 200;
+    color:#AFB2B3;
+}
+.input_search::placeholder {
+
+    color: black;
+    font-weight: 200%;
+
+}

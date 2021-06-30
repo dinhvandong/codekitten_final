@@ -79,6 +79,7 @@ import PopUpProjectManagement from "../community/popup-projectmanagement.jsx";
 import PopUpForgotOTP from "../login/popup-forgot-otp.jsx";
 import AlertLogin from "./alert-login.jsx";
 import PopUpLogout from "./popup-logout.jsx";
+import TutorialManagement from '../tutorial/tutorial-management.js';
 import { truncate } from "fs";
 //import soundsIcon from './icon--sounds.svg';
 //ico_ Costumes-White.png
@@ -209,6 +210,7 @@ const GUIComponent = (props) => {
     const [showForgotPassword, setShowForgotPassword] = useState(false);
     const [logoutAlert, setShowLogoutAlert] = useState(false);
     const [showForgotOTP, setShowForgotOTP] = useState(false);
+    const [showTutorial, setShowTutorial] = useState(false);
     const screen_Login = "Login";
     const screen_Logout = "Login";
 
@@ -227,8 +229,14 @@ const GUIComponent = (props) => {
         setShowRequireLogin(false);
         setShowPopupSaveProject(false);
         setShowForgotOTP(false);
+        setShowTutorial(false);
     };
 
+
+    const onSeeTutorial =()=> {
+
+        setShowTutorial(true);
+    }
     const onCloseLoginRequire = () => {
         setShowRequireLogin(false);
     };
@@ -257,6 +265,20 @@ const GUIComponent = (props) => {
 
 
                 break;
+            }
+
+            case SCREENS.screen_Tutorial:{
+                setShowLogin(true);
+                setShowRgOtp(false);
+                setShowRegister(false);
+                setShowRegisterPassword(false);
+                setShowForgotPassword(false);
+                setShowPM(false);
+                setShowLogoutAlert(false);
+                setShowRequireLogin(false);
+                setShowPopupSaveProject(false);
+                setShowForgotOTP(false);
+                setShowTutorial(false);
             }
 
             case "Register": {
@@ -534,6 +556,8 @@ const GUIComponent = (props) => {
                                         onProjectTelemetryEvent
                                     }
                                     onSeeCommunity={onSeeCommunity}
+
+                                    onSeeTutorial = {onSeeTutorial}
                                     //onStoreMyProject = {onStoreMyProject}
                                     onShare={onShare}
                                     onStartSelectingFileUpload={
@@ -887,6 +911,20 @@ const GUIComponent = (props) => {
                                     <div></div>
                                 )}
                             </div>
+
+
+                            <div>
+                            {showTutorial ? (
+                                <TutorialManagement
+                                    closePopup={closeAll}
+                                    setShow={setShow}
+                                />
+                            ) : (
+                                <div></div>
+                            )}
+                        </div>
+
+
                         </div>
                     );
                 }

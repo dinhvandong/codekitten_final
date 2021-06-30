@@ -184,7 +184,7 @@ class UploadProject extends React.Component {
                                 borderTopRightRadius: 10,
 
                                 backgroundImage:
-                                    "linear-gradient(to right,#1CC3A5, #F9F154)",
+                                    "linear-gradient(to right,#1CC3A5, #1CC3A5)",
                                 display: "flex",
                                 justifyContent: "center",
                                 alignContent: "center",
