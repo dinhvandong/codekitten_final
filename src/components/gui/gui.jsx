@@ -80,7 +80,6 @@ import PopUpForgotOTP from "../login/popup-forgot-otp.jsx";
 import AlertLogin from "./alert-login.jsx";
 import PopUpLogout from "./popup-logout.jsx";
 import TutorialManagement from '../tutorial/tutorial-management.js';
-import { truncate } from "fs";
 //import soundsIcon from './icon--sounds.svg';
 //ico_ Costumes-White.png
 const messages = defineMessages({

@@ -68,7 +68,7 @@ export default class LoginCodeKitten extends React.Component {
                 console.log("Name:" + JSON.stringify(result.data));
                 if (value.status_code == 200) {
                     const data = result.data;
-                    const fullname = data.username;
+                    const fullname = data.full_name;
                     localStorage.setItem("fullname", fullname);
                 } else {
                     this.setState({ errorString: "Đăng nhập thất bại" });
@@ -102,6 +102,8 @@ export default class LoginCodeKitten extends React.Component {
                 if (value.status_code == 200) 
                 {
                     this.requestGetProfile();
+
+                    localStorage.setItem("update_project", false);
                     localStorage.setItem("phonenumber", this.state.username);
                     localStorage.setItem("username", this.state.username);
                     localStorage.setItem("login", true);

@@ -30,6 +30,8 @@ import AuthorInfo from "./author-info.jsx";
 import AccountNav from "../../containers/account-nav.jsx";
 import LoginDropdown from "./login-dropdown.jsx";
 import SB3Downloader from "../../containers/sb3-downloader.jsx";
+
+import Downloader from "../../containers/sb3-download-computer.jsx"; 
 import DeletionRestorer from "../../containers/deletion-restorer.jsx";
 import TurboMode from "../../containers/turbo-mode.jsx";
 import MenuBarHOC from "../../containers/menu-bar-hoc.jsx";
@@ -313,7 +315,7 @@ class MenuBar extends React.Component {
     }
     getSaveToComputerHandler(downloadProjectCallback) {
         return () => {
-            //this.props.onRequestCloseFile();
+            this.props.onRequestCloseFile();
             downloadProjectCallback();
             if (this.props.onProjectTelemetryEvent) {
                 const metadata = collectMetadata(
@@ -596,6 +598,21 @@ class MenuBar extends React.Component {
                                                 </MenuItem>
                                             )}
                                         </SB3Downloader>
+
+                                        <Downloader>{(className, downloadProjectCallback) => (
+                                            <MenuItem
+                                                className={className}
+                                                onClick={this.getSaveToComputerHandler(downloadProjectCallback)}
+                                            >
+                                                <FormattedMessage
+                                                    defaultMessage="Save to your computer"
+                                                    description="Menu bar item for downloading a project to your computer" // eslint-disable-line max-len
+                                                    id="gui.menuBar.downloadToComputer"
+                                                />
+                                            </MenuItem>
+                                        )}</Downloader>
+
+
                                     </MenuSection>
                                 </MenuBarMenu>
                             </div>

@@ -149,7 +149,7 @@ module.exports = [
             filename: "[name].js",
         },
         node: {
-            fs: "empty",
+            // fs: "empty",
         },
         module: {
             rules: base.module.rules.concat([

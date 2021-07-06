@@ -48,8 +48,6 @@ import {
     openLoadingProject,
     closeLoadingProject,
 } from "../../../src/reducers/modals";
-//'../reducers/modals';
-//const fs = require('fs');
 
 import {
     LoadingStates,

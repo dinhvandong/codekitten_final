@@ -1,5 +1,4 @@
 import GUI from './containers/gui.jsx';
-import Login from './containers/login.jsx';
 //import Login from './containers/login';
 import AppStateHOC from './lib/app-state-hoc.jsx';
 import GuiReducer, {guiInitialState, guiMiddleware, initEmbedded, initFullScreen, initPlayer} from './reducers/gui';
