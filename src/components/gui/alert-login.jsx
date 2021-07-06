@@ -28,6 +28,8 @@ class AlertLogin extends React.Component {
         console.log("Close Popup");
         this.props.onClosePopup();
         this.props.closePopupFromGUI();
+        localStorage.setItem("update_project", false);
+
        // localStorage.setItem("login", false);
     }
 
